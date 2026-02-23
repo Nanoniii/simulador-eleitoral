@@ -176,7 +176,7 @@ body{ font-family:"MS Sans Serif", Arial; background:#008080; margin:0; display:
     <div class="title-bar">
         <span>🌎 SIMULADOR ELEITORAL GLOBAL</span>
         <div style="display:flex;gap:8px;align-items:center">
-            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v12</span>
+            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v13</span>
             <span onclick="location.reload()" style="cursor:pointer">[X]</span>
         </div>
     </div>
@@ -1917,6 +1917,389 @@ const internationalData = {
             {id:'MAD', n:'Madeira',                x:2, y:85, p:5,  econ:0,  soc:-1, nat:1},
             {id:'SET', n:'Setúbal/Margem Sul',     x:23,y:78, p:4,  econ:-1, soc:1,  nat:0}
         ]
+    },
+    // ── NOVOS PAÍSES v13 ─────────────────────────────────────────────
+    "VEN2024": {
+        title:"Eleições Presidenciais da Venezuela 2024", year:"2024", emoji:"🇻🇪",
+        country:"venezuela",
+        desc:"Maduro busca reeleição em eleição contestada. González lidera oposição unificada com plataforma PUD. Eleição marcada por denúncias de fraude e pressão internacional.",
+        available:true,
+        noSecondRound:true,
+        newsHeader:"El Nacional — JULIO 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"PSUV",side:"D",owner:null},{n:"PUD",side:"E",owner:null},{n:"EXM",side:"C",owner:null}],
+        specialMechanic:"contested_election",
+        candidates:{
+            maduro:   {name:"MADURO",   party:"PSUV",  start:42, money:80, side:"D", color:"#cc0000", econ:-1,soc:1, nat:2, bio:"Nicolás Maduro, presidente desde 2013, herdeiro de Hugo Chávez. Reeleito em 2018 em eleição não reconhecida pelo Ocidente. Em 2024, enfrenta a maior oposição unificada em anos. O CNE proclamou sua reeleição, mas oposição e comunidade internacional contestaram os resultados.", ideologia:"Socialismo Bolivariano / Chavismo", traits:["Controle do Aparato Estatal","Apoio Militar"], negativeTraits:["Crise Econômica Profunda","Emigração de 7 Milhões","Suspeita de Fraude Eleitoral","Reconhecimento Internacional Limitado"]},
+            gonzalez: {name:"GONZÁLEZ", party:"PUD",   start:52, money:20, side:"E", color:"#003399", econ:1, soc:1, nat:-1,bio:"Edmundo González Urrutia, ex-embaixador e candidato único da Plataforma Unitaria Democrática. Coordenado por María Corina Machado, obteve apoio massivo da população. A oposição declarou vitória com 67% dos votos, mas o CNE proclamou Maduro vencedor. González foi para o exílio.", ideologia:"Democracia Liberal / Oposição Democrática", traits:["Apoio Popular Amplo","Suporte de Machado","Reconhecimento Internacional"], negativeTraits:["Sem Acesso ao Aparato Estatal","Perseguição Governamental"]},
+            bertucci: {name:"BERTUCCI", party:"EXM",   start:4,  money:10, side:"C", color:"#ff8800", econ:0, soc:0, nat:1, bio:"Javier Bertucci, pastor evangélico e empresário. Já disputou em 2018. Em 2024 representa a terceira via entre chavismo e oposição unificada.", ideologia:"Evangélico / Centro Independente", traits:["Base Evangélica"], negativeTraits:["Percebido como Candidato de Ocasião","Pouco Reconhecimento Nacional"]}
+        },
+        regions:[
+            {id:'CAR', n:'Caracas e Miranda',        x:58,y:28, p:22, econ:1,  soc:0,  nat:0},
+            {id:'ZUL', n:'Zulia (Maracaibo)',         x:22,y:18, p:18, econ:2,  soc:-1, nat:1},
+            {id:'CAR2',n:'Carabobo (Valencia)',       x:42,y:30, p:12, econ:1,  soc:-1, nat:0},
+            {id:'AND', n:'Andes (Mérida/Táchira)',   x:28,y:42, p:10, econ:-1, soc:-2, nat:1},
+            {id:'LLA', n:'Los Llanos (Barinas/Guár)',x:48,y:48, p:10, econ:-2, soc:1,  nat:2},
+            {id:'ORI', n:'Oriente (Anzoátegui/Monagas)',x:72,y:38,p:12,econ:2, soc:-1, nat:1},
+            {id:'BOL', n:'Bolívar (Mineração)',       x:62,y:55, p:8,  econ:0,  soc:-1, nat:2},
+            {id:'CEN', n:'Centro (Aragua/Guárico)',   x:50,y:35, p:6,  econ:-1, soc:0,  nat:1},
+            {id:'OCE', n:'Occidente (Barquisimeto)',  x:32,y:28, p:8,  econ:0,  soc:-1, nat:1},
+            {id:'INS', n:'Insular (Nueva Esparta)',   x:78,y:22, p:4,  econ:1,  soc:0,  nat:0}
+        ]
+    },
+    "MEX2024": {
+        title:"Eleições Presidenciais do México 2024", year:"2024", emoji:"🇲🇽",
+        country:"mexico",
+        desc:"Sheinbaum, delfina de AMLO, enfrenta Gálvez pelo PAN/PRI/PRD e Máynez pelo Movimiento Ciudadano. México vive eleição histórica com candidata presidencial favorita.",
+        available:true,
+        noSecondRound:true,
+        newsHeader:"El Universal — JUNIO 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"Morena",side:"E",owner:null},{n:"PAN",side:"D",owner:null},{n:"MC",side:"C",owner:null}],
+        candidates:{
+            sheinbaum:{name:"SHEINBAUM",party:"Morena",start:59, money:70, side:"E", color:"#8b0000", econ:-1,soc:2, nat:0, bio:"Claudia Sheinbaum, ex-prefeita da CDMX e doutora em engenharia ambiental. Escolhida por AMLO como sua sucessora e confirmada com 59% dos votos — vitória histórica. Primeira mulher eleita presidente do México. Mantém política social de AMLO com tom mais técnico.", ideologia:"Social-Democracia / Obradorismo / Progressismo", traits:["Herdeira de AMLO","Perfil Técnico-Científico","Apelo às Mulheres"], negativeTraits:["Associada aos Erros do Governo","Dependência do Legado de AMLO"]},
+            galvez:   {name:"GÁLVEZ",    party:"PAN",   start:28, money:50, side:"D", color:"#003399", econ:2, soc:-1, nat:0, bio:"Xóchitl Gálvez, senadora e empresária do Vale do Mezquital. Candidata da aliança PAN-PRI-PRD (Frente Amplia). De origem indígena, discurso anti-AMLO e pró-mercado. Perdeu com 28% dos votos.", ideologia:"Liberalismo Conservador / Centro-Direita", traits:["Origem Humilde como Narrativa","Aliança Ampla"], negativeTraits:["Associada ao PRI Histórico","Fragmentação da Aliança"]},
+            maynez:   {name:"MÁYNEZ",    party:"MC",    start:10, money:20, side:"C", color:"#ff6600", econ:0, soc:1, nat:-1,bio:"Jorge Máynez, senador pelo Movimiento Ciudadano do Jalisco. Candidato jovem e moderado, buscou terceira via entre Morena e direita. Obteve 10% — melhor resultado do MC numa presidencial.", ideologia:"Centrismo Progressista / Social-Liberalismo", traits:["Apelo aos Jovens","Terceira Via"], negativeTraits:["Sem Massa Crítica Nacional","Partido Regional"]}
+        },
+        regions:[
+            {id:'CDM', n:'CDMX / Área Metropolitana', x:52,y:52, p:20, econ:2,  soc:2,  nat:-1},
+            {id:'JAL', n:'Jalisco (Guadalajara)',      x:32,y:42, p:10, econ:1,  soc:0,  nat:0},
+            {id:'NUL', n:'Nuevo León (Monterrey)',     x:48,y:22, p:9,  econ:2,  soc:-1, nat:0},
+            {id:'VER', n:'Veracruz e Golfo',           x:62,y:50, p:9,  econ:-1, soc:1,  nat:1},
+            {id:'PUE', n:'Puebla e Hidalgo',           x:58,y:52, p:8,  econ:-1, soc:1,  nat:0},
+            {id:'OAX', n:'Oaxaca e Chiapas (Sul)',     x:58,y:68, p:8,  econ:-2, soc:2,  nat:2},
+            {id:'GUA', n:'Guanajuato e Bajío',         x:42,y:45, p:7,  econ:1,  soc:-1, nat:1},
+            {id:'SIN', n:'Sinaloa e Pacifico',         x:22,y:32, p:5,  econ:0,  soc:-1, nat:2},
+            {id:'YUC', n:'Yucatán / Península',        x:72,y:52, p:5,  econ:0,  soc:0,  nat:0},
+            {id:'CHH', n:'Chihuahua e Norte',          x:32,y:15, p:5,  econ:1,  soc:-2, nat:1},
+            {id:'GRO', n:'Guerrero e Michoacán',       x:42,y:60, p:5,  econ:-2, soc:1,  nat:2},
+            {id:'TAM', n:'Tamaulipas e Fronteira NE',  x:52,y:18, p:4,  econ:0,  soc:-1, nat:1},
+            {id:'BCN', n:'Baja California e NW',       x:10,y:18, p:4,  econ:1,  soc:0,  nat:0},
+            {id:'ZAC', n:'Zacatecas / San Luis / Aguasc.',x:38,y:35,p:4, econ:-1,soc:-1, nat:1}
+        ]
+    },
+    "CHI2025": {
+        title:"Eleições Presidenciais do Chile 2025", year:"2025", emoji:"🇨🇱",
+        country:"chile",
+        desc:"Kast (direita radical) vs Jara (comunista). Chile polarizado após o plebiscito constitucional. Eleição decide o rumo do país pós-Boric.",
+        available:true,
+        noSecondRound:false,
+        newsHeader:"La Tercera / El Mercurio — NOVIEMBRE 2025",
+        endYear:"2025",
+        partyPoolOverride:[{n:"Rep",side:"D",owner:null},{n:"PC-Chile",side:"E",owner:null},{n:"RN",side:"D",owner:null}],
+        candidates:{
+            kast: {name:"KAST",  party:"Republicano",start:32, money:45, side:"D", color:"#003366", econ:2,soc:-2, nat:2, bio:"José Antonio Kast, ex-deputado e fundador do Partido Republicano. Perdeu o 2º turno de 2021 para Boric. Retorna em 2025 como principal candidato da direita dura, com discurso anti-imigração, pró-livre mercado e valores conservadores. Referência da nova direita latino-americana.", ideologia:"Conservadorismo Nacional / Direita Radical", traits:["Consistência Ideológica","Base Conservadora Fiel"], negativeTraits:["Percebido como Extremista","Comparações com Pinochet"]},
+            jara: {name:"JARA",  party:"PC Chile",  start:28, money:35, side:"E", color:"#cc0000", econ:-2,soc:2, nat:0, bio:"Jeannette Jara, ex-ministra do Trabalho de Gabriel Boric. Candidata do Partido Comunista e do pacto Unidad para Chile. Defende ampliação das reformas sociais e um novo modelo de previdência. Representa a continuidade e aprofundamento do projeto de Boric.", ideologia:"Comunismo / Socialismo Democrático", traits:["Experiência Ministerial","Apoio de Boric"], negativeTraits:["Associada ao Desgaste do Governo","Partido Comunista como Peso"]},
+            matthei:{name:"MATTHEI",party:"RN/UDI",start:25, money:40, side:"D", color:"#0066cc", econ:1,soc:-1, nat:1, bio:"Evelyn Matthei, prefeita de Providencia e candidata da aliança Chile Vamos. Filho do general Matthei, representa a direita tradicional moderada, distante do radicalismo de Kast.", ideologia:"Liberalismo Conservador / Direita Moderada", traits:["Gestão Municipal Sólida","Apelo ao Centro"], negativeTraits:["Disputada com Kast pelo mesmo eleitorado","Herança Familiar Controversa"]},
+            narvaez:{name:"NARVAEZ",party:"PPD/PS",start:10, money:20, side:"E", color:"#e84393", econ:-1,soc:2, nat:0, bio:"Ximena Narváez, candidata da esquerda moderada e do Chile Digno. Busca o eleitorado desiludido com Boric mas que não quer Kast.", ideologia:"Social-Democracia / Progressismo", traits:["Perfil Carismático"], negativeTraits:["Sombra de Boric","Eleitorado Fragmentado"]}
+        },
+        regions:[
+            {id:'RM',  n:'Região Metropolitana (Santiago)', x:42,y:68, p:40, econ:2,  soc:1,  nat:-1},
+            {id:'BI',  n:"Bio-Bío e Ñuble",                x:38,y:78, p:12, econ:0,  soc:-1, nat:0},
+            {id:'LA',  n:'La Araucanía (Mapuche)',          x:36,y:83, p:7,  econ:-2, soc:-1, nat:2},
+            {id:'VA',  n:'Valparaíso',                      x:38,y:65, p:10, econ:1,  soc:1,  nat:0},
+            {id:'OH',  n:"O'Higgins e Maule",               x:40,y:72, p:8,  econ:-1, soc:-1, nat:1},
+            {id:'CO',  n:'Coquimbo e Atacama (Norte)',      x:35,y:45, p:5,  econ:1,  soc:-1, nat:1},
+            {id:'AN',  n:'Antofagasta e Tarapacá (Extremo Norte)', x:30,y:28, p:5, econ:2, soc:-2, nat:1},
+            {id:'LO',  n:'Los Ríos e Los Lagos (Sul)',      x:35,y:88, p:7,  econ:-1, soc:0,  nat:1},
+            {id:'MA',  n:'Magallanes e Aysén (Extremo Sul)',x:32,y:96, p:3,  econ:0,  soc:0,  nat:2},
+            {id:'AI',  n:'Arica e Parinacota / Tarapacá',  x:28,y:18, p:3,  econ:0,  soc:1,  nat:1}
+        ]
+    },
+    "COL2026": {
+        title:"Eleições Presidenciais da Colômbia 2026", year:"2026", emoji:"🇨🇴",
+        country:"colombia",
+        desc:"Cepeda (Pacto Histórico de Petro) vs De la Espriella (independente) vs Fajardo (Centro) vs Valencia (Centro Democrático). Colombia decide o futuro pós-Petro.",
+        available:true,
+        noSecondRound:false,
+        newsHeader:"El Tiempo / El Espectador — MAYO 2026",
+        endYear:"2026",
+        partyPoolOverride:[{n:"PH",side:"E",owner:null},{n:"CD",side:"D",owner:null},{n:"DC",side:"C",owner:null}],
+        candidates:{
+            cepeda:   {name:"CEPEDA",     party:"Pacto H.", start:28, money:40, side:"E", color:"#cc0000", econ:-1,soc:2, nat:0, bio:"Iván Cepeda Castro, senador histórico de esquerda e filho do jornalista Manuel Cepeda assassinado por paramilitares. Candidato do Pacto Histórico para suceder Gustavo Petro. Defende ampliação dos programas sociais, paz total e reforma agrária.", ideologia:"Socialismo Democrático / Petrorismo", traits:["Defensor dos Direitos Humanos","Continuidade de Petro"], negativeTraits:["Associado ao Desgaste de Petro","Imagem Polarizadora"]},
+            espriella:{name:"ESPRIELLA",  party:"Ind.",     start:24, money:35, side:"C", color:"#228B22", econ:1, soc:0, nat:1, bio:"Abelardo de la Espriella, ex-senador e advogado criminalista de Barranquilla. Candidato independente do Caribe colombiano, defende pragmatismo, segurança e combate à corrupção sem os extremos ideológicos.", ideologia:"Independente / Centro Pragmático", traits:["Perfil Regional Forte","Imagem Apartidária"], negativeTraits:["Pouco Reconhecimento Nacional","Sem Estrutura Partidária"]},
+            fajardo:  {name:"FAJARDO",    party:"DC",       start:22, money:30, side:"C", color:"#4444cc", econ:0, soc:1, nat:-1,bio:"Sergio Fajardo, ex-prefeito de Medellín e ex-governador de Antioquia. Referência da política de transformação urbana e educação. Candidato da Dignidad y Compromiso, busca o eleitorado de centro desiludido tanto com Petro quanto com a direita tradicional.", ideologia:"Centro Democrático / Tecnocracia Progressista", traits:["Transformação de Medellín como Marca","Apelo ao Voto Independente"], negativeTraits:["Já Perdeu Três Eleições Presidenciais","Percebido como Candidato Eterno"]},
+            valencia: {name:"VALENCIA",   party:"CD",       start:22, money:38, side:"D", color:"#003366", econ:2, soc:-2, nat:2, bio:"Paloma Valencia, senadora do Centro Democrático e próxima de Álvaro Uribe. Candidata da direita uribista, defende segurança dura, livre mercado e combate às FARC. Principal voz da oposição ao petrorismo.", ideologia:"Uribismo / Conservadorismo / Segurança Dura", traits:["Base Uribista Fiel","Discurso de Segurança"], negativeTraits:["Percebida como Extremista","Associada ao Legado Controverso de Uribe"]}
+        },
+        regions:[
+            {id:'CUN', n:'Bogotá e Cundinamarca',           x:42,y:55, p:22, econ:2,  soc:1,  nat:-1},
+            {id:'ANT', n:'Antioquia (Medellín)',             x:30,y:40, p:16, econ:1,  soc:-1, nat:1},
+            {id:'VCA', n:'Valle del Cauca (Cali)',           x:22,y:52, p:11, econ:1,  soc:0,  nat:0},
+            {id:'CAR', n:'Caribe (Barranquilla/Cartagena)',  x:42,y:18, p:15, econ:0,  soc:1,  nat:1},
+            {id:'SAN', n:'Santander e Norte de Santander',  x:52,y:32, p:7,  econ:0,  soc:-1, nat:1},
+            {id:'TOL', n:'Tolima e Huila',                  x:38,y:58, p:5,  econ:-1, soc:-1, nat:2},
+            {id:'NAR', n:'Nariño e Cauca (Pacífico Sul)',   x:22,y:68, p:5,  econ:-2, soc:2,  nat:2},
+            {id:'COR', n:'Córdoba e Sucre',                 x:32,y:25, p:5,  econ:-2, soc:0,  nat:1},
+            {id:'META',n:'Meta e Llanos Orientais',          x:55,y:58, p:4,  econ:0,  soc:-1, nat:2},
+            {id:'BOY', n:'Boyacá e Caldas',                 x:45,y:43, p:5,  econ:-1, soc:-1, nat:1},
+            {id:'AMA', n:'Amazônia e Orinoquía',            x:60,y:72, p:5,  econ:-2, soc:0,  nat:2}
+        ]
+    },
+    "CAN2025": {
+        title:"Eleições Federais do Canadá 2025", year:"2025", emoji:"🇨🇦",
+        country:"canada",
+        desc:"Carney (Liberal) vs Poilievre (Conservador) vs Singh (NDP) vs Blanchet (Bloco Québec). Eleição federal canadense decide PM após saída de Trudeau.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:343,
+        majoritySeats:172,
+        newsHeader:"The Globe and Mail / Le Devoir — APRIL 2025",
+        endYear:"2025",
+        partyPoolOverride:[{n:"Liberal",side:"E",owner:null},{n:"Conserv.",side:"D",owner:null},{n:"NDP",side:"E",owner:null},{n:"BQ",side:"C",owner:null}],
+        candidates:{
+            carney:    {name:"CARNEY",    party:"Liberal",  start:41, money:60, side:"E", color:"#cc0000", econ:1,soc:2, nat:-1,bio:"Mark Carney, ex-presidente do Banco do Canadá e do Banco da Inglaterra. Assumiu a liderança Liberal após Justin Trudeau e liderou o partido a uma surpreendente vitória impulsionada em parte pela ameaça tarifária de Trump. Primeira eleição como político após décadas como tecnocrata.", ideologia:"Social-Liberalismo / Tecnocracia Progressista", traits:["Credibilidade Econômica","Anti-Trump como Narrativa"], negativeTraits:["Nunca Exerceu Cargo Eletivo","Associado ao Legado de Trudeau"]},
+            poilievre: {name:"POILIEVRE", party:"Conserv.", start:40, money:65, side:"D", color:"#003399", econ:2,soc:-1, nat:1, bio:"Pierre Poilievre, líder conservador desde 2022. Campanha focada no custo de vida, habitação e crítica à política econômica de Trudeau. Liderou as pesquisas por meses mas perdeu a eleição impulsionada pelo contexto geopolítico Trump/Tarifas.", ideologia:"Conservadorismo Econômico / Populismo de Direita", traits:["Comunicador Afiado","Base Conservadora Fiel"], negativeTraits:["Radicalismo Percebido","Associação com Trumpismo"]},
+            blanchet:  {name:"BLANCHET",  party:"BQ",       start:8,  money:20, side:"C", color:"#4444cc", econ:0,soc:1, nat:3, bio:"Yves-François Blanchet, líder do Bloc Québécois. Partido soberanista que defende os interesses de Québec no Parlamento federal. Fiel às causas quebequenses: língua francesa, cultura, autonomia.", ideologia:"Soberanismo Quebequense / Nacionalismo Cultural", traits:["Defensor Vocal do Québec","Oratória Excepcional"], negativeTraits:["Partido Regional — Sem Governo Nacional","Teto Eleitorado Limitado ao Québec"]},
+            singh:     {name:"SINGH",     party:"NDP",      start:7,  money:25, side:"E", color:"#f4821f", econ:-1,soc:2, nat:-1,bio:"Jagmeet Singh, líder do Novo Partido Democrático desde 2017. Primeiro líder de grande partido federal de origem sikh. Apoiou o governo Liberal com acordo de confiança, mas rompeu em 2024. Candidato da esquerda trabalhista e de minorias.", ideologia:"Social-Democracia / Trabalhismo / Progressismo", traits:["Diversidade e Representatividade","Apelo a Jovens e Minoriais"], negativeTraits:["NDP com Teto Histórico","Criticado por Apoiar Trudeau por Tempo Demais"]}
+        },
+        regions:[
+            {id:'ON',  n:'Ontario (Toronto/Ottawa)',       x:62,y:52, p:38, econ:2,  soc:1,  nat:0},
+            {id:'QC',  n:'Québec (Montréal/Québec City)', x:72,y:42, p:23, econ:0,  soc:2,  nat:2},
+            {id:'BC',  n:'Colúmbia Britânica (Vancouver)',x:12,y:42, p:13, econ:1,  soc:2,  nat:0},
+            {id:'AB',  n:'Alberta (Calgary/Edmonton)',     x:28,y:38, p:11, econ:2,  soc:-2, nat:2},
+            {id:'MB',  n:'Manitoba (Winnipeg)',            x:45,y:40, p:4,  econ:0,  soc:0,  nat:1},
+            {id:'SK',  n:'Saskatchewan (Regina)',          x:35,y:38, p:3,  econ:1,  soc:-1, nat:1},
+            {id:'ATL', n:'Atlântico (NS/NB/PEI/NL)',      x:85,y:48, p:6,  econ:-1, soc:1,  nat:0},
+            {id:'NTH', n:'Territórios (YT/NT/NU)',         x:22,y:18, p:2,  econ:-1, soc:0,  nat:2}
+        ]
+    },
+    // ── NOVOS PAÍSES v14 ─────────────────────────────────────────────
+    "UKR2019": {
+        title:"Eleição Presidencial da Ucrânia 2019", year:"2019", emoji:"🇺🇦",
+        country:"ukraine",
+        desc:"Zelensky, ator e comediante sem experiência política, surpreende o mundo ao derrotar Poroshenko. Tymoshenko tenta o retorno. Ucrânia pós-Maidan em busca de renovação.",
+        available:true,
+        noSecondRound:false,
+        newsHeader:"Ukrainska Pravda — КВІТЕНЬ 2019",
+        endYear:"2019",
+        partyPoolOverride:[{n:"SN",side:"C",owner:null},{n:"Ind.",side:"D",owner:null},{n:"Bat.",side:"E",owner:null}],
+        candidates:{
+            zelensky:    {name:"ZELENSKY",    party:"SN",  start:30, money:40, side:"C", color:"#0057b7", econ:0, soc:1, nat:1, bio:"Volodymyr Zelensky, ator e produtor, famoso pelo seriado 'Servo do Povo' onde interpretava um presidente. Venceu o 1º turno com 30% e o 2º turno com 73% contra Poroshenko. Simbolizava renovação e luta contra a corrupção.", ideologia:"Centrismo / Reformismo Anti-Corrupção", traits:["Carisma Popular","Renovação Total","Anti-Establishment"], negativeTraits:["Sem Experiência Política","Programa Vago"]},
+            poroshenko:  {name:"POROSHENKO",  party:"Ind.", start:24, money:70, side:"D", color:"#FFD700", econ:2, soc:-1, nat:2, bio:"Petro Poroshenko, presidente incumbente desde 2014. Governou durante a guerra no Donbas e a perda da Crimeia. Candidato pró-europeu e anti-Rússia, mas impopular pela corrupção e enriquecimento pessoal durante a guerra.", ideologia:"Liberalismo / Conservadorismo Nacional / Pró-UE", traits:["Incumbente — Controle do Estado","Narrativa de Guerra e Sacrifício"], negativeTraits:["Corrupção Percebida","Fracasso no Fim da Guerra","Impopularidade Alta"]},
+            tymoshenko:  {name:"TYMOSHENKO",  party:"Bat.", start:15, money:35, side:"E", color:"#cc0000", econ:-1,soc:2, nat:1, bio:"Yulia Tymoshenko, ex-primeira-ministra e ícone da Revolução Laranja. Tentou voltar ao poder com discurso social e anti-oligarquia. Ficou em 3º no 1º turno.", ideologia:"Populismo / Social-Democracia / Pró-UE", traits:["Líder Histórica","Apelo Feminino e Jovem"], negativeTraits:["Desgaste Político de Décadas","Percebida como Parte do Sistema"]}
+        },
+        regions:[
+            {id:'KYV', n:'Kyiv e Oblast de Kyiv',           x:55,y:30, p:15, econ:2,  soc:1,  nat:0},
+            {id:'KHR', n:'Kharkiv (Leste)',                  x:72,y:25, p:10, econ:1,  soc:0,  nat:-1},
+            {id:'DNI', n:'Dnipro / Zaporizhzhia',           x:68,y:45, p:12, econ:1,  soc:-1, nat:0},
+            {id:'DON', n:'Donbas (Donetsk/Luhansk)',        x:78,y:38, p:8,  econ:-1, soc:-1, nat:-2},
+            {id:'ODE', n:'Odessa (Sul)',                     x:52,y:62, p:8,  econ:0,  soc:0,  nat:0},
+            {id:'LVI', n:'Lviv / Galícia (Oeste)',           x:25,y:28, p:10, econ:0,  soc:1,  nat:2},
+            {id:'VIN', n:'Vinnytsia / Podóllia (Centro)',   x:42,y:40, p:8,  econ:-1, soc:0,  nat:1},
+            {id:'ZAK', n:'Zakarpattia / Chernivtsi',        x:18,y:42, p:5,  econ:-2, soc:0,  nat:2},
+            {id:'POL', n:'Poltava / Sumy (Centro-Leste)',   x:63,y:32, p:6,  econ:-1, soc:0,  nat:1},
+            {id:'MYK', n:'Mykolaiv / Kherson',              x:58,y:60, p:6,  econ:-1, soc:-1, nat:0},
+            {id:'CRI', n:'Crimeia (Ocupada)',                x:62,y:70, p:2,  econ:0,  soc:-2, nat:-2}
+        ]
+    },
+    "ESP2023": {
+        title:"Eleições Gerais da Espanha 2023", year:"2023", emoji:"🇪🇸",
+        country:"spain",
+        desc:"Feijóo lidera PP à vitória relativa, mas sem maioria. Sánchez busca governabilidade com coalizão ampla. Abascal (Vox) avança pela direita radical. Díaz representa nova esquerda.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:350,
+        majoritySeats:176,
+        newsHeader:"El País / El Mundo — JULIO 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"PP",side:"D",owner:null},{n:"PSOE",side:"E",owner:null},{n:"Vox",side:"D",owner:null},{n:"Sumar",side:"E",owner:null}],
+        candidates:{
+            feijoo:   {name:"FEIJÓO",   party:"PP",    start:33, money:65, side:"D", color:"#0056A2", econ:2, soc:-1, nat:0, bio:"Alberto Núñez Feijóo, ex-presidente da Galícia por 12 anos. Ganhou o maior número de votos (33%) e assentos (137), mas não conseguiu maioria para governar. Sua indicação para PM foi rejeitada pelo Congresso.", ideologia:"Democracia Cristã / Conservadorismo Liberal", traits:["Gestão Galega Aclamada","Perfil Moderado"], negativeTraits:["Aliança Difícil com Vox","Sem Maioria Parlamentar"]},
+            sanchez:  {name:"SÁNCHEZ",  party:"PSOE",  start:29, money:60, side:"E", color:"#cc0000", econ:-1,soc:2, nat:-1, bio:"Pedro Sánchez, presidente do governo desde 2018. Apesar de obter menos votos que o PP no 1T, conseguiu maioria parlamentar com Sumar, partidos independentistas e regionais. Reeleito PM em novembro de 2023.", ideologia:"Social-Democracia / Progressismo / Plurinacionalismo", traits:["Articulador Político Habilidoso","Aliança com Independentistas"], negativeTraits:["Polêmica com Catalunha","Desgaste de Cinco Anos"]},
+            abascal:  {name:"ABASCAL",  party:"Vox",   start:13, money:35, side:"D", color:"#63BE21", econ:1, soc:-2, nat:2, bio:"Santiago Abascal, líder do Vox. Partido de extrema-direita que defende unidade espanhola intransigente, anti-imigração e tradições católicas. Perdeu assentos em relação a 2019 mas manteve relevância.", ideologia:"Ultranacionalismo / Conservadorismo Social Extremo", traits:["Base Identitária Fiel","Anti-Imigração Vocal"], negativeTraits:["Percebido como Extremista","Aliança Dificulta PP"]},
+            diaz:     {name:"DÍAZ",     party:"Sumar",  start:13, money:30, side:"E", color:"#8B1C8B", econ:-2,soc:2, nat:-1, bio:"Yolanda Díaz, ex-ministra do Trabalho e arquiteta da reforma trabalhista espanhola. Liderou a plataforma Sumar — unindo toda a esquerda além do PSOE. Obteve 31 assentos, tornando-se parceira indispensável de Sánchez.", ideologia:"Socialismo / Ecosocialismo / Feminismo", traits:["Reforma Trabalhista como Trunfo","Coalizão de Esquerda Ampla"], negativeTraits:["Plataforma Nova sem Consolidação","Tensão Interna na Coalizão"]}
+        },
+        regions:[
+            {id:'CAT', n:'Catalunha (Barcelona)',          x:82,y:25, p:15, econ:2,  soc:2,  nat:2},
+            {id:'AND', n:'Andaluzia (Sevilha/Málaga)',     x:38,y:82, p:19, econ:-1, soc:-1, nat:0},
+            {id:'MAD', n:'Comunidade de Madrid',           x:52,y:48, p:14, econ:2,  soc:0,  nat:0},
+            {id:'VAL', n:'Valenciana (Valência)',          x:68,y:55, p:11, econ:1,  soc:1,  nat:1},
+            {id:'GAL', n:'Galícia (Santiago)',             x:20,y:22, p:7,  econ:-1, soc:0,  nat:2},
+            {id:'PVA', n:'País Basco (Bilbao)',            x:48,y:18, p:5,  econ:1,  soc:1,  nat:2},
+            {id:'CAS', n:'Castilla-La Mancha / León',     x:42,y:42, p:10, econ:-1, soc:-1, nat:0},
+            {id:'ARA', n:'Aragão / Navarra / La Rioja',   x:62,y:28, p:6,  econ:0,  soc:0,  nat:1},
+            {id:'EXT', n:'Extremadura / Múrcia',          x:32,y:65, p:7,  econ:-2, soc:-1, nat:0},
+            {id:'ISL', n:'Ilhas Baleares / Canárias',     x:15,y:90, p:4,  econ:1,  soc:1,  nat:1},
+            {id:'CEU', n:'Ceuta e Melilla',                x:38,y:95, p:1,  econ:-1, soc:-1, nat:1},
+            {id:'AST', n:'Asturias / Cantabria',           x:38,y:18, p:3,  econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "JAP2026": {
+        title:"Eleição Presidencial do PLD — Japão 2026", year:"2026", emoji:"🇯🇵",
+        country:"japan",
+        desc:"Crise de popularidade no PLD abre espaço para alternativas. Takaichi lidera a direita conservadora. Noda reaparece pelo Kaikaku Chushin. Yoshimura pelo Ishin e Tamaki pelo DPP disputam o centro. Kamiya (Sanseito) e Anno (Equipe Mirai) representam extremos.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:465,
+        majoritySeats:233,
+        newsHeader:"Asahi Shimbun — 2026年",
+        endYear:"2026",
+        partyPoolOverride:[{n:"PLD",side:"D",owner:null},{n:"Kaikaku",side:"C",owner:null},{n:"Ishin",side:"C",owner:null},{n:"DPP",side:"C",owner:null}],
+        candidates:{
+            takaichi:  {name:"TAKAICHI",  party:"PLD",     start:28, money:70, side:"D", color:"#cc0000", econ:1, soc:-2, nat:2, bio:"Sanae Takaichi, ex-ministra e líder da ala Abe do PLD. Defensora de políticas revisionistas históricas, militarização e Abenomics. Seria a primeira primeira-ministra do Japão se eleita.", ideologia:"Conservadorismo Nacional / Revisionismo Histórico", traits:["Ala Abe","Primeira Mulher PM se Eleita"], negativeTraits:["Associada ao Escândalo Moeda Política","Revisionismo Polêmico"]},
+            noda:      {name:"NODA",       party:"Kaikaku", start:22, money:45, side:"C", color:"#0044aa", econ:0, soc:1, nat:-1, bio:"Yoshihiko Noda, ex-primeiro-ministro pelo antigo DPJ. Voltou à cena política pelo Kaikaku Chushin (Reforma Centrista), agregando moderados de diferentes partidos. Representa experiência governamental e moderação.", ideologia:"Centrismo Liberal / Social-Democracia", traits:["Ex-PM Experiente","Coalizão Moderada Ampla"], negativeTraits:["Associado às Derrotas do DPJ","Partido Novo sem Consolidação"]},
+            yoshimura: {name:"YOSHIMURA", party:"Ishin",   start:18, money:40, side:"C", color:"#FF6600", econ:2, soc:0, nat:0, bio:"Hirofumi Yoshimura, governador de Osaka e rosto do movimento Nippon Ishin no Kai. Popularíssimo em Osaka pela gestão pragmática. Defende descentralização, reformas administrativas e identidade regional.", ideologia:"Reformismo Liberal / Descentralização / Neo-Conservadorismo", traits:["Governador Popular de Osaka","Reformas Concretas"], negativeTraits:["Percebido como Regional","Sem Experiência Nacional"]},
+            tamaki:    {name:"TAMAKI",    party:"DPP",     start:14, money:30, side:"C", color:"#33aa33", econ:0, soc:1, nat:0, bio:"Yuichiro Tamaki, líder do Partido Democrático do Povo. Cresceu expressivamente nas eleições de 2024, com apelo entre jovens que buscam alternativas ao PLD sem ir à esquerda.", ideologia:"Centrismo Progressista / Reformismo Econômico", traits:["Apelo à Juventude","Anti-Establishment Moderado"], negativeTraits:["Partido Pequeno","Sem Massa Crítica Nacional"]},
+            kamiya:    {name:"KAMIYA",    party:"Sanseito",start:9,  money:15, side:"D", color:"#880000", econ:0, soc:-2, nat:3, bio:"Sohei Kamiya, líder do Sanseito, partido de direita ultranacionalista anti-imigração. Cresceu nas redes sociais com discurso de pureza cultural e ceticismo sobre globalização.", ideologia:"Ultranacionalismo / Conservadorismo Cultural", traits:["Presença nas Redes Sociais"], negativeTraits:["Extremismo Percebido","Associado ao Revisionismo Extremo"]},
+            anno:      {name:"ANNO",      party:"Equipe Mirai",start:6, money:10, side:"E", color:"#AA00AA", econ:-1,soc:2, nat:-1, bio:"Takahiro Anno, ativista e líder do Equipe Mirai (Seiwa Mirai), partido progressista que defende direitos femininos, igualdade e sustentabilidade. Apelo urbano e jovem.", ideologia:"Progressismo / Feminismo / Sustentabilidade", traits:["Apelo Urbano Jovem"], negativeTraits:["Pouca Base Eleitorar","Partido em Desenvolvimento"]}
+        },
+        regions:[
+            {id:'TKY', n:'Tóquio (Metropolitano)',      x:72,y:42, p:11, econ:2,  soc:2,  nat:-1},
+            {id:'OSA', n:'Osaka / Kinki (Kansai)',      x:58,y:52, p:16, econ:1,  soc:0,  nat:0},
+            {id:'KAN', n:'Kanagawa / Yokohama',         x:72,y:46, p:9,  econ:2,  soc:1,  nat:0},
+            {id:'CHU', n:'Chukyo (Nagoya/Aichi)',       x:62,y:50, p:8,  econ:2,  soc:0,  nat:0},
+            {id:'HOK', n:'Hokkaido (Norte)',             x:72,y:12, p:6,  econ:-1, soc:1,  nat:0},
+            {id:'TOH', n:'Tohoku (Nordeste)',            x:78,y:25, p:8,  econ:-1, soc:-1, nat:1},
+            {id:'KYU', n:'Kyushu / Okinawa (Sul)',      x:38,y:75, p:13, econ:-1, soc:-1, nat:1},
+            {id:'CHG', n:'Chugoku / Shikoku (Oeste)',   x:45,y:58, p:7,  econ:-1, soc:-1, nat:1},
+            {id:'SHN', n:'Shinetsu / Kita-Kanto',       x:68,y:35, p:8,  econ:0,  soc:0,  nat:0},
+            {id:'OKI', n:'Okinawa (Ilhas)',              x:28,y:88, p:1,  econ:-2, soc:2,  nat:-1},
+            {id:'KIN', n:'Kinki Interior (Nara/Mie)',   x:58,y:56, p:6,  econ:0,  soc:-1, nat:0},
+            {id:'HOK2',n:'Hokuriku / Chubu',            x:58,y:40, p:7,  econ:0,  soc:0,  nat:0}
+        ]
+    },
+    "KOR2025": {
+        title:"Eleição Presidencial da Coreia do Sul 2025", year:"2025", emoji:"🇰🇷",
+        country:"southkorea",
+        desc:"Lee Jae-myung (Democrático) vs Kim Moon-soo (Poder Popular) vs Lee Jun Seok (Reforma). Eleição antecipada após o impeachment de Yoon Suk-yeol pela tentativa de lei marcial em dezembro de 2024.",
+        available:true,
+        noSecondRound:false,
+        noSecondRound:true,
+        newsHeader:"JoongAng Ilbo — 2025년 6월",
+        endYear:"2025",
+        partyPoolOverride:[{n:"Democrático",side:"E",owner:null},{n:"PPP",side:"D",owner:null},{n:"Reforma",side:"C",owner:null}],
+        candidates:{
+            lee_jm:    {name:"LEE JAE-MYUNG", party:"Democrático", start:40, money:55, side:"E", color:"#0057FF", econ:-1,soc:2, nat:0, bio:"Lee Jae-myung, líder do Partido Democrático e ex-prefeito de Incheon. Sobreviveu a tentativa de assassinato em 2024 e liderou o impeachment de Yoon. Vencedor esperado em eleição antecipada após crise constitucional.", ideologia:"Progressismo / Social-Democracia / Anti-Yoon", traits:["Líder do Impeachment","Sobrevivente — Apelo Emocional"], negativeTraits:["Processos Criminais Pendentes","Percepção de Populismo"]},
+            kim_ms:    {name:"KIM MOON-SOO",  party:"PPP",         start:35, money:60, side:"D", color:"#cc0000", econ:2, soc:-1, nat:1, bio:"Kim Moon-soo, ex-governador de Gyeonggi e líder sindical convertido. Candidato do Partido do Poder do Povo (PPP), tentando salvar o partido após o desastre de Yoon Suk-yeol e a lei marcial fracassada.", ideologia:"Conservadorismo / Liberalismo Econômico / Pró-Aliança EUA", traits:["Ex-Sindicalista — Apelo Trabalhador"], negativeTraits:["PPP Manchado pelo Escândalo Yoon","Dissociação Difícil"]},
+            lee_js:    {name:"LEE JUN SEOK",  party:"Reforma",     start:12, money:25, side:"C", color:"#FF6600", econ:1, soc:0, nat:0, bio:"Lee Jun Seok, ex-líder do PPP que fundou o Partido Reforma (Gaehaek). Representa a geração jovem conservadora que rompeu com Yoon. Candidato do centrismo reformista e anti-corrupção.", ideologia:"Centrismo Liberal / Reformismo Anti-Corrupção", traits:["Apelo aos Jovens Conservadores","Ruptura com o PPP"], negativeTraits:["Partido Novo sem Estrutura","Base Limitada"]}
+        },
+        regions:[
+            {id:'SEO', n:'Seul (Metrópole)',                 x:55,y:28, p:19, econ:2,  soc:2,  nat:-1},
+            {id:'GGI', n:'Gyeonggi (Ao Redor de Seul)',     x:55,y:32, p:25, econ:1,  soc:1,  nat:0},
+            {id:'BSN', n:'Busan / Ulsan / Gyeongnam (Sul)', x:68,y:70, p:14, econ:1,  soc:-1, nat:1},
+            {id:'INH', n:'Incheon / Hwaseong (Oeste)',      x:48,y:32, p:6,  econ:1,  soc:0,  nat:0},
+            {id:'DAG', n:'Daegu / Gyeongbuk (Sudeste)',     x:70,y:55, p:10, econ:0,  soc:-2, nat:2},
+            {id:'DAJ', n:'Daejeon / Chungcheong',           x:55,y:50, p:8,  econ:0,  soc:0,  nat:0},
+            {id:'GWJ', n:'Gwangju / Jeolla (Sudoeste)',     x:42,y:70, p:10, econ:-1, soc:2,  nat:0},
+            {id:'GWW', n:'Gangwon / Jeju',                  x:68,y:35, p:4,  econ:-1, soc:0,  nat:1},
+            {id:'JEJ', n:'Jeju (Ilha)',                      x:52,y:88, p:1,  econ:0,  soc:1,  nat:0},
+            {id:'JAM', n:'Jeonbuk (Norte-Sudoeste)',        x:45,y:62, p:3,  econ:-2, soc:1,  nat:0}
+        ]
+    },
+    "ZAF2024": {
+        title:"Eleições Gerais da África do Sul 2024", year:"2024", emoji:"🇿🇦",
+        country:"southafrica",
+        desc:"ANC perde maioria absoluta pela primeira vez desde 1994. Ramaphosa enfrenta DA, MK (Zuma) e EFF (Malema) numa eleição histórica que força um governo de unidade nacional.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:400,
+        majoritySeats:201,
+        newsHeader:"Mail & Guardian / Daily Maverick — MAY 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"ANC",side:"E",owner:null},{n:"DA",side:"D",owner:null},{n:"MK",side:"C",owner:null},{n:"EFF",side:"E",owner:null}],
+        candidates:{
+            ramaphosa: {name:"RAMAPHOSA",  party:"ANC",  start:40, money:70, side:"E", color:"#009a44", econ:0, soc:1, nat:1, bio:"Cyril Ramaphosa, presidente desde 2018. ANC caiu de 57% (2019) para 40% — perda histórica. Forçado a negociar Governo de Unidade Nacional (GNU) com DA e outros partidos. Enfrenta crises de load-shedding, desemprego e corrupção.", ideologia:"Social-Democracia / Pós-Apartheid / ANC Histórico", traits:["Legitimidade do ANC","Experiência Empresarial"], negativeTraits:["Percepção de Corrupção no ANC","Crise Energética","Desemprego 32%"]},
+            steenhuisen:{name:"STEENHUISEN",party:"DA",   start:22, money:60, side:"D", color:"#003087", econ:2, soc:1, nat:-1, bio:"John Steenhuisen, líder da Aliança Democrática. Partido historicamente visto como branco e liberal, tenta expandir apelo para eleitores negros e coloreds. Obteve 21,8% — melhor resultado em décadas. Entrou no Governo de Unidade Nacional.", ideologia:"Liberalismo Clássico / Federalismo / Anti-Corrupção", traits:["Imagem de Limpeza","Gestão Comprovada no Cabo Ocidental"], negativeTraits:["Percebido como Partido Branco","Herança do Apartheid"]},
+            zuma:      {name:"ZUMA",       party:"MK",   start:15, money:30, side:"C", color:"#000000", econ:-1,soc:0, nat:2, bio:"Jacob Zuma, ex-presidente banido do ANC, criou o partido MK (uMkhonto we Sizwe). Focado em KwaZulu-Natal com apelo zulu e populismo anti-establishment. Obteve 14,6% — resultado surpreendente especialmente em KZN.", ideologia:"Populismo Zulu / Nacionalismo Africano Radical", traits:["Apelo Tribal em KZN","Base Zulu Sólida"], negativeTraits:["Condenado por Corrupção","Desestabilizador Institucional"]},
+            malema:    {name:"MALEMA",     party:"EFF",  start:10, money:20, side:"E", color:"#cc0000", econ:-2,soc:1, nat:2, bio:"Julius Malema, líder dos Combatentes pela Liberdade Econômica (EFF). Radical de esquerda que defende expropriação de terras sem compensação e nacionalização das minas. Obteve 9,5%.", ideologia:"Socialismo Radical / Pan-Africanismo / Redistribuição de Terra", traits:["Mobilizador de Massas","Discurso Radical Consistente"], negativeTraits:["Percebido como Extremista","Expropriação Assusta Investidores"]}
+        },
+        regions:[
+            {id:'GP',  n:'Gauteng (Joanesburgo/Pretória)',  x:62,y:38, p:26, econ:2,  soc:1,  nat:0},
+            {id:'WC',  n:'Cabo Ocidental (Cidade do Cabo)', x:30,y:78, p:12, econ:1,  soc:1,  nat:-1},
+            {id:'KZN', n:'KwaZulu-Natal (Durban)',          x:72,y:52, p:21, econ:-1, soc:-1, nat:2},
+            {id:'EC',  n:'Cabo Oriental',                   x:60,y:72, p:13, econ:-2, soc:0,  nat:1},
+            {id:'LP',  n:'Limpopo (Norte)',                 x:62,y:18, p:11, econ:-2, soc:-1, nat:1},
+            {id:'MP',  n:'Mpumalanga',                      x:70,y:30, p:7,  econ:-1, soc:-1, nat:1},
+            {id:'NC',  n:'Cabo do Norte',                   x:38,y:55, p:3,  econ:0,  soc:0,  nat:0},
+            {id:'NW',  n:'Noroeste',                        x:48,y:35, p:5,  econ:-1, soc:-1, nat:1},
+            {id:'FS',  n:'Estado Livre',                    x:52,y:52, p:6,  econ:-1, soc:-1, nat:0}
+        ]
+    },
+    "PHL2022": {
+        title:"Eleição Presidencial das Filipinas 2022", year:"2022", emoji:"🇵🇭",
+        country:"philippines",
+        desc:"Bongbong Marcos, filho do ex-ditador, busca reabilitar o legado da família com maioria maciça. Robredo lidera oposição progressista. Pacquiao representa o populismo. Moreno pela via independente.",
+        available:true,
+        noSecondRound:false,
+        noSecondRound:true,
+        newsHeader:"Philippine Daily Inquirer — MAY 2022",
+        endYear:"2022",
+        partyPoolOverride:[{n:"PFP",side:"D",owner:null},{n:"LP",side:"E",owner:null},{n:"PROMDI",side:"C",owner:null},{n:"AD",side:"C",owner:null}],
+        candidates:{
+            marcos:    {name:"MARCOS",   party:"PFP",   start:47, money:80, side:"D", color:"#cc0000", econ:1, soc:-1, nat:2, bio:"Ferdinand Marcos Jr. ('Bongbong'), filho do ex-ditador Ferdinand Marcos. Venceu com 58,7% — a maior margem desde o pai. Campanha baseada em nostalgia do 'Era dos Marcos' e negacionismo histórico nas redes sociais.", ideologia:"Populismo Dinástico / Conservadorismo Filipinos", traits:["Máquina Política Histórica","Aliança com Duterte"], negativeTraits:["Legado Ditatorial do Pai","Negacionismo Histórico"]},
+            robredo:   {name:"ROBREDO",  party:"LP",    start:25, money:40, side:"E", color:"#ff6699", econ:-1,soc:2, nat:-1, bio:"Leni Robredo, vice-presidente e ex-ombudsman. Candidata da oposição democrática e progressista. Obteve 27,9% numa campanha de voluntariado massivo ('Pink Movement') que mobilizou a sociedade civil.", ideologia:"Democracia Liberal / Progressismo / Anti-Marcos", traits:["Movimento Rosa Viral","Base de Voluntários Maciça"], negativeTraits:["Sem Acesso à Máquina Estatal","Fracionamento da Oposição"]},
+            pacquiao:  {name:"PACQUIAO", party:"PROMDI",start:9,  money:25, side:"C", color:"#FFD700", econ:0, soc:-1, nat:1, bio:"Manny Pacquiao, lendário boxeador e senador. Candidato populista que desafiou Duterte pela corrupção. Obteve 8,7%.", ideologia:"Populismo / Conservadorismo Evangélico", traits:["Herói Nacional — Pugilista","Base Popular nas Províncias"], negativeTraits:["Programa Vago","Sem Máquina Política"]},
+            moreno:    {name:"MORENO",   party:"AD",    start:7,  money:20, side:"C", color:"#0044cc", econ:0, soc:0, nat:0, bio:"Francisco 'Isko' Moreno, ex-ator e prefeito de Manila. Candidato independente centrista. Obteve 10% como outsider pragmático.", ideologia:"Centrismo / Populismo Moderado", traits:["Prefeito de Manila","Personalidade Midiática"], negativeTraits:["Fracionou a Oposição","Associado à Direita Tardia"]}
+        },
+        regions:[
+            {id:'LUZ', n:'Lução Norte (Ilocos/Cagayan)',    x:52,y:18, p:15, econ:-1, soc:-1, nat:2},
+            {id:'NCR', n:'Região da Capital Nacional (Manila)',x:55,y:42,p:13,econ:2, soc:1,  nat:0},
+            {id:'CLU', n:'Lução Central (Pampanga/Bulacan)',x:54,y:35, p:14, econ:1,  soc:0,  nat:0},
+            {id:'CAL', n:'CALABARZON (Rizal/Cavite)',       x:58,y:48, p:18, econ:1,  soc:0,  nat:0},
+            {id:'BIC', n:'Bicol (Sul de Lução)',            x:62,y:58, p:6,  econ:-2, soc:1,  nat:1},
+            {id:'VIS', n:'Visayas Ocidental (Cebu/Iloilo)', x:58,y:65, p:12, econ:0,  soc:0,  nat:0},
+            {id:'EVI', n:'Visayas Orientais',               x:68,y:62, p:5,  econ:-2, soc:0,  nat:1},
+            {id:'MIN', n:'Mindanao Ocidental (Zamboanga)', x:45,y:78, p:5,  econ:-2, soc:-1, nat:1},
+            {id:'DAV', n:'Mindanao Central (Davao — Duterte)',x:58,y:80,p:8, econ:0,  soc:-1, nat:2},
+            {id:'CAR', n:'Caraga / ARMM (Mindanao Norte)', x:65,y:72, p:4,  econ:-2, soc:-1, nat:1}
+        ]
+    },
+    "TUR2023": {
+        title:"Eleição Presidencial da Turquia 2023", year:"2023", emoji:"🇹🇷",
+        country:"turkey",
+        desc:"Erdoğan busca terceiro mandato. Kılıçdaroğlu lidera oposição unificada de seis partidos. Oğan como terceira força. Eleição decide rumo da Turquia entre autoritarismo e democracia liberal.",
+        available:true,
+        noSecondRound:false,
+        newsHeader:"Cumhuriyet / Hürriyet — MAYIS 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"AKP",side:"D",owner:null},{n:"CHP",side:"E",owner:null},{n:"Ata İtt.",side:"C",owner:null}],
+        candidates:{
+            erdogan:      {name:"ERDOĞAN",      party:"AKP",     start:49, money:80, side:"D", color:"#FFA500", econ:1, soc:-2, nat:2, bio:"Recep Tayyip Erdoğan, presidente desde 2014 (PM 2003-2014). Venceu o 2º turno com 52,1% após empate técnico no 1º turno (49,5%). Com 20 anos no poder, liderou transformação islamista conservadora e autoritária da Turquia.", ideologia:"Islamismo Conservador / Populismo Nacional / Autoritarismo", traits:["20 Anos no Poder — Máquina Completa","Controle da Mídia"], negativeTraits:["Inflação de 80%","Desastre do Terremoto 2023","Autocratismo Crescente"]},
+            kilicdaroglu: {name:"KILIÇDAROĞLU", party:"CHP",     start:44, money:55, side:"E", color:"#cc0000", econ:-1,soc:2, nat:-1, bio:"Kemal Kılıçdaroğlu, líder do CHP desde 2010. Candidato da 'Mesa dos Seis' — aliança de seis partidos de oposição. Obteve 44,9% no 1T e 47,8% no 2T. Perdeu apesar de ser favorito em pesquisas.", ideologia:"Social-Democracia Kemalista / Secularismo / Pró-UE", traits:["Aliança de Seis Partidos","Imagem de Integridade"], negativeTraits:["Personalidade Pouco Carismática","Perdeu Eleições Múltiplas Vezes"]},
+            ogan:         {name:"OĞAN",         party:"Ind.",    start:5,  money:15, side:"C", color:"#888888", econ:0, soc:-1, nat:2, bio:"Sinan Oğan, ex-deputado e candidato do movimento Ata İttifakı. Obteve 5,2% no 1T com discurso ultranacionalista e anti-imigração. Apoiou Erdoğan no 2T em troca de promessas de deportações.", ideologia:"Ultranacionalismo Turco / Anti-Imigração", traits:["Terceira Força Decisiva"], negativeTraits:["Partido sem Base Estrutural","Oportunismo Percebido"]}
+        },
+        regions:[
+            {id:'IST', n:'Istambul (Metrópole)',              x:18,y:22, p:18, econ:2,  soc:1,  nat:0},
+            {id:'ANK', n:'Ancara (Capital)',                  x:40,y:35, p:8,  econ:1,  soc:0,  nat:0},
+            {id:'IZM', n:'İzmir (Egeu — Kemalista)',         x:15,y:45, p:7,  econ:1,  soc:2,  nat:-1},
+            {id:'ANA', n:'Anatólia Central (Konya/Kayseri)', x:50,y:45, p:12, econ:-1, soc:-2, nat:2},
+            {id:'MED', n:'Mediterrâneo (Antalya/Adana)',     x:38,y:58, p:10, econ:1,  soc:-1, nat:1},
+            {id:'EGE', n:'Trácia Europeia / Mar de Mármara',x:22,y:25, p:8,  econ:2,  soc:1,  nat:0},
+            {id:'BKD', n:'Mar Negro (Trabzon/Samsun)',       x:52,y:18, p:8,  econ:-1, soc:-1, nat:2},
+            {id:'KUR', n:'Curdistão (Diyarbakır/Van)',       x:68,y:52, p:8,  econ:-2, soc:1,  nat:-2},
+            {id:'ELA', n:'Anatólia Oriental (Erzurum)',      x:65,y:38, p:6,  econ:-2, soc:-2, nat:2},
+            {id:'GUI', n:'Güneydoğu (Sudoeste — árabe)',    x:62,y:62, p:5,  econ:-2, soc:-1, nat:1}
+        ]
+    },
+    "GER1932": {
+        title:"Eleição Presidencial Alemã 1932", year:"1932", emoji:"🇩🇪🏛️",
+        country:"germany1932",
+        desc:"Hindenburg, 84 anos, enfrenta Hitler e Thälmann numa Alemanha devastada pela Grande Depressão. O resultado moldará o destino do mundo.",
+        available:true,
+        noSecondRound:false,
+        isHistorical:true,
+        newsHeader:"Vossische Zeitung — APRIL 1932",
+        endYear:"1932",
+        partyPoolOverride:[{n:"DNVP",side:"D",owner:null},{n:"NSDAP",side:"D",owner:null},{n:"KPD",side:"E",owner:null},{n:"SPD",side:"E",owner:null}],
+        candidates:{
+            hindenburg:{name:"HINDENBURG",party:"Ind.",   start:53, money:50, side:"C", color:"#3388aa", econ:0, soc:-1, nat:1, bio:"Paul von Hindenburg, marechal de campo e presidente em exercício com 84 anos. Reeleito no 2º turno com 53% contra Hitler (36,8%) e Thälmann (10,2%). Ironicamente nomearia Hitler como chanceler em 1933, entregando a República de Weimar.", ideologia:"Conservadorismo Prussiano / Monarquismo Republicano", traits:["Herói de Guerra","Legitimidade Institucional"], negativeTraits:["Fraqueza e Senilidade","Desprezo pela Democracia","Cedeu a Hitler em 1933"]},
+            hitler:    {name:"HITLER",    party:"NSDAP",  start:30, money:60, side:"D", color:"#8b0000", econ:1, soc:-2, nat:3, bio:"Adolf Hitler, líder do NSDAP. Obteve 30,1% no 1T e 36,8% no 2T. Apesar de perder para Hindenburg, a votação mostrou o tamanho do movimento nazista. Em 30 de janeiro de 1933, Hindenburg o nomeou chanceler.", ideologia:"Nazismo / Fascismo / Antissemitismo / Ultranacionalismo", traits:["Mobilização de Massas","Propaganda Moderna"], negativeTraits:["Agenda Genocida","Instabilidade Violenta","Suporte de Extremistas"]},
+            thalmann:  {name:"THÄLMANN", party:"KPD",    start:13, money:20, side:"E", color:"#cc0000", econ:-3,soc:1, nat:-1, bio:"Ernst Thälmann, líder do Partido Comunista Alemão. Obteve 13,2% no 1T. Preso pelos nazistas em 1933, assassinado em Buchenwald em 1944.", ideologia:"Comunismo / Internacionalismo Proletário", traits:["Base Operária Fiel"], negativeTraits:["Subordinação a Moscou","Recusa de Frente Unida com SPD"]}
+        },
+        regions:[
+            {id:'PRU', n:'Prússia (Berlim/Brandenburgo)',   x:62,y:28, p:30, econ:0,  soc:1,  nat:0},
+            {id:'BAY', n:'Bayern (Munique)',                 x:48,y:65, p:15, econ:0,  soc:-2, nat:1},
+            {id:'SAX', n:'Saxônia (Leipzig/Dresden)',       x:58,y:42, p:12, econ:-1, soc:1,  nat:1},
+            {id:'BER', n:'Berlim (Capital)',                 x:65,y:25, p:6,  econ:1,  soc:2,  nat:-1},
+            {id:'WES', n:'Westfália / Renânia (Ruhr)',      x:28,y:35, p:18, econ:-1, soc:1,  nat:0},
+            {id:'THU', n:'Turíngia / Hessen',               x:45,y:48, p:8,  econ:-1, soc:0,  nat:1},
+            {id:'HAM', n:'Hamburgo / Norte',                x:38,y:15, p:5,  econ:0,  soc:1,  nat:0},
+            {id:'SIL', n:'Silésia (Wrocław)',               x:72,y:45, p:6,  econ:-2, soc:0,  nat:1}
+        ]
     }
 };
 
@@ -1970,6 +2353,21 @@ const achievementDefs = [
     {id:'usa2020_win',     name:'46º Presidente',          emoji:'🗽', desc:'Vença as eleições americanas de 2020.'},
     {id:'russia96_win',    name:'Yeltsin Sobrevive',       emoji:'🪆', desc:'Vença as eleições russas de 1996.'},
     {id:'portugal_win',    name:'Presidente de Portugal',  emoji:'🇵🇹', desc:'Vença as eleições portuguesas.'},
+    {id:'venezuela_win',   name:'Revolução Bolivariana',   emoji:'🇻🇪', desc:'Vença as eleições venezuelanas de 2024.'},
+    {id:'mexico_win',      name:'El Señor Presidente',     emoji:'🇲🇽', desc:'Vença as eleições mexicanas de 2024.'},
+    {id:'chile_win',       name:'La Moneda é Sua',         emoji:'🇨🇱', desc:'Vença as eleições chilenas de 2025.'},
+    {id:'colombia_win',    name:'Casa de Nariño',          emoji:'🇨🇴', desc:'Vença as eleições colombianas de 2026.'},
+    {id:'canada_win',      name:'Prime Minister',          emoji:'🇨🇦', desc:'Vença as eleições federais canadenses de 2025.'},
+    // v14 NEW ACHIEVEMENTS
+    {id:'ukraine_win',     name:'Presidente da Ucrânia',   emoji:'🇺🇦', desc:'Vença as eleições ucranianas de 2019.'},
+    {id:'spain_win',       name:'Presidente do Governo',   emoji:'🇪🇸', desc:'Vença as eleições gerais espanholas de 2023.'},
+    {id:'japan_win',       name:'Primeiro-Ministro do Japão',emoji:'🇯🇵', desc:'Vença as eleições parlamentares japonesas de 2026.'},
+    {id:'skorea_win',      name:'Presidente da Coreia do Sul',emoji:'🇰🇷', desc:'Vença as eleições sul-coreanas de 2025.'},
+    {id:'safrica_win',     name:'Presidente da África do Sul',emoji:'🇿🇦', desc:'Vença as eleições sul-africanas de 2024.'},
+    {id:'philippines_win', name:'Presidente das Filipinas', emoji:'🇵🇭', desc:'Vença as eleições filipinas de 2022.'},
+    {id:'turkey_win',      name:'Cumhurbaşkanı',           emoji:'🇹🇷', desc:'Vença as eleições turcas de 2023.'},
+    {id:'ger1932_win',     name:'Presidente de Weimar',    emoji:'🏛️', desc:'Vença a eleição presidencial alemã de 1932.'},
+    {id:'stop_hitler',     name:'O Mundo que Poderia Ser', emoji:'🕊️', desc:'Vença contra Hitler em 1932 com mais de 53%.'},
     // SPECIAL PLAYSTYLE
     {id:'sandbox_win',     name:'Modo Deus',               emoji:'♾️', desc:'Vença em modo Sandbox.'},
     {id:'corrupt_win',     name:'Chefe do Esquema',        emoji:'🤑', desc:'Vença após usar a aba de corrupção.'},
@@ -2049,6 +2447,16 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
     if(scenario==='GER2025' && !achievements['germany_win']) { achievements['germany_win']=true; earned.push('germany_win'); }
     if(scenario==='FRA2022' && !achievements['france_win']) { achievements['france_win']=true; earned.push('france_win'); }
     if((game.scandalLevels[winnerId]||0)===0 && !achievements['clean_campaign']) { achievements['clean_campaign']=true; earned.push('clean_campaign'); }
+    // v14 achievements
+    if(scenario==='UKR2019' && !achievements['ukraine_win']) { achievements['ukraine_win']=true; earned.push('ukraine_win'); }
+    if(scenario==='ESP2023' && !achievements['spain_win']) { achievements['spain_win']=true; earned.push('spain_win'); }
+    if(scenario==='JAP2026' && !achievements['japan_win']) { achievements['japan_win']=true; earned.push('japan_win'); }
+    if(scenario==='KOR2025' && !achievements['skorea_win']) { achievements['skorea_win']=true; earned.push('skorea_win'); }
+    if(scenario==='ZAF2024' && !achievements['safrica_win']) { achievements['safrica_win']=true; earned.push('safrica_win'); }
+    if(scenario==='PHL2022' && !achievements['philippines_win']) { achievements['philippines_win']=true; earned.push('philippines_win'); }
+    if(scenario==='TUR2023' && !achievements['turkey_win']) { achievements['turkey_win']=true; earned.push('turkey_win'); }
+    if(scenario==='GER1932' && !achievements['ger1932_win']) { achievements['ger1932_win']=true; earned.push('ger1932_win'); }
+    if(scenario==='GER1932' && winnerId!=='hitler' && winnerVotes>53 && !achievements['stop_hitler']) { achievements['stop_hitler']=true; earned.push('stop_hitler'); }
     if(game.mode==='caotico' && !achievements['chaos_mode']) { achievements['chaos_mode']=true; earned.push('chaos_mode'); }
     if(game.coalition.filter(p=>!p.includes('_seat')).length===0 && !achievements['lone_wolf']) { achievements['lone_wolf']=true; earned.push('lone_wolf'); }
     if(game.isElectoralCollege && !achievements['indirect_master']) { achievements['indirect_master']=true; earned.push('indirect_master'); }
@@ -2076,6 +2484,11 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
     if(scenario==='USA2020' && !achievements['usa2020_win']) { achievements['usa2020_win']=true; earned.push('usa2020_win'); }
     if(scenario==='RUS1996' && !achievements['russia96_win']) { achievements['russia96_win']=true; earned.push('russia96_win'); }
     if((scenario==='POR2026'||scenario==='POR2024') && !achievements['portugal_win']) { achievements['portugal_win']=true; earned.push('portugal_win'); }
+    if(scenario==='VEN2024' && !achievements['venezuela_win']) { achievements['venezuela_win']=true; earned.push('venezuela_win'); }
+    if(scenario==='MEX2024' && !achievements['mexico_win']) { achievements['mexico_win']=true; earned.push('mexico_win'); }
+    if(scenario==='CHI2025' && !achievements['chile_win']) { achievements['chile_win']=true; earned.push('chile_win'); }
+    if(scenario==='COL2026' && !achievements['colombia_win']) { achievements['colombia_win']=true; earned.push('colombia_win'); }
+    if(scenario==='CAN2025' && !achievements['canada_win']) { achievements['canada_win']=true; earned.push('canada_win'); }
     // Special playstyle
     if(game.mode==='sandbox' && !achievements['sandbox_win']) { achievements['sandbox_win']=true; earned.push('sandbox_win'); }
     if((game.corruptFund||0)>0 && !achievements['corrupt_win']) { achievements['corrupt_win']=true; earned.push('corrupt_win'); }
@@ -2123,7 +2536,7 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
         if(rank14===1 && !achievements['last_minute']) { achievements['last_minute']=true; earned.push('last_minute'); }
     }
     // Played all international
-    let intlScenarios = ['ITA2022','ARG2023','IND2024','UK2024','POL2025','USA2020','RUS1996','GER2025','FRA2022','USA2024'];
+    let intlScenarios = ['ITA2022','ARG2023','IND2024','UK2024','POL2025','USA2020','RUS1996','GER2025','FRA2022','USA2024','VEN2024','MEX2024','CHI2025','COL2026','CAN2025'];
     if(intlScenarios.every(s=>played.includes(s)) && !achievements['all_international']) { achievements['all_international']=true; earned.push('all_international'); }
     // All Rep Velha
     let rvScenarios = ['RV1910','RV1914','RV1919','RV1922','RV1926','RV1930'];
@@ -2624,6 +3037,68 @@ function renderCountryScenarios(list) {
                 <div class="desc">Trump vs Harris — Colégio Eleitoral</div>
                 <div style="font-size:9px;color:#000080;margin-top:2px">🏛️ Colégio Eleitoral — 270 votos necessários</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('CAN2025')" style="background:#fff5f5;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇨🇦 2025</div>
+                <h3>Eleições Federais do Canadá 2025</h3>
+                <div class="desc">Carney vs Poilievre vs Singh vs Blanchet</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🏛️ Sistema parlamentar FPTP — 343 cadeiras por constituency</div>
+            </div>
+        </div>
+    </div>`;
+
+    // === AMÉRICAS DO SUL E CENTRAL ===
+    list.innerHTML += `<div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:bold;color:#006600;padding:4px 6px;background:#e8f5e8;border-left:4px solid #006600;margin-bottom:6px">🌎 AMÉRICAS DO SUL E CENTRAL</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div class="scenario-card" onclick="selectInternationalScenario('ARG2023')" style="background:#f5f8ff;border-color:#74acdf">
+                <div class="year" style="color:#003087">🇦🇷 2023</div>
+                <h3>Eleições Presidenciais Argentinas 2023</h3>
+                <div class="desc">Milei vs Massa vs Bullrich</div>
+                <div style="font-size:9px;color:#003087;margin-top:2px">🗳️ Balotaje — 2 turnos | 9 províncias</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('MEX2024')" style="background:#fff5f0;border-color:#8b0000">
+                <div class="year" style="color:#8b0000">🇲🇽 2024</div>
+                <h3>Eleições Presidenciais México 2024</h3>
+                <div class="desc">Sheinbaum vs Gálvez vs Máynez</div>
+                <div style="font-size:9px;color:#8b0000;margin-top:2px">🗳️ Turno único — 14 regiões eleitorais</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('VEN2024')" style="background:#fff0f0;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇻🇪 2024</div>
+                <h3>Eleições Presidenciais Venezuela 2024</h3>
+                <div class="desc">Maduro vs González vs Bertucci</div>
+                <div style="font-size:9px;color:#8b0000;margin-top:2px">⚠️ Eleição contestada — mecânica especial</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('COL2026')" style="background:#fff8f0;border-color:#cc7700">
+                <div class="year" style="color:#cc6600">🇨🇴 2026</div>
+                <h3>Eleições Presidenciais Colômbia 2026</h3>
+                <div class="desc">Cepeda vs Espriella vs Fajardo vs Valencia</div>
+                <div style="font-size:9px;color:#cc6600;margin-top:2px">🗳️ 2 turnos — 11 regiões colombianas</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('CHI2025')" style="background:#f0f5ff;border-color:#003366">
+                <div class="year" style="color:#003366">🇨🇱 2025</div>
+                <h3>Eleições Presidenciais Chile 2025</h3>
+                <div class="desc">Kast vs Jara vs Matthei vs Narváez</div>
+                <div style="font-size:9px;color:#003366;margin-top:2px">🗳️ 2 turnos — 10 regiões chilenas</div>
+            </div>
+        </div>
+    </div>`;
+
+    // === ELEIÇÕES HISTÓRICAS INTERNACIONAIS ===
+    list.innerHTML += `<div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:bold;color:#4a2800;padding:4px 6px;background:#f5e8d0;border-left:4px solid #8b4513;margin-bottom:6px">📜 ELEIÇÕES HISTÓRICAS INTERNACIONAIS</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div class="scenario-card" onclick="selectInternationalScenario('GER1932')" style="background:#1a0a0a;border-color:#8b0000">
+                <div class="year" style="color:#cc0000">🇩🇪🏛️ 1932</div>
+                <h3>Eleição Presidencial Alemã 1932</h3>
+                <div class="desc">Hindenburg vs Hitler vs Thälmann — República de Weimar</div>
+                <div style="font-size:9px;color:#cc4444;margin-top:2px">⚠️ ELEIÇÃO QUE MUDOU O MUNDO | 2 Turnos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('RUS1996')" style="background:#fff0f0;border-color:#993300">
+                <div class="year" style="color:#993300">🇷🇺 1996</div>
+                <h3>Eleição Presidencial Russa 1996</h3>
+                <div class="desc">Yeltsin vs Zyuganov vs Lebed</div>
+                <div style="font-size:9px;color:#993300;margin-top:2px">📰 Pré-Internet | 2 Turnos | Transição Pós-URSS</div>
+            </div>
             <div class="scenario-card" onclick="selectInternationalScenario('USA2020')" style="background:#f5f5ff;border-color:#cc0000">
                 <div class="year" style="color:#cc0000">🇺🇸 2020</div>
                 <h3>U.S. Presidential Election 2020</h3>
@@ -2642,12 +3117,6 @@ function renderCountryScenarios(list) {
                 <h3>Eleições Russas 2024</h3>
                 <div class="desc">Putin vs oposição simbólica</div>
                 <div style="font-size:9px;color:#8b0000;margin-top:2px">⚠️ Eleição em contexto autoritário</div>
-            </div>
-            <div class="scenario-card" onclick="selectInternationalScenario('RUS1996')" style="background:#fff0f0;border-color:#993300">
-                <div class="year" style="color:#993300">🇷🇺 1996</div>
-                <h3>Eleição Presidencial Russa 1996</h3>
-                <div class="desc">Yeltsin vs Zyuganov vs Lebed</div>
-                <div style="font-size:9px;color:#993300;margin-top:2px">📰 Jornal — Pré-Internet | 2 Turnos</div>
             </div>
             <div class="scenario-card" onclick="selectInternationalScenario('GER2025')" style="background:#f5f5f5;border-color:#333">
                 <div class="year" style="color:#000">🇩🇪 2025</div>
@@ -2677,7 +3146,7 @@ function renderCountryScenarios(list) {
                 <div class="year" style="color:#002147">🇬🇧 2024</div>
                 <h3>Eleições Gerais do Reino Unido 2024</h3>
                 <div class="desc">Starmer vs Sunak vs Davey vs Swinney</div>
-                <div style="font-size:9px;color:#002147;margin-top:2px">🗳️ Sistema FPTP — sem 2º turno</div>
+                <div style="font-size:9px;color:#002147;margin-top:2px">🏛️ FPTP parlamentar — 650 cadeiras por constituência</div>
             </div>
             <div class="scenario-card" onclick="selectInternationalScenario('POL2025')" style="background:#fff0f5;border-color:#dc143c">
                 <div class="year" style="color:#dc143c">🇵🇱 2025</div>
@@ -2685,18 +3154,23 @@ function renderCountryScenarios(list) {
                 <div class="desc">Nawrocki vs Trzaskowski vs Mentzen</div>
                 <div style="font-size:9px;color:#dc143c;margin-top:2px">🗳️ 2 turnos — voivodatos poloneses</div>
             </div>
-        </div>
-    </div>`;
-
-    // === AMÉRICAS ===
-    list.innerHTML += `<div style="margin-bottom:12px">
-        <div style="font-size:11px;font-weight:bold;color:#006600;padding:4px 6px;background:#e8f5e8;border-left:4px solid #006600;margin-bottom:6px">🌎 AMÉRICAS</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-            <div class="scenario-card" onclick="selectInternationalScenario('ARG2023')" style="background:#f5f8ff;border-color:#74acdf">
-                <div class="year" style="color:#003087">🇦🇷 2023</div>
-                <h3>Eleições Presidenciais Argentinas 2023</h3>
-                <div class="desc">Milei vs Massa vs Bullrich</div>
-                <div style="font-size:9px;color:#003087;margin-top:2px">🗳️ Balotaje — 2 turnos | 9 províncias</div>
+            <div class="scenario-card" onclick="selectInternationalScenario('UKR2019')" style="background:#f0f8ff;border-color:#0057b7">
+                <div class="year" style="color:#0057b7">🇺🇦 2019</div>
+                <h3>Eleição Presidencial da Ucrânia 2019</h3>
+                <div class="desc">Zelensky vs Poroshenko vs Tymoshenko</div>
+                <div style="font-size:9px;color:#0057b7;margin-top:2px">🗳️ 2 turnos — oblasts ucranianos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('ESP2023')" style="background:#fff8e0;border-color:#aa0000">
+                <div class="year" style="color:#aa0000">🇪🇸 2023</div>
+                <h3>Eleições Gerais da Espanha 2023</h3>
+                <div class="desc">Feijóo vs Sánchez vs Abascal vs Díaz</div>
+                <div style="font-size:9px;color:#aa0000;margin-top:2px">🏛️ Sistema parlamentar FPTP — 350 assentos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('TUR2023')" style="background:#fff5e0;border-color:#c8102e">
+                <div class="year" style="color:#c8102e">🇹🇷 2023</div>
+                <h3>Eleição Presidencial da Turquia 2023</h3>
+                <div class="desc">Erdoğan vs Kılıçdaroğlu vs Oğan</div>
+                <div style="font-size:9px;color:#c8102e;margin-top:2px">🗳️ 2 turnos — províncias turcas</div>
             </div>
         </div>
     </div>`;
@@ -2709,17 +3183,46 @@ function renderCountryScenarios(list) {
                 <div class="year" style="color:#ff6600">🇮🇳 2024</div>
                 <h3>Eleições Gerais Indianas 2024</h3>
                 <div class="desc">Modi (BJP) vs Kharge (INC)</div>
-                <div style="font-size:9px;color:#ff6600;margin-top:2px">🗳️ Sistema parlamentar — sem 2º turno</div>
+                <div style="font-size:9px;color:#ff6600;margin-top:2px">🏛️ Sistema parlamentar — 543 cadeiras Lok Sabha por constituency</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('JAP2026')" style="background:#fff0f5;border-color:#bc002d">
+                <div class="year" style="color:#bc002d">🇯🇵 2026</div>
+                <h3>Eleição Parlamentar do Japão 2026</h3>
+                <div class="desc">Takaichi vs Noda vs Yoshimura vs Tamaki</div>
+                <div style="font-size:9px;color:#bc002d;margin-top:2px">🏛️ Sistema parlamentar — 465 assentos na Câmara dos Representantes</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('KOR2025')" style="background:#f0f5ff;border-color:#003087">
+                <div class="year" style="color:#003087">🇰🇷 2025</div>
+                <h3>Eleição Presidencial da Coreia do Sul 2025</h3>
+                <div class="desc">Lee Jae-myung vs Kim Moon-soo vs Lee Jun Seok</div>
+                <div style="font-size:9px;color:#003087;margin-top:2px">🗳️ Turno único pós-impeachment de Yoon</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('PHL2022')" style="background:#fff5f0;border-color:#0038A8">
+                <div class="year" style="color:#0038A8">🇵🇭 2022</div>
+                <h3>Eleição Presidencial das Filipinas 2022</h3>
+                <div class="desc">Marcos vs Robredo vs Pacquiao vs Moreno</div>
+                <div style="font-size:9px;color:#0038A8;margin-top:2px">🗳️ Turno único — províncias e regiões filipinas</div>
+            </div>
+        </div>
+    </div>`;
+
+    // === ÁFRICA ===
+    list.innerHTML += `<div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:bold;color:#1a5200;padding:4px 6px;background:#e8f5e0;border-left:4px solid #1a5200;margin-bottom:6px">🌍 ÁFRICA</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div class="scenario-card" onclick="selectInternationalScenario('ZAF2024')" style="background:#f5fff0;border-color:#009a44">
+                <div class="year" style="color:#009a44">🇿🇦 2024</div>
+                <h3>Eleições Gerais da África do Sul 2024</h3>
+                <div class="desc">Ramaphosa vs Steenhuisen vs Zuma vs Malema</div>
+                <div style="font-size:9px;color:#009a44;margin-top:2px">🏛️ Sistema parlamentar PR — 400 assentos na Assembleia Nacional</div>
             </div>
         </div>
     </div>`;
 
     const locked = [
-        {flag:'🇪🇸',name:'Espanha'},
-        {flag:'🇲🇽',name:'México'},
-        {flag:'🇨🇦',name:'Canadá'},    {flag:'🇯🇵',name:'Japão'},
-        {flag:'🇻🇪',name:'Venezuela'},
-        {flag:'🇨🇴',name:'Colômbia'}, {flag:'🇺🇦',name:'Ucrânia'},
+        {flag:'🇧🇴',name:'Bolívia 2025'},{flag:'🇵🇪',name:'Peru 2026'},
+        {flag:'🇸🇪',name:'Suécia 2026'},{flag:'🇮🇩',name:'Indonésia 2024'},
+        {flag:'🇧🇩',name:'Bangladesh 2024'},{flag:'🇳🇬',name:'Nigéria 2023'},
     ];
     list.innerHTML += `<div style="margin-bottom:8px">
         <div style="font-size:11px;font-weight:bold;color:#666;padding:4px 6px;background:#d4d0c8;border-left:4px solid #888;margin-bottom:6px">🔒 EM DESENVOLVIMENTO</div>
@@ -3667,6 +4170,33 @@ const twitterAccounts = {
         {handle:'@brasil_memes_off',        name:'Brasil Memes',                  type:'meme'},
         {handle:'@fernanda_brum_br',        name:'Fernanda Brum 🙏 (3M)',         type:'influenciador'},
         {handle:'@debatedores_br',          name:'Debatedores do Brasil 🎙️',      type:'influenciador'},
+        // === NOVOS PERFIS BRASIL v13 ===
+        // Extrema esquerda
+        {handle:'@boulos_sp_prefeitura',     name:'Boulos Prefeito SP 🏚️',         type:'político'},
+        {handle:'@socialismo_ja_br',         name:'Socialismo Já! ✊🚩',            type:'partido'},
+        {handle:'@marea_vermelha_br',        name:'Maré Vermelha Brasil 🌊',        type:'org'},
+        // Extrema direita / ultra
+        {handle:'@ancap_brasil_real',        name:'AncapBR — Anarcocapitalismo 🐍', type:'ativista'},
+        {handle:'@integralismo_digital',     name:'Integralismo Digital 🦅',        type:'fã'},
+        {handle:'@resistencia_dir_br',       name:'Resistência Digital 🇧🇷💪',       type:'org'},
+        // Influencers reais de política
+        {handle:'@pablo_marcal_real',        name:'Pablo Marçal 💪 (12M)',          type:'influenciador'},
+        {handle:'@lorelay_fox_pol',          name:'Lorelay Fox 🌈 — Política (2M)', type:'influenciador'},
+        {handle:'@whindersson_threads',      name:'Whindersson no Threads 🎭 (18M)',type:'influenciador'},
+        {handle:'@fabio_porchat_satira',     name:'Fábio Porchat — Sátira 😂',     type:'influenciador'},
+        {handle:'@kim_paim_yt',             name:'Kim do YouTube — Política',      type:'influenciador'},
+        {handle:'@felipeneto_pol',           name:'Felipe Neto — Política (45M)',   type:'influenciador'},
+        // Movimentos políticos
+        {handle:'@mpl_transporte_livre',     name:'MPL — Transporte Livre 🚌',      type:'org'},
+        {handle:'@brasil_paralelo_pol',      name:'Brasil Paralelo Política 📽️',    type:'org'},
+        {handle:'@entaoesisso_br',           name:'Então é Isso — Threads 🧵',      type:'influenciador'},
+        // Enquetes / pesquisas mockadas
+        {handle:'@enquete_politica_br',      name:'📊 Enquete Política BR',         type:'pesquisa'},
+        // Novos cidadãos comuns
+        {handle:'@crypto_ancap_br',          name:'Cripto + Liberdade 🐍₿',        type:'normal'},
+        {handle:'@cansado_de_tudo_br',       name:'Cansado de Tudo 😮‍💨',            type:'normal'},
+        {handle:'@feminismo_negro_br',       name:'Feminismo Negro BR ✊🏿',         type:'ativista'},
+        {handle:'@transgênero_pol_br',       name:'Trans na Política BR 🏳️‍⚧️',       type:'ativista'},
     ]
 };
 
@@ -3730,8 +4260,27 @@ const memeTemplates = [
     () => `TSE: é proibido notícia falsa nas eleições | WhatsApp da minha família: [continua normalmente]`,
     () => `Candidato no debate: eu represento o povo! | Povo: você mora num flat de R$8k e não sabe o preço do arroz`,
     () => `Em ano de eleição o Brasil inventa: nova gíria, novo meme de debate, novo escândalo, novo milagre das pesquisas. Todo ano.`,
+    // === NOVOS MEMES BRASIL v13 ===
+    // Enquetes (simulam widget de poll do Twitter/Threads)
+    () => `📊 ENQUETE (97k respostas) — Você confia nas pesquisas eleitorais?\n✅ Sim: 23%\n❌ Não: 54%\n🤔 Depende: 23%\nRT p/ mais gente responder 🇧🇷`,
+    () => `📊 POLL: O maior problema do Brasil em 2024?\n🔴 Corrupção: 38%\n🟡 Desemprego: 29%\n🟢 Segurança: 22%\n🔵 Saúde: 11%\n(1.2M votos)`,
+    () => `📊 Quem ganha o debate hoje à noite segundo os meus seguidores (vote antes de começar):\n→ Esquerda: 48% \n→ Direita: 49%\n→ Ninguém: 3%\n(empate técnico como sempre 💀)`,
+    // Threads virais sobre brasil
+    (c) => `🧵 Thread: por que ${c} é o candidato mais subestimado dessa eleição (42 tweets, 180k impressões) ↓`,
+    (c) => `🧵 Thread sobre a estratégia de ${c} que a mídia não está mostrando. Vai até o final, vale muito. ↓ [1/28]`,
+    () => `🧵 Thread: como a eleição de 2026 vai ser decidida pelo eleitor que ainda não se decidiu. Dados exclusivos. Vai até o fim ↓ [1/35]`,
+    // Memes específicos de contexto brasileiro
+    () => `Pablo Marçal entra numa live com 500k pessoas e fica 3 horas falando do próprio sucesso. Os 500k assistem tudo. Brasil é foda.`,
+    () => `Whindersson fez um post sobre o candidato X. 8M de curtidas. TSE convocou reunião de emergência. Só no Brasil.`,
+    () => `Felipe Neto declarou voto. Imediatamente 200 contas direitistas fazem thread de "cancelamento". O felipe tá na praia.`,
+    (c) => `[DEEP FAKE ALERTA] Vídeo falso de ${c} dançando funk circulando no ZAP. 12 milhões de visualizações antes da checagem. 💀`,
+    () => `Brasil paralelo soltou documentário de 4 horas explicando que a eleição vai ser roubada. Alguém assistiu? Perguntando por um amigo.`,
+    () => `Ankap do twitter: o estado é violência! Vota em candidato que quer menos estado! | Candidato reduz estado | Ankap: NAO ASSIM 😭`,
+    () => `A galera que diz que "não existe diferença entre os candidatos" nunca precisou de SUS, INSS, ENEM ou CRAS. Curioso isso.`,
+    () => `Lula: [postou foto dormindo numa viagem] | Direita: PROVA QUE NÃO TRABALHA | Bolsonaro: [postou foto dormindo] | Direita: TRABALHADOR CANSADO ❤️`,
+    () => `Debate hoje. Timeline antes: todo mundo vai mudando de voto. Timeline depois: todo mundo votando igual ao antes. Democracia.`,
+    () => `Não tem nada mais brasileiro do que candidato fazer campanha no show do Wesley Safadão, no Altas Horas E no Flow Podcast na mesma semana.`,
 ];
-
 // Influencer endorsement posts — variados e específicos
 const influencerPosts = [
     (c) => `Galera, depois de muita reflexão, decidi falar abertamente: meu voto vai para ${c}. E explico o motivo nos stories 👇🏽`,
@@ -4035,6 +4584,11 @@ function renderNews() {
     let isUS2024 = game.isElectoralCollege && game.scenario === 'USA2024';
     let isRus24 = game.scenario === 'RUS2024';
     let isPor = game.scenario === 'POR2026' || game.scenario === 'POR2024';
+    let isVen = game.scenario === 'VEN2024';
+    let isMex = game.scenario === 'MEX2024';
+    let isChi = game.scenario === 'CHI2025';
+    let isCol = game.scenario === 'COL2026';
+    let isCan = game.scenario === 'CAN2025';
     
     if(isIta) {
         if(header) header.innerHTML = `<div style="background:#0d1b2a;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
@@ -4089,6 +4643,31 @@ function renderNews() {
             <b>𝕏 Portugal Eleitoral</b> <small style="opacity:0.8">— Presidenciais ${year}</small>
         </div>`;
         feed.innerHTML = game.news.map(n => generateTweet(n)).join('');
+    } else if(isVen) {
+        if(header) header.innerHTML = `<div style="background:#cc0000;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b style="color:#ffcc00">𝕏 Venezuela Política</b> <small style="opacity:0.8">— Elecciones 2024</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'VEN2024')).join('');
+    } else if(isMex) {
+        if(header) header.innerHTML = `<div style="background:#006847;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b style="color:#fff">𝕏 México Electoral</b> <small style="opacity:0.8">— Elecciones 2024</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'MEX2024')).join('');
+    } else if(isChi) {
+        if(header) header.innerHTML = `<div style="background:#003366;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b style="color:#cc0000">𝕏 Chile Elecciones</b> <small style="opacity:0.8">— Presidenciales 2025</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'CHI2025')).join('');
+    } else if(isCol) {
+        if(header) header.innerHTML = `<div style="background:#cc6600;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b style="color:#fff">𝕏 Colombia Electoral</b> <small style="opacity:0.8">— Presidenciales 2026</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'COL2026')).join('');
+    } else if(isCan) {
+        if(header) header.innerHTML = `<div style="background:#cc0000;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b style="color:#fff">𝕏 Canada Votes / Le Canada Vote</b> <small style="opacity:0.8">— Federal Election 2025</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'CAN2025')).join('');
     } else if(year >= 2010 && !game.isRepVelha) {
         // Social media style
         let platform = isRus24 ? 'ВКонтакте Política' : '𝕏 FeedPolítico Brasil';
@@ -4175,6 +4754,61 @@ const intlTweetPools = {
             {handle:'@MemePolska',name:'Polska Memy 🇵🇱',type:'meme'},{handle:'@PolitykaPL',name:'Polityka Polska',type:'análise'},
         ],
         memes:['Polska dla Polaków! 🇵🇱💪','Dość bezmyślnego unijnego posłuszeństwa! #Konfederacja','Trzaskowski to kandydat Tuska, nie Polaków','Nawrocki obroni Polskę!'],
+    },
+    'VEN2024': {
+        accounts: [
+            {handle:'@PSUV_Vzla',name:'PSUV Venezuela 🔴',type:'org'},{handle:'@PUD_Venezuela',name:'Plataforma Unitaria 🇻🇪',type:'org'},
+            {handle:'@ElNacionalWeb',name:'El Nacional',type:'notícia'},{handle:'@talcualdigital',name:'TalCual Digital',type:'notícia'},
+            {handle:'@MCMachado',name:'María Corina Machado',type:'político'},{handle:'@GobiernodeVzla',name:'Gobierno de Venezuela',type:'org'},
+            {handle:'@VzlaLibre2024',name:'Venezuela Libre 🗳️',type:'ativista'},{handle:'@exiliovenezol',name:'Venezolanos en Exilio',type:'normal'},
+            {handle:'@CNE_Venezuela',name:'CNE Venezuela',type:'org'},{handle:'@VzlaMemesOK',name:'Memes Venezuela 😂',type:'meme'},
+        ],
+        memes:['VENEZUELA LIBRE! 🇻🇪 #HastaElFinal','¡67% dice González! El fraude es evidente 🗳️','Maduro fuera! El pueblo manda 💪','¡Viva la Revolución Bolivariana! 🔴','El chavismo no se rinde jamás. #PSUV'],
+    },
+    'MEX2024': {
+        accounts: [
+            {handle:'@Morena_Mexico',name:'Morena 🇲🇽',type:'org'},{handle:'@PANacionalMX',name:'PAN México',type:'org'},
+            {handle:'@MovCiudadanoMX',name:'Movimiento Ciudadano 🟠',type:'org'},{handle:'@ElUniversalMX',name:'El Universal',type:'notícia'},
+            {handle:'@Reforma',name:'Reforma',type:'notícia'},{handle:'@SinEmbargoMx',name:'Sin Embargo',type:'notícia'},
+            {handle:'@ClaudiaShein',name:'Claudia Sheinbaum',type:'político'},{handle:'@XochitlGalvez',name:'Xóchitl Gálvez',type:'político'},
+            {handle:'@CiudadanaMX',name:'Ciudadana Mexicana',type:'normal'},{handle:'@MemesMexicanos',name:'Memes Mexicanos 😂',type:'meme'},
+            {handle:'@INEMexico',name:'INE México 🗳️',type:'org'},{handle:'@PolíticaMX',name:'Análisis Electoral MX',type:'análise'},
+        ],
+        memes:['¡Que siga la Cuarta! #Morena 🇲🇽','México necesita cambio. #FrenteAmplio','¡Claudia presidenta! Primera vez en la historia 👩‍💼','El narco ganó la elección. Tristísimo 😢','¡Viva México! Sin importar quien gane 🇲🇽'],
+    },
+    'CHI2025': {
+        accounts: [
+            {handle:'@RepublicanoCL',name:'Partido Republicano 🇨🇱',type:'org'},{handle:'@PChileCL',name:'Partido Comunista Chile',type:'org'},
+            {handle:'@ChileVamos',name:'Chile Vamos',type:'org'},{handle:'@LaTercera',name:'La Tercera',type:'notícia'},
+            {handle:'@ElMercurio',name:'El Mercurio',type:'notícia'},{handle:'@ElDesconcierto',name:'El Desconcierto',type:'notícia'},
+            {handle:'@JoseAntonioKast',name:'José Antonio Kast',type:'político'},{handle:'@JeannetteJara',name:'Jeannette Jara',type:'político'},
+            {handle:'@ChileanoNormal',name:'Chileno del Común',type:'normal'},{handle:'@MemesCL',name:'Memes Chile 🌶️',type:'meme'},
+            {handle:'@ServelChile',name:'SERVEL 🗳️',type:'org'},{handle:'@CienciaPolíticaCL',name:'Análisis Electoral CL',type:'análise'},
+        ],
+        memes:['¡Chile no es Venezuela! Vota Kast 🇨🇱','La izquierda vuelve al poder si te quedas en casa 😤','Allende ya lo intentó. El comunismo no. #Kast','Boric fracasó. Ahora Jara? No gracias.','¡Chile digno para todos! #UnidadParaChile 🌹'],
+    },
+    'COL2026': {
+        accounts: [
+            {handle:'@PactoHistorico',name:'Pacto Histórico 🇨🇴',type:'org'},{handle:'@CentroDemocrat',name:'Centro Democrático',type:'org'},
+            {handle:'@ElTiempo',name:'El Tiempo',type:'notícia'},{handle:'@ElEspectador',name:'El Espectador',type:'notícia'},
+            {handle:'@SemanaRevista',name:'Revista Semana',type:'notícia'},{handle:'@IvanCepedaCas',name:'Iván Cepeda Castro',type:'político'},
+            {handle:'@PalomaValencia',name:'Paloma Valencia',type:'político'},{handle:'@SergioFajardoV',name:'Sergio Fajardo',type:'político'},
+            {handle:'@ColombianNorm',name:'Colombiano Común',type:'normal'},{handle:'@MemesColombia',name:'Memes Colombia 🇨🇴',type:'meme'},
+            {handle:'@RegistColombia',name:'Registraduría 🗳️',type:'org'},{handle:'@PoliticaCOL',name:'Análisis Electoral COL',type:'análise'},
+        ],
+        memes:['¡Colombia no puede más con el Petrorismo! Vota cambio','Petro destruyó el país. Ahora Cepeda? No. #CD','Medellín cambió con Fajardo. Colombia puede cambiar igual','Aquí hay candidato del caribe pa la presidencia 🌊 #Espriella','¡La paz total es mentira! #UribePresidente'],
+    },
+    'CAN2025': {
+        accounts: [
+            {handle:'@LiberalCa',name:'Liberal Party of Canada 🍁',type:'org'},{handle:'@CPC_HQ',name:'Conservative Party 🇨🇦',type:'org'},
+            {handle:'@NDP',name:'NDP — Jagmeet Singh 🍊',type:'org'},{handle:'@BlocQuebecois',name:'Bloc Québécois 🔵',type:'org'},
+            {handle:'@GlobeAndMail',name:'The Globe and Mail',type:'notícia'},{handle:'@torontostar',name:'Toronto Star',type:'notícia'},
+            {handle:'@nationalpost',name:'National Post',type:'notícia'},{handle:'@LeDevoir',name:'Le Devoir',type:'notícia'},
+            {handle:'@CanadianVoter',name:'Canadian Voter 🍁',type:'normal'},{handle:'@QuebecoisFier',name:'Québécois Fier 🔵',type:'normal'},
+            {handle:'@CanadaMemes',name:'Canada Politics Memes 🍁😂',type:'meme'},{handle:'@ElectionsCanada',name:'Elections Canada 🗳️',type:'org'},
+            {handle:'@CanPolAnalysis',name:'Canadian Political Analysis',type:'análise'},{handle:'@CbcPolitics',name:'CBC Politics',type:'notícia'},
+        ],
+        memes:["Carney knows the economy. Time for adults in charge 🍁","Poilievre is Canada's Trump and we all know it 😤","Bloc Québec! On défend nos intérêts! 🔵","NDP: because workers deserve representation too 🍊","Canada stays Canada. No Trump North here 🇨🇦💪"],
     },
 };
 
@@ -4356,40 +4990,14 @@ function nextTurn() {
                 if(betrayingParties.length > 0) {
                     let traitor = betrayingParties[Math.floor(Math.random() * betrayingParties.length)];
                     game.coalition = game.coalition.filter(p => p !== traitor && p !== traitor+'_seat');
+                    // Find the party in availableParties and free it
                     let pObj = game.availableParties.find(x => x.n === traitor);
                     if(pObj) pObj.owner = null;
                     updateNationalVotes(game.player, -2);
                     game.coalitionBetrayalRisk = 0;
-                    // Escolhe um rival pra receber o partido traidor
-                    let rivals = game.candidates.filter(c => c.id !== game.player);
-                    let traitorTarget = rivals.length > 0 ? rivals[Math.floor(Math.random()*rivals.length)] : null;
-                    if(traitorTarget && pObj) { pObj.owner = traitorTarget.id; updateNationalVotes(traitorTarget.id, 1.5); }
-                    const playerName = candidatesData[game.player]?.name || 'Você';
-                    const targetName = traitorTarget ? (candidatesData[traitorTarget.id]?.name || traitorTarget.name || 'um rival') : 'a oposição';
-                    const targetParty = traitorTarget ? (candidatesData[traitorTarget.id]?.party || '') : '';
-                    const loyaltyObj = game.coalitionLoyalty?.[traitor];
-                    const loyaltyVal = loyaltyObj ? Math.round(loyaltyObj.loyalty) : null;
-                    queueEvent(
-                        `🔪 ${traitor} ABANDONOU SUA COLIGAÇÃO!`,
-                        `<div style="background:#1a0000;border-radius:6px;padding:12px;text-align:center;margin-bottom:12px">
-                            <div style="font-size:30px;margin-bottom:4px">💔🔪💔</div>
-                            <div style="color:#ff4444;font-weight:bold;font-size:14px">ABANDONO CONSUMADO</div>
-                        </div>
-                        O partido <b style="color:#cc0000">${traitor}</b> estava <b>profundamente insatisfeito</b> com a coligação e decidiu romper com <b>${playerName}</b>.<br><br>
-                        ${loyaltyVal !== null ? `<b>Lealdade no momento do abandono:</b> apenas <b style="color:#cc0000">${loyaltyVal}%</b> — negligenciar a aba COLIG. por muitos turnos causou essa ruptura.<br><br>` : ''}
-                        <b style="color:#cc6600">🚨 Para onde foi o ${traitor}?</b><br>
-                        O partido anunciou publicamente apoio a <b style="color:#cc0000">${targetName}</b>${targetParty ? ` (${targetParty})` : ''}, declarando que o projeto rival é mais alinhado com seus valores.<br><br>
-                        <b>Consequências imediatas:</b><br>
-                        📉 <b style="color:#cc0000">-2%</b> nas pesquisas nacionais para você<br>
-                        📈 <b style="color:#cc0000">+1,5%</b> para ${targetName}<br>
-                        🗞️ Crise política nas manchetes de hoje<br>
-                        🚫 ${traitor} removido da sua coligação<br><br>
-                        <i style="color:#888;font-size:10px">💡 Mantenha a lealdade dos aliados acima de 45% usando a aba 🤝 COLIG. regularmente para evitar novos abandonos.</i>`,
-                        `<button class="btn" style="background:#8b0000;color:white" onclick="closeModal()">😡 Que abandono!</button>
-                         <button class="btn" onclick="closeModal();openAllianceMenu()">🤝 Buscar Novo Aliado</button>`
-                    );
-                    addNews(`💔 ABANDONO: ${traitor} DEIXA COLIGAÇÃO`, `Insatisfeito, ${traitor} rompe com ${playerName} e declara apoio a ${targetName}. Crise abala campanha.`);
-                    log(`🔪 ${traitor} abandonou a coligação por insatisfação! Migrou para ${targetName}. -2%.`);
+                    queueEvent('🔪 TRAIÇÃO NA COLIGAÇÃO!', `O partido ${traitor} abandonou sua coligação e está negociando com um rival! Sua popularidade caiu 2% com a ruptura. Pressione seus coligados regularmente para evitar traições.`, `<button class="btn" onclick="closeModal()">Que traição!</button>`);
+                    addNews(`TRAIÇÃO: ${traitor} DEIXA COLIGAÇÃO`, `Aliado se afasta em momento crítico da campanha.`);
+                    log(`🔪 ${traitor} traiu a coligação! -2%.`);
                 }
             }
         }
@@ -4850,25 +5458,10 @@ function processElection() {
         game.defeatedCandidates = eliminated;
 
         if(!isPlayerIn) {
-            // --- GAME OVER: player não foi ao 2T ---
-            // Simula o 2T automaticamente entre os dois finalistas
-            let cA = {...sorted[0]}, cB = {...sorted[1]};
-            eliminated.forEach(dc => {
-                let dA = getIdeologyDistance(dc.id, cA.id);
-                let dB = getIdeologyDistance(dc.id, cB.id);
-                let share = dc.votes * 0.55;
-                if(dA < dB) cA.votes += share;
-                else if(dB < dA) cB.votes += share;
-                else { cA.votes += share/2; cB.votes += share/2; }
-            });
-            cA.votes += (Math.random()*6 - 3);
-            let tot = cA.votes + cB.votes;
-            cA.votes = (cA.votes/tot)*100;
-            cB.votes = 100 - cA.votes;
-            let winner2T = cA.votes > cB.votes ? cA : cB;
-            let loser2T  = cA.votes > cB.votes ? cB : cA;
+            // --- PLAYER NÃO FOI AO 2T ---
             let playerFinal = sorted.find(c => c.id === game.player) || sorted[2];
-            showEliminatedScreen(winner2T, loser2T, playerFinal, sorted);
+            // Oferecer escolha: simular tudo OU apoiar candidato (gameplay especial)
+            showEliminatedChoice(sorted[0], sorted[1], playerFinal, sorted, eliminated);
             return;
         }
 
@@ -4898,7 +5491,596 @@ function processElection() {
     }
 }
 
-function showEliminatedScreen(winner2T, loser2T, playerFinal, allSorted) {
+// ============================================================
+// MODO DE APOIO NO 2º TURNO — quando o player é eliminado
+// ============================================================
+let supportGame = {
+    candA: null, candB: null, chosen: null, opponent: null,
+    turn: 0, maxTurns: 5, resources: 0, influence: 0,
+    log: [], allSorted: [], playerFinal: null, eliminated: [],
+    eventHistory: [], crisisStack: 0, scandalRisk: 0,
+    pollHistory: [], playerFinalObj: null
+};
+
+function showEliminatedChoice(cA, cB, playerFinal, allSorted, eliminated) {
+    let cdA = candidatesData[cA.id] || {};
+    let cdB = candidatesData[cB.id] || {};
+    let playerCd = candidatesData[game.player] || {};
+
+    document.getElementById("game-screen").classList.remove("active");
+    document.getElementById("end-screen").classList.add("active");
+
+    // Usar result-desc para exibir a tela de escolha (modo temporário)
+    document.getElementById("result-title").innerText = "💀 ELIMINADO NO 1º TURNO";
+    document.getElementById("result-subtitle").innerText = "O QUE DESEJA FAZER?";
+
+    let posicao = allSorted.findIndex(c => c.id === game.player) + 1;
+
+    document.getElementById("result-desc").innerHTML = `
+        <div style="font-family:'MS Sans Serif',Arial;font-size:13px;max-width:560px;margin:0 auto">
+            <div style="background:#ffeeee;border:2px solid #cc0000;padding:12px;margin-bottom:14px;border-radius:3px">
+                <b style="color:#cc0000;font-size:15px">❌ ${playerCd.name||game.player} eliminado</b><br>
+                Você terminou em <b>${posicao}º lugar</b> com <b>${playerFinal.votes.toFixed(1)}%</b>.<br>
+                Não há votos suficientes para o 2º turno.
+            </div>
+            <div style="background:#e8f4e8;border:2px solid #228b22;padding:10px;margin-bottom:14px;border-radius:3px">
+                <b>⚔️ O 2º TURNO SERÁ ENTRE:</b><br>
+                <div style="display:flex;justify-content:space-around;margin-top:8px">
+                    <div style="text-align:center"><div style="font-size:20px;font-weight:bold;color:${cdA.color||'#000'}">${cA.name}</div><div style="font-size:11px">${cdA.party||''} — ${cA.votes.toFixed(1)}%</div><div style="font-size:10px;color:#555">${cdA.ideologia||''}</div></div>
+                    <div style="font-size:22px;line-height:40px;color:#888">VS</div>
+                    <div style="text-align:center"><div style="font-size:20px;font-weight:bold;color:${cdB.color||'#000'}">${cB.name}</div><div style="font-size:11px">${cdB.party||''} — ${cB.votes.toFixed(1)}%</div><div style="font-size:10px;color:#555">${cdB.ideologia||''}</div></div>
+                </div>
+            </div>
+            <b style="font-size:13px">O que deseja fazer?</b><hr style="margin:8px 0">
+            <button class="btn" style="background:#555;color:white;margin-bottom:8px" onclick="autoSimulate2T()" >
+                ⏩ SIMULAR AUTOMATICAMENTE<br><small style="font-weight:normal">O 2º turno é simulado sem sua intervenção. Resultado imediato.</small>
+            </button>
+            <button class="btn" style="background:#000080;color:white" onclick="startSupportGameplay('${cA.id}','${cB.id}')">
+                🗳️ APOIAR UM CANDIDATO — GAMEPLAY ESPECIAL<br>
+                <small style="font-weight:normal">⚠️ DIFÍCIL: Tome decisões para eleger seu candidato preferido no 2º turno. Seu sucesso depende de escolhas estratégicas duras.</small>
+            </button>
+        </div>
+    `;
+    document.getElementById("candidate-bio").innerHTML = '';
+    document.getElementById("congress-bars").innerHTML = '';
+    document.getElementById("congress-gov").innerHTML = '';
+    document.getElementById("ranking-content").innerHTML = '';
+    document.getElementById("congress-section").style.display = 'none';
+    document.getElementById("ranking-section").style.display = 'none';
+
+    // Guardar dados para uso posterior
+    supportGame.candA = {...cA}; supportGame.candB = {...cB};
+    supportGame.allSorted = allSorted; supportGame.playerFinal = playerFinal;
+    supportGame.eliminated = eliminated || [];
+}
+
+function autoSimulate2T() {
+    let cA = {...supportGame.candA}, cB = {...supportGame.candB};
+    (supportGame.eliminated || []).forEach(dc => {
+        let dA = getIdeologyDistance(dc.id, cA.id);
+        let dB = getIdeologyDistance(dc.id, cB.id);
+        let share = dc.votes * 0.55;
+        if(dA < dB) cA.votes += share;
+        else if(dB < dA) cB.votes += share;
+        else { cA.votes += share/2; cB.votes += share/2; }
+    });
+    cA.votes += (Math.random()*6 - 3);
+    let tot = cA.votes + cB.votes;
+    cA.votes = (cA.votes/tot)*100;
+    cB.votes = 100 - cA.votes;
+    let winner2T = cA.votes > cB.votes ? cA : cB;
+    let loser2T  = cA.votes > cB.votes ? cB : cA;
+    showEliminatedScreen(winner2T, loser2T, supportGame.playerFinal, supportGame.allSorted);
+}
+
+function startSupportGameplay(idA, idB) {
+    let cdA = candidatesData[idA] || {}; let cdB = candidatesData[idB] || {};
+    let playerCd = candidatesData[game.player] || {};
+
+    // Ideologia mais próxima = pré-sugestão
+    let distA = getIdeologyDistance(game.player, idA);
+    let distB = getIdeologyDistance(game.player, idB);
+
+    document.getElementById("result-desc").innerHTML = `
+        <div style="font-family:'MS Sans Serif',Arial;font-size:13px;max-width:560px;margin:0 auto">
+            <div style="background:#fff3cd;border:2px solid #cc8800;padding:10px;margin-bottom:12px">
+                <b>⚠️ MODO DE APOIO — REGRAS:</b><br>
+                <small>• Você tem <b>5 rodadas</b> e recursos limitados para influenciar o 2º turno.<br>
+                • As pesquisas são inicialmente adversas. Reverter o cenário é DIFÍCIL.<br>
+                • Cada ação tem custo e pode ter consequências negativas inesperadas.<br>
+                • Escândalos, crises e traições podem destruir seu esforço a qualquer momento.<br>
+                • Seu candidato precisa de <b>mais de 50%</b> para vencer. Boa sorte.</small>
+            </div>
+            <b>Escolha quem apoiar:</b><hr style="margin:6px 0">
+            <div style="display:flex;gap:10px">
+                <button class="btn" style="flex:1;background:${cdA.color||'#000080'};color:white;padding:10px" onclick="confirmSupportChoice('${idA}','${idB}')">
+                    <b>${cdA.name||idA}</b><br><small>${cdA.party||''} — ${cdA.ideologia||''}</small><br>
+                    <small style="opacity:0.8">${distA < distB ? '★ Mais próximo de você' : ''}</small>
+                </button>
+                <button class="btn" style="flex:1;background:${cdB.color||'#cc0000'};color:white;padding:10px" onclick="confirmSupportChoice('${idB}','${idA}')">
+                    <b>${cdB.name||idB}</b><br><small>${cdB.party||''} — ${cdB.ideologia||''}</small><br>
+                    <small style="opacity:0.8">${distB < distA ? '★ Mais próximo de você' : ''}</small>
+                </button>
+            </div>
+            <button class="btn" style="margin-top:10px;background:#888;color:white" onclick="autoSimulate2T()">← Voltar / Simular automaticamente</button>
+        </div>`;
+}
+
+function confirmSupportChoice(chosenId, opponentId) {
+    let cdC = candidatesData[chosenId] || {};
+    let cdO = candidatesData[opponentId] || {};
+
+    // Inicializar estado do mini-jogo
+    supportGame.chosen = chosenId;
+    supportGame.opponent = opponentId;
+    supportGame.turn = 0;
+    supportGame.maxTurns = 5;
+    supportGame.resources = 8; // recursos de influência (escassos!)
+    supportGame.influence = 0; // bônus de influência acumulado
+    supportGame.log = [];
+    supportGame.eventHistory = [];
+    supportGame.crisisStack = 0;
+    supportGame.scandalRisk = 0;
+    supportGame.pollHistory = [];
+
+    // Votos iniciais: distribuição com migração ideológica (adversa ao jogador)
+    let baseChosen = supportGame.candA.id === chosenId ? supportGame.candA.votes : supportGame.candB.votes;
+    let baseOpp    = supportGame.candA.id === chosenId ? supportGame.candB.votes : supportGame.candA.votes;
+
+    // Migração dos eliminados
+    (supportGame.eliminated || []).forEach(dc => {
+        let dC = getIdeologyDistance(dc.id, chosenId);
+        let dO = getIdeologyDistance(dc.id, opponentId);
+        let share = dc.votes * 0.55;
+        if(dC < dO) baseChosen += share;
+        else if(dO < dC) baseOpp += share;
+        else { baseChosen += share/2; baseOpp += share/2; }
+    });
+
+    let tot = baseChosen + baseOpp;
+    baseChosen = (baseChosen/tot)*100;
+    baseOpp = 100 - baseChosen;
+
+    // Adiciona variância negativa inicial (dificultar)
+    baseChosen += (Math.random() * 8 - 6); // normalmente desvantagem
+    baseOpp = 100 - baseChosen;
+    baseChosen = Math.max(35, Math.min(65, baseChosen));
+    baseOpp = 100 - baseChosen;
+
+    supportGame.chosenVotes = baseChosen;
+    supportGame.opponentVotes = baseOpp;
+    supportGame.pollHistory.push({turn:0, chosen: baseChosen, opp: baseOpp});
+
+    renderSupportGameplay();
+}
+
+function renderSupportGameplay() {
+    let cdC = candidatesData[supportGame.chosen] || {};
+    let cdO = candidatesData[supportGame.opponent] || {};
+    let sc = scenariosData[game.scenario] || {};
+
+    let winColor = supportGame.chosenVotes > 50 ? '#006600' : supportGame.chosenVotes > 48 ? '#cc8800' : '#cc0000';
+    let statusText = supportGame.chosenVotes > 52 ? '✅ Na frente — mantenha a pressão!' :
+                     supportGame.chosenVotes > 50 ? '🟡 Leve vantagem — frágil!' :
+                     supportGame.chosenVotes > 46 ? '🟠 Atrás — ação urgente!' :
+                     '🔴 DESVANTAGEM CRÍTICA — tudo ou nada!';
+    let turnsLeft = supportGame.maxTurns - supportGame.turn;
+
+    // Gera os eventos disponíveis nesta rodada
+    let actions = generateSupportActions();
+
+    // Mini histórico de pesquisas
+    let chartHtml = '<div style="display:flex;align-items:flex-end;gap:2px;height:40px;margin:4px 0">';
+    supportGame.pollHistory.forEach((p, i) => {
+        let h = Math.round((p.chosen / 100) * 40);
+        let col = p.chosen > 50 ? '#006600' : '#cc0000';
+        chartHtml += `<div title="T${p.turn}: ${p.chosen.toFixed(1)}%" style="width:18px;background:${col};height:${h}px;display:inline-block;border:1px solid #333"></div>`;
+    });
+    chartHtml += '</div>';
+
+    let logHtml = supportGame.log.slice(-5).reverse().map(l => `<div style="font-size:9px;border-bottom:1px solid #333;padding:2px 0;color:#0f0">&gt; ${l}</div>`).join('');
+
+    document.getElementById("result-desc").innerHTML = `
+    <div style="font-family:'MS Sans Serif',Arial;font-size:11px;max-width:640px;margin:0 auto">
+        <!-- CABEÇALHO -->
+        <div style="background:#000080;color:white;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span>🗳️ APOIO AO 2º TURNO — Rodada ${supportGame.turn}/${supportGame.maxTurns}</span>
+            <span>💼 Recursos: <b>${supportGame.resources}</b> | ⚠️ Crise: ${supportGame.crisisStack}/5</span>
+        </div>
+
+        <!-- PAINEL DE VOTOS -->
+        <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:4px;margin-bottom:8px;background:#f0f0f0;padding:8px;border:2px inset #888">
+            <div style="text-align:center">
+                <div style="font-weight:bold;color:${cdC.color||'#000080'};font-size:13px">${cdC.name||supportGame.chosen} ★</div>
+                <div style="font-size:22px;font-weight:bold;color:${winColor}">${supportGame.chosenVotes.toFixed(1)}%</div>
+                <div style="height:10px;background:#ddd;border:1px solid #999;margin:2px 0"><div style="width:${supportGame.chosenVotes.toFixed(0)}%;height:100%;background:${winColor}"></div></div>
+                <div style="font-size:9px;color:#555">${cdC.party||''} · ${cdC.ideologia||''}</div>
+            </div>
+            <div style="text-align:center;padding-top:10px;color:#888;font-size:16px">VS</div>
+            <div style="text-align:center">
+                <div style="font-weight:bold;color:${cdO.color||'#cc0000'};font-size:13px">${cdO.name||supportGame.opponent}</div>
+                <div style="font-size:22px;font-weight:bold;color:${supportGame.opponentVotes > 50 ? '#cc0000' : '#333'}">${supportGame.opponentVotes.toFixed(1)}%</div>
+                <div style="height:10px;background:#ddd;border:1px solid #999;margin:2px 0"><div style="width:${supportGame.opponentVotes.toFixed(0)}%;height:100%;background:${cdO.color||'#cc0000'}"></div></div>
+                <div style="font-size:9px;color:#555">${cdO.party||''} · ${cdO.ideologia||''}</div>
+            </div>
+        </div>
+
+        <!-- STATUS -->
+        <div style="background:${supportGame.chosenVotes > 50 ? '#e8ffe8' : '#fff3cd'};border:1px solid ${supportGame.chosenVotes > 50 ? '#006600' : '#cc8800'};padding:5px 8px;margin-bottom:8px;font-size:11px">
+            ${statusText} &nbsp;&nbsp; <b>${turnsLeft} rodada(s) restante(s)</b>
+            ${supportGame.scandalRisk > 3 ? `<br><span style="color:#cc0000">🔥 Risco de escândalo elevado! Evite ações agressivas.</span>` : ''}
+            ${supportGame.crisisStack >= 4 ? `<br><span style="color:#cc0000">⚠️ CRISE EM FORMAÇÃO — próxima rodada pode ser catastrófica!</span>` : ''}
+        </div>
+
+        <!-- MINI-GRÁFICO -->
+        <div style="background:#111;padding:4px 8px;margin-bottom:8px;border:1px solid #333">
+            <div style="color:#0f0;font-size:9px;margin-bottom:2px">📊 Evolução das pesquisas</div>
+            ${chartHtml}
+        </div>
+
+        <!-- AÇÕES -->
+        <div style="margin-bottom:8px">
+            <b>⚙️ ESCOLHA UMA AÇÃO (Rodada ${supportGame.turn + 1}):</b><hr style="margin:4px 0">
+            ${actions.map((a, i) => `
+                <button class="btn" ${supportGame.resources < a.cost ? 'disabled' : ''} onclick="executeSupportAction(${i})" style="text-align:left;margin-bottom:4px;background:${a.risky ? '#fff5e8' : '#f9f9f9'};border-color:${a.risky ? '#cc8800 #886600 #886600 #cc8800' : ''}">
+                    <b>${a.risky ? '⚠️ ' : ''}${a.label}</b> (💼 ${a.cost} recurso${a.cost !== 1 ? 's' : ''})<br>
+                    <small style="font-weight:normal;color:#555">${a.desc}</small>
+                </button>`).join('')}
+        </div>
+
+        <!-- LOG -->
+        <div style="background:#111;color:#0f0;font-family:'Courier New',monospace;font-size:9px;height:70px;overflow-y:auto;padding:5px;border:1px solid #333;margin-bottom:8px">
+            ${logHtml || '<span style="color:#0f0">&gt; Pronto para agir. Escolha com sabedoria.</span>'}
+        </div>
+
+        <button class="btn" style="background:#888;color:white;font-size:10px" onclick="autoSimulate2T()">🏳️ Desistir e simular automaticamente</button>
+    </div>`;
+    document.getElementById("candidate-bio").innerHTML = '';
+    document.getElementById("congress-bars").innerHTML = '';
+    document.getElementById("congress-gov").innerHTML = '';
+    document.getElementById("ranking-content").innerHTML = '';
+    if(document.getElementById("congress-section")) document.getElementById("congress-section").style.display = 'none';
+    if(document.getElementById("ranking-section")) document.getElementById("ranking-section").style.display = 'none';
+}
+
+function generateSupportActions() {
+    let cdC = candidatesData[supportGame.chosen] || {};
+    let gap = supportGame.chosenVotes - supportGame.opponentVotes;
+    let turnsLeft = supportGame.maxTurns - supportGame.turn;
+
+    let pool = [
+        {
+            label: '📢 Comício de Apoio',
+            desc: `Organiza comício público em nome de ${cdC.name||'seu candidato'}. +1% a +3%, mas custo alto e resultado incerto.`,
+            cost: 3,
+            risky: false,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.45) {
+                    let gain = 1 + Math.random() * 2;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`📢 Comício bem-sucedido! +${gain.toFixed(1)}% para ${cdC.name||'candidato'}.`);
+                } else if(r > 0.2) {
+                    supportLog(`📢 Comício com público fraco. Impacto mínimo.`);
+                } else {
+                    let loss = 0.5 + Math.random();
+                    supportGame.chosenVotes = Math.max(30, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportGame.scandalRisk++;
+                    supportLog(`📢 ⚠️ Comício virou palco de confusão! -${loss.toFixed(1)}%. Risco de escândalo aumentou.`);
+                }
+            }
+        },
+        {
+            label: '📰 Nota de Imprensa',
+            desc: 'Divulga comunicado da imprensa apoiando o candidato. Efeito moderado e seguro (+0.5% a +1.5%).',
+            cost: 1,
+            risky: false,
+            fn: () => {
+                let gain = 0.5 + Math.random();
+                supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                supportLog(`📰 Nota de imprensa publicada. +${gain.toFixed(1)}%.`);
+            }
+        },
+        {
+            label: '🤝 Negociar Apoio de Líderes Regionais',
+            desc: 'Tenta convencer líderes locais a declararem apoio. Alta variância — pode ser ótimo ou desastroso.',
+            cost: 2,
+            risky: true,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.55) {
+                    let gain = 2 + Math.random() * 2.5;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🤝 Líderes declararam apoio! +${gain.toFixed(1)}%.`);
+                } else if(r > 0.3) {
+                    supportLog(`🤝 Reunião sem resultado. Líderes permanecem neutros.`);
+                } else {
+                    let loss = 1 + Math.random() * 2;
+                    supportGame.chosenVotes = Math.max(30, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportGame.crisisStack++;
+                    supportLog(`🤝 ❌ Líderes rejeitaram — alguns foram para o adversário! -${loss.toFixed(1)}%. Crise +1.`);
+                }
+            }
+        },
+        {
+            label: '💸 Financiar Campanha do Candidato',
+            desc: `Destina recursos financeiros à campanha de ${cdC.name||'candidato'}. Bom retorno, mas pode gerar suspeita.`,
+            cost: 3,
+            risky: true,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.4) {
+                    let gain = 1.5 + Math.random() * 1.5;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`💸 Financiamento foi bem. Candidato ganhou tração. +${gain.toFixed(1)}%.`);
+                } else {
+                    supportGame.scandalRisk += 2;
+                    supportLog(`💸 ⚠️ Financiamento foi investigado pela imprensa! Risco de escândalo +2. Efeito neutro.`);
+                }
+            }
+        },
+        {
+            label: '📱 Campanha Digital de Apoio',
+            desc: 'Lança campanha nas redes sociais. Pode viralizar ou gerar polêmica.',
+            cost: 2,
+            risky: false,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.5) {
+                    let gain = 1.5 + Math.random() * 2;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`📱 Post viral! +${gain.toFixed(1)}% nas pesquisas.`);
+                } else if(r > 0.25) {
+                    let gain = 0.5;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`📱 Campanha digital com engajamento moderado. +${gain.toFixed(1)}%.`);
+                } else {
+                    let loss = 0.5 + Math.random();
+                    supportGame.chosenVotes = Math.max(30, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportGame.scandalRisk++;
+                    supportLog(`📱 ⚠️ Post polêmico causou reação negativa. -${loss.toFixed(1)}%.`);
+                }
+            }
+        },
+        {
+            label: '🎯 Atacar Adversário pela Imprensa',
+            desc: 'Divulga críticas ao candidato adversário. Alto risco de retaliação e crise.',
+            cost: 2,
+            risky: true,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.5) {
+                    let gain = 2 + Math.random() * 2;
+                    let lossOpp = 1 + Math.random();
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = Math.max(35, supportGame.opponentVotes - lossOpp);
+                    let total = supportGame.chosenVotes + supportGame.opponentVotes;
+                    supportGame.chosenVotes = (supportGame.chosenVotes/total)*100;
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🎯 Ataque foi certeiro! +${gain.toFixed(1)}%, adversário -${lossOpp.toFixed(1)}%.`);
+                } else if(r > 0.25) {
+                    supportGame.crisisStack++;
+                    supportGame.scandalRisk += 2;
+                    let loss = 1 + Math.random() * 1.5;
+                    supportGame.chosenVotes = Math.max(30, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🎯 ❌ Ataque saiu pela culatra! Retaliação veio forte. -${loss.toFixed(1)}%. Crise +1, risco +2.`);
+                } else {
+                    supportGame.crisisStack += 2;
+                    let loss = 2 + Math.random() * 2;
+                    supportGame.chosenVotes = Math.max(30, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🎯 💥 DESASTRE! Ataque destruiu sua credibilidade. -${loss.toFixed(1)}%. Crise +2!`);
+                }
+            }
+        },
+        {
+            label: '🛡️ Gerenciar Crise de Imagem',
+            desc: 'Tenta reduzir o nível de crise. Sem efeito nos votos, mas previne catástrofes futuras.',
+            cost: 2,
+            risky: false,
+            fn: () => {
+                if(supportGame.crisisStack > 0 || supportGame.scandalRisk > 0) {
+                    supportGame.crisisStack = Math.max(0, supportGame.crisisStack - 2);
+                    supportGame.scandalRisk = Math.max(0, supportGame.scandalRisk - 2);
+                    supportLog(`🛡️ Crise controlada. Nível de crise e risco reduzidos.`);
+                } else {
+                    let gain = 0.3;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🛡️ Sem crise ativa. Gestão preventiva deu leve bônus de imagem. +${gain.toFixed(1)}%.`);
+                }
+            }
+        },
+        {
+            label: '📊 Contratar Pesquisa de Opinião',
+            desc: 'Descobre onde há mais votos indecisos. Dá 1 recurso bônus na próxima rodada e pequeno ganho.',
+            cost: 1,
+            risky: false,
+            fn: () => {
+                supportGame.resources += 1;
+                let gain = 0.3 + Math.random() * 0.5;
+                supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                supportLog(`📊 Pesquisa revelou regiões com indecisos. +${gain.toFixed(1)}% e +1 recurso bônus.`);
+            }
+        },
+        {
+            label: '🎬 Produção de Conteúdo Audiovisual',
+            desc: 'Financia vídeo institucional do candidato. Efeito médio, sem risco.',
+            cost: 2,
+            risky: false,
+            fn: () => {
+                let gain = 0.8 + Math.random() * 1.2;
+                supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                supportLog(`🎬 Vídeo bem produzido aumentou aprovação. +${gain.toFixed(1)}%.`);
+            }
+        },
+        {
+            label: '🕵️ Operação de Inteligência Eleitoral',
+            desc: '⚠️ ALTO RISCO: Vazamento estratégico de informações sensíveis. Pode ser devastador — em ambos os lados.',
+            cost: 4,
+            risky: true,
+            fn: () => {
+                let r = Math.random();
+                if(r > 0.6) {
+                    let gain = 4 + Math.random() * 3;
+                    let lossOpp = 2 + Math.random() * 2;
+                    supportGame.chosenVotes = Math.min(65, supportGame.chosenVotes + gain);
+                    supportGame.opponentVotes = Math.max(35, supportGame.opponentVotes - lossOpp);
+                    let total = supportGame.chosenVotes + supportGame.opponentVotes;
+                    supportGame.chosenVotes = (supportGame.chosenVotes/total)*100;
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🕵️ OPERAÇÃO BEM-SUCEDIDA! Revelação destruiu adversário. +${gain.toFixed(1)}%, oponente -${lossOpp.toFixed(1)}%!`);
+                } else {
+                    supportGame.crisisStack += 3;
+                    supportGame.scandalRisk += 4;
+                    let loss = 3 + Math.random() * 3;
+                    supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - loss);
+                    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+                    supportLog(`🕵️ 💥 OPERAÇÃO EXPOSTA! Escândalo massivo. -${loss.toFixed(1)}%. Crise +3, risco +4. Desastre.`);
+                }
+            }
+        },
+    ];
+
+    // Selecionar 4 ações disponíveis com base na situação
+    let available = [...pool];
+    if(supportGame.crisisStack < 2 && supportGame.scandalRisk < 3) {
+        available = available.filter(a => a.label !== '🛡️ Gerenciar Crise de Imagem');
+    }
+    // Filtrar por recurso
+    // Embaralhar e pegar 5
+    available = available.sort(() => Math.random() - 0.5).slice(0, 5);
+    // Garantir sempre ao menos 1 ação barata (custo 1)
+    if(!available.some(a => a.cost <= 1)) {
+        available[4] = pool.find(p => p.cost === 1);
+    }
+    return available;
+}
+
+function supportLog(msg) {
+    supportGame.log.push(msg);
+}
+
+function executeSupportAction(idx) {
+    let actions = generateSupportActions();
+    let action = actions[idx];
+    if(!action) return;
+    if(supportGame.resources < action.cost) {
+        supportLog(`❌ Recursos insuficientes! Precisa de ${action.cost}, tem ${supportGame.resources}.`);
+        renderSupportGameplay();
+        return;
+    }
+    supportGame.resources -= action.cost;
+    action.fn();
+
+    // Avançar turno
+    supportGame.turn++;
+
+    // IA adversária (oponente reage)
+    applySupportAITurn();
+
+    // Evento aleatório de crise (mais frequente se crisisStack ou scandalRisk alto)
+    let crisisChance = 0.2 + (supportGame.crisisStack * 0.08) + (supportGame.scandalRisk * 0.06);
+    if(Math.random() < crisisChance) {
+        triggerSupportCrisisEvent();
+    }
+
+    // Ganho de recursos mínimo por rodada (muito escasso)
+    supportGame.resources += 1 + (supportGame.turn % 2 === 0 ? 1 : 0);
+
+    // Registrar no histórico
+    supportGame.pollHistory.push({
+        turn: supportGame.turn,
+        chosen: supportGame.chosenVotes,
+        opp: supportGame.opponentVotes
+    });
+
+    // Verificar fim
+    if(supportGame.turn >= supportGame.maxTurns) {
+        endSupportGameplay();
+        return;
+    }
+
+    // Clamp
+    supportGame.chosenVotes = Math.max(28, Math.min(72, supportGame.chosenVotes));
+    supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+
+    renderSupportGameplay();
+}
+
+function applySupportAITurn() {
+    // IA do oponente reage — sempre agressiva e tende a recuperar
+    let cdO = candidatesData[supportGame.opponent] || {};
+    let r = Math.random();
+    let aiGain = 0.5 + Math.random() * 1.5;
+
+    if(supportGame.chosenVotes > 52) {
+        // Oponente está atrás — reage forte
+        aiGain += 0.8 + Math.random() * 1.5;
+        supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - aiGain * 0.6);
+        supportGame.opponentVotes = 100 - supportGame.chosenVotes;
+        supportLog(`⚔️ ${cdO.name||'Adversário'} lançou contra-ofensiva! Ganhou terreno (-${(aiGain*0.6).toFixed(1)}% no seu candidato).`);
+    } else if(r > 0.3) {
+        supportGame.opponentVotes = Math.min(72, supportGame.opponentVotes + aiGain * 0.4);
+        supportGame.chosenVotes = 100 - supportGame.opponentVotes;
+        supportLog(`⚔️ ${cdO.name||'Adversário'} avança nas pesquisas. +${(aiGain*0.4).toFixed(1)}%.`);
+    } else {
+        supportLog(`⚔️ ${cdO.name||'Adversário'} mantém posição. Sem novidades.`);
+    }
+}
+
+function triggerSupportCrisisEvent() {
+    let events = [
+        { msg: '💥 ESCÂNDALO: Apoio seu foi ligado a financiamento irregular! -2% automáticos.', effect: () => { supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - 2); supportGame.opponentVotes = 100 - supportGame.chosenVotes; supportGame.scandalRisk = Math.max(0, supportGame.scandalRisk - 2); } },
+        { msg: '🗞️ IMPRENSA hostil publicou reportagem contra seu candidato! -1.5%.', effect: () => { supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - 1.5); supportGame.opponentVotes = 100 - supportGame.chosenVotes; } },
+        { msg: '😡 ALIADO seu declarou neutralidade publicamente! -1% e moral abalada.', effect: () => { supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - 1); supportGame.opponentVotes = 100 - supportGame.chosenVotes; supportGame.crisisStack++; } },
+        { msg: '📉 PESQUISA desfavorável vaza! Candidato perde 2.5% em 24 horas.', effect: () => { supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - 2.5); supportGame.opponentVotes = 100 - supportGame.chosenVotes; } },
+        { msg: '⚡ DEBATE emergencial: seu candidato saiu mal. -1.8%.', effect: () => { supportGame.chosenVotes = Math.max(28, supportGame.chosenVotes - 1.8); supportGame.opponentVotes = 100 - supportGame.chosenVotes; } },
+    ];
+    let ev = events[Math.floor(Math.random() * events.length)];
+    ev.effect();
+    supportGame.crisisStack = Math.max(0, supportGame.crisisStack - 1);
+    supportLog(`🚨 CRISE: ${ev.msg}`);
+}
+
+function endSupportGameplay() {
+    let cdC = candidatesData[supportGame.chosen] || {};
+    let cdO = candidatesData[supportGame.opponent] || {};
+    let won = supportGame.chosenVotes > 50;
+
+    let winner2T = won
+        ? {...(supportGame.candA.id === supportGame.chosen ? supportGame.candA : supportGame.candB), votes: supportGame.chosenVotes}
+        : {...(supportGame.candA.id === supportGame.opponent ? supportGame.candA : supportGame.candB), votes: supportGame.opponentVotes};
+    let loser2T = won
+        ? {...(supportGame.candA.id === supportGame.opponent ? supportGame.candA : supportGame.candB), votes: supportGame.opponentVotes}
+        : {...(supportGame.candA.id === supportGame.chosen ? supportGame.candA : supportGame.candB), votes: supportGame.chosenVotes};
+
+    winner2T.votes = won ? supportGame.chosenVotes : supportGame.opponentVotes;
+    loser2T.votes  = won ? supportGame.opponentVotes : supportGame.chosenVotes;
+
+    let resultColor = won ? '#006600' : '#cc0000';
+    let resultEmoji = won ? '🏆' : '💀';
+    let resultTitle = won ? `${resultEmoji} MISSÃO CUMPRIDA!` : `${resultEmoji} MISSÃO FRACASSADA`;
+    let resultMsg = won
+        ? `Graças à sua articulação, <b>${cdC.name||supportGame.chosen}</b> venceu o 2º turno com <b>${supportGame.chosenVotes.toFixed(1)}%</b>!`
+        : `Apesar dos seus esforços, <b>${cdO.name||supportGame.opponent}</b> venceu com <b>${supportGame.opponentVotes.toFixed(1)}%</b>. ${cdC.name||'Seu candidato'} perdeu.`;
+
+    showEliminatedScreen(winner2T, loser2T, supportGame.playerFinal, supportGame.allSorted, resultTitle, resultMsg, won);
+}
+
+function showEliminatedScreen(winner2T, loser2T, playerFinal, allSorted, customTitle, customMsg, supportWon) {
     document.getElementById("game-screen").classList.remove("active");
     document.getElementById("end-screen").classList.add("active");
     let sc = scenariosData[game.scenario] || scenariosData["1994"];
@@ -4906,28 +6088,55 @@ function showEliminatedScreen(winner2T, loser2T, playerFinal, allSorted) {
     let w2cd = candidatesData[winner2T.id] || winner2T;
     let l2cd = candidatesData[loser2T.id]  || loser2T;
 
-    document.getElementById("result-title").innerText = "💀 ELIMINADO NO 1º TURNO";
-    document.getElementById("result-desc").innerHTML = `
-        <b style="color:#cc0000">${playerCd.name||game.player} não avançou ao 2º turno.</b><br>
-        <small>Você terminou em ${allSorted.findIndex(c=>c.id===game.player)+1}º lugar com ${playerFinal.votes.toFixed(1)}% dos votos.</small><br><br>
-        O segundo turno foi disputado entre <b>${winner2T.name}</b> e <b>${loser2T.name}</b>:
+    // Mostrar seções de ranking/congress de volta
+    if(document.getElementById("congress-section")) document.getElementById("congress-section").style.display = '';
+    if(document.getElementById("ranking-section")) document.getElementById("ranking-section").style.display = '';
+
+    let supportBadge = '';
+    if(customTitle) {
+        let badgeColor = supportWon ? '#006600' : '#cc0000';
+        let badgeText = supportWon ? '🏆 Sua articulação foi decisiva!' : '💀 Sua missão de apoio falhou.';
+        supportBadge = `<div style="background:${badgeColor};color:white;padding:6px 10px;border-radius:3px;margin-bottom:10px;font-weight:bold">${badgeText}</div>`;
+    }
+
+    document.getElementById("result-title").innerText = customTitle || "💀 ELIMINADO NO 1º TURNO";
+    document.getElementById("result-subtitle").innerText = customTitle ? "RESULTADO DO 2º TURNO" : "EDIÇÃO EXTRA";
+
+    if(customMsg) {
+        document.getElementById("result-desc").innerHTML = `${supportBadge}${customMsg}<br><br>
+        <small>Você terminou em ${allSorted.findIndex(c=>c.id===game.player)+1}º lugar no 1º turno com <b>${playerFinal.votes.toFixed(1)}%</b>.</small><br><br>
+        Resultado final do 2º turno:
         <table style="margin:10px auto;font-family:'Times New Roman';font-size:15px;border-collapse:collapse">
             <tr><td style="padding:5px;color:${w2cd.color||'#000'}">&nbsp;<b>${winner2T.name} (${w2cd.party||''})</b></td><td style="padding:5px"><b>${winner2T.votes.toFixed(1)}% ✅</b></td></tr>
             <tr><td style="padding:5px;color:${l2cd.color||'#000'}">&nbsp;${loser2T.name} (${l2cd.party||''})</td><td style="padding:5px">${loser2T.votes.toFixed(1)}%</td></tr>
-        </table>
-    `;
+        </table>`;
+    } else {
+        document.getElementById("result-desc").innerHTML = `
+            <b style="color:#cc0000">${playerCd.name||game.player} não avançou ao 2º turno.</b><br>
+            <small>Você terminou em ${allSorted.findIndex(c=>c.id===game.player)+1}º lugar com ${playerFinal.votes.toFixed(1)}% dos votos.</small><br><br>
+            O segundo turno foi disputado entre <b>${winner2T.name}</b> e <b>${loser2T.name}</b>:
+            <table style="margin:10px auto;font-family:'Times New Roman';font-size:15px;border-collapse:collapse">
+                <tr><td style="padding:5px;color:${w2cd.color||'#000'}">&nbsp;<b>${winner2T.name} (${w2cd.party||''})</b></td><td style="padding:5px"><b>${winner2T.votes.toFixed(1)}% ✅</b></td></tr>
+                <tr><td style="padding:5px;color:${l2cd.color||'#000'}">&nbsp;${loser2T.name} (${l2cd.party||''})</td><td style="padding:5px">${loser2T.votes.toFixed(1)}%</td></tr>
+            </table>
+        `;
+    }
     document.getElementById("candidate-bio").innerHTML = `
         <p><b>BRASÍLIA, ${sc.endYear||game.scenario}.</b> A campanha de ${playerCd.name||game.player} não resistiu ao voto útil e não conseguiu construir uma coligação suficientemente ampla para disputar o segundo turno.</p>
         <p><b>${winner2T.name}</b> é eleito Presidente da República. ${w2cd.bio||''}</p>
-        <p><i>Na próxima campanha: invista mais em estados pivô, construa alianças cedo e não negligencie a energia. Chegar ao 2º turno é o primeiro passo para a vitória.</i></p>
+        ${customTitle ? '' : '<p><i>Na próxima campanha: invista mais em estados pivô, construa alianças cedo e não negligencie a energia. Chegar ao 2º turno é o primeiro passo para a vitória.</i></p>'}
     `;
     generateCongress(winner2T);
+    let supportNote = customTitle
+        ? `<div class="rank-item">${supportWon ? '🏆' : '💀'} <b>Missão de apoio:</b> ${supportWon ? 'CUMPRIDA' : 'FRACASSADA'}</div>`
+        : '';
     document.getElementById('ranking-content').innerHTML = `
         <div style="color:#cc0000;font-weight:bold;font-size:16px;margin-bottom:8px">❌ Eliminado no 1º Turno</div>
         <div class="rank-item">📊 <b>Sua votação:</b> ${playerFinal.votes.toFixed(1)}%</div>
         <div class="rank-item">🏅 <b>Posição:</b> ${allSorted.findIndex(c=>c.id===game.player)+1}º de ${allSorted.length}</div>
         <div class="rank-item">🤝 <b>Coligação montada:</b> ${game.coalition.filter(p=>!p.includes('_seat')).length} partidos</div>
         <div class="rank-item">🎯 <b>Modo:</b> ${game.mode === 'caotico' ? 'Caótico' : 'Histórico'}</div>
+        ${supportNote}
         <div style="margin-top:10px;font-size:13px;color:#555">Tente novamente e chegue ao 2º turno!</div>
     `;
 }
@@ -7159,7 +8368,7 @@ function renderTVTime() {
 }
 function log(m) { document.getElementById("terminal-log").innerHTML = `> ${m}<br>` + document.getElementById("terminal-log").innerHTML; }
 function showModal(t, d, b) { document.getElementById("modal-overlay").style.display="flex"; document.getElementById("modal-title").innerText=t; document.getElementById("modal-text").innerHTML=d; document.getElementById("modal-buttons").innerHTML=b; }
-function closeModal() { document.getElementById("modal-overlay").style.display="none"; }
+function closeModal() { document.getElementById("modal-overlay").style.display="none"; isShowingEvent = false; setTimeout(() => processNextEvent(), 150); }
 // === MODO ESPECTADOR ===
 let spectatorMode = false;
 
@@ -8056,33 +9265,26 @@ function showChangelog() {
         🌎 SIMULADOR ELEITORAL GLOBAL — CHANGELOG
     </div>
     <div style="background:#ccffcc;border:1px solid #009900;padding:6px;margin-bottom:6px;border-left:4px solid #009900">
-        <b>🆕 VERSÃO 12</b> — <i>7 Novos Países, Vice-Presidência, Corrupção, Regiões e 70 Conquistas</i><br>
-        <b style="color:#006600">✅ 🇮🇹 Itália 2022:</b> Meloni vs Letta vs Conte vs Calenda — sistema parlamentar, perfis reais do X italiano<br>
-        <b style="color:#006600">✅ 🇦🇷 Argentina 2023:</b> Milei vs Massa vs Bullrich vs Schiaretti — balotaje, peso regional, contas do X argentino<br>
-        <b style="color:#006600">✅ 🇮🇳 Índia 2024:</b> Modi vs Kharge — BJP vs INC, sistema parlamentar, feed político indiano<br>
-        <b style="color:#006600">✅ 🇬🇧 UK 2024:</b> Starmer vs Sunak vs Davey vs Swinney — FPTP, 4 partidos, feed político britânico<br>
-        <b style="color:#006600">✅ 🇵🇱 Polônia 2025:</b> Nawrocki vs Trzaskowski vs Mentzen — 2 turnos, ideologias reais, X polonês<br>
-        <b style="color:#006600">✅ 🇺🇸 EUA 2020:</b> Biden vs Trump vs Jorgensen vs Hawkins — Colégio Eleitoral completo<br>
-        <b style="color:#006600">✅ 🇷🇺 Rússia 1996:</b> Yeltsin vs Zyuganov vs Lebed vs Yavlinsky vs Zhirinovsky — jornal épico sem redes sociais<br>
-        <b style="color:#006600">✅ RFK Jr adicionado nas Eleições Americanas de 2024</b><br>
-        <b style="color:#006600">✅ 👔 Vice-Presidência:</b> Aba exclusiva após negociar vice; 10 perfis de vice disponíveis; ações estratégicas<br>
-        <b style="color:#006600">✅ 🤑 Aba de Corrupção:</b> Caixa 2, compra de votos, suborno de jornalista/juiz, sabotagem — risco de GAME OVER<br>
-        <b style="color:#006600">✅ 🗺️ Regiões Melhoradas:</b> Comícios regionais, barras de porcentagem, viés ideológico por região visível<br>
-        <b style="color:#006600">✅ 📊 Gráfico de Pesquisas Melhorado:</b> Grid detalhado, glow no jogador, pontos nas curvas, labels<br>
-        <b style="color:#006600">✅ 📰 Jornal/Redes Melhorado:</b> Perfis específicos por país; jornal com linha editorial L/C/D; Rússia 1996 sem Twitter<br>
-        <b style="color:#006600">✅ 🏆 70 Conquistas:</b> De 33 para 70 — novas para cada país, estilo de jogo, e recordes<br>
-        <b style="color:#006600">✅ Traits negativos realistas para candidatos históricos</b><br>
-        <b style="color:#006600">✅ Países organizados por continente na aba seleção</b><br>
-        <b style="color:#006600">✅ Bandeira da Colômbia corrigida (era México 🇲🇽 → agora 🇨🇴)</b><br>
-        <b style="color:#006600">✅ "Outros" removido das eleições portuguesas</b><br>
-        <b style="color:#006600">✅ Música de menu removida</b><br>
-        <b style="color:#006600">✅ Modo Sandbox adicionado (verba e pontos infinitos)</b><br>
-        <b style="color:#006600">✅ Paleta de cores para criação de candidato personalizado</b><br>
+        <b>🆕 VERSÃO 13</b> — <i>5 Novos Países, Redes Sociais Expandidas, Novos Perfis e Conquistas</i><br>
+        <b style="color:#006600">✅ 🇻🇪 Venezuela 2024:</b> Maduro vs González vs Bertucci — mecânica especial de eleição contestada<br>
+        <b style="color:#006600">✅ 🇲🇽 México 2024:</b> Sheinbaum vs Gálvez vs Máynez — 14 regiões, turno único<br>
+        <b style="color:#006600">✅ 🇨🇱 Chile 2025:</b> Kast vs Jara vs Matthei vs Narváez — 10 regiões, 2 turnos<br>
+        <b style="color:#006600">✅ 🇨🇴 Colômbia 2026:</b> Cepeda vs Espriella vs Fajardo vs Valencia — 11 regiões, 2 turnos<br>
+        <b style="color:#006600">✅ 🇨🇦 Canadá 2025:</b> Carney vs Poilievre vs Blanchet vs Singh — sistema parlamentar FPTP, 343 cadeiras<br>
+        <b style="color:#006600">✅ 📱 20+ Novos Perfis Brasileiros:</b> Pablo Marçal, Whindersson, Felipe Neto, Lorelay Fox, ancaps, extrema-esquerda, movimentos<br>
+        <b style="color:#006600">✅ 📊 Enquetes simuladas no feed:</b> polls virais, threads de 30+ partes, memes contextualizados<br>
+        <b style="color:#006600">✅ 🏆 6 Novas Conquistas:</b> Uma para cada novo país adicionado<br>
+        <b style="color:#006600">✅ 🌍 Países reorganizados por continente:</b> América do Norte, Américas do Sul e Central, Europa, Ásia<br>
+        <b style="color:#006600">✅ 🔒 Países em desenvolvimento atualizados:</b> Espanha, Japão, Ucrânia, Bolívia, Peru, Suécia<br>
+        <b style="color:#006600">✅ Feed de redes sociais para todos os novos países com perfis coerentes</b><br>
     </div>
     <div style="background:#ffffcc;border:1px solid #cc9900;padding:6px;margin-bottom:6px;border-left:4px solid #cc9900">
-        <b>📦 v11</b> — Portugal, Radicalização Orgânica, Novas Mídias, Debates, Balanceamento
+        <b>📦 v12</b> — 7 Novos Países, Vice-Presidência, Corrupção, Regiões e 70 Conquistas<br>
     </div>
     <div style="background:#e8e8ff;border:1px solid #6666cc;padding:6px;margin-bottom:6px;">
+        <b>📦 v11</b> — Portugal, Radicalização Orgânica, Novas Mídias, Debates, Balanceamento
+    </div>
+    <div style="background:#f0f0f0;border:1px solid #ccc;padding:6px;margin-bottom:6px;">
         <b>📦 v10</b> — Barra de Radicalização | Gerenciamento de Partido | Coligação com traição | Alemanha e França
     </div>
     <div style="background:#f0f0f0;border:1px solid #ccc;padding:6px;margin-bottom:6px;">
@@ -8095,7 +9297,7 @@ function showChangelog() {
         <b>📦 v1-7</b> — 1989 a 2026 | Debates | Escândalos | Mapa | Congresso | Modo Caótico | Indiretas | Históricos
     </div>
     </div>`;
-    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v12', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
+    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v13', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
 }
 
 init();
