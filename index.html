@@ -177,7 +177,7 @@ body{ font-family:"MS Sans Serif", Arial; background:#008080; margin:0; display:
         <span>🌎 SIMULADOR ELEITORAL GLOBAL</span>
         <div style="display:flex;gap:8px;align-items:center">
             <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showCredits()">👑 Créditos</span>
-            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v14</span>
+            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v16</span>
             <span onclick="location.reload()" style="cursor:pointer">[X]</span>
         </div>
     </div>
@@ -309,7 +309,7 @@ body{ font-family:"MS Sans Serif", Arial; background:#008080; margin:0; display:
         <div style="display:flex;justify-content:space-between;background:#d4d0c8;border:2px inset white;padding:6px;font-weight:bold;flex-wrap:wrap;gap:4px">
             <span id="fase-label">1º TURNO</span>
             <span id="date-display" style="color:#8b0000;font-size:10px"></span>
-            <span>DIA: <span id="turn-display">1</span>/<span id="turn-max-display">15</span></span>
+            <span>DIA: <span id="turn-display">1</span>/<span id="turn-max-display">30</span></span>
             <span style="color:navy">PONTOS: <span id="points-display">2</span>p</span>
             <span style="color:darkgreen">VERBA: R$ <span id="money-display">0</span>M</span>
             <span style="display:flex;align-items:center;gap:4px;font-size:10px" title="Nível de Radicalização: alto = partidos radicais ganham popularidade">
@@ -1001,7 +1001,7 @@ const scenariosData = {
             flavio:   {name:"FLÁVIO",  party:"PL",     start:27, money:50, side:"D", color:"#22bb22", econ:2,  soc:-2, nat:2,  bio:"Flávio Bolsonaro, senador do Rio de Janeiro. Herdeiro direto do bolsonarismo, candidato com apoio do pai via gravações dos EUA. Polariza com Lula a disputa principal.", ideologia:"Conservadorismo Nacional-Populista"},
             zema:     {name:"ZEMA",    party:"NOVO",   start:10, money:35, side:"D", color:"#ff6600", econ:2,  soc:-1, nat:-1, bio:"Romeu Zema, ex-governador de Minas Gerais. Candidato do Novo com proposta de Estado mínimo, privatizações amplas e corte de impostos. Tenta ser a alternativa liberal à polarização.", ideologia:"Liberalismo Clássico"},
             caiado:   {name:"CAIADO",  party:"PSD",    start:9,  money:30, side:"D", color:"#cc6600", econ:1,  soc:-1, nat:1,  bio:"Ronaldo Caiado, ex-governador de Goiás. Candidato da direita tradicional, com forte base ruralista e evangélica. Tenta distinguir-se do bolsonarismo sem perder a base.", ideologia:"Conservadorismo Ruralista"},
-            renan:    {name:"RENAN S.", party:"MISSÃO", start:4, money:10, side:"D", color:"#8b0000", econ:1,  soc:-2, nat:2,  bio:"Renan Santos, líder do movimento MBL e fundador do MISSÃO. Candidato jovem libertário-cristão que mobiliza universitários direitistas e evangélicos nas redes sociais.", ideologia:"Libertarianismo Cristão"},
+            renan:    {name:"RENAN S.", party:"MISSÃO", start:4, money:10, side:"D", color:"#8b0000", econ:1,  soc:-2, nat:2,  bio:"Renan Santos, líder do movimento MBL e fundador do MISSÃO. Candidato jovem que mobiliza universitários direitistas e evangélicos nas redes sociais, inspirado pelo modelo Bukele.", ideologia:"Nacional-Liberalismo Bukelista"},
             aldo:     {name:"ALDO",    party:"DC",     start:1,  money:5,  side:"C", color:"#006633", econ:0,  soc:-1, nat:1,  bio:"Aldo Rebelo, ex-ministro e parlamentar histórico da esquerda que migrou para posições nacional-soberanistas. Candidato da Democracia Cristã no campo do centro-nacional.", ideologia:"Nacional-Democracia Cristã"}
         }
     },
@@ -2547,6 +2547,545 @@ const internationalData = {
             {id:'HAM', n:'Hamburgo / Norte',                x:38,y:15, p:5,  econ:0,  soc:1,  nat:0},
             {id:'SIL', n:'Silésia (Wrocław)',               x:72,y:45, p:6,  econ:-2, soc:0,  nat:1}
         ]
+    },
+    "ISR2026": {
+        title:"Eleições Parlamentares de Israel 2026", year:"2026", emoji:"🇮🇱",
+        country:"israel",
+        desc:"Netanyahu tenta manter o poder enquanto Lapid lidera a oposição centrista. O ultranacionalismo de Deri e a moderação de Gantz tornam a Knesset imprevisível.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:120,
+        majoritySeats:61,
+        newsHeader:"Haaretz — 2026",
+        endYear:"2026",
+        partyPoolOverride:[{n:"Likud",side:"D",owner:null},{n:"Yesh Atid",side:"E",owner:null},{n:"Shas",side:"D",owner:null},{n:"Blue&White",side:"C",owner:null},{n:"Religious Zionist",side:"D",owner:null}],
+        candidates:{
+            netanyahu:{name:"NETANYAHU", party:"Likud",      start:27, money:60, side:"D", color:"#003399", econ:1, soc:-2, nat:2,  bio:"Benjamin Netanyahu, primeiro-ministro mais longevo de Israel. Retornou ao poder em 2022 liderando coalizão ultranacionalista. Enfrenta processos por corrupção enquanto gerencia os impactos políticos do conflito em Gaza.", ideologia:"Conservadorismo Nacional / Sionismo Reviscionista", traits:["Mestre da Sobrevivência Política","Relações Internacionais Fortes"], negativeTraits:["Acusações de Corrupção","Coalizão Ultradireitista Controversa","Gestão do Conflito Gaza"]},
+            lapid:    {name:"LAPID",    party:"Yesh Atid",   start:22, money:45, side:"C", color:"#0099cc", econ:1, soc:2,  nat:-1, bio:"Yair Lapid, ex-primeiro-ministro e jornalista. Lidera o maior partido de centro-esquerda, defendendo secularismo, democracia liberal e solução de dois estados. Principal força de oposição ao governo Netanyahu.", ideologia:"Centrismo Liberal / Secularismo", traits:["Comunicador Habilidoso","Apelo Secular Urbano"], negativeTraits:["Sem Base Ideológica Sólida","Percebido como Oportunista"]},
+            deri:     {name:"DERI",     party:"Shas",        start:11, money:30, side:"D", color:"#8b0000", econ:-1,soc:-2, nat:1,  bio:"Aryeh Deri, líder do partido Shas, representando judeus Mizrahi ortodoxos. Político controverso condenado por corrupção mas retornou à política. Parceiro indispensável de Netanyahu na coalizão religiosa.", ideologia:"Conservadorismo Religioso / Judaísmo Ortodoxo Sefardita", traits:["Base Religiosa Fiel","Controle Comunitário"], negativeTraits:["Condenado por Corrupção","Dependência de Netanyahu"]},
+            gantz:    {name:"GANTZ",    party:"Blue&White",  start:16, money:40, side:"C", color:"#0057e7", econ:0, soc:0,  nat:0,  bio:"Benny Gantz, ex-general e ex-ministro da Defesa. Fundador do Blue and White, tentou unir o centro israelense. Participou do gabinete de guerra de Netanyahu após 7 de outubro e depois rompeu, voltando à oposição.", ideologia:"Centrismo / Pragmatismo de Segurança", traits:["Credencial Militar Forte","Imagem de Moderação"], negativeTraits:["Percebido como Inconsistente","Saiu do Gabinete de Guerra"]}
+        },
+        regions:[
+            {id:'TEL', n:'Tel Aviv (Distrito)',      x:20,y:45, p:22, econ:2,  soc:2,  nat:-1},
+            {id:'JER', n:'Jerusalém',                x:35,y:55, p:18, econ:0,  soc:-2, nat:2},
+            {id:'HAI', n:'Haifa e Norte',            x:22,y:28, p:16, econ:1,  soc:1,  nat:0},
+            {id:'SOU', n:'Sul (Negev/Beersheba)',    x:28,y:72, p:14, econ:-1, soc:-1, nat:1},
+            {id:'WEB', n:'Cisjordânia (Colônias)',   x:42,y:48, p:8,  econ:0,  soc:-2, nat:2},
+            {id:'CEN', n:'Centro (Rishon LeZion)',   x:22,y:52, p:14, econ:1,  soc:0,  nat:0},
+            {id:'ARA', n:'Cidades Árabes-Israelenses',x:28,y:38, p:8, econ:-1, soc:2, nat:-2}
+        ]
+    },
+    "PER2026": {
+        title:"Eleições Presidenciais do Peru 2026", year:"2026", emoji:"🇵🇪",
+        country:"peru",
+        desc:"Peru, marcado por instabilidade política crônica, vai às urnas novamente. Lopez Aliaga representa a direita religiosa, Fujimori o fujimorismo eterno, e outsiders tentam romper o ciclo.",
+        available:true,
+        newsHeader:"El Comercio — 2026",
+        endYear:"2026",
+        partyPoolOverride:[{n:"RP",side:"D",owner:null},{n:"FP",side:"D",owner:null},{n:"PPT",side:"E",owner:null},{n:"UM",side:"C",owner:null},{n:"APRA",side:"C",owner:null}],
+        candidates:{
+            lopezaliaga:{name:"LOPEZ ALIAGA", party:"RP",  start:18, money:45, side:"D", color:"#cc0000", econ:2, soc:-2, nat:1,  bio:"Rafael Lopez Aliaga, empresário ultracatólico e fundador do Renovación Popular. Conhecido como 'Porky', venceu as eleições de Lima. Defensor do livre mercado radical e valores tradicionais católicos. Segunda vez disputando a presidência.", ideologia:"Direita Católica / Ultraliberalismo Econômico", traits:["Base Religiosa Conservadora","Empresário Bem-Sucedido"], negativeTraits:["Extremismo Religioso Percebido","Estilo Agressivo","Limitada Apelo Nacional"]},
+            fujimori:  {name:"FUJIMORI",   party:"FP",     start:16, money:50, side:"D", color:"#ff6600", econ:1, soc:-1, nat:1,  bio:"Keiko Fujimori, filha do ex-ditador Alberto Fujimori e líder do Fuerza Popular. Três vezes candidata à presidência, nunca venceu o segundo turno. Partido domina o Congresso mas enfrenta percepção de obstrução institucional.", ideologia:"Fujimorismo / Populismo Conservador", traits:["Controle do Congresso","Nome Fujimorista"], negativeTraits:["Processos por Corrupção","Três Derrotas na História","Herança Ditatorial do Pai"]},
+            alvarez:   {name:"ALVAREZ",    party:"PPT",    start:12, money:25, side:"E", color:"#cc0000", econ:-1,soc:2,  nat:0,  bio:"Carlos Alvarez, candidato da esquerda progressista pelo Perú Progresista. Tenta capitalizar o vácuo deixado pelo desgaste de Pedro Castillo e da esquerda tradicional.", ideologia:"Progressismo / Social-Democracia", traits:["Apelo a Movimentos Sociais"], negativeTraits:["Esquerda Fraturada","Sombra de Castillo"]},
+            lopezchau: {name:"LOPEZ-CHAU", party:"UM",     start:8,  money:20, side:"C", color:"#0066cc", econ:0, soc:0,  nat:0,  bio:"Alfonso Lopez-Chau, candidato centrista de Una Mejor Nación. Tenta apresentar alternativa entre polarização da direita e esquerda.", ideologia:"Centrismo / Pragmatismo", traits:["Perfil Técnico"], negativeTraits:["Baixa Visibilidade","Partido Sem Histórico"]}
+        },
+        regions:[
+            {id:'LIM', n:'Lima (Capital)',       x:22,y:55, p:32, econ:2,  soc:0,  nat:0},
+            {id:'ARE', n:'Arequipa (Sul)',       x:30,y:72, p:10, econ:1,  soc:-1, nat:1},
+            {id:'PUN', n:'Puno / Altiplano',    x:38,y:78, p:8,  econ:-2, soc:1,  nat:2},
+            {id:'CUS', n:'Cusco (Andes)',        x:35,y:70, p:7,  econ:-1, soc:1,  nat:2},
+            {id:'NOR', n:'Norte (Trujillo/Piura)',x:18,y:30, p:15, econ:0, soc:-1, nat:1},
+            {id:'SAN', n:'San Martín / Selva',  x:40,y:42, p:8,  econ:-2, soc:1,  nat:1},
+            {id:'LOR', n:'Loreto / Amazônia',   x:50,y:35, p:6,  econ:-2, soc:1,  nat:0},
+            {id:'JUN', n:'Junín / Centro',      x:30,y:60, p:7,  econ:-1, soc:0,  nat:1},
+            {id:'ICA', n:'Ica / Costa Sul',     x:25,y:65, p:7,  econ:1,  soc:-1, nat:0}
+        ]
+    },
+    "BOL2025": {
+        title:"Eleições Presidenciais da Bolívia 2025", year:"2025", emoji:"🇧🇴",
+        country:"bolivia",
+        desc:"Bolivia enfrenta crise de polarização entre o evismo e a oposição. Paz Pereira representa a democracia cristã e Quiroga o antigo liberalismo democrático.",
+        available:true,
+        newsHeader:"El Deber — 2025",
+        endYear:"2025",
+        partyPoolOverride:[{n:"PDC",side:"C",owner:null},{n:"Indep",side:"D",owner:null},{n:"MAS",side:"E",owner:null},{n:"FRI",side:"C",owner:null}],
+        candidates:{
+            pazpereira:{name:"PAZ PEREIRA", party:"PDC", start:28, money:35, side:"C", color:"#006600", econ:0, soc:1,  nat:0,  bio:"Rodrigo Paz Pereira, político centrista e ex-alcalde de Santa Cruz. Representa a Democracia Cristã boliviana, buscando terceira via entre o MAS e a direita radical. Figura respeitada no oriente boliviano.", ideologia:"Democracia Cristã / Centrismo", traits:["Gestão Municipal Reconhecida","Perfil Moderado"], negativeTraits:["Baixa Visibilidade Nacional","Partido Pequeno"]},
+            quiroga:   {name:"QUIROGA",    party:"Indep",start:22, money:30, side:"D", color:"#0055aa", econ:2, soc:-1, nat:0,  bio:"Jorge 'Tuto' Quiroga, ex-presidente da Bolívia (2001-2002). Representante histórico da direita democrática boliviana. Candidato persistente que busca recuperar o liberalismo como alternativa ao socialismo do século XXI.", ideologia:"Liberalismo / Centro-Direita", traits:["Ex-Presidente","Experiência Democrática"], negativeTraits:["Desgaste pelo Histórico de Derrotas","Percebido como Elitista"]}
+        },
+        regions:[
+            {id:'SCZ', n:'Santa Cruz (Oriente)',   x:65,y:55, p:25, econ:2,  soc:-1, nat:1},
+            {id:'LPZ', n:'La Paz (Sede do Governo)',x:28,y:35, p:22, econ:0, soc:1,  nat:0},
+            {id:'CBB', n:'Cochabamba (Centro)',    x:40,y:48, p:18, econ:0,  soc:1,  nat:1},
+            {id:'PTP', n:'Potosí (Mineração)',     x:35,y:65, p:10, econ:-2, soc:1,  nat:2},
+            {id:'TRJ', n:'Tarija / Sul',           x:48,y:75, p:8,  econ:1,  soc:-1, nat:0},
+            {id:'ORU', n:'Oruro (Altiplano)',      x:30,y:55, p:8,  econ:-1, soc:1,  nat:1},
+            {id:'BEN', n:'Beni / Pando (Norte)',   x:55,y:30, p:9,  econ:-1, soc:-1, nat:1}
+        ]
+    },
+    "SLV2024": {
+        title:"Eleições Presidenciais de El Salvador 2024", year:"2024", emoji:"🇸🇻",
+        country:"elsalvador",
+        desc:"Bukele busca reeleição inconstitucional em El Salvador após transformar o país com seu plano de segurança draconiano. FMLN e ARENA tentam sobreviver ao bukelismo.",
+        available:true,
+        noSecondRound:true,
+        newsHeader:"La Prensa Gráfica — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"NI",side:"D",owner:null},{n:"FMLN",side:"E",owner:null},{n:"ARENA",side:"D",owner:null}],
+        candidates:{
+            bukele: {name:"BUKELE",  party:"NI",    start:72, money:80, side:"D", color:"#004080", econ:1, soc:-2, nat:2,  bio:"Nayib Bukele, presidente populista reeleito em El Salvador com mais de 80% dos votos. Implementou estado de exceção que reduziu drasticamente a criminalidade mas concentrou poder. Adotou Bitcoin como moeda legal e construiu megapresídio CECOT. Considerado autoritário pela comunidade internacional.", ideologia:"Populismo Autoritário / Tecno-Populismo", traits:["Popularidade Esmagadora","Controle Total das Instituições","Redução do Crime"], negativeTraits:["Detenções em Massa","Erosão Democrática","Reeleição Inconstitucional"]},
+            flores: {name:"FLORES",  party:"FMLN",  start:8,  money:15, side:"E", color:"#cc0000", econ:-1,soc:2,  nat:-1, bio:"Manuel Flores, candidato da Frente Farabundo Martí. Partido que governou El Salvador entre 2009-2019 e perdeu completamente o espaço político para o bukelismo. Enfrenta desafio quase impossível de reerguer o FMLN.", ideologia:"Social-Democracia / Esquerda Centro", traits:["Base Histórica da Esquerda"], negativeTraits:["FMLN Fracassado","Desgaste de Governo","Sem Alternativa Crível ao Bukele"]},
+            sanchez:{name:"SÁNCHEZ", party:"ARENA", start:9,  money:18, side:"D", color:"#003399", econ:2, soc:-1, nat:0,  bio:"Joel Sánchez, candidato de ARENA, partido de direita que governou El Salvador por décadas. Também varrido pelo bukelismo, tenta recuperar espaço entre eleitores conservadores insatisfeitos.", ideologia:"Conservadorismo / Centro-Direita", traits:["Histórico de Gestão Conservadora"], negativeTraits:["ARENA Obsoleta","Percebida como Passado","Sem Diferenciação do Bukele"]}
+        },
+        regions:[
+            {id:'SSA', n:'San Salvador (Capital)', x:35,y:45, p:30, econ:1,  soc:0,  nat:0},
+            {id:'SAN', n:'Santa Ana (Ocidente)',   x:18,y:35, p:18, econ:0,  soc:-1, nat:1},
+            {id:'MIG', n:'San Miguel (Oriente)',   x:62,y:52, p:16, econ:-1, soc:0,  nat:1},
+            {id:'SON', n:'Sonsonate / Costa',      x:20,y:55, p:12, econ:0,  soc:0,  nat:1},
+            {id:'USU', n:'Usulután / Sul',         x:50,y:58, p:12, econ:-1, soc:0,  nat:1},
+            {id:'CHA', n:'Chalatenango / Norte',   x:35,y:25, p:7,  econ:-2, soc:1,  nat:0},
+            {id:'LAU', n:'La Unión / Litoral',     x:75,y:55, p:5,  econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "SWE2026": {
+        title:"Eleições Parlamentares da Suécia 2026", year:"2026", emoji:"🇸🇪",
+        country:"sweden",
+        desc:"Suécia enfrenta eleição parlamentar com a extrema-direita dos Democratas Suecos em alta e os social-democratas tentando retomar o poder com Magdalena Andersson.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:349,
+        majoritySeats:175,
+        newsHeader:"Dagens Nyheter — 2026",
+        endYear:"2026",
+        partyPoolOverride:[{n:"S",side:"E",owner:null},{n:"SD",side:"D",owner:null},{n:"M",side:"D",owner:null},{n:"C",side:"C",owner:null},{n:"MP",side:"E",owner:null},{n:"V",side:"E",owner:null}],
+        candidates:{
+            andersson: {name:"ANDERSSON",  party:"S",  start:33, money:50, side:"E", color:"#cc0000", econ:-1,soc:2,  nat:-1, bio:"Magdalena Andersson, ex-primeira-ministra e líder dos Social-Democratas. Principal partido sueco desde 1932, luta para retomar o governo. Tenta equilibrar posições sobre imigração, bem-estar e modernização econômica.", ideologia:"Social-Democracia / Terceira Via", traits:["Partido Histórico","Gestão Econômica Competente"], negativeTraits:["Desgaste com Política de Imigração","Dividido sobre Segurança"]},
+            akesson:   {name:"ÅKESSON",    party:"SD", start:20, money:40, side:"D", color:"#00458b", econ:0, soc:-2, nat:2,  bio:"Jimmie Åkesson, líder dos Democratas Suecos, partido de extrema-direita que emergiu de raízes neonazistas para se tornar o segundo maior partido. Defende restrição draconiana à imigração e recuperação da 'identidade sueca'.", ideologia:"Nacionalismo / Anti-Imigração", traits:["Anti-Imigração Forte","Crescimento Explosivo"], negativeTraits:["Raízes Neonazistas","Percebido como Extremista"]},
+            kristersson:{name:"KRISTERSSON",party:"M", start:19, money:45, side:"D", color:"#003399", econ:2, soc:-1, nat:0,  bio:"Ulf Kristersson, ex-primeiro-ministro e líder dos Moderados. Governou em coalizão controversa dependente dos Democratas Suecos. Partido de centro-direita tradicional tenta se reafirmar como alternativa ao bipartidarismo.", ideologia:"Conservadorismo Liberal / Centro-Direita", traits:["Experiência de Governo","Rede de Alianças"], negativeTraits:["Dependência dos SD no Governo","Decisões Controversas sobre Crime"]},
+            ringqvist:  {name:"RINGQVIST", party:"C",  start:10, money:22, side:"C", color:"#009900", econ:1, soc:1,  nat:-1, bio:"Elisabeth Thand Ringqvist, líder do Partido do Centro sueco. Partido agrário progressista que defende liberalismo social, sustentabilidade e regiões rurais. Tenta se diferenciar dos blocos radicais.", ideologia:"Liberalismo Social / Centrismo Verde", traits:["Base Rural Sólida","Perfil Verde"], negativeTraits:["Partido Médio sem Protagonismo","Difícil Posicionamento na Coalizão"]}
+        },
+        regions:[
+            {id:'STK', n:'Estocolmo (Capital)',    x:68,y:38, p:28, econ:2,  soc:2,  nat:-1},
+            {id:'VAG', n:'Västra Götaland (Gotemburgo)',x:38,y:52, p:18, econ:1, soc:1, nat:0},
+            {id:'SKA', n:'Skåne (Malmö/Sul)',      x:52,y:75, p:15, econ:1,  soc:-1, nat:1},
+            {id:'NOR', n:'Norrland (Norte)',       x:55,y:15, p:12, econ:-1, soc:0,  nat:1},
+            {id:'UPP', n:'Uppsala / Centro',      x:65,y:32, p:10, econ:1,  soc:1,  nat:0},
+            {id:'ORB', n:'Örebro / Värmland',     x:52,y:42, p:8,  econ:0,  soc:0,  nat:0},
+            {id:'SMD', n:'Småland / Sudeste',     x:58,y:62, p:9,  econ:0,  soc:-1, nat:1}
+        ]
+    },
+    "NGA2023": {
+        title:"Eleições Presidenciais da Nigéria 2023", year:"2023", emoji:"🇳🇬",
+        country:"nigeria",
+        desc:"A maior democracia africana vai às urnas. Tinubu representa o APC no poder, Abubakar o PDP de oposição, e Peter Obi surge como terceira via pela Labour Party em campanha histórica.",
+        available:true,
+        newsHeader:"The Punch — FEBRUARY 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"APC",side:"D",owner:null},{n:"PDP",side:"E",owner:null},{n:"LP",side:"C",owner:null},{n:"NNPP",side:"C",owner:null}],
+        candidates:{
+            tinubu:   {name:"TINUBU",   party:"APC", start:37, money:80, side:"D", color:"#006600", econ:1, soc:-1, nat:1,  bio:"Bola Ahmed Tinubu, 'padrinho' político de Lagos e candidato presidencial do APC. Venceu com 37% dos votos numa eleição contestada. Tornou-se presidente implementando medidas de austeridade, incluindo remoção de subsídios ao combustível.", ideologia:"Pragmatismo Político / Centro-Direita", traits:["Rede Política Vasta","Controle de Lagos"], negativeTraits:["Alegações de Fraude Eleitoral","Controvérsias sobre Saúde","Remoção de Subsídios Impopular"]},
+            abubakar: {name:"ABUBAKAR", party:"PDP", start:29, money:60, side:"C", color:"#cc0000", econ:0, soc:1,  nat:0,  bio:"Atiku Abubakar, ex-vice-presidente e candidato recorrente do PDP. Concorreu pela presidência múltiplas vezes. Defende privatização, anti-corrupção e reconstrução da unidade nacional.", ideologia:"Democracia Liberal / Pragmatismo", traits:["Experiência de Governo","Apelo Pan-Nigeriano"], negativeTraits:["Candidato Derrotado Repetido","PDP Desgastado"]},
+            obi:      {name:"OBI",      party:"LP",  start:25, money:30, side:"C", color:"#ffcc00", econ:0, soc:2,  nat:-1, bio:"Peter Obi, ex-governador de Anambra e fenômeno eleitoral de 2023. Mobilizou jovens urbanos em movimento 'Obidient' sem precedentes. Perdeu para Tinubu mas representa nova geração política nigeriana.", ideologia:"Progressismo / Anti-Corrupção", traits:["Mobilização Jovem Histórica","Símbolo da Mudança"], negativeTraits:["Estrutura Partidária Fraca","Resultado Contestado"]}
+        },
+        regions:[
+            {id:'LAG', n:'Lagos (Sul Ocidentual)',      x:22,y:62, p:18, econ:2,  soc:1,  nat:0},
+            {id:'ABJ', n:'Abuja (Capital Federal)',     x:50,y:45, p:6,  econ:1,  soc:0,  nat:0},
+            {id:'KAN', n:'Kano (Norte Muçulmano)',      x:48,y:18, p:15, econ:-1, soc:-2, nat:2},
+            {id:'RIV', n:'Rivers (Delta do Niger)',     x:52,y:70, p:8,  econ:1,  soc:0,  nat:1},
+            {id:'ANB', n:'Anambra/Igbo (Sudeste)',      x:55,y:65, p:9,  econ:0,  soc:1,  nat:1},
+            {id:'OGU', n:'Ogun/Oyo/Osun (Yoruba)',      x:25,y:58, p:12, econ:0,  soc:0,  nat:1},
+            {id:'KDN', n:'Kaduna / Centro-Norte',       x:45,y:28, p:10, econ:-1, soc:-1, nat:1},
+            {id:'NOR', n:'Nor. Extremo (Sokoto/Borno)', x:50,y:10, p:12, econ:-2, soc:-2, nat:2},
+            {id:'EDO', n:'Edo / Médio-Oeste',           x:45,y:65, p:10, econ:0,  soc:0,  nat:0}
+        ]
+    },
+    "BGD2024": {
+        title:"Eleições Gerais de Bangladesh 2024", year:"2024", emoji:"🇧🇩",
+        country:"bangladesh",
+        desc:"Sheikh Hasina busca quinto mandato em eleição marcada por boicote da principal oposição BNP. Apenas o Jatiya Party de GM Quader participa como oposição simbólica.",
+        available:true,
+        noSecondRound:true,
+        newsHeader:"The Daily Star — JANUARY 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"AL",side:"E",owner:null},{n:"JP-E",side:"C",owner:null},{n:"JSD",side:"C",owner:null}],
+        candidates:{
+            hasina: {name:"HASINA", party:"AL",  start:65, money:70, side:"E", color:"#006600", econ:1, soc:1,  nat:0,  bio:"Sheikh Hasina, primeira-ministra de Bangladesh por 15 anos consecutivos. Filha do fundador da nação Sheikh Mujibur Rahman. Liderou desenvolvimento econômico acelerado mas governou com mão de ferro, reprimindo oposição e imprensa livre.", ideologia:"Nacional-Desenvolvimentismo / Autoritarismo Eleitoral", traits:["Desenvolvimento Econômico Acelerado","Controle Total do Aparato Estatal"], negativeTraits:["Repressão à Oposição","Eleição sem Competição Real","Corrupção Sistêmica"]},
+            quader: {name:"QUADER", party:"JP-E", start:12, money:20, side:"C", color:"#cc9900", econ:0, soc:0,  nat:0,  bio:"GM Quader, líder do Jatiya Party – Ershad, única oposição significativa que participou das eleições de 2024 enquanto o BNP boicotou. Considerado oposição simbólica mas constitucional.", ideologia:"Centrismo / Oposição Moderada", traits:["Única Oposição Participante"], negativeTraits:["Oposição Simbólica","Sem Chance Real","Dependência da Legitimidade do Processo"]}
+        },
+        regions:[
+            {id:'DHA', n:'Dhaka (Capital)',           x:55,y:45, p:28, econ:2,  soc:1,  nat:0},
+            {id:'CTG', n:'Chittagong (Porto)',        x:70,y:58, p:18, econ:1,  soc:0,  nat:0},
+            {id:'RAJ', n:'Rajshahi (Noroeste)',       x:38,y:28, p:14, econ:-1, soc:-1, nat:1},
+            {id:'KHU', n:'Khulna (Sudoeste)',         x:40,y:58, p:12, econ:0,  soc:0,  nat:0},
+            {id:'BAR', n:'Barisal (Sul)',             x:52,y:65, p:8,  econ:-1, soc:0,  nat:1},
+            {id:'SYL', n:'Sylhet (Nordeste)',         x:72,y:35, p:8,  econ:0,  soc:-1, nat:1},
+            {id:'MYM', n:'Mymensingh (Centro)',       x:55,y:35, p:12, econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "USA1996": {
+        title:"U.S. Presidential Election 1996", year:"1996", emoji:"🇺🇸",
+        country:"usa",
+        desc:"Clinton vs Dole. O presidente incumbente democrata enfrenta o veterano republicano Dole. Ross Perot volta como terceira força pelo Partido da Reforma.",
+        available:true,
+        isElectoralCollege:true,
+        newsHeader:"The New York Times — NOVEMBER 1996",
+        endYear:"1996",
+        partyPoolOverride:[{n:"REFORM",side:"C",owner:null},{n:"GREEN",side:"E",owner:null}],
+        candidates:{
+            clinton:{name:"CLINTON", party:"DEM", start:49, money:65, side:"E", color:"#003399", econ:1, soc:1,  nat:0,  bio:"Bill Clinton, 42º Presidente buscando reeleição. Numa era de prosperidade econômica e pacificação do déficit, Clinton apelou ao centro com sua 'Terceira Via'. Venceu com 379 votos eleitorais, tornando-se o primeiro democrata reeleito desde FDR.", ideologia:"Terceira Via / Centrismo Democrata", traits:["'It's the Economy, Stupid'","Carisma e Comunicação"], negativeTraits:["Escândalo com Monica Lewinsky (futuro)","Reforma do Welfare Controversa","NAFTA Criticado pela Esquerda"]},
+            dole:   {name:"DOLE",    party:"GOP", start:41, money:55, side:"D", color:"#cc0000", econ:2, soc:-1, nat:1,  bio:"Bob Dole, senador veterano por Kansas e candidato republicano. Herói de guerra da Segunda Guerra Mundial, Dole tinha dificuldade de apresentar visão de futuro convincente contra um incumbente popular. Perdeu 159 a 379 no Colégio Eleitoral.", ideologia:"Conservadorismo Clássico / Republicanismo", traits:["Veterano de Guerra","Autoridade Legislativa"], negativeTraits:["Imagem Ultrapassada","Dificuldade com Mídia Moderna","Sem Mensagem Unificadora"]},
+            perot:  {name:"PEROT",   party:"REFORM",start:9, money:45, side:"C", color:"#ff9900", econ:2, soc:0,  nat:0,  bio:"Ross Perot, bilionário texano que fundou o Partido da Reforma após quase vencer em 1992. Em 1996, obteve 8,4% dos votos populares mas zero votos eleitorais. Focou na dívida nacional e contra o NAFTA.", ideologia:"Populismo Fiscal / Independente", traits:["Riqueza Própria","Anti-NAFTA","Outsider Populista"], negativeTraits:["Percebido como Difuso","Sem Votos Eleitorais em 1992","Base Instável"]}
+        },
+        electoralStates:[
+            {id:'AL', n:'Alabama',     x:72,y:52, ev:9,  lean:'R', econ:0, soc:-2, nat:1},
+            {id:'AK', n:'Alaska',      x:5, y:10, ev:3,  lean:'R', econ:0, soc:-1, nat:2},
+            {id:'AZ', n:'Arizona',     x:15,y:45, ev:8,  lean:'R', econ:1, soc:0,  nat:1},
+            {id:'AR', n:'Arkansas',    x:62,y:48, ev:6,  lean:'D', econ:-1,soc:-1, nat:1},
+            {id:'CA', n:'California',  x:5, y:38, ev:54, lean:'D', econ:2, soc:2,  nat:-1},
+            {id:'CO', n:'Colorado',    x:25,y:38, ev:8,  lean:'R', econ:1, soc:0,  nat:0},
+            {id:'CT', n:'Connecticut', x:90,y:28, ev:8,  lean:'D', econ:2, soc:2,  nat:-1},
+            {id:'DE', n:'Delaware',    x:88,y:35, ev:3,  lean:'D', econ:1, soc:1,  nat:0},
+            {id:'FL', n:'Florida',     x:78,y:65, ev:25, lean:'D', econ:1, soc:0,  nat:0},
+            {id:'GA', n:'Georgia',     x:76,y:55, ev:13, lean:'R', econ:1, soc:-1, nat:0},
+            {id:'HI', n:'Hawaii',      x:2, y:75, ev:4,  lean:'D', econ:0, soc:2,  nat:0},
+            {id:'ID', n:'Idaho',       x:15,y:25, ev:4,  lean:'R', econ:0, soc:-2, nat:2},
+            {id:'IL', n:'Illinois',    x:65,y:35, ev:22, lean:'D', econ:1, soc:1,  nat:0},
+            {id:'IN', n:'Indiana',     x:70,y:38, ev:12, lean:'R', econ:0, soc:-1, nat:1},
+            {id:'IA', n:'Iowa',        x:60,y:32, ev:7,  lean:'D', econ:0, soc:0,  nat:0},
+            {id:'KS', n:'Kansas',      x:50,y:42, ev:6,  lean:'R', econ:0, soc:-1, nat:1},
+            {id:'KY', n:'Kentucky',    x:72,y:42, ev:8,  lean:'R', econ:-1,soc:-2, nat:1},
+            {id:'LA', n:'Louisiana',   x:62,y:60, ev:9,  lean:'R', econ:-1,soc:-1, nat:1},
+            {id:'ME', n:'Maine',       x:92,y:15, ev:4,  lean:'D', econ:0, soc:1,  nat:0},
+            {id:'MD', n:'Maryland',    x:85,y:38, ev:10, lean:'D', econ:1, soc:2,  nat:-1},
+            {id:'MA', n:'Massachusetts',x:92,y:28,ev:12, lean:'D', econ:2, soc:2,  nat:-1},
+            {id:'MI', n:'Michigan',    x:70,y:28, ev:18, lean:'D', econ:0, soc:0,  nat:0},
+            {id:'MN', n:'Minnesota',   x:58,y:22, ev:10, lean:'D', econ:0, soc:1,  nat:0},
+            {id:'MS', n:'Mississippi', x:68,y:58, ev:7,  lean:'R', econ:-1,soc:-2, nat:1},
+            {id:'MO', n:'Missouri',    x:60,y:42, ev:11, lean:'R', econ:0, soc:-1, nat:1},
+            {id:'MT', n:'Montana',     x:22,y:20, ev:3,  lean:'R', econ:0, soc:-1, nat:2},
+            {id:'NE', n:'Nebraska',    x:48,y:35, ev:5,  lean:'R', econ:0, soc:-1, nat:1},
+            {id:'NV', n:'Nevada',      x:10,y:38, ev:4,  lean:'D', econ:0, soc:1,  nat:0},
+            {id:'NH', n:'New Hampshire',x:90,y:22,ev:4,  lean:'D', econ:1, soc:1,  nat:0},
+            {id:'NJ', n:'New Jersey',  x:87,y:33, ev:15, lean:'D', econ:2, soc:1,  nat:-1},
+            {id:'NM', n:'New Mexico',  x:25,y:52, ev:5,  lean:'D', econ:-1,soc:1,  nat:0},
+            {id:'NY', n:'New York',    x:88,y:30, ev:33, lean:'D', econ:2, soc:2,  nat:-1},
+            {id:'NC', n:'N. Carolina', x:80,y:48, ev:14, lean:'R', econ:1, soc:-1, nat:0},
+            {id:'ND', n:'N. Dakota',   x:45,y:18, ev:3,  lean:'R', econ:0, soc:-2, nat:2},
+            {id:'OH', n:'Ohio',        x:75,y:36, ev:21, lean:'D', econ:0, soc:0,  nat:0},
+            {id:'OK', n:'Oklahoma',    x:50,y:52, ev:8,  lean:'R', econ:0, soc:-2, nat:2},
+            {id:'OR', n:'Oregon',      x:7, y:25, ev:7,  lean:'D', econ:1, soc:2,  nat:0},
+            {id:'PA', n:'Pennsylvania',x:83,y:32, ev:23, lean:'D', econ:0, soc:0,  nat:0},
+            {id:'RI', n:'Rhode Island',x:92,y:30, ev:4,  lean:'D', econ:1, soc:2,  nat:-1},
+            {id:'SC', n:'S. Carolina', x:78,y:52, ev:8,  lean:'R', econ:0, soc:-2, nat:1},
+            {id:'SD', n:'S. Dakota',   x:45,y:25, ev:3,  lean:'R', econ:0, soc:-2, nat:2},
+            {id:'TN', n:'Tennessee',   x:70,y:48, ev:11, lean:'R', econ:0, soc:-2, nat:1},
+            {id:'TX', n:'Texas',       x:45,y:60, ev:32, lean:'R', econ:2, soc:-1, nat:2},
+            {id:'UT', n:'Utah',        x:20,y:40, ev:5,  lean:'R', econ:1, soc:-1, nat:1},
+            {id:'VT', n:'Vermont',     x:90,y:20, ev:3,  lean:'D', econ:0, soc:2,  nat:0},
+            {id:'VA', n:'Virginia',    x:83,y:42, ev:13, lean:'R', econ:1, soc:0,  nat:0},
+            {id:'WA', n:'Washington',  x:8, y:18, ev:11, lean:'D', econ:2, soc:2,  nat:0},
+            {id:'WV', n:'W. Virginia', x:78,y:40, ev:5,  lean:'D', econ:-2,soc:-1, nat:1},
+            {id:'WI', n:'Wisconsin',   x:63,y:28, ev:11, lean:'D', econ:0, soc:0,  nat:0},
+            {id:'WY', n:'Wyoming',     x:28,y:30, ev:3,  lean:'R', econ:0, soc:-2, nat:2},
+            {id:'DC', n:'D.C.',        x:84,y:39, ev:3,  lean:'D', econ:2, soc:2,  nat:-2}
+        ]
+    },
+    "HUN2026": {
+        title:"Eleições Parlamentares da Hungria 2026", year:"2026", emoji:"🇭🇺",
+        country:"hungary",
+        desc:"Orbán busca quinto mandato seguido. Magyar surge como principal desafio ao Fidesz. A democracia húngara está sob escrutínio internacional enquanto o país se afasta dos valores da UE.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:199,
+        majoritySeats:100,
+        newsHeader:"Telex — 2026",
+        endYear:"2026",
+        partyPoolOverride:[{n:"Fidesz",side:"D",owner:null},{n:"TISZA",side:"E",owner:null},{n:"DK",side:"E",owner:null},{n:"MH",side:"D",owner:null},{n:"Mi Hazánk",side:"D",owner:null}],
+        candidates:{
+            orban:     {name:"ORBÁN",     party:"Fidesz", start:44, money:70, side:"D", color:"#ff6600", econ:0, soc:-2, nat:2,  bio:"Viktor Orbán, primeiro-ministro da Hungria desde 2010. Transformou o país em 'democracia iliberal', controlando mídia, judiciary e sistema eleitoral. Aliado de Putin e crítico da UE. Enfrenta o maior desafio da oposição em uma década com Magyar.", ideologia:"Democracia Iliberal / Conservadorismo Nacional / Orbánismo", traits:["Controle Total do Aparato Estatal","Mídia Pública Monopolizada"], negativeTraits:["Corrupção Sistêmica","Erosão Democrática","Conflito com UE"]},
+            magyar:    {name:"MAGYAR",    party:"TISZA",  start:30, money:35, side:"E", color:"#009900", econ:0, soc:1,  nat:-1, bio:"Péter Magyar, ex-marido da ex-ministra de Orbán que virou crítico feroz do regime. Fundou o TISZA (Plataforma de Respeito e Liberdade) tornando-se o maior desafio à hegemonia do Fidesz. Mobilizou jovens e descontentes num movimento histórico.", ideologia:"Democracia Liberal / Anti-Corrupção", traits:["Símbolo da Mudança","Mobilização Jovem"], negativeTraits:["Partido Novo sem Estrutura","Insider que Virou Outsider"]},
+            dobrev:    {name:"DOBREV",    party:"DK",     start:10, money:20, side:"E", color:"#cc0000", econ:-1,soc:2,  nat:-1, bio:"Klára Dobrev, vice-presidente do Parlamento Europeu e líder do Coalizão Democrática. Esposa do ex-PM Gyurcsány, principal força da esquerda tradicional húngara mas limitada pela impopularidade do marido.", ideologia:"Social-Democracia / Europeísmo", traits:["Rede Europeia Forte"], negativeTraits:["Marido Gyurcsány é Impopular","Esquerda Fragmentada"]},
+            toroczkai: {name:"TOROCZKAI", party:"MH",     start:8,  money:15, side:"D", color:"#8b0000", econ:-1,soc:-2, nat:2,  bio:"László Toroczkai, prefeito de Ásotthalom e líder do Mi Hazánk (Nossa Pátria). Partido ultranacionalista que compete com Fidesz pela direita. Defende expulsão de imigrantes, anti-Roma e etnonacionalismo.", ideologia:"Ultranacionalismo / Etnonacionalismo", traits:["Base Radicalizada Fiel"], negativeTraits:["Extremismo Xenófobo","Percebido como Candidato Fringe"]}
+        },
+        regions:[
+            {id:'BUD', n:'Budapeste (Capital)',         x:58,y:48, p:22, econ:2,  soc:2,  nat:-1},
+            {id:'NOH', n:'Norte da Hungria (Miskolc)',  x:68,y:28, p:14, econ:-2, soc:-1, nat:2},
+            {id:'ALF', n:'Planície (Debrecen/Nyíregyháza)',x:78,y:42, p:18, econ:-1, soc:-2, nat:2},
+            {id:'DAL', n:'Transdanúbia do Sul (Pécs)',  x:42,y:68, p:12, econ:-1, soc:0,  nat:1},
+            {id:'DNO', n:'Transdanúbia do Norte (Győr)',x:32,y:38, p:14, econ:1,  soc:-1, nat:1},
+            {id:'DKE', n:'Transdanúbia Central',        x:45,y:55, p:10, econ:0,  soc:-1, nat:1},
+            {id:'SUD', n:'Sul da Planície (Kecskemét)', x:62,y:62, p:10, econ:0,  soc:-2, nat:2}
+        ]
+    },
+    "ROU2025": {
+        title:"Eleições Presidenciais da Romênia 2025", year:"2025", emoji:"🇷🇴",
+        country:"romania",
+        desc:"Nicusor Dan vs Simion vs Antonescu vs Ponta. Romênia no cruzamento entre Europa e populismo, após eleições anuladas.",
+        available:true,
+        newsHeader:"Digi24 — 2025",
+        endYear:"2025",
+        partyPoolOverride:[{n:"Independente",side:"C",owner:null},{n:"AUR",side:"D",owner:null},{n:"PSD",side:"E",owner:null},{n:"Coalizão Nacional",side:"C",owner:null}],
+        candidates:{
+            ndan25:     {name:"N. DAN",    party:"Independente", start:28, money:35, side:"C", color:"#0055cc", econ:0, soc:1,  nat:-1, bio:"Nicusor Dan, ex-prefeito de Bucareste, independente anti-corrupção. Candidato reformista que representa a esperança da Romênia europeia.", ideologia:"Liberalismo / Anti-Corrupção", traits:["Reputação de Honestidade","Apoio Urbano"], negativeTraits:["Sem Partido","Pouca Estrutura Nacional"]},
+            simion25:   {name:"SIMION",    party:"AUR",          start:32, money:40, side:"D", color:"#8b0000", econ:-1,soc:-2, nat:2,  bio:"George Simion, líder do partido ultranacionalista AUR. Populista radical, eurocético, com discurso anti-establishment e ligações com movimentos de extrema-direita europeia.", ideologia:"Ultranacionalismo / Soberanismo", traits:["Mobilização de Base","Discurso Anti-Sistema"], negativeTraits:["Extremismo Isolante","Reputação Internacional Negativa"]},
+            antonescu25:{name:"ANTONESCU", party:"Coalizão Nacional", start:25, money:45, side:"C", color:"#006600", econ:0, soc:0,  nat:0,  bio:"Crin Antonescu, ex-presidente do Senado e ex-líder do PNL. Candidato da coalizão governamental PSD-PNL-UDMR. Político experiente buscando estabilidade.", ideologia:"Centrismo / Social-Democracia", traits:["Apoio da Coalizão Governamental","Experiência Política"], negativeTraits:["Desgaste pelo Governo","Percebido como Parte do Sistema"]},
+            ponta25:    {name:"PONTA",     party:"Independente",  start:12, money:20, side:"E", color:"#cc0000", econ:-1,soc:1,  nat:0,  bio:"Victor Ponta, ex-primeiro-ministro da Romênia. Candidato polêmico que tentou retorno à política após escândalos de corrupção. Figura controversa da esquerda social-democrata.", ideologia:"Social-Democracia", traits:["Experiência como PM"], negativeTraits:["Escândalos de Corrupção","Divisivo na Esquerda"]}
+        },
+        regions:[
+            {id:'BUC',  n:'Bucareste (Capital)',     x:72,y:62, p:18, econ:2,  soc:2,  nat:-1},
+            {id:'TRAN', n:'Transilvânia',            x:42,y:35, p:25, econ:1,  soc:0,  nat:0},
+            {id:'MOLD', n:'Moldávia',                x:80,y:30, p:20, econ:-1, soc:0,  nat:1},
+            {id:'MUNT', n:'Muntênia',                x:68,y:50, p:15, econ:0,  soc:-1, nat:1},
+            {id:'OLES', n:'Oltênia',                 x:48,y:60, p:12, econ:-1, soc:-1, nat:2},
+            {id:'DOBJ', n:'Dobruja',                 x:82,y:70, p:5,  econ:0,  soc:0,  nat:1},
+            {id:'BANA', n:'Banat/Crisana',           x:25,y:42, p:5,  econ:1,  soc:1,  nat:0}
+        ]
+    },
+    "GRE2023": {
+        title:"Eleições Parlamentares da Grécia 2023", year:"2023", emoji:"🇬🇷",
+        country:"greece",
+        desc:"Mitsotakis vs Tsipras vs Androulakis. Grécia pós-crise decide entre centro-direita, esquerda e populistas.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:300,
+        majoritySeats:151,
+        newsHeader:"Kathimerini — 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"ND",side:"D",owner:null},{n:"SYRIZA",side:"E",owner:null},{n:"PASOK",side:"C",owner:null},{n:"KKE",side:"E",owner:null},{n:"Espartanos",side:"D",owner:null}],
+        candidates:{
+            mitsotakis: {name:"MITSOTAKIS",party:"Nova Democracia", start:42, money:55, side:"D", color:"#0044cc", econ:2, soc:-1, nat:0,  bio:"Kyriakos Mitsotakis, primeiro-ministro grego. Líder da centro-direita modernizante, com agenda pró-mercado e reformas estruturais. Venceu com maioria absoluta pela primeira vez desde a reforma eleitoral.", ideologia:"Centro-Direita / Liberalismo Econômico", traits:["Apoio Internacional","Recuperação Econômica"], negativeTraits:["Escândalos de Espionagem","Desigualdade Persistente"]},
+            tsipras23:  {name:"TSIPRAS",   party:"SYRIZA",          start:20, money:35, side:"E", color:"#8b0000", econ:-1,soc:2,  nat:0,  bio:"Aléxis Tsipras, ex-primeiro-ministro e líder do SYRIZA. Figura da esquerda radical europeia que governou durante a crise da dívida grega. Tentou retorno mas sofreu derrota histórica do SYRIZA.", ideologia:"Esquerda Radical / Euro-Ceticismo de Esquerda", traits:["Base Fiel na Esquerda Tradicional"], negativeTraits:["Desgaste do Governo 2015-2019","SYRIZA em Queda"]},
+            androulakis:{name:"ANDROULAKIS",party:"PASOK",          start:13, money:25, side:"C", color:"#006600", econ:0, soc:1,  nat:0,  bio:"Nikos Androulakis, líder do PASOK-KINAL. Renascimento do histórico partido socialista grego. Tentou posicionar-se como terceira via moderada entre ND e SYRIZA.", ideologia:"Social-Democracia / Socialismo Moderado", traits:["Herança do PASOK Histórico","Credibilidade Moderada"], negativeTraits:["Sem Espaço Entre os Polos","Partido ainda Pequeno"]},
+            koutsoumpas:{name:"KOUTSOUMPAS",party:"KKE",            start:8,  money:15, side:"E", color:"#cc0000", econ:-2,soc:2,  nat:1,  bio:"Dimitris Koutsoumpas, secretário-geral do Partido Comunista da Grécia. O KKE mantém posição consistente na esquerda, recusando coalizões e alianças, com base estável.", ideologia:"Marxismo-Leninismo / Comunismo", traits:["Base Estável e Disciplinada"], negativeTraits:["Intransigência Política","Pouco Crescimento"]},
+            stigkas:    {name:"STIGKAS",   party:"Espartanos",       start:5,  money:10, side:"D", color:"#8b4513", econ:-1,soc:-2, nat:2,  bio:"Vasilis Stigkas, líder dos Espartanos, partido de extrema-direita com ligações com o movimento Aube Dorée (Aurora Dourada). Defende soberania grega e posições ultranacionalistas.", ideologia:"Ultranacionalismo / Extrema-Direita", traits:["Base Radicalizada"], negativeTraits:["Ligações com Aurora Dourada","Extremismo Isolante"]}
+        },
+        regions:[
+            {id:'ATIC',  n:'Ática (Atenas)',         x:62,y:70, p:38, econ:2,  soc:1,  nat:-1},
+            {id:'MACED', n:'Macedônia Central',      x:55,y:22, p:18, econ:0,  soc:-1, nat:1},
+            {id:'THESS', n:'Tessália',               x:52,y:42, p:10, econ:-1, soc:0,  nat:1},
+            {id:'PELO',  n:'Peloponeso',             x:48,y:72, p:10, econ:-1, soc:-1, nat:2},
+            {id:'CRETA', n:'Creta',                  x:55,y:92, p:7,  econ:0,  soc:1,  nat:1},
+            {id:'EGEMAR',n:'Egeu/Ilhas',             x:78,y:75, p:5,  econ:1,  soc:1,  nat:0},
+            {id:'EPIRO', n:'Epiro/Grécia Ocidental', x:35,y:52, p:5,  econ:-2, soc:0,  nat:1},
+            {id:'TRAC',  n:'Trácia Oriental',        x:78,y:22, p:4,  econ:-1, soc:-1, nat:2},
+            {id:'STEREA',n:'Grécia Central',         x:48,y:58, p:3,  econ:0,  soc:0,  nat:1}
+        ]
+    },
+    "NLD2025": {
+        title:"Eleições Parlamentares dos Países Baixos 2025", year:"2025", emoji:"🇳🇱",
+        country:"netherlands",
+        desc:"Jetten vs Wilders vs Yesilgoz. Holanda entre liberalismo, populismo de direita e a mais disputada eleição recente.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:150,
+        majoritySeats:76,
+        newsHeader:"NRC Handelsblad — 2025",
+        endYear:"2025",
+        partyPoolOverride:[{n:"D66",side:"C",owner:null},{n:"PVV",side:"D",owner:null},{n:"VVD",side:"D",owner:null},{n:"GroenLinks-PvdA",side:"E",owner:null}],
+        candidates:{
+            jetten25:   {name:"JETTEN",   party:"D66",   start:22, money:35, side:"C", color:"#00aa66", econ:1, soc:2,  nat:-2, bio:"Rob Jetten, líder do Democratas 66 e ministro da Energia. Partido liberal-progressista, pró-UE, favorável a políticas verdes e direitos civis. Representa a Holanda cosmopolita urbana.", ideologia:"Liberalismo Social / Progressismo / Europeísmo", traits:["Apoio Urbano e Jovem","Agenda Verde Forte"], negativeTraits:["Pouco Apelo Rural","Percebido como Elitista"]},
+            wilders25:  {name:"WILDERS",  party:"PVV",   start:30, money:40, side:"D", color:"#003399", econ:-1,soc:-2, nat:2,  bio:"Geert Wilders, líder do Partido pela Liberdade. Populista de direita radicalmente anti-islamista, anti-imigração e eurocético. Figura controversa na política europeia há décadas, formou governo em 2023.", ideologia:"Populismo de Direita / Islamofobia / Soberanismo", traits:["Base Fiel de Votantes","Anti-Establishment Consolidado"], negativeTraits:["Extremismo Isolante","Dificuldade em Formar Coalizões"]},
+            yesilgoz25: {name:"YEŞILGÖZ", party:"VVD",   start:20, money:45, side:"D", color:"#ff6600", econ:2, soc:-1, nat:0,  bio:"Dilan Yeşilgöz, líder do VVD (Partido do Povo para a Liberdade e Democracia). Filha de imigrante turco, tornou-se líder do maior partido liberal-conservador holandês. Defende economia de mercado e controle moderado da imigração.", ideologia:"Liberalismo Conservador / Centro-Direita", traits:["Experiência Ministerial","Posição de Centro-Direita Estabilizadora"], negativeTraits:["VVD em Declínio","Posição Ambígua na Imigração"]}
+        },
+        regions:[
+            {id:'RAND',  n:'Randstad (Amsterdã/Roterdã/Haia)',x:45,y:55, p:45, econ:2,  soc:2,  nat:-2},
+            {id:'NOOS',  n:'Norte/Groninga',                  x:52,y:15, p:8,  econ:-1, soc:0,  nat:1},
+            {id:'BRAB',  n:'Brabante do Norte',               x:42,y:70, p:15, econ:1,  soc:-1, nat:1},
+            {id:'LIMB',  n:'Limburgo/Zelândia',               x:48,y:85, p:8,  econ:0,  soc:-1, nat:1},
+            {id:'GELD',  n:'Guéldria',                        x:60,y:52, p:12, econ:1,  soc:0,  nat:0},
+            {id:'TWEN', n:'Overijssel/Twente',               x:68,y:38, p:7,  econ:0,  soc:-1, nat:1},
+            {id:'FRESL', n:'Frísia/Drenthe',                  x:48,y:28, p:5,  econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "SRB2023": {
+        title:"Eleições Presidenciais da Sérvia 2023", year:"2023", emoji:"🇷🇸",
+        country:"serbia",
+        desc:"Vucic vs Ponos vs Jovanovic. Sérvia entre populismo, reformas e pressão europeia.",
+        available:true,
+        newsHeader:"Blic — 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"SNS",side:"D",owner:null},{n:"Narodna",side:"C",owner:null},{n:"DSS",side:"D",owner:null},{n:"DVERI-POKS",side:"D",owner:null}],
+        candidates:{
+            vucic23:    {name:"VUČIĆ",    party:"SNS",         start:56, money:70, side:"D", color:"#cc0000", econ:0, soc:-1, nat:1,  bio:"Aleksandar Vučić, presidente da Sérvia. Domina a política sérvia com controle da mídia e aparato estatal. Ex-ministro de Milošević transformado em parceiro europeu ambíguo. Reeleito com ampla margem em eleições contestadas.", ideologia:"Populismo Autoritário / Nacionalismo Sérvio", traits:["Controle Total dos Meios de Comunicação","Apoio do Interior"], negativeTraits:["Corrupção Generalizada","Erosão Democrática","Dualidade UE-Rússia"]},
+            ponos23:    {name:"PONOŠ",    party:"Narodna",     start:18, money:25, side:"C", color:"#0055cc", econ:0, soc:1,  nat:0,  bio:"Zdravko Ponoš, ex-chefe do Exército sérvio. Principal candidato da oposição unida, militar respeitado que tentou capitalizar o desgaste de Vučić mas não conseguiu superar a máquina governamental.", ideologia:"Democracia Liberal / Reformismo", traits:["Credibilidade Militar","Apoio da Oposição Unida"], negativeTraits:["Sem Estrutura Partidária","Mídia Desfavorável"]},
+            jovanovic23:{name:"JOVANOVIĆ",party:"DSS",         start:11, money:15, side:"D", color:"#006600", econ:-1,soc:-1, nat:2,  bio:"Miloš Jovanović, líder do Partido Democrático da Sérvia. Conservador cristão e crítico da adesão à UE. Representa o nacionalismo sérvio tradicional e a visão pró-Rússia mais explícita.", ideologia:"Conservadorismo Cristão / Eurocetismo / Pró-Rússia", traits:["Base Conservadora Fiel"], negativeTraits:["Extremismo Isola Parceiros","Pequena Base Nacional"]},
+            obradovic23:{name:"OBRADOVIĆ",party:"DVERI-POKS",  start:8,  money:12, side:"D", color:"#8b4513", econ:-1,soc:-2, nat:2,  bio:"Boško Obradović, líder de DVERI, movimento de direita cristã e soberanista sérvio. Defende valores tradicionais ortodoxos, limitação da imigração e soberania nacional. Partido de nicho mas consistente.", ideologia:"Democracia Cristã / Soberanismo", traits:["Coerência Ideológica"], negativeTraits:["Nicho Pequeno","Sem Presença Nacional Forte"]}
+        },
+        regions:[
+            {id:'BELGR',n:'Belgrado (Capital)',     x:55,y:48, p:25, econ:2,  soc:1,  nat:0},
+            {id:'VOJVO',n:'Voivodina',              x:48,y:22, p:20, econ:1,  soc:0,  nat:0},
+            {id:'SUMAD',n:'Šumadija (Kragujevac)',  x:50,y:58, p:15, econ:0,  soc:-1, nat:1},
+            {id:'WSERB',n:'Sérvia Ocidental',       x:32,y:48, p:15, econ:-1, soc:-1, nat:2},
+            {id:'ESERB',n:'Sérvia Oriental',        x:70,y:55, p:10, econ:-1, soc:-1, nat:2},
+            {id:'SOUTH',n:'Sul da Sérvia',          x:55,y:72, p:10, econ:-2, soc:-1, nat:2},
+            {id:'RASCI',n:'Rasciani (Novi Pazar)',   x:42,y:72, p:5,  econ:-2, soc:0,  nat:1}
+        ]
+    },
+    "AUT2024": {
+        title:"Eleições Parlamentares da Áustria 2024", year:"2024", emoji:"🇦🇹",
+        country:"austria",
+        desc:"Kickl vs Nehammer vs Babler. Áustria na encruzilhada entre extrema-direita histórica e centro-moderado.",
+        available:true,
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:183,
+        majoritySeats:92,
+        newsHeader:"Der Standard — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"FPÖ",side:"D",owner:null},{n:"ÖVP",side:"D",owner:null},{n:"SPÖ",side:"E",owner:null},{n:"NEOS",side:"C",owner:null},{n:"Grüne",side:"E",owner:null}],
+        candidates:{
+            kickl24:    {name:"KICKL",    party:"FPÖ", start:28, money:40, side:"D", color:"#0033cc", econ:-1,soc:-2, nat:2,  bio:"Herbert Kickl, líder do FPÖ (Partido da Liberdade da Áustria). Venceu as eleições de setembro de 2024 como primeiro partido mas encontrou dificuldade em formar governo pela resistência dos outros partidos. Populista radical anti-imigração e crítico da UE.", ideologia:"Populismo de Direita / Soberanismo / Anti-Imigração", traits:["Vitória como Primeiro Partido","Base Fiel"], negativeTraits:["Boicote dos Outros Partidos","Isolamento Político"]},
+            nehammer24: {name:"NEHAMMER", party:"ÖVP", start:26, money:45, side:"D", color:"#000033", econ:1, soc:-1, nat:0,  bio:"Karl Nehammer, chanceler austríaco e líder do ÖVP (Partido Popular Austríaco). Perdeu as eleições mas tentou articular governo de coalizão excluindo Kickl. Representou a centro-direita tradicional austríaca.", ideologia:"Democracia Cristã / Centro-Direita", traits:["Estrutura Governamental","Apoio Empresarial"], negativeTraits:["Desgaste do Governo","ÖVP em Declínio"]},
+            babler24:   {name:"BABLER",   party:"SPÖ", start:22, money:35, side:"E", color:"#cc0000", econ:-1,soc:2,  nat:-1, bio:"Andreas Babler, líder do SPÖ (Partido Social-Democrata da Áustria) eleito de forma surpreendente. Representou a ala esquerda do partido, com agenda mais progressista. Ficou em terceiro lugar numa eleição histórica.", ideologia:"Social-Democracia / Progressismo", traits:["Renovação do SPÖ","Agenda Social Clara"], negativeTraits:["SPÖ Enfraquecido","Divisão Interna"]}
+        },
+        regions:[
+            {id:'VIEN',  n:'Viena (Capital)',         x:78,y:42, p:22, econ:2,  soc:2,  nat:-2},
+            {id:'NOE',   n:'Baixa Áustria',           x:65,y:35, p:18, econ:1,  soc:-1, nat:1},
+            {id:'OOE',   n:'Alta Áustria',            x:45,y:28, p:17, econ:1,  soc:-1, nat:1},
+            {id:'STY',   n:'Estíria (Graz)',          x:58,y:58, p:14, econ:0,  soc:-1, nat:1},
+            {id:'TIR',   n:'Tirol',                   x:32,y:48, p:8,  econ:1,  soc:0,  nat:0},
+            {id:'CAR',   n:'Caríntia',                x:45,y:68, p:7,  econ:-1, soc:0,  nat:1},
+            {id:'SAL',   n:'Salzburgo',               x:38,y:38, p:6,  econ:1,  soc:0,  nat:0},
+            {id:'VOR',   n:'Vorarlberg',               x:18,y:42, p:4,  econ:2,  soc:1,  nat:0},
+            {id:'BUR',   n:'Burgenland',               x:82,y:55, p:4,  econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "LTU2024": {
+        title:"Eleições Presidenciais da Lituânia 2024", year:"2024", emoji:"🇱🇹",
+        country:"lithuania",
+        desc:"Nauseda vs Simonyte vs Vegelee. Lituânia entre estabilidade e renovação, com a OTAN na pauta.",
+        available:true,
+        newsHeader:"LRT — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"Independente",side:"C",owner:null},{n:"TS-LKD",side:"D",owner:null},{n:"Centro",side:"C",owner:null}],
+        candidates:{
+            nauseda24:  {name:"NAUSĖDA",  party:"Independente", start:44, money:40, side:"C", color:"#0066cc", econ:0, soc:0,  nat:1,  bio:"Gitanas Nausėda, economista e presidente incumbente da Lituânia. Candidato independente popular, pró-OTAN e pró-UE. Buscou reeleição num contexto de guerra na Ucrânia e ameaça russa na região báltica.", ideologia:"Centrismo Liberal / Euroatlantismo", traits:["Popularidade Sólida","Posição Pró-OTAN Forte"], negativeTraits:["Sem Partido","Dependente de Aprovação Pessoal"]},
+            simonyte24: {name:"ŠIMONYTĖ",  party:"TS-LKD",      start:32, money:35, side:"D", color:"#004488", econ:1, soc:-1, nat:0,  bio:"Ingrida Šimonytė, primeira-ministra e líder do TS-LKD (União Pátria – Democratas-Cristãos Lituanos). Economista competente e candidata da centro-direita, chegou ao segundo turno mas perdeu para Nausėda.", ideologia:"Democracia Cristã / Conservadorismo Moderado", traits:["Experiência como PM","Apoio Partidário Sólido"], negativeTraits:["Percebida como Mais Fria","Menos Carisma Popular"]},
+            vegelee24:  {name:"VĖGĖLĖ",  party:"Independente",  start:18, money:20, side:"C", color:"#009900", econ:0, soc:1,  nat:-1, bio:"Ignas Vėgėlė, advogado constitucionalista e candidato independente progressista. Figura nova na política lituana, com agenda de reformas e direitos civis. Ficou em terceiro lugar mas mostrou espaço para renovação.", ideologia:"Liberalismo Progressista", traits:["Representação da Renovação"], negativeTraits:["Falta de Estrutura Política","Pouca Experiência"]}
+        },
+        regions:[
+            {id:'VILNIUS', n:'Vilnius (Capital)',     x:72,y:48, p:28, econ:2,  soc:1,  nat:-1},
+            {id:'KAUNAS',  n:'Kaunas',               x:45,y:55, p:20, econ:1,  soc:0,  nat:1},
+            {id:'KLAIP',   n:'Klaipėda (Costa)',     x:18,y:38, p:12, econ:1,  soc:0,  nat:1},
+            {id:'PANEV',   n:'Panevėžys (Norte)',    x:52,y:28, p:10, econ:-1, soc:-1, nat:2},
+            {id:'SIAULIA', n:'Šiauliai (Norte)',     x:35,y:25, p:10, econ:-1, soc:-1, nat:2},
+            {id:'ALYTUS',  n:'Alytus/Marijampolė',   x:42,y:72, p:10, econ:-2, soc:-1, nat:2},
+            {id:'UTENA',   n:'Utena (Leste)',        x:68,y:28, p:5,  econ:-1, soc:0,  nat:1},
+            {id:'TELSIAI', n:'Telšiai (Samogitia)',  x:22,y:28, p:5,  econ:-1, soc:-1, nat:2}
+        ]
+    },
+    "TWN2024": {
+        title:"Eleição Presidencial de Taiwan 2024", year:"2024", emoji:"🇹🇼",
+        country:"taiwan",
+        desc:"Lai Ching-te (DPP) vs Hou Yu-ih (KMT) vs Ko Wen-je (TPP). Taiwan decide entre aproximação com os EUA, reaproximação com a China, ou um caminho independente num momento de tensão geopolítica sem precedentes.",
+        available:true,
+        newsHeader:"CNA 台灣 — 2024",
+        endYear:"2024",
+        noSecondRound:true,
+        partyPoolOverride:[{n:"DPP",side:"E",owner:null},{n:"KMT",side:"D",owner:null},{n:"TPP",side:"C",owner:null}],
+        candidates:{
+            lai24:  {name:"LAI CHING-TE", party:"DPP",  start:40, money:45, side:"E", color:"#1B6B2F", econ:0, soc:1,  nat:-2, bio:"Lai Ching-te (William Lai), vice-presidente e candidato do DPP. Defensor da soberania de Taiwan e das relações com os EUA. A China o considera separatista perigoso. Eleito com pluralidade de votos em eleição de três vias.", ideologia:"Independentismo / Social-Democracia", traits:["Apoio dos EUA","Incumbência Vantajosa"], negativeTraits:["Provocação à China","Minoria no Legislativo"]},
+            hou24:  {name:"HOU YU-IH",   party:"KMT",  start:33, money:40, side:"D", color:"#000095", econ:1, soc:-1, nat:2,  bio:"Hou Yu-ih, prefeito de New Taipei e candidato do Kuomintang. Defende engajamento pragmático com Pequim e redução das tensões no Estreito. Base no eleitorado mais velho e conservador.", ideologia:"Conservadorismo / Engajamento com China", traits:["Experiência de Governança","Estabilidade"], negativeTraits:["Visto como Pró-China","Base Envelhecida"]},
+            ko24:   {name:"KO WEN-JE",   party:"TPP",  start:26, money:30, side:"C", color:"#28A8E0", econ:0, soc:0,  nat:0,  bio:"Ko Wen-je, ex-prefeito de Taipé e fundador do Partido Popular de Taiwan. Outsider populista que atraiu jovens e eleitores descontentes com KMT e DPP. Apelo centrista e antiestablishment.", ideologia:"Populismo Centrista / Terceira Via", traits:["Popularidade Jovem","Antiestablishment"], negativeTraits:["Partido Novo","Declarações Polêmicas"]}
+        },
+        regions:[
+            {id:'TAIPEI',   n:'Taipei (Capital)',       x:72,y:35, p:14, econ:2,  soc:1,  nat:-2},
+            {id:'NEWTPE',   n:'Nova Taipei',            x:70,y:28, p:16, econ:1,  soc:0,  nat:-1},
+            {id:'TAOYUAN',  n:'Taoyuan',                x:62,y:32, p:10, econ:1,  soc:0,  nat:0},
+            {id:'TAICHUNG', n:'Taichung (Centro)',      x:50,y:55, p:12, econ:0,  soc:0,  nat:0},
+            {id:'TAINAN',   n:'Tainan (Sul)',           x:38,y:72, p:9,  econ:-1, soc:1,  nat:-1},
+            {id:'KAOHSIUNG',n:'Kaohsiung',              x:35,y:82, p:11, econ:-1, soc:1,  nat:-2},
+            {id:'HSINCHU',  n:'Hsinchu (Vale do Silício)',x:60,y:40, p:6, econ:2, soc:0, nat:-1},
+            {id:'CHANGHUA', n:'Changhua/Nantou',        x:48,y:62, p:7,  econ:-1, soc:-1, nat:1},
+            {id:'YUNLIN',   n:'Yunlin/Chiayi',          x:42,y:68, p:5,  econ:-2, soc:0,  nat:-1},
+            {id:'MIAOLI',   n:'Miaoli/Hualien',         x:65,y:52, p:5,  econ:0,  soc:-1, nat:2},
+            {id:'KINMEN',   n:'Kinmen/Matsu (Fronteira)',x:15,y:45, p:5, econ:-1, soc:-2, nat:2}
+        ]
+    },
+    "AUS2025": {
+        title:"Eleições Federais da Austrália 2025", year:"2025", emoji:"🇦🇺",
+        country:"australia",
+        desc:"Albanese (Labor) vs Dutton (LNP) vs Bandt (Greens). Austrália decide entre continuar com o centro-esquerda trabalhista ou voltar ao conservadorismo da coalização Liberal-Nacional.",
+        available:true,
+        newsHeader:"ABC News Australia — 2025",
+        endYear:"2025",
+        isParliamentary:true,
+        parliamentSeats:151,
+        majoritySeats:76,
+        noSecondRound:true,
+        partyPoolOverride:[{n:"Labor",side:"E",owner:null},{n:"LNP",side:"D",owner:null},{n:"Greens",side:"E",owner:null}],
+        candidates:{
+            albanese25: {name:"ALBANESE",  party:"Labor",  start:34, money:40, side:"E", color:"#CC0000", econ:-1,soc:2,  nat:-1, bio:"Anthony Albanese, primeiro-ministro incumbente e líder do Partido Trabalhista Australiano. Político de esquerda moderada, focado em mudanças climáticas, saúde pública e direitos dos trabalhadores. Reeleição buscada após mandato reformista.", ideologia:"Social-Democracia / Trabalhismo", traits:["Incumbência","Políticas de Bem-Estar"], negativeTraits:["Custo de Vida em Alta","Gestão da Imigração"]},
+            dutton25:   {name:"DUTTON",    party:"LNP",    start:35, money:42, side:"D", color:"#003087", econ:1, soc:-2, nat:2,  bio:"Peter Dutton, líder da Oposição e do Partido Liberal-Nacional. Ex-ministro do Interior, conhecido por linha dura em imigração e segurança. Favorito das pesquisas com discurso de retomada da ordem econômica.", ideologia:"Conservadorismo Liberal / Centro-Direita", traits:["Discurso de Ordem","Apoio Empresarial"], negativeTraits:["Imagem Rígida","Críticas sobre Direitos Civis"]},
+            bandt25:    {name:"BANDT",     party:"Greens",  start:12, money:20, side:"E", color:"#009900", econ:-2,soc:3,  nat:-2, bio:"Adam Bandt, líder do Partido Verde Australiano. Defensor radical da ação climática, habitação acessível e direitos das minorias. Terceira força eleitoral com crescimento entre jovens urbanos.", ideologia:"Ecologismo / Progressismo", traits:["Jovem Eleitorado","Clima como Bandeira"], negativeTraits:["Muito à Esquerda","Fora de Grandes Eleitorados"]}
+        },
+        regions:[
+            {id:'NSW',  n:'New South Wales (Sydney)',  x:72,y:62, p:32, econ:1,  soc:0,  nat:0},
+            {id:'VIC',  n:'Victoria (Melbourne)',      x:60,y:80, p:26, econ:0,  soc:1,  nat:-1},
+            {id:'QLD',  n:'Queensland (Brisbane)',     x:68,y:38, p:20, econ:0,  soc:-1, nat:1},
+            {id:'WA',   n:'Western Australia (Perth)', x:20,y:55, p:11, econ:2,  soc:-1, nat:1},
+            {id:'SA',   n:'South Australia (Adelaide)',x:42,y:72, p:7,  econ:-1, soc:0,  nat:0},
+            {id:'TAS',  n:'Tasmania (Hobart)',         x:62,y:92, p:2,  econ:-1, soc:1,  nat:-1},
+            {id:'ACT',  n:'Canberra (ACT)',            x:68,y:72, p:1,  econ:2,  soc:2,  nat:-2},
+            {id:'NT',   n:'Northern Territory (Darwin)',x:40,y:22, p:1, econ:-2, soc:-1, nat:2}
+        ]
+    },
+    "URU2024": {
+        title:"Eleições Presidenciais do Uruguai 2024", year:"2024", emoji:"🇺🇾",
+        country:"uruguay",
+        desc:"Yamandú Orsi (FA) vs Álvaro Delgado (PN) vs Andrés Ojeda (Colorado). Uruguai no balotaje entre a Frente Ampla de esquerda e a direita de Delgado, num dos países mais democráticos e igualitários da América Latina.",
+        available:true,
+        newsHeader:"El País Uruguay — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"Frente Ampla",side:"E",owner:null},{n:"Partido Nacional",side:"D",owner:null},{n:"Partido Colorado",side:"D",owner:null}],
+        candidates:{
+            orsi24:    {name:"ORSI",    party:"Frente Ampla",     start:43, money:35, side:"E", color:"#CC0000", econ:-1,soc:2,  nat:-1, bio:"Yamandú Orsi, candidato da Frente Ampla e ex-intendente de Canelones. Político moderado de esquerda, próximo ao legado de Mujica mas com tom conciliador. Venceu o balotaje por margem estreita.", ideologia:"Social-Democracia / Frente de Esquerda", traits:["Coalizão Ampla","Legado Mujica"], negativeTraits:["Minoria no Parlamento","Fragmentação Interna"]},
+            delgado24: {name:"DELGADO", party:"Partido Nacional",  start:27, money:38, side:"D", color:"#003399", econ:1, soc:-1, nat:1,  bio:"Álvaro Delgado, ex-presidente do Senado e candidato do Partido Nacional. Continuidade da gestão Lacalle Pou. Favorito dos empresários e do campo, perdeu o balotaje por pequena margem.", ideologia:"Conservadorismo Liberal / Centro-Direita", traits:["Gestão Econômica","Apoio Rural"], negativeTraits:["Percebido como Elitista","Custo de Vida"]},
+            ojeda24:   {name:"OJEDA",   party:"Partido Colorado",  start:17, money:22, side:"D", color:"#CC6600", econ:1, soc:-1, nat:0,  bio:"Andrés Ojeda, jovem advogado e candidato surpresa do Partido Colorado. Apelo populista de direita e estilo comunicativo irreverente conquistou votos dos descontentes. Terceiro lugar expressivo.", ideologia:"Liberalismo / Direita Populista", traits:["Apelo Jovem","Estilo Outsider"], negativeTraits:["Partido em Declínio","Poucas Propostas Concretas"]}
+        },
+        regions:[
+            {id:'MONTEVIDEO', n:'Montevidéu (Capital)', x:58,y:88, p:38, econ:2,  soc:2,  nat:-2},
+            {id:'CANELONES',  n:'Canelones',            x:55,y:78, p:16, econ:0,  soc:1,  nat:-1},
+            {id:'MALDONADO',  n:'Maldonado (Costa Leste)',x:72,y:82, p:6, econ:1,  soc:0,  nat:0},
+            {id:'COLONIA',    n:'Colônia (Sudoeste)',   x:38,y:80, p:5,  econ:0,  soc:-1, nat:1},
+            {id:'SALTO',      n:'Salto/Paysandú (Norte)',x:22,y:28, p:8, econ:-2, soc:0,  nat:1},
+            {id:'ARTIGAS',    n:'Artigas/Rivera (Fronteira)',x:28,y:15,p:5,econ:-2,soc:-1,nat:2},
+            {id:'TACUAREMBO', n:'Tacuarembó/Durazno (Interior)',x:40,y:42,p:7,econ:-1,soc:-1,nat:1},
+            {id:'TREINTAYTRES',n:'Treinta y Tres/Cerro Largo',x:62,y:48,p:5,econ:-1,soc:-1,nat:2}
+        ]
+    },
+    "PAR2023": {
+        title:"Eleições Presidenciais do Paraguai 2023", year:"2023", emoji:"🇵🇾",
+        country:"paraguay",
+        desc:"Santiago Peña (Colorado) vs Efraín Alegre (PLRA) vs Paraguayo Cubas (Cruzada Nacional). O Paraguai decide se o Partido Colorado — no poder há 77 anos consecutivos — continuará dominando ou enfrentará ruptura histórica.",
+        available:true,
+        newsHeader:"ABC Color — 2023",
+        endYear:"2023",
+        noSecondRound:true,
+        partyPoolOverride:[{n:"Colorado",side:"D",owner:null},{n:"PLRA",side:"E",owner:null},{n:"Cruzada Nacional",side:"D",owner:null}],
+        candidates:{
+            pena23:    {name:"PEÑA",    party:"Colorado",         start:43, money:50, side:"D", color:"#CC0000", econ:1, soc:-1, nat:1,  bio:"Santiago Peña, economista formado em Columbia e candidato do Partido Colorado. Ex-ministro da Fazenda. Apoiado pelo ex-presidente Horacio Cartes. Venceu com maioria confortável mantendo o domínio colorado.", ideologia:"Conservadorismo / Colorado", traits:["Máquina Partidária Colorado","Recursos Políticos"], negativeTraits:["Associação a Cartes","Corrupção Sistêmica"]},
+            alegre23:  {name:"ALEGRE",  party:"PLRA",             start:28, money:30, side:"E", color:"#003399", econ:-1,soc:1,  nat:-1, bio:"Efraín Alegre, líder do Partido Liberal Radical Autêntico e candidato da oposição. Terceira tentativa presidencial. Propôs alternância de poder contra o domínio colorado, mas novamente derrotado.", ideologia:"Liberalismo / Centro-Esquerda", traits:["Maior Partido de Oposição","Experiência"], negativeTraits:["Três Derrotas Consecutivas","Fragmentação"]},
+            cubas23:   {name:"PY-CUBAS",party:"Cruzada Nacional", start:23, money:15, side:"D", color:"#FF6600", econ:0, soc:-2, nat:2,  bio:"Paraguayo 'Payo' Cubas, político outsider e populista de direita radical. Discurso anti-elite, anti-corrupção e conspiratório conquistou quase um quarto do eleitorado. Resultado surpreendeu analistas.", ideologia:"Populismo de Direita Radical", traits:["Apelo Antiestablishment","Redes Sociais"], negativeTraits:["Posições Extremistas","Sem Estrutura Partidária"]}
+        },
+        regions:[
+            {id:'ASUNCION',  n:'Assunção (Capital)',      x:18,y:65, p:8,  econ:2,  soc:1,  nat:-1},
+            {id:'CENTRAL',   n:'Dep. Central (Grande Assunção)',x:22,y:68,p:22,econ:1,soc:0,nat:0},
+            {id:'ALTOP',     n:'Alto Paraná (Ciudad del Este)',x:75,y:65,p:15,econ:2,soc:-1,nat:1},
+            {id:'ITAPUA',    n:'Itapúa (Encarnación)',    x:55,y:88, p:10, econ:0,  soc:-1, nat:1},
+            {id:'CANIND',    n:'Canindeyú/San Pedro',     x:58,y:40, p:9,  econ:-2, soc:-1, nat:2},
+            {id:'CAAGUAZU',  n:'Caaguazú/Caazapá',       x:50,y:68, p:8,  econ:-1, soc:-1, nat:1},
+            {id:'CONCEPCION',n:'Concepción/Amambay',     x:35,y:25, p:6,  econ:-2, soc:-1, nat:2},
+            {id:'MISIONES',  n:'Misiones/Paraguarí',     x:32,y:80, p:5,  econ:-1, soc:0,  nat:1},
+            {id:'PRESIDEN',  n:'Presidente Hayes/Boquerón',x:18,y:38,p:4,  econ:-2, soc:-1, nat:2},
+            {id:'NEEMBUKU',  n:'Ñeembucú/Guairá',        x:25,y:82, p:5,  econ:-2, soc:0,  nat:1},
+            {id:'CHACO',     n:'Chaco/Alto Paraguay',    x:18,y:18, p:8,  econ:-1, soc:-2, nat:2}
+        ]
     }
 };
 
@@ -2613,6 +3152,10 @@ const achievementDefs = [
     {id:'safrica_win',     name:'Presidente da África do Sul',emoji:'🇿🇦', desc:'Vença as eleições sul-africanas de 2024.'},
     {id:'philippines_win', name:'Presidente das Filipinas', emoji:'🇵🇭', desc:'Vença as eleições filipinas de 2022.'},
     {id:'turkey_win',      name:'Cumhurbaşkanı',           emoji:'🇹🇷', desc:'Vença as eleições turcas de 2023.'},
+    {id:'taiwan_win',      name:'總統 de Taiwan',           emoji:'🇹🇼', desc:'Vença a eleição presidencial de Taiwan de 2024.'},
+    {id:'australia_win',   name:'Prime Minister of Australia', emoji:'🇦🇺', desc:'Vença as eleições federais australianas de 2025.'},
+    {id:'uruguay_win',     name:'Presidente del Uruguay',   emoji:'🇺🇾', desc:'Vença as eleições presidenciais do Uruguai de 2024.'},
+    {id:'paraguay_win',    name:'Presidente del Paraguay',  emoji:'🇵🇾', desc:'Vença as eleições presidenciais do Paraguai de 2023.'},
     {id:'ger1932_win',     name:'Presidente de Weimar',    emoji:'🏛️', desc:'Vença a eleição presidencial alemã de 1932.'},
     {id:'stop_hitler',     name:'O Mundo que Poderia Ser', emoji:'🕊️', desc:'Vença contra Hitler em 1932 com mais de 53%.'},
     // SPECIAL PLAYSTYLE
@@ -2684,6 +3227,7 @@ const achievementDefs = [
     {id:'peacemaker',           name:'Pacificador',            emoji:'☮️', desc:'Reduza a radicalização de 90+ para abaixo de 50 numa campanha.'},
     {id:'vice_turned_election', name:'O Vice Decidiu',         emoji:'👔', desc:'Vença com menos de 2% de margem tendo um vice-presidente.'},
     {id:'no_scandal_intl',      name:'Diplomata Limpo',        emoji:'🌐', desc:'Vença uma eleição internacional sem nenhum escândalo.'},
+    {id:'plebiscito_win',      name:'Arquiteto da Constituição', emoji:'📜', desc:'Vença o Plebiscito de 1993 pela sua causa.'},
 ];
 
 function checkAchievements(winnerId, winnerVotes, scenario) {
@@ -2740,6 +3284,10 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
     if(scenario==='ZAF2024' && !achievements['safrica_win']) { achievements['safrica_win']=true; earned.push('safrica_win'); }
     if(scenario==='PHL2022' && !achievements['philippines_win']) { achievements['philippines_win']=true; earned.push('philippines_win'); }
     if(scenario==='TUR2023' && !achievements['turkey_win']) { achievements['turkey_win']=true; earned.push('turkey_win'); }
+    if(scenario==='TWN2024' && !achievements['taiwan_win']) { achievements['taiwan_win']=true; earned.push('taiwan_win'); }
+    if(scenario==='AUS2025' && !achievements['australia_win']) { achievements['australia_win']=true; earned.push('australia_win'); }
+    if(scenario==='URU2024' && !achievements['uruguay_win']) { achievements['uruguay_win']=true; earned.push('uruguay_win'); }
+    if(scenario==='PAR2023' && !achievements['paraguay_win']) { achievements['paraguay_win']=true; earned.push('paraguay_win'); }
     if(scenario==='GER1932' && !achievements['ger1932_win']) { achievements['ger1932_win']=true; earned.push('ger1932_win'); }
     if(scenario==='GER1932' && winnerId!=='hitler' && winnerVotes>53 && !achievements['stop_hitler']) { achievements['stop_hitler']=true; earned.push('stop_hitler'); }
     if(game.mode==='caotico' && !achievements['chaos_mode']) { achievements['chaos_mode']=true; earned.push('chaos_mode'); }
@@ -2917,19 +3465,18 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
 const governorData = {
     "RJ2022": {
         title:"Rio de Janeiro 2022", state:"RJ", year:"2022", emoji:"🏖️",
-        desc:"Castro vs Freixo. Direita x Esquerda no RJ.",
+        desc:"Castro vs Freixo vs Rodrigo Neves vs Ganime. Disputa acirrada no RJ.",
         available:true,
         newsHeader:"O Globo — OUTUBRO 2022",
         stateFullName:"Rio de Janeiro",
         partyPoolOverride:[
-            {n:"PP",side:"D",owner:null},{n:"PSOL",side:"E",owner:null},{n:"PDT",side:"C",owner:null},{n:"AVANTE",side:"C",owner:null}
+            {n:"PP",side:"D",owner:null},{n:"PSOL",side:"E",owner:null},{n:"SOLIDARIEDADE",side:"C",owner:null},{n:"AVANTE",side:"C",owner:null}
         ],
         candidates:{
             castro22: {name:"CASTRO",   party:"PL",   start:42, money:55, side:"D", color:"#22bb22", econ:1,  soc:-2, nat:2,  bio:"Cláudio Castro, governador incumbente. Herdeiro político de Wilson Witzel. Venceu no 2º turno com 59% contra Freixo. Apoiado por Bolsonaro.", ideologia:"Conservadorismo Bolsonarista"},
             freixo22: {name:"FREIXO",   party:"PSB",  start:30, money:45, side:"E", color:"#cc0000", econ:-1, soc:2,  nat:1,  bio:"Marcelo Freixo, deputado federal e cineasta. Ex-PSOL, foi para PSB com apoio de Lula. Perdeu para Castro no 2T por ampla margem.", ideologia:"Social-Democracia"},
-            rodrigues:{name:"RODRIGUES",party:"NOVO", start:11, money:20, side:"D", color:"#ff6600", econ:2,  soc:-1, nat:0,  bio:"Eduardo Serra Rodrigues, candidato do Novo. Representou o voto liberal-conservador que não queria votar em Castro.", ideologia:"Liberalismo Clássico"},
-            lindber:  {name:"LINDBERGH",party:"PT",   start:10, money:15, side:"E", color:"#ff3333", econ:-2, soc:2,  nat:1,  bio:"Lindbergh Farias, ex-senador e vereador carioca. Candidato da esquerda petista no estado.", ideologia:"Social-Desenvolvimentismo"},
-            cyro22:   {name:"CYRO",     party:"PDT",  start:6,  money:10, side:"C", color:"#996600", econ:0,  soc:1,  nat:0,  bio:"Cyro Garcia, candidato do PDT, esquerda brizolista histórica.", ideologia:"Trabalhismo"}
+            rneves22: {name:"R. NEVES", party:"PDT",  start:14, money:25, side:"C", color:"#996600", econ:0,  soc:1,  nat:0,  bio:"Rodrigo Neves, ex-prefeito de Niterói. Candidato do PDT, tentou ocupar o centro-esquerda moderado mas ficou em terceiro.", ideologia:"Trabalhismo Social-Democrático"},
+            ganime22: {name:"GANIME",   party:"NOVO", start:9,  money:20, side:"D", color:"#ff6600", econ:2,  soc:-1, nat:0,  bio:"Paulo Ganime, deputado federal. Candidato do NOVO, representou o voto liberal-conservador que buscava alternativa ao polarização.", ideologia:"Liberalismo Clássico"}
         },
         regions:[
             {id:'METRO', n:'Capital (Rio)',      x:60,y:65, p:35, econ:0, soc:1,  nat:0},
@@ -3015,7 +3562,8 @@ const governorData = {
         candidates:{
             tarcisio: {name:"TARCÍSIO",  party:"REPUBLICANOS", start:35, money:55, side:"D", color:"#0044cc", econ:2,  soc:-2, nat:1,  bio:"Tarcísio de Freitas, ex-ministro de Bolsonaro. Venceu o 2º turno contra Haddad com 57%. Ex-federal sem raízes em SP, tornou-se o nome mais forte da direita nacional.", ideologia:"Conservadorismo Bolsonarista"},
             haddad22: {name:"HADDAD",    party:"PT",           start:28, money:50, side:"E", color:"#cc0000", econ:-1, soc:2,  nat:1,  bio:"Fernando Haddad, ex-prefeito de SP e candidato presidencial 2018. Perdeu para Tarcísio no 2T, mas fez campanha competitiva em SP.", ideologia:"Social-Desenvolvimentismo"},
-            poit:     {name:"POIT",      party:"NOVO",         start:10, money:20, side:"D", color:"#ff6600", econ:2,  soc:-1, nat:0,  bio:"Vinicius Poit, candidato do Novo. Liberal clássico, ficou em terceiro. O Novo foi relevante em SP como espaço para o voto antissistema de direita.", ideologia:"Liberalismo Clássico"},
+            rgarcia:  {name:"R. GARCIA", party:"PSDB",         start:14, money:30, side:"C", color:"#0066aa", econ:1,  soc:0,  nat:0,  bio:"Rodrigo Garcia, governador incumbente de SP, assumiu após saída de Doria. Candidato do PSDB em colapso, ficou em terceiro lugar abaixo das expectativas.", ideologia:"Social-Democracia"},
+            poit:     {name:"POIT",      party:"NOVO",         start:10, money:20, side:"D", color:"#ff6600", econ:2,  soc:-1, nat:0,  bio:"Vinicius Poit, candidato do Novo. Liberal clássico, ficou em quarto. O Novo foi relevante em SP como espaço para o voto antissistema de direita.", ideologia:"Liberalismo Clássico"},
             elvis:    {name:"ELVIS",     party:"PDT",          start:8,  money:15, side:"C", color:"#996600", econ:0,  soc:1,  nat:0,  bio:"Elvis Cezar, prefeito de Santo André. Candidato do PDT, tentou ocupar o centro-esquerda moderado mas ficou sem espaço numa eleição polarizada.", ideologia:"Social-Democracia Trabalhista"},
             colombo:  {name:"COLOMBO",   party:"PCB",          start:1,  money:5,  side:"E", color:"#8b0000", econ:-2, soc:2,  nat:1,  bio:"Gabriel Colombo, candidato comunista. Presença simbólica da esquerda radical em SP.", ideologia:"Comunismo"}
         },
@@ -3030,6 +3578,81 @@ const governorData = {
             {id:'LITORAL', n:'Baixada Santista',  x:55,y:80, p:5,  econ:0,  soc:0, nat:0},
             {id:'ARAÇAT',  n:'Araçatuba',         x:25,y:35, p:4,  econ:2,  soc:-2,nat:1},
             {id:'RIBEIRAP',n:'Ribeirão Preto',    x:60,y:40, p:6,  econ:2,  soc:-1,nat:0}
+        ]
+    },
+    "PR2022": {
+        title:"Paraná 2022", state:"PR", year:"2022", emoji:"🌲",
+        desc:"Ratinho Jr busca reeleição. Requião tenta retorno. Disputa no Sul.",
+        available:true,
+        newsHeader:"Gazeta do Povo — OUTUBRO 2022",
+        stateFullName:"Paraná",
+        partyPoolOverride:[
+            {n:"MDB",side:"C",owner:null},{n:"PSD",side:"D",owner:null},{n:"PDT",side:"C",owner:null},{n:"DC",side:"D",owner:null}
+        ],
+        candidates:{
+            ratinho22:  {name:"RATINHO JR",  party:"PSD",  start:58, money:60, side:"D", color:"#004488", econ:1,  soc:-1, nat:1,  bio:"Carlos Massa Ratinho Jr, governador incumbente e filho do apresentador Ratinho. Reeleito no 1º turno com ampla margem. Grande articulador político do Sul.", ideologia:"Centrismo Desenvolvimentista"},
+            requiao22:  {name:"REQUIÃO",     party:"PT",   start:18, money:35, side:"E", color:"#cc0000", econ:-1, soc:1,  nat:0,  bio:"Roberto Requião, ex-governador e ex-senador do Paraná. Retornou ao PT depois de anos no PMDB/MDB. Figura histórica do trabalhismo paranaense.", ideologia:"Social-Democracia Trabalhista"},
+            gomyde22:   {name:"GOMYDE",      party:"PDT",  start:10, money:20, side:"C", color:"#996600", econ:0,  soc:1,  nat:0,  bio:"Ricardo Gomyde, candidato do PDT. Tentou ocupar o centro-esquerda moderado do Paraná mas ficou sem espaço na eleição polarizada.", ideologia:"Trabalhismo"},
+            jonipr:     {name:"JONI",        party:"DC",   start:5,  money:10, side:"D", color:"#8b4513", econ:0,  soc:-2, nat:1,  bio:"Joni Correia, candidato da Democracia Cristã. Representou o voto conservador cristão no Paraná.", ideologia:"Democracia Cristã"}
+        },
+        regions:[
+            {id:'CURITIBA', n:'Grande Curitiba',    x:55,y:68, p:30, econ:1,  soc:0,  nat:0},
+            {id:'NORTE',    n:'Norte do Paraná',    x:52,y:30, p:22, econ:2,  soc:-1, nat:1},
+            {id:'OESTE',    n:'Oeste do Paraná',    x:22,y:48, p:18, econ:1,  soc:-1, nat:1},
+            {id:'CAMPOS',   n:'Campos Gerais',      x:50,y:55, p:12, econ:1,  soc:-1, nat:0},
+            {id:'SUDOESTE',  n:'Sudoeste',          x:30,y:70, p:10, econ:0,  soc:-1, nat:1},
+            {id:'LITORAL',  n:'Litoral',            x:70,y:78, p:5,  econ:0,  soc:0,  nat:0},
+            {id:'CENTRO',   n:'Centro do Paraná',   x:42,y:48, p:3,  econ:0,  soc:-1, nat:1}
+        ]
+    },
+    "SC2022": {
+        title:"Santa Catarina 2022", state:"SC", year:"2022", emoji:"🏔️",
+        desc:"Jorginho Mello vs Décio Lima. O estado mais à direita do Brasil.",
+        available:true,
+        newsHeader:"Diário Catarinense — OUTUBRO 2022",
+        stateFullName:"Santa Catarina",
+        partyPoolOverride:[
+            {n:"MDB",side:"C",owner:null},{n:"PSD",side:"D",owner:null},{n:"AVANTE",side:"C",owner:null},{n:"UNIÃO",side:"D",owner:null}
+        ],
+        candidates:{
+            jorginho22: {name:"JORGINHO M.", party:"PL",          start:50, money:55, side:"D", color:"#22bb22", econ:1,  soc:-2, nat:2,  bio:"Jorginho Mello, senador eleito governador apoiado por Bolsonaro. Venceu no 1º turno em SC, um dos estados mais bolsonaristas do Brasil.", ideologia:"Conservadorismo Bolsonarista"},
+            decio22:    {name:"DÉCIO LIMA",  party:"PT",          start:20, money:35, side:"E", color:"#cc0000", econ:-1, soc:2,  nat:0,  bio:"Décio Lima, ex-prefeito de Blumenau e ex-deputado federal. Candidato petista em um estado historicamente adverso ao PT.", ideologia:"Social-Democracia"},
+            moises22:   {name:"CARLOS MOISÉS",party:"REPUBLICANOS",start:16, money:30, side:"D", color:"#ff8800", econ:1,  soc:-1, nat:1,  bio:"Carlos Moisés, governador incumbente afastado por escândalos. Tentou retorno mas não conseguiu superar Jorginho.", ideologia:"Centro-Direita Populista"},
+            gean22:     {name:"GEAN",        party:"UNIÃO",       start:10, money:25, side:"C", color:"#0044cc", econ:0,  soc:0,  nat:0,  bio:"Gean Loureiro, ex-prefeito de Florianópolis. Candidato do União Brasil, tentou ocupar o centro mas ficou em quarto.", ideologia:"Centrismo Liberal"}
+        },
+        regions:[
+            {id:'GRANDE_FL', n:'Grande Florianópolis', x:58,y:68, p:18, econ:1,  soc:0, nat:0},
+            {id:'NORTE',     n:'Norte Catarinense',    x:55,y:30, p:18, econ:1,  soc:-1,nat:1},
+            {id:'VALE',      n:'Vale do Itajaí',       x:62,y:45, p:22, econ:2,  soc:-2,nat:0},
+            {id:'SUL',       n:'Sul Catarinense',      x:55,y:82, p:14, econ:0,  soc:-1,nat:1},
+            {id:'OESTE',     n:'Oeste Catarinense',    x:22,y:50, p:15, econ:1,  soc:-2,nat:2},
+            {id:'SERRANA',   n:'Região Serrana',       x:38,y:52, p:8,  econ:0,  soc:-1,nat:1},
+            {id:'MEIO_OESTE',n:'Meio-Oeste',           x:32,y:40, p:5,  econ:1,  soc:-1,nat:1}
+        ]
+    },
+    "RS2022": {
+        title:"Rio Grande do Sul 2022", state:"RS", year:"2022", emoji:"🐄",
+        desc:"Eduardo Leite vs Onyx vs Pretto. O Sul mais disputado.",
+        available:true,
+        newsHeader:"Zero Hora — OUTUBRO 2022",
+        stateFullName:"Rio Grande do Sul",
+        partyPoolOverride:[
+            {n:"MDB",side:"C",owner:null},{n:"PDT",side:"C",owner:null},{n:"PSD",side:"D",owner:null},{n:"AVANTE",side:"C",owner:null}
+        ],
+        candidates:{
+            eleite22: {name:"E. LEITE",  party:"PSDB", start:38, money:55, side:"D", color:"#0066aa", econ:1,  soc:0,  nat:0,  bio:"Eduardo Leite, governador incumbente. Jovem e articulado, venceu o 2º turno contra Onyx com 54%. Pré-candidato presidencial tucano e figura de centro-direita modernizante.", ideologia:"Social-Democracia / Centro-Direita"},
+            onyx22:   {name:"ONYX",      party:"PL",   start:32, money:50, side:"D", color:"#22bb22", econ:1,  soc:-2, nat:2,  bio:"Onyx Lorenzoni, ex-ministro de Bolsonaro. Candidato bolsonarista no RS, perdeu para Eduardo Leite no 2T numa eleição dentro do campo da direita.", ideologia:"Conservadorismo Bolsonarista"},
+            pretto22: {name:"PRETTO",    party:"PT",   start:22, money:40, side:"E", color:"#cc0000", econ:-1, soc:2,  nat:0,  bio:"Edegar Pretto, deputado federal petista. Candidato da esquerda no RS, superou Heinze mas ficou em terceiro, mostrando que o PT ainda tem base sólida no Sul.", ideologia:"Social-Desenvolvimentismo"},
+            heinze22: {name:"HEINZE",    party:"PP",   start:6,  money:15, side:"D", color:"#8b0000", econ:0,  soc:-2, nat:1,  bio:"Luis Carlos Heinze, senador gaúcho e figura histórica da direita rural do RS. Ficou em quarto mas ajudou a fragmentar o eleitorado de direita.", ideologia:"Conservadorismo Rural"}
+        },
+        regions:[
+            {id:'PORTO_A', n:'Grande Porto Alegre', x:62,y:65, p:28, econ:1,  soc:0,  nat:0},
+            {id:'SERRA',   n:'Serra Gaúcha',         x:62,y:40, p:15, econ:2,  soc:-1, nat:0},
+            {id:'NORTE',   n:'Norte/Noroeste',       x:35,y:28, p:16, econ:1,  soc:-1, nat:1},
+            {id:'MISSOES', n:'Missões/Fronteira',    x:25,y:48, p:10, econ:-1, soc:0,  nat:1},
+            {id:'SUL',     n:'Sul do RS/Pelotas',    x:45,y:82, p:14, econ:-1, soc:0,  nat:1},
+            {id:'METRO',   n:'Litoral Norte',        x:72,y:52, p:8,  econ:0,  soc:0,  nat:0},
+            {id:'CENTRAL', n:'Central',              x:48,y:52, p:9,  econ:0,  soc:-1, nat:1}
         ]
     }
 };
@@ -3180,6 +3803,349 @@ function stopMenuMusic() {
     if(menuMusicCtx) { try { menuMusicCtx.close(); } catch(e) {} menuMusicCtx = null; }
 }
 
+// ============================================================
+// PLEBISCITO 1993
+// ============================================================
+let plebiscitoGame = { option: null, turn: 0, maxTurns: 12, votes: {pres:33, parl:31, monar:36}, events: [] };
+
+const plebOptions = [
+    {id:'pres',  name:'🏛️ República Presidencialista', color:'#003399', desc:'Presidente eleito diretamente pelo povo, com poderes executivos amplos. Modelo atual.'},
+    {id:'parl',  name:'🏰 República Parlamentarista',   color:'#006600', desc:'Presidente com papel cerimonial. Poder executivo exercido pelo Primeiro-Ministro eleito pelo Congresso.'},
+    {id:'monar', name:'👑 Monarquia Constitucional',    color:'#8b0000', desc:'Dom João como Imperador com papel cerimonial. Sistema parlamentar. Brasil volta a ser monarquia.'},
+];
+
+const plebEvents = [
+    {turn:2, t:"APOIO DE INTELECTUAIS", d:"Economistas e acadêmicos publicam carta. Qual forma de governo defendem?", b:[
+        {n:"Assinar pela forma que você defende",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=4;}},
+        {n:"Propor debate neutro amplo",f:()=>{Object.keys(plebiscitoGame.votes).forEach(k=>plebiscitoGame.votes[k]+=1);}}
+    ]},
+    {turn:4, t:"DISCURSO TELEVISIVO", d:"Rede Globo cede horário para debate. Sua opção se sai bem ou mal?", b:[
+        {n:"Discurso técnico e racional",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=5; plebiscitoGame.votes['parl']+=2;}},
+        {n:"Apelo emocional à tradição",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=3; plebiscitoGame.votes['monar']+=3;}},
+        {n:"Atacar as outras opções",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=6; plebiscitoGame.votes[plebiscitoGame.option==='pres'?'parl':'pres']-=3;}}
+    ]},
+    {turn:6, t:"MANIFESTAÇÃO POPULAR", d:"Multidões nas ruas. A opinião pública está se formando.", b:[
+        {n:"Organizar comícios pela sua causa",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=6;}},
+        {n:"Mobilizar jovens universitários",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=4; plebiscitoGame.votes['parl']+=2;}},
+        {n:"Mobilizar tradição e conservadorismo",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=3; plebiscitoGame.votes['monar']+=4;}}
+    ]},
+    {turn:8, t:"PESQUISA IBOPE", d:"Nova pesquisa mostra as intenções de voto. Qual estratégia adotar?", b:[
+        {n:"Investir em publicidade paga",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=5;}},
+        {n:"Fazer aliança tática",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=3; let other=Object.keys(plebiscitoGame.votes).filter(k=>k!==plebiscitoGame.option)[0]; plebiscitoGame.votes[other]+=2;}},
+        {n:"Debate com juristas e especialistas",f:()=>{plebiscitoGame.votes['parl']+=3; plebiscitoGame.votes[plebiscitoGame.option]+=2;}}
+    ]},
+    {turn:10, t:"VÉSPERA DO PLEBISCITO", d:"Último dia de campanha. A decisão é amanhã!", b:[
+        {n:"Comício final grandioso",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=7;}},
+        {n:"Distribuição de panfletos nas ruas",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=4;}},
+        {n:"Discurso moderado em rede nacional",f:()=>{plebiscitoGame.votes[plebiscitoGame.option]+=5; plebiscitoGame.votes['parl']+=2;}}
+    ]}
+];
+
+function startPlebiscito1993() {
+    let totalAch = Object.keys(achievements).length;
+    if(totalAch < 10) { alert('Você precisa de 10 conquistas para desbloquear o Plebiscito!'); return; }
+    plebiscitoGame = { option: null, turn: 0, maxTurns: 15, votes: {pres:33, parl:31, monar:36}, points: 3, log: [], momentum: 0 };
+    showModal('🗳️ PLEBISCITO CONSTITUCIONAL 1993', `
+    <div style="background:#000080;color:white;padding:10px;font-weight:bold;font-size:13px;margin-bottom:10px;border-bottom:3px solid #ffcc00;">
+        🇧🇷 21 DE ABRIL DE 1993 — O BRASIL DECIDE SUA FORMA DE GOVERNO
+    </div>
+    <div style="background:#fffbe6;border:1px solid #cc9900;padding:8px;margin-bottom:10px;font-size:11px;">
+        <b>📜 Contexto:</b> A Constituição de 1988 determinou que o Brasil realizasse um plebiscito para decidir o sistema de governo. Você é um líder político. Escolha uma causa e conduza 15 semanas de campanha para convencer os brasileiros!
+    </div>
+    <div style="margin-bottom:10px;font-size:11px;"><b>Pesquisas iniciais (IBOPE, jan/1993):</b>
+        ${plebOptions.map(o=>{let v={pres:33,parl:31,monar:36}[o.id]; return '<div style="margin:4px 0;display:flex;align-items:center;gap:6px;"><span style="min-width:190px;font-size:10px;">'+o.name+'</span><b>'+v+'%</b><div style="flex:1;height:9px;background:#ddd;border:1px solid #bbb;"><div style="height:100%;background:'+o.color+';width:'+v+'%;"></div></div></div>';}).join('')}
+    </div>
+    <div style="font-weight:bold;margin-bottom:8px;color:#000080;">Qual causa você vai defender?</div>
+    ${plebOptions.map(o => '<button class="btn" style="margin-bottom:6px;background:'+o.color+';color:white;text-align:left;padding:8px;" onclick="choosePlebOption(\'' + o.id + '\')"><b>'+o.name+'</b><br><small style="opacity:0.9;">'+o.desc+'</small></button>').join('')}
+    `, `<button class="btn" onclick="closeModal()">Cancelar</button>`);
+}
+
+function choosePlebOption(optId) {
+    plebiscitoGame.option = optId;
+    plebiscitoGame.turn = 1;
+    closeModal();
+    openPlebScreen();
+}
+
+function openPlebScreen() {
+    ['setup-screen','scenario-screen','indirect-screen','end-screen'].forEach(id=>{
+        let el=document.getElementById(id); if(el) el.classList.remove('active');
+    });
+    document.getElementById('game-screen').classList.add('active');
+    renderPlebUI();
+}
+
+function renderPlebUI() {
+    let gs = document.getElementById('game-screen');
+    let myOpt = plebOptions.find(o=>o.id===plebiscitoGame.option);
+    let total = Object.values(plebiscitoGame.votes).reduce((a,b)=>a+b,0);
+
+    let barsHtml = plebOptions.map(o=>{
+        let pct = Math.round((plebiscitoGame.votes[o.id]/total)*100);
+        let isMe = o.id === plebiscitoGame.option;
+        return `<div style="margin-bottom:7px;">
+            <div style="display:flex;justify-content:space-between;font-size:11px;"><b style="color:${o.color};">${isMe?'▶ ':''} ${o.name}</b><b>${pct}%</b></div>
+            <div style="height:13px;background:#ddd;border:1px solid #bbb;border-radius:2px;">
+                <div style="height:100%;background:${o.color};width:${pct}%;border-radius:2px;${isMe?'outline:2px solid gold;outline-offset:-1px;':''}"></div>
+            </div>
+        </div>`;
+    }).join('');
+
+    let event = plebEvents.find(e=>e.turn===plebiscitoGame.turn);
+    let eventHtml = event ? `
+        <div style="background:#fff3cd;border:2px solid #cc8800;padding:8px;margin-bottom:8px;font-size:11px;border-radius:2px;">
+            <b style="color:#cc6600;">📰 EVENTO DA SEMANA: ${event.t}</b><br>
+            <span>${event.d}</span><br>
+            <div style="margin-top:6px;">${event.b.map((btn,bi)=>`<button class="btn" style="margin:2px;font-size:10px;background:#cc6600;color:white;" onclick="doPlebEventAction(${bi})">${btn.n}</button>`).join('')}</div>
+        </div>` : '';
+
+    const plebActions = [
+        {icon:'🎤', name:'Comício Popular',   desc:'Manifestação de rua nas capitais', pts:1},
+        {icon:'📺', name:'Horário Eleitoral', desc:'Aparição em rede na TV Globo',     pts:1},
+        {icon:'📰', name:'Artigo de Opinião', desc:'Publique nos grandes jornais',     pts:0},
+        {icon:'🤝', name:'Aliança Política',  desc:'Negocie apoio de partidos',        pts:1},
+        {icon:'🎓', name:'Debate Acadêmico',  desc:'Universidades e intelectuais',     pts:0},
+        {icon:'📣', name:'Caravana Sindical', desc:'Mobilize trabalhadores',           pts:1},
+        {icon:'💰', name:'Publicidade Paga',  desc:'Anúncios, outdoors e panfletos',   pts:2},
+        {icon:'📻', name:'Rádio Nacional',    desc:'Alcance nacional pelo rádio',      pts:1},
+        {icon:'🗺️', name:'Campanha Interior', desc:'Visite estados do interior',       pts:1},
+        {icon:'🔥', name:'Ataque Rival',      desc:'Critique outras formas de governo',pts:0},
+    ];
+
+    let logHtml = (plebiscitoGame.log||[]).slice(-5).map(l=>`<div style="font-size:9px;color:#555;border-bottom:1px solid #eee;padding:2px 0;">${l}</div>`).join('') || '<small style="color:#888;">Nenhuma ação ainda.</small>';
+
+    gs.innerHTML = `
+    <div style="background:#000080;color:white;padding:8px;display:flex;justify-content:space-between;align-items:center;">
+        <b>🗳️ PLEBISCITO 1993 — Semana ${plebiscitoGame.turn}/15</b>
+        <div style="display:flex;gap:6px;font-size:11px;">
+            <span style="background:#ffcc00;color:#000080;padding:2px 7px;border-radius:3px;font-weight:bold;">⭐ ${plebiscitoGame.points}pts</span>
+            <span style="background:${myOpt.color};padding:2px 7px;border-radius:3px;">${myOpt.name.split(' ').slice(1,3).join(' ')}</span>
+        </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;height:calc(100vh - 80px);overflow:hidden;">
+        <div style="overflow-y:auto;padding:8px;border-right:1px solid #ccc;">
+            <div style="background:#f5f5f5;border:1px solid #ccc;padding:8px;margin-bottom:8px;">
+                <b style="font-size:11px;color:#000080;">📊 PESQUISAS IBOPE — 1993</b>
+                <div style="margin-top:6px;">${barsHtml}</div>
+            </div>
+            ${eventHtml}
+            <div style="background:#e8f0ff;border:1px solid #7799cc;padding:8px;margin-bottom:8px;font-size:10px;">
+                <b style="color:#000080;">📖 Contexto:</b> Brasil, 1993. Itamar Franco governa após impeachment de Collor. A Const. de 1988 exigiu este plebiscito. Você tem ${15-plebiscitoGame.turn+1} semanas para mudar o resultado.
+            </div>
+            <div style="background:#f0f0f0;border:1px solid #ccc;padding:8px;">
+                <b style="font-size:10px;color:#555;">📋 REGISTRO</b>
+                <div style="margin-top:4px;">${logHtml}</div>
+            </div>
+        </div>
+        <div style="overflow-y:auto;padding:8px;">
+            <div style="background:#fff8e0;border:1px solid #cc9900;padding:8px;margin-bottom:8px;">
+                <b style="font-size:11px;color:#cc6600;">⚡ AÇÕES DE CAMPANHA</b>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px;">
+                ${plebActions.map((a,i)=>`
+                    <button class="btn" style="padding:5px 4px;font-size:10px;text-align:left;" onclick="plebc(${i})">
+                        ${a.icon} <b>${a.name}</b>${a.pts>0?` <span style="color:#cc0000;font-size:8px;">(${a.pts}pt)</span>`:''}<br>
+                        <small style="color:#666;">${a.desc}</small>
+                    </button>`).join('')}
+                </div>
+            </div>
+            <button class="btn" style="width:100%;background:#003399;color:white;font-weight:bold;margin-bottom:4px;padding:8px;" onclick="plebNextWeek()">
+                ⏭ Avançar Semana →
+            </button>
+            <button class="btn" style="width:100%;background:#888;color:white;font-size:10px;" onclick="if(confirm('Abandonar o Plebiscito?')){document.getElementById('game-screen').classList.remove('active');document.getElementById('scenario-screen').classList.add('active');renderScenarios();}">
+                ↩ Abandonar Plebiscito
+            </button>
+        </div>
+    </div>`;
+}
+
+function plebc(idx) {
+    const pts = [1,1,0,1,0,1,2,1,1,0];
+    if(pts[idx]>0 && plebiscitoGame.points<pts[idx]){alert('Pontos insuficientes!');return;}
+    plebiscitoGame.points -= pts[idx];
+    const effects = [
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(3+Math.random()*4); plebiscitoGame.momentum++; plebiscitoGame.log.push(`🎤 Comício — mobilização nas ruas`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(2+Math.random()*5); plebiscitoGame.log.push(`📺 TV Globo — horário eleitoral`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(1+Math.random()*3); plebiscitoGame.log.push(`📰 Artigo publicado nos jornais`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(4+Math.random()*4); plebiscitoGame.log.push(`🤝 Aliança política fechada`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(2+Math.random()*3); plebiscitoGame.votes['parl']+=Math.random()*1.5; plebiscitoGame.log.push(`🎓 Debate universitário — intelectuais`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(3+Math.random()*4); plebiscitoGame.log.push(`📣 Caravana sindical realizada`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(5+Math.random()*5); plebiscitoGame.log.push(`💰 Campanha publicitária intensiva`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(2+Math.random()*4); plebiscitoGame.log.push(`📻 Programa de rádio — interior do BR`); },
+        ()=>{ plebiscitoGame.votes[plebiscitoGame.option]+=(3+Math.random()*4); plebiscitoGame.log.push(`🗺️ Caravana pelo interior do país`); },
+        ()=>{ let ks=Object.keys(plebiscitoGame.votes).filter(k=>k!==plebiscitoGame.option); ks.forEach(k=>plebiscitoGame.votes[k]-=(1+Math.random()*2)); plebiscitoGame.votes[plebiscitoGame.option]+=(1+Math.random()*2); plebiscitoGame.log.push(`🔥 Ataque direto às opções rivais`); },
+    ];
+    effects[idx]();
+    Object.keys(plebiscitoGame.votes).filter(k=>k!==plebiscitoGame.option).forEach(k=>plebiscitoGame.votes[k]+=(Math.random()*1.5));
+    renderPlebUI();
+}
+
+function doPlebEventAction(bi) {
+    let ev = plebEvents.find(e=>e.turn===plebiscitoGame.turn);
+    if(ev && ev.b[bi]) { ev.b[bi].f(); plebiscitoGame.log.push(`📰 Evento: ${ev.b[bi].n}`); }
+    renderPlebUI();
+}
+
+function plebNextWeek() {
+    plebiscitoGame.votes[plebiscitoGame.option] += (Math.random()-0.45)*2.5;
+    Object.keys(plebiscitoGame.votes).filter(k=>k!==plebiscitoGame.option).forEach(k=>plebiscitoGame.votes[k]+=(Math.random()-0.5)*2);
+    if(plebiscitoGame.momentum>0){plebiscitoGame.votes[plebiscitoGame.option]+=0.8;plebiscitoGame.momentum=Math.max(0,plebiscitoGame.momentum-1);}
+    plebiscitoGame.points = Math.min(4, plebiscitoGame.points+2);
+    plebiscitoGame.turn++;
+    if(plebiscitoGame.turn > plebiscitoGame.maxTurns) { finishPlebiscito(); return; }
+    renderPlebUI();
+}
+
+function finishPlebiscito() {
+    let total = Object.values(plebiscitoGame.votes).reduce((a,b)=>a+b,0);
+    let results = plebOptions.map(o=>({...o,pct:(plebiscitoGame.votes[o.id]/total)*100})).sort((a,b)=>b.pct-a.pct);
+    let won = results[0].id === plebiscitoGame.option;
+    document.getElementById('game-screen').innerHTML = `
+    <div style="background:${won?'#006600':'#8b0000'};color:white;padding:14px;font-weight:bold;font-size:16px;text-align:center;">
+        ${won ? '🎉 VITÓRIA! Sua causa venceu o Plebiscito de 1993!' : '❌ DERROTA! Sua causa não convenceu o Brasil.'}
+    </div>
+    <div style="padding:16px;">
+        <div style="background:#f5f5f5;border:1px solid #ccc;padding:12px;margin-bottom:12px;">
+            <b style="font-size:13px;color:#000080;">📊 RESULTADO FINAL — 21/04/1993</b>
+            <div style="margin-top:10px;">${results.map((r,i)=>{let pct=r.pct.toFixed(1);return `<div style="margin:8px 0;"><div style="display:flex;justify-content:space-between;font-size:12px;"><b style="color:${r.color};">${['🏆','🥈','🥉'][i]} ${r.name}</b><b>${pct}%</b></div><div style="height:16px;background:#ddd;border:1px solid #bbb;border-radius:2px;"><div style="height:100%;background:${r.color};width:${pct}%;border-radius:2px;"></div></div></div>`;}).join('')}</div>
+        </div>
+        <div style="background:#f0f8ff;border:1px solid #0044cc;padding:10px;font-size:11px;margin-bottom:12px;">
+            <b>📖 Resultado Histórico Real:</b><br>
+            Na realidade, o <b>Presidencialismo</b> venceu com <b>55,4%</b>, o <b>Parlamentarismo</b> obteve 24,7% e a <b>Monarquia</b> ficou com 12,6%.
+        </div>
+        ${won?`<div style="background:#fffbe6;border:2px solid #cc9900;padding:8px;font-size:12px;margin-bottom:12px;text-align:center;">🏆 Conquista desbloqueada: <b>Arquiteto da Constituição</b> 📜</div>`:''}
+        <button class="btn" style="width:100%;background:#000080;color:white;font-size:13px;padding:10px;" onclick="document.getElementById('game-screen').classList.remove('active');document.getElementById('scenario-screen').classList.add('active');renderScenarios();">
+            ← Voltar ao Menu Principal
+        </button>
+    </div>`;
+    if(won&&!achievements['plebiscito_win']){achievements['plebiscito_win']=true;try{localStorage.setItem('sim_achievements',JSON.stringify(achievements));}catch(e){}}
+}
+
+
+// ============================================================
+// EDITOR DE ELEIÇÕES BRASILEIRAS
+// ============================================================
+let editorData = { candidates: [], scenario: null };
+const editorIdeologias = ['Conservadorismo Bolsonarista','Social-Democracia','Liberalismo Clássico','Centro-Esquerda','Esquerda Radical','Populismo','Centrismo','Trabalhismo','Ecologismo','Nacional-Liberalismo Bukelista','Liberalismo Progressista','Social-Desenvolvimentismo','Comunismo','Anarquismo','Fascismo','Democracia Cristã','Monarquismo','Federalismo','Tecnocracia','Conservadorismo Cristão'];
+const editorPartidos = ['PT','PL','PSDB','MDB','PDT','PSB','UNIÃO','PP','PSD','NOVO','PSOL','REPUBLICANOS','PATRIOTA','DC','SOLIDARIEDADE','AVANTE','PODE','AGIR','PRD','MOBILIZA'];
+
+function openElectionEditor() {
+    let totalAch = Object.keys(achievements).length;
+    if(totalAch < 10) { alert('Você precisa de 10 conquistas para usar o Editor!'); return; }
+    editorData = { candidates: [], scenario: null };
+    showEditorStep1();
+}
+
+function showEditorStep1() {
+    let cands = editorData.candidates;
+    let html = `<div style="background:#007700;color:white;padding:6px;font-weight:bold;margin-bottom:8px">✏️ EDITOR DE ELEIÇÕES — Candidatos (${cands.length}/8)</div>
+    <div style="font-size:11px;margin-bottom:8px">Crie seus candidatos para disputar a presidência do Brasil. Máximo de 8 candidatos.</div>
+    ${cands.map((c,i)=>`<div style="background:#e8ffe8;border:1px solid #009900;padding:6px;margin-bottom:4px;font-size:11px">
+        <b>${c.name}</b> (${c.party}) — ${c.ideologia}<br>
+        <small>Cor: <span style="background:${c.color};padding:0 8px">&nbsp;</span> | Início: ${c.start}% | Lado: ${c.side==='D'?'Direita':c.side==='E'?'Esquerda':'Centro'}</small>
+        <button class="btn" style="width:auto;padding:2px 6px;margin-left:6px;font-size:9px" onclick="removeEditorCandidate(${i})">✕ Remover</button>
+    </div>`).join('')}
+    ${cands.length < 8 ? `<div style="border:2px dashed #ccc;padding:10px;text-align:center;margin-top:8px">
+        <b>Adicionar Candidato</b><br>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px">
+            <input id="ed-name" placeholder="Nome" style="padding:4px;font-size:11px;border:1px solid #999">
+            <select id="ed-party" style="padding:4px;font-size:11px;border:1px solid #999">
+                ${editorPartidos.map(p=>`<option>${p}</option>`).join('')}
+            </select>
+            <select id="ed-ideologia" style="padding:4px;font-size:11px;border:1px solid #999;grid-column:1/-1">
+                ${editorIdeologias.map(i=>`<option>${i}</option>`).join('')}
+            </select>
+            <select id="ed-side" style="padding:4px;font-size:11px;border:1px solid #999">
+                <option value="D">Direita</option>
+                <option value="C">Centro</option>
+                <option value="E">Esquerda</option>
+            </select>
+            <input id="ed-color" type="color" value="#003399" style="padding:2px;height:30px;border:1px solid #999">
+        </div>
+        <button class="btn" style="margin-top:6px;background:#007700;color:white" onclick="addEditorCandidate()">➕ Adicionar Candidato</button>
+    </div>` : '<div style="color:#007700;font-size:11px;text-align:center;padding:8px"><b>Limite de 8 candidatos atingido!</b></div>'}`;
+
+    let footer = `${cands.length >= 2 ? `<button class="btn" style="background:#000080;color:white" onclick="startEditorGame()">▶ Jogar com esses candidatos!</button>` : '<span style="color:#888;font-size:11px">Adicione pelo menos 2 candidatos</span>'}
+    <button class="btn" onclick="closeModal()">Cancelar</button>`;
+    showModal('✏️ EDITOR DE ELEIÇÕES BRASILEIRAS', html, footer);
+}
+
+function addEditorCandidate() {
+    let name = document.getElementById('ed-name').value.trim().toUpperCase();
+    if(!name) { alert('Digite o nome do candidato!'); return; }
+    let party = document.getElementById('ed-party').value;
+    let ideologia = document.getElementById('ed-ideologia').value;
+    let side = document.getElementById('ed-side').value;
+    let color = document.getElementById('ed-color').value;
+    let start = Math.round(100 / (editorData.candidates.length + 2));
+    editorData.candidates.push({name, party, ideologia, side, color, start, money:40, econ:0, soc:0, nat:0, bio:`${name}, candidato criado pelo editor. ${ideologia}.`});
+    // Normalize starts
+    let total = editorData.candidates.reduce((a,c)=>a+c.start,0);
+    editorData.candidates.forEach(c=>c.start = Math.round((c.start/total)*100));
+    showEditorStep1();
+}
+
+function removeEditorCandidate(idx) {
+    editorData.candidates.splice(idx, 1);
+    showEditorStep1();
+}
+
+function startEditorGame() {
+    if(editorData.candidates.length < 2) return;
+    // Choose player
+    let html = `<div style="background:#000080;color:white;padding:6px;font-weight:bold;margin-bottom:8px">🎮 QUEM VOCÊ VAI JOGAR?</div>
+    <div style="font-size:11px;margin-bottom:8px">Escolha qual candidato você vai controlar:</div>
+    ${editorData.candidates.map((c,i)=>`<button class="btn" style="background:${c.color};color:white;margin-bottom:4px" onclick="launchEditorGame(${i})">
+        ${c.name} (${c.party}) — ${c.ideologia}
+    </button>`).join('')}`;
+    showModal('🎮 ESCOLHA SEU CANDIDATO', html, `<button class="btn" onclick="showEditorStep1()">← Voltar</button>`);
+}
+
+function launchEditorGame(playerIdx) {
+    closeModal();
+    // Build a fake scenario using 2026 base
+    let sc = JSON.parse(JSON.stringify(scenariosData['2026']||scenariosData['2022']||Object.values(scenariosData)[0]));
+    sc.title = 'Eleição Personalizada';
+    sc.year = '2025';
+    sc.emoji = '🎮';
+    sc.desc = 'Cenário criado pelo Editor';
+
+    // Override candidates
+    let cands = {};
+    editorData.candidates.forEach((c,i)=>{
+        let key = 'ed_cand_'+i;
+        cands[key] = {...c, name: c.name};
+    });
+
+    // Start with custom scenario
+    game.scenario = 'EDITOR_CUSTOM';
+    game.player = 'ed_cand_'+playerIdx;
+    candidatesData = cands;
+    game.candidates = Object.entries(cands).map(([id,c])=>({id,name:c.name,party:c.party,votes:c.start,money:c.money,side:c.side,color:c.color,ideologia:c.ideologia,scandal:0,momentum:0,fatigue:0}));
+    game.turn = 1;
+    game.fase = 1;
+    game.money = 40;
+    game.points = 2;
+    game.isGovernor = false;
+    game.isRepVelha = false;
+    game.isCustom = true;
+    game.news = [{title:"Eleição personalizada iniciada!",text:"Boa sorte na sua campanha customizada!"}];
+    game.approvals = {};
+    game.scandalLevels = {};
+    game.stateVotes = {};
+    allStates.forEach(s => game.stateVotes[s.id] = {});
+    game.candidates.forEach(c => { 
+        game.approvals[c.id] = {app:50,rej:30}; 
+        game.scandalLevels[c.id] = 0; 
+        allStates.forEach(s => { if(!game.stateVotes[s.id]) game.stateVotes[s.id]={}; game.stateVotes[s.id][c.id] = c.votes; }); 
+    });
+    achievements['custom_win'] = achievements['custom_win'] || false;
+    ['setup-screen','scenario-screen','indirect-screen','end-screen'].forEach(id=>{
+        let el=document.getElementById(id); if(el) el.classList.remove('active');
+    });
+    document.getElementById('game-screen').classList.add('active');
+    updateGameUI();
+}
+
 function init() {
     renderScenarios();
     // Music disabled
@@ -3275,6 +4241,43 @@ function renderPresidentialScenarios(list) {
                 <div style="font-size:9px;color:#8b4513;margin-top:2px">📜 Rep. Velha — Sem 2º turno</div>
             </div>`;
         });
+    }
+
+    // === MODOS ESPECIAIS ===
+    let totalAchievements = Object.keys(achievements).length;
+    let plebUnlocked = totalAchievements >= 10;
+    let editorUnlocked = totalAchievements >= 10;
+
+    list.innerHTML += `<div style="grid-column:1/-1;font-size:10px;font-weight:bold;color:#6600aa;padding:4px 0 2px;border-bottom:2px solid #6600aa;margin-top:12px;margin-bottom:4px">🔮 MODOS ESPECIAIS — Desbloqueados com 10 Conquistas (você tem ${totalAchievements})</div>`;
+
+    if(plebUnlocked) {
+        list.innerHTML += `<div class="scenario-card" style="background:#fff0ff;border-color:#6600aa;cursor:pointer" onclick="startPlebiscito1993()">
+            <div class="year" style="color:#6600aa;font-size:20px">🗳️ 1993</div>
+            <h3>Plebiscito Constitucional 1993</h3>
+            <div class="desc">Defina a forma de governo do Brasil: República Presidencialista, Parlamentarista ou Monarquia Constitucional!</div>
+            <div style="font-size:9px;color:#6600aa;margin-top:2px;background:#f0e0ff;padding:2px;border-radius:2px">🔮 Gameplay exclusiva — Escolha a forma de governo!</div>
+        </div>`;
+    } else {
+        list.innerHTML += `<div class="scenario-card locked" style="background:#f0e0ff;border-color:#aaa">
+            <div class="year" style="font-size:16px">🔒 1993</div>
+            <h3>Plebiscito Constitucional 1993</h3>
+            <div class="desc">🔒 Desbloqueie com 10 conquistas (você tem ${totalAchievements})</div>
+        </div>`;
+    }
+
+    if(editorUnlocked) {
+        list.innerHTML += `<div class="scenario-card" style="background:#e8fff0;border-color:#007700;cursor:pointer" onclick="openElectionEditor()">
+            <div class="year" style="color:#007700;font-size:20px">✏️ EDITOR</div>
+            <h3>Editor de Eleições BR</h3>
+            <div class="desc">Crie seu próprio cenário presidencial: defina candidatos, partidos e ideologias. Até 8 candidatos. Sem criação de eventos.</div>
+            <div style="font-size:9px;color:#007700;margin-top:2px;background:#d0ffe0;padding:2px;border-radius:2px">🎮 Crie e jogue seu próprio cenário!</div>
+        </div>`;
+    } else {
+        list.innerHTML += `<div class="scenario-card locked" style="background:#d0ffe0;border-color:#aaa">
+            <div class="year" style="font-size:16px">🔒 EDITOR</div>
+            <h3>Editor de Eleições BR</h3>
+            <div class="desc">🔒 Desbloqueie com 10 conquistas (você tem ${totalAchievements})</div>
+        </div>`;
     }
 }
 
@@ -3401,6 +4404,12 @@ function renderCountryScenarios(list) {
                 <div class="desc">Carney vs Poilievre vs Singh vs Blanchet</div>
                 <div style="font-size:9px;color:#cc0000;margin-top:2px">🏛️ Sistema parlamentar FPTP — 343 cadeiras por constituency</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('MEX2024')" style="background:#fff5f0;border-color:#8b0000">
+                <div class="year" style="color:#8b0000">🇲🇽 2024</div>
+                <h3>Eleições Presidenciais México 2024</h3>
+                <div class="desc">Sheinbaum vs Gálvez vs Máynez</div>
+                <div style="font-size:9px;color:#8b0000;margin-top:2px">🗳️ Turno único — 14 regiões eleitorais</div>
+            </div>
         </div>
     </div>`;
 
@@ -3413,12 +4422,6 @@ function renderCountryScenarios(list) {
                 <h3>Eleições Presidenciais Argentinas 2023</h3>
                 <div class="desc">Milei vs Massa vs Bullrich</div>
                 <div style="font-size:9px;color:#003087;margin-top:2px">🗳️ Balotaje — 2 turnos | 9 províncias</div>
-            </div>
-            <div class="scenario-card" onclick="selectInternationalScenario('MEX2024')" style="background:#fff5f0;border-color:#8b0000">
-                <div class="year" style="color:#8b0000">🇲🇽 2024</div>
-                <h3>Eleições Presidenciais México 2024</h3>
-                <div class="desc">Sheinbaum vs Gálvez vs Máynez</div>
-                <div style="font-size:9px;color:#8b0000;margin-top:2px">🗳️ Turno único — 14 regiões eleitorais</div>
             </div>
             <div class="scenario-card" onclick="selectInternationalScenario('VEN2024')" style="background:#fff0f0;border-color:#cc0000">
                 <div class="year" style="color:#cc0000">🇻🇪 2024</div>
@@ -3437,6 +4440,36 @@ function renderCountryScenarios(list) {
                 <h3>Eleições Presidenciais Chile 2025</h3>
                 <div class="desc">Kast vs Jara vs Matthei vs Narváez</div>
                 <div style="font-size:9px;color:#003366;margin-top:2px">🗳️ 2 turnos — 10 regiões chilenas</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('PER2026')" style="background:#fff8f5;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇵🇪 2026</div>
+                <h3>Eleições Presidenciais do Peru 2026</h3>
+                <div class="desc">Lopez Aliaga vs Fujimori vs Alvarez vs Lopez-Chau</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🗳️ 2 turnos — 9 regiões peruanas</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('BOL2025')" style="background:#fff5e0;border-color:#cc7700">
+                <div class="year" style="color:#cc6600">🇧🇴 2025</div>
+                <h3>Eleições Presidenciais da Bolívia 2025</h3>
+                <div class="desc">Paz Pereira vs Quiroga</div>
+                <div style="font-size:9px;color:#cc6600;margin-top:2px">🗳️ 2 turnos — 7 departamentos bolivianos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('URU2024')" style="background:#f0f8ff;border-color:#003399">
+                <div class="year" style="color:#003399;">🇺🇾 2024</div>
+                <h3>Eleições Presidenciais do Uruguai 2024</h3>
+                <div class="desc">Orsi (FA) vs Delgado (PN) vs Ojeda (Colorado)</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px;">🗳️ Balotaje — democracia modelo da América Latina</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('PAR2023')" style="background:#fff5f5;border-color:#CC0000">
+                <div class="year" style="color:#CC0000;">🇵🇾 2023</div>
+                <h3>Eleições Presidenciais do Paraguai 2023</h3>
+                <div class="desc">Peña (Colorado) vs Alegre (PLRA) vs Payo Cubas</div>
+                <div style="font-size:9px;color:#CC0000;margin-top:2px;">🗳️ Turno único — 77 anos de domínio colorado</div>
+            </div>
+                        <div class="scenario-card" onclick="selectInternationalScenario('SLV2024')" style="background:#f0f5ff;border-color:#004080">
+                <div class="year" style="color:#004080">🇸🇻 2024</div>
+                <h3>Eleições Presidenciais El Salvador 2024</h3>
+                <div class="desc">Bukele vs Flores vs Sánchez</div>
+                <div style="font-size:9px;color:#004080;margin-top:2px">🗳️ Turno único — domínio esmagador de Bukele</div>
             </div>
         </div>
     </div>`;
@@ -3480,6 +4513,12 @@ function renderCountryScenarios(list) {
                 <div class="year" style="color:#003399">🇺🇸 2000</div>
                 <h3>Eleição Presidencial EUA 2000</h3>
                 <div class="desc">Bush vs Gore — A Recontagem da Flórida</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Colégio Eleitoral — 270 votos necessários</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('USA1996')" style="background:#fff5e0;border-color:#003399">
+                <div class="year" style="color:#003399">🇺🇸 1996</div>
+                <h3>Eleição Presidencial EUA 1996</h3>
+                <div class="desc">Clinton vs Dole vs Perot — Terceira Via</div>
                 <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Colégio Eleitoral — 270 votos necessários</div>
             </div>
         </div>
@@ -3564,6 +4603,54 @@ function renderCountryScenarios(list) {
                 <div class="desc">Erdoğan vs Kılıçdaroğlu vs Oğan</div>
                 <div style="font-size:9px;color:#c8102e;margin-top:2px">🗳️ 2 turnos — províncias turcas</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('SWE2026')" style="background:#f5f5ff;border-color:#006aa7">
+                <div class="year" style="color:#006aa7">🇸🇪 2026</div>
+                <h3>Eleições Parlamentares da Suécia 2026</h3>
+                <div class="desc">Andersson vs Åkesson vs Kristersson vs Ringqvist</div>
+                <div style="font-size:9px;color:#006aa7;margin-top:2px">🏛️ Sistema parlamentar PR — 349 assentos no Riksdag</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('HUN2026')" style="background:#fff5e0;border-color:#cc6600">
+                <div class="year" style="color:#cc6600">🇭🇺 2026</div>
+                <h3>Eleições Parlamentares da Hungria 2026</h3>
+                <div class="desc">Orbán vs Magyar vs Dobrev vs Toroczkai</div>
+                <div style="font-size:9px;color:#cc6600;margin-top:2px">🏛️ Sistema parlamentar misto — 199 assentos na Assembleia Nacional</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('ROU2025')" style="background:#fff5f0;border-color:#cc2200">
+                <div class="year" style="color:#cc2200">🇷🇴 2025</div>
+                <h3>Eleições Presidenciais da Romênia 2025</h3>
+                <div class="desc">Nicusor Dan vs Simion vs Antonescu vs Ponta</div>
+                <div style="font-size:9px;color:#cc2200;margin-top:2px">🗳️ 2 turnos — pós-anulação das eleições de 2024</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('GRE2023')" style="background:#f5f8ff;border-color:#0033aa">
+                <div class="year" style="color:#0033aa">🇬🇷 2023</div>
+                <h3>Eleições Parlamentares da Grécia 2023</h3>
+                <div class="desc">Mitsotakis vs Tsipras vs Androulakis vs KKE</div>
+                <div style="font-size:9px;color:#0033aa;margin-top:2px">🏛️ Sistema parlamentar proporcional — 300 assentos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('NLD2025')" style="background:#fff5e0;border-color:#ff6600">
+                <div class="year" style="color:#ff6600">🇳🇱 2025</div>
+                <h3>Eleições Parlamentares dos Países Baixos 2025</h3>
+                <div class="desc">Jetten vs Wilders vs Yeşilgöz</div>
+                <div style="font-size:9px;color:#ff6600;margin-top:2px">🏛️ Sistema proporcional — 150 assentos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('SRB2023')" style="background:#fff5f5;border-color:#cc2222">
+                <div class="year" style="color:#cc2222">🇷🇸 2023</div>
+                <h3>Eleições Presidenciais da Sérvia 2023</h3>
+                <div class="desc">Vučić vs Ponoš vs Jovanović vs Obradović</div>
+                <div style="font-size:9px;color:#cc2222;margin-top:2px">🗳️ Turno único — Vučić vs oposição</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('AUT2024')" style="background:#f0f5ff;border-color:#0033cc">
+                <div class="year" style="color:#0033cc">🇦🇹 2024</div>
+                <h3>Eleições Parlamentares da Áustria 2024</h3>
+                <div class="desc">Kickl vs Nehammer vs Babler</div>
+                <div style="font-size:9px;color:#0033cc;margin-top:2px">🏛️ Sistema proporcional — 183 assentos</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('LTU2024')" style="background:#fff8e0;border-color:#cc6600">
+                <div class="year" style="color:#cc6600">🇱🇹 2024</div>
+                <h3>Eleições Presidenciais da Lituânia 2024</h3>
+                <div class="desc">Nausėda vs Šimonytė vs Vėgėlė</div>
+                <div style="font-size:9px;color:#cc6600;margin-top:2px">🗳️ 2 turnos — Países Bálticos e OTAN</div>
+            </div>
         </div>
     </div>`;
 
@@ -3571,7 +4658,13 @@ function renderCountryScenarios(list) {
     list.innerHTML += `<div style="margin-bottom:12px">
         <div style="font-size:11px;font-weight:bold;color:#8b4513;padding:4px 6px;background:#fff0e0;border-left:4px solid #8b4513;margin-bottom:6px">🌏 ÁSIA</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-            <div class="scenario-card" onclick="selectInternationalScenario('IND2024')" style="background:#fff5e0;border-color:#ff6600">
+            <div class="scenario-card" onclick="selectInternationalScenario('TWN2024')" style="background:#f5fff5;border-color:#009900">
+                <div class="year" style="color:#1B6B2F;">🇹🇼 2024</div>
+                <h3>Eleição Presidencial de Taiwan 2024</h3>
+                <div class="desc">Lai Ching-te (DPP) vs Hou Yu-ih (KMT) vs Ko Wen-je (TPP)</div>
+                <div style="font-size:9px;color:#1B6B2F;margin-top:2px;">🗳️ Turno único — tensão geopolítica no Estreito de Taiwan</div>
+            </div>
+                        <div class="scenario-card" onclick="selectInternationalScenario('IND2024')" style="background:#fff5e0;border-color:#ff6600">
                 <div class="year" style="color:#ff6600">🇮🇳 2024</div>
                 <h3>Eleições Gerais Indianas 2024</h3>
                 <div class="desc">Modi (BJP) vs Kharge (INC)</div>
@@ -3595,10 +4688,35 @@ function renderCountryScenarios(list) {
                 <div class="desc">Marcos vs Robredo vs Pacquiao vs Moreno</div>
                 <div style="font-size:9px;color:#0038A8;margin-top:2px">🗳️ Turno único — províncias e regiões filipinas</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('BGD2024')" style="background:#f0fff5;border-color:#006a4e">
+                <div class="year" style="color:#006a4e">🇧🇩 2024</div>
+                <h3>Eleições Gerais de Bangladesh 2024</h3>
+                <div class="desc">Hasina vs Quader — Eleição sem oposição real</div>
+                <div style="font-size:9px;color:#006a4e;margin-top:2px">🗳️ Turno único — BNP boicotou as eleições</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('ISR2026')" style="background:#f5f5ff;border-color:#0038b8">
+                <div class="year" style="color:#0038b8">🇮🇱 2026</div>
+                <h3>Eleições Parlamentares de Israel 2026</h3>
+                <div class="desc">Netanyahu vs Lapid vs Deri vs Gantz</div>
+                <div style="font-size:9px;color:#0038b8;margin-top:2px">🏛️ Sistema parlamentar PR — 120 assentos na Knesset</div>
+            </div>
         </div>
     </div>`;
 
-    // === ÁFRICA ===
+    // === OCEANIA ===
+    list.innerHTML += `<div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:bold;color:#005f8b;padding:4px 6px;background:#e0f4ff;border-left:4px solid #005f8b;margin-bottom:6px">🌏 OCEANIA</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div class="scenario-card" onclick="selectInternationalScenario('AUS2025')" style="background:#f0f8ff;border-color:#003087">
+                <div class="year" style="color:#003087;">🇦🇺 2025</div>
+                <h3>Eleições Federais da Austrália 2025</h3>
+                <div class="desc">Albanese (Labor) vs Dutton (LNP) vs Bandt (Greens)</div>
+                <div style="font-size:9px;color:#003087;margin-top:2px;">🏛️ Sistema parlamentar FPTP — 151 cadeiras na House of Representatives</div>
+            </div>
+        </div>
+    </div>`;
+
+        // === ÁFRICA ===
     list.innerHTML += `<div style="margin-bottom:12px">
         <div style="font-size:11px;font-weight:bold;color:#1a5200;padding:4px 6px;background:#e8f5e0;border-left:4px solid #1a5200;margin-bottom:6px">🌍 ÁFRICA</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
@@ -3608,13 +4726,22 @@ function renderCountryScenarios(list) {
                 <div class="desc">Ramaphosa vs Steenhuisen vs Zuma vs Malema</div>
                 <div style="font-size:9px;color:#009a44;margin-top:2px">🏛️ Sistema parlamentar PR — 400 assentos na Assembleia Nacional</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('NGA2023')" style="background:#f5fff0;border-color:#008751">
+                <div class="year" style="color:#008751">🇳🇬 2023</div>
+                <h3>Eleições Presidenciais da Nigéria 2023</h3>
+                <div class="desc">Tinubu vs Abubakar vs Obi</div>
+                <div style="font-size:9px;color:#008751;margin-top:2px">🗳️ Turno único — maior democracia africana</div>
+            </div>
         </div>
     </div>`;
 
     const locked = [
-        {flag:'🇧🇴',name:'Bolívia 2025'},{flag:'🇵🇪',name:'Peru 2026'},
-        {flag:'🇸🇪',name:'Suécia 2026'},{flag:'🇮🇩',name:'Indonésia 2024'},
-        {flag:'🇧🇩',name:'Bangladesh 2024'},{flag:'🇳🇬',name:'Nigéria 2023'},
+        {flag:'🇮🇩',name:'Indonésia 2024'},{flag:'🇵🇰',name:'Paquistão 2024'},
+        {flag:'🇪🇬',name:'Egito 2024'},{flag:'🇮🇷',name:'Irã 2024'},
+        {flag:'🇨🇷',name:'Costa Rica 2026'},{flag:'🇬🇳',name:'Guiné 2025'},
+        {flag:'🇸🇳',name:'Senegal 2024'},{flag:'🇰🇪',name:'Quênia 2027'},
+        {flag:'🇪🇹',name:'Etiópia 2021'},{flag:'🇸🇰',name:'Eslováquia 2023'},
+        {flag:'🇳🇿',name:'Nova Zelândia 2026'},
     ];
     list.innerHTML += `<div style="margin-bottom:8px">
         <div style="font-size:11px;font-weight:bold;color:#666;padding:4px 6px;background:#d4d0c8;border-left:4px solid #888;margin-bottom:6px">🔒 EM DESENVOLVIMENTO</div>
@@ -4143,6 +5270,7 @@ function goToScenarios() {
     document.getElementById("setup-screen").classList.remove("active");
     document.getElementById("indirect-screen").classList.remove("active");
     document.getElementById("scenario-screen").classList.add("active");
+    renderScenarios();
 }
 
 function goToMainMenu() {
@@ -5382,6 +6510,26 @@ function renderNews() {
             <b>𝕏 Türkiye Siyaseti</b> <small style="opacity:0.8">— Cumhurbaşkanlığı 2023</small>
         </div>`;
         feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'TUR2023')).join('');
+    } else if(game.scenario === 'TWN2024') {
+        if(header) header.innerHTML = `<div style="background:#1B6B2F;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b>𝕏 台灣政治動態 Taiwan Politics</b> <small style="opacity:0.8">— 總統大選 2024</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'TWN2024')).join('');
+    } else if(game.scenario === 'AUS2025') {
+        if(header) header.innerHTML = `<div style="background:#003087;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b>𝕏 Australian Politics Feed</b> <small style="opacity:0.8">— Federal Election 2025</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'AUS2025')).join('');
+    } else if(game.scenario === 'URU2024') {
+        if(header) header.innerHTML = `<div style="background:#003399;color:#ffcc00;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b>𝕏 Política Uruguay</b> <small style="opacity:0.8">— Elecciones 2024</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'URU2024')).join('');
+    } else if(game.scenario === 'PAR2023') {
+        if(header) header.innerHTML = `<div style="background:#CC0000;color:#fff;padding:8px;border-radius:4px;margin-bottom:8px;font-family:Arial">
+            <b>𝕏 Política Paraguay</b> <small style="opacity:0.8">— Elecciones 2023</small>
+        </div>`;
+        feed.innerHTML = game.news.map(n => generateTweetIntl(n, 'PAR2023')).join('');
     } else if(year >= 2010 && !game.isRepVelha) {
         // Social media style
         let platform = isRus24 ? 'ВКонтакте Política' : '𝕏 FeedPolítico Brasil';
@@ -5705,6 +6853,198 @@ const intlTweetPools = {
         ],
         memes:['Güçlü Türkiye için Erdoğan! 🇹🇷','Değişim için Kılıçdaroğlu! Artık yeter!','Milletle yürüyoruz, milletle kazanıyoruz 💪','Faiz sebebi değil, sonucudur 😂 #ekonomi','Her şey Türkiye için! 🇹🇷'],
     },
+    'ISR2026': {
+        accounts: [
+            {handle:'@haaretzcom',name:'Haaretz הארץ',type:'notícia'},{handle:'@jpost',name:'Jerusalem Post',type:'notícia'},
+            {handle:'@LikudParty',name:'Likud ליכוד',type:'org'},{handle:'@YeshAtid',name:'Yesh Atid יש עתיד',type:'org'},
+            {handle:'@Shas_IL',name:'Shas שס',type:'org'},{handle:'@GantzBenny',name:'Blue and White',type:'org'},
+            {handle:'@IsraeliVoter',name:'Israeli Voter 🇮🇱',type:'normal'},{handle:'@IsraelMeme',name:'Memes Israel 🇮🇱',type:'meme'},
+            {handle:'@KnessetNews',name:'Knesset Channel',type:'notícia'},{handle:'@IsraelElection',name:'Israel Election Analysis',type:'análise'},
+        ],
+        memes:['Netanyahu הוא ישראל! 🇮🇱 #Likud','רק לפיד יכול להביא שינוי! #YeshAtid','גנץ - מנהיג בשעות קשות 💪','ישראל חזקה #Netanyahu','זמן לשינוי! הצביעו לפיד 🗳️'],
+    },
+    'PER2026': {
+        accounts: [
+            {handle:'@elcomercio_peru',name:'El Comercio',type:'notícia'},{handle:'@LaRepublica_pe',name:'La República',type:'notícia'},
+            {handle:'@RPPNoticias',name:'RPP Noticias',type:'notícia'},{handle:'@LopezAliagaOk',name:'Rafael Lopez Aliaga',type:'político'},
+            {handle:'@KeikoPepe',name:'Fuerza Popular 🇵🇪',type:'org'},{handle:'@PeruanoNormal',name:'Peruano del Común',type:'normal'},
+            {handle:'@MemesPeru',name:'Memes Perú 🦙',type:'meme'},{handle:'@AnalisisElePE',name:'Análisis Electoral PE',type:'análise'},
+            {handle:'@JNEPeru',name:'JNE Perú 🗳️',type:'org'},
+        ],
+        memes:['¡Peru primero! Vota Lopez Aliaga 🇵🇪','El fujimorismo no muere jamás! Keiko presidenta ✊','Necesitamos cambio real, no más de lo mismo','Que ningún candidato robe más al Peru 😤','¡Arriba Peru! 🦙🇵🇪'],
+    },
+    'BOL2025': {
+        accounts: [
+            {handle:'@ElDeber',name:'El Deber (Santa Cruz)',type:'notícia'},{handle:'@PaginaSiete',name:'Página Siete',type:'notícia'},
+            {handle:'@LosTiempos',name:'Los Tiempos',type:'notícia'},{handle:'@TutoQuiroga',name:'Jorge Quiroga',type:'político'},
+            {handle:'@PDC_Bolivia',name:'PDC Bolivia',type:'org'},{handle:'@CiudadanoBoliviano',name:'Ciudadano Boliviano',type:'normal'},
+            {handle:'@MemesBolPol',name:'Memes Políticos Bolivia 🇧🇴',type:'meme'},{handle:'@TSEBolivia',name:'TSE Bolivia 🗳️',type:'org'},
+        ],
+        memes:['Bolivia merece democracia real, no caudillismo! 🇧🇴','Tuto Quiroga es el futuro de Bolivia 💪','Fuera el MAS! Bolivia para los bolivianos','Paz Pereira representa el cambio que necesitamos','¡Bolivia libre! 🇧🇴'],
+    },
+    'SLV2024': {
+        accounts: [
+            {handle:'@LaPrensaGrafica',name:'La Prensa Gráfica',type:'notícia'},{handle:'@ElDiarioHoy',name:'El Diario de Hoy',type:'notícia'},
+            {handle:'@NayibBukele',name:'Nayib Bukele 🇸🇻',type:'político'},{handle:'@nuevasideas_sv',name:'Nuevas Ideas',type:'org'},
+            {handle:'@FMLN_SV',name:'FMLN El Salvador',type:'org'},{handle:'@SalvadoreñoNorm',name:'Salvadoreño Normal',type:'normal'},
+            {handle:'@MemesElSalv',name:'Memes El Salvador 🇸🇻',type:'meme'},{handle:'@TSEsalvador',name:'TSE El Salvador 🗳️',type:'org'},
+        ],
+        memes:['Bukele es el mejor presidente del mundo! 🇸🇻 #NAYIB','El Salvador ya no es el mismo — y eso es bueno 💪','Las maras ya no mandan, ¡Bukele manda! 🔒','Bukele dictador! La democracia importa 😤','Con Bukele, mis hijos pueden salir de noche 🙏'],
+    },
+    'SWE2026': {
+        accounts: [
+            {handle:'@dagensnyheter',name:'Dagens Nyheter',type:'notícia'},{handle:'@svd',name:'Svenska Dagbladet',type:'notícia'},
+            {handle:'@sossarna',name:'Socialdemokraterna 🌹',type:'org'},{handle:'@sverigedemokrat',name:'Sverigedemokraterna',type:'org'},
+            {handle:'@moderaterna',name:'Moderaterna M',type:'org'},{handle:'@CenterPartiet',name:'Centerpartiet C',type:'org'},
+            {handle:'@SvensktVäljare',name:'Vanlig Svensk 🇸🇪',type:'normal'},{handle:'@SvenskPolitikMem',name:'Svenska Politikmemes',type:'meme'},
+            {handle:'@SVTNyheter',name:'SVT Nyheter',type:'notícia'},{handle:'@ValmyndSverige',name:'Valmyndigheten 🗳️',type:'org'},
+        ],
+        memes:['Socialdemokraterna bygger Sverige! 🌹🇸🇪','SD är inte rasister, de är realistar! 🇸🇪','Ännu fyra år av S? Nej tack! Rösta M','Sverige behöver ordning och reda — inte öppna gränser','Vi socialdemokrater bygger framtiden tillsammans! ✊'],
+    },
+    'NGA2023': {
+        accounts: [
+            {handle:'@ThePunchNG',name:'The Punch Nigeria',type:'notícia'},{handle:'@vanguardngr',name:'Vanguard Nigeria',type:'notícia'},
+            {handle:'@APCNigeria',name:'APC Nigeria',type:'org'},{handle:'@OfficialPDPNig',name:'PDP Nigeria',type:'org'},
+            {handle:'@Labour_Party_NG',name:'Labour Party Nigeria',type:'org'},{handle:'@PeterObi',name:'Peter Obi',type:'político'},
+            {handle:'@NigerianVoter',name:'Nigerian Voter 🇳🇬',type:'normal'},{handle:'@NaijaMemes',name:'Naija Memes 😂',type:'meme'},
+            {handle:'@INECNigeria',name:'INEC Nigeria 🗳️',type:'org'},{handle:'@NGElectionWatch',name:'Nigeria Election Watch',type:'análise'},
+        ],
+        memes:['Tinubu was hardwork! APC forever 🇳🇬','Obidient movement strong!! Peter Obi 2023 🟢⚪🟢','Nigeria needs change. Vote Atiku!','Na Peter Obi be our man! He sabi finance 💚','OBI-dient and proud! Labour Party rise 💚⚪'],
+    },
+    'BGD2024': {
+        accounts: [
+            {handle:'@TheDailyStar_BD',name:'The Daily Star',type:'notícia'},{handle:'@ProthomAlo',name:'Prothom Alo',type:'notícia'},
+            {handle:'@albd1971',name:'Awami League 🟢',type:'org'},{handle:'@jatiyaparty',name:'Jatiya Party',type:'org'},
+            {handle:'@BDVoter',name:'Bangladeshi Voter 🇧🇩',type:'normal'},{handle:'@BDMemes',name:'Bangladesh Memes 🇧🇩',type:'meme'},
+            {handle:'@ECBangladesh',name:'Election Commission BD 🗳️',type:'org'},{handle:'@BDPoliticsWatch',name:'BD Politics Analysis',type:'análise'},
+        ],
+        memes:['Sheikh Hasina builds Bangladesh! 🇧🇩 Joy Bangla!','Hasina transforms Bangladesh — Digital Bangladesh 💻','Opposition boycotted — was that wise? 🤔','Bangladesh shines under Hasina leadership 🌟','Joy Bangla Joy Bangabandhu! ✊🇧🇩'],
+    },
+    'USA1996': {
+        accounts: [
+            {handle:'@nytimes',name:'The New York Times',type:'notícia'},{handle:'@washingtonpost',name:'Washington Post',type:'notícia'},
+            {handle:'@ABC_News',name:'ABC News',type:'notícia'},{handle:'@NBCNews',name:'NBC News',type:'notícia'},
+            {handle:'@CBS_News',name:'CBS News',type:'notícia'},{handle:'@GOP',name:'Republican Party 🐘',type:'org'},
+            {handle:'@TheDemocrats',name:'Democratic Party 🫏',type:'org'},{handle:'@ReformParty96',name:'Reform Party — Ross Perot',type:'org'},
+            {handle:'@AmericanVoter96',name:'American Voter 1996 🇺🇸',type:'normal'},{handle:'@90sMemeVault',name:'90s Political Memes 😂',type:'meme'},
+        ],
+        memes:["It's the economy, stupid! Clinton-Gore '96 🇺🇸","Dole-Kemp '96 — Leadership For America! 🐘","Perot's right about NAFTA! Vote Reform Party","The deficit is killing America — Perot 2000!","Four more years! Clinton-Gore for the WIN 🫏"],
+    },
+    'HUN2026': {
+        accounts: [
+            {handle:'@telex_hu',name:'Telex 📰',type:'notícia'},{handle:'@444hu',name:'444.hu',type:'notícia'},
+            {handle:'@Fidesz',name:'Fidesz — Magyar Polgári Szövetség',type:'org'},{handle:'@TISZA_part',name:'TISZA Párt 🌱',type:'org'},
+            {handle:'@demokratikuskoal',name:'Demokratikus Koalíció',type:'org'},{handle:'@MiHazankMozg',name:'Mi Hazánk 🇭🇺',type:'org'},
+            {handle:'@MagyarSzavazó',name:'Magyar Szavazó 🇭🇺',type:'normal'},{handle:'@HUPolitikaMeme',name:'Magyar Politika Memes',type:'meme'},
+            {handle:'@origo_hu',name:'Origo (Pro-Orbán)',type:'notícia'},{handle:'@HUVálasztás',name:'Választás Elemzés',type:'análise'},
+        ],
+        memes:['Orbán Magyarországot védi! 🇭🇺 #Fidesz','Magyar Péter hozza a változást! 🌱 #TISZA','Elég volt az Orbán-rezsimből! Szavazz Magyarra!','Magyarország nem lesz Soros bábállama! 💪','TISZA az egyetlen remény Magyarország számára 🌱'],
+    },
+    'ROU2025': {
+        accounts: [
+            {handle:'@Digi24ro',name:'Digi24 📺',type:'notícia'},{handle:'@ProTV_ro',name:'Pro TV România',type:'notícia'},
+            {handle:'@NicusorDanOfic',name:'Nicuşor Dan',type:'político'},{handle:'@SimionGeorge',name:'George Simion 🇷🇴',type:'político'},
+            {handle:'@AURRomania',name:'AUR România 🦅',type:'org'},{handle:'@CrinAntonescu',name:'Crin Antonescu',type:'político'},
+            {handle:'@VictorPontaRo',name:'Victor Ponta',type:'político'},{handle:'@RomânNormal',name:'Român Normal 🇷🇴',type:'normal'},
+            {handle:'@MemeRomania',name:'Meme România 😂',type:'meme'},{handle:'@BECromania',name:'Biroul Electoral Central 🗳️',type:'org'},
+        ],
+        memes:['Romania europeana si pro-NATO! #NicusorDan 🇷🇴','AUR apara valorile romanesti! 🦅 Simion presedinte!','Coruptia trebuie sa dispara! Vot pentru schimbare!','Romania are nevoie de un presedinte serios, nu politicieni','Jos Sistemul! AUR e vocea poporului 💪 🇷🇴'],
+    },
+    'GRE2023': {
+        accounts: [
+            {handle:'@kathimerini_gr',name:'Kathimerini 📰',type:'notícia'},{handle:'@skai_gr',name:'SKAI TV',type:'notícia'},
+            {handle:'@syriza_gr',name:'SYRIZA 🇬🇷',type:'org'},{handle:'@neademokratia',name:'Νέα Δημοκρατία',type:'org'},
+            {handle:'@PASOK_gr',name:'ΠΑΣΟΚ 🌹',type:'org'},{handle:'@KKE_gr',name:'ΚΚΕ ☭',type:'org'},
+            {handle:'@KMitsotakis',name:'Κ. Μητσοτάκης',type:'político'},{handle:'@Tsipras_int',name:'Αλέξης Τσίπρας',type:'político'},
+            {handle:'@EllhnasPoliths',name:'Έλληνας Πολίτης',type:'normal'},{handle:'@GreeceMemes',name:'Ελληνικά Memes 😂',type:'meme'},
+            {handle:'@ergani_gov',name:'Εκλογές 2023 🗳️',type:'org'},
+        ],
+        memes:['Η ΝΔ φτιάχνει ισχυρή Ελλάδα! 💙🇬🇷 Μητσοτάκης πρωθυπουργός!','ΣΥΡΙΖΑ για τους πολλούς! Αλλαγή τώρα! 🔴','ΠΑΣΟΚ επιστρέφει! Ψήφος για αξιοπιστία 🌹','ΚΚΕ — η μόνη συνεπής πολιτική δύναμη ☭','Η ψήφος μου δεν πάει χαμένη — ψηφίζω αρχές!'],
+    },
+    'NLD2025': {
+        accounts: [
+            {handle:'@nrcnl',name:'NRC Handelsblad',type:'notícia'},{handle:'@volkskrant',name:'de Volkskrant',type:'notícia'},
+            {handle:'@PVVGeert',name:'PVV — Geert Wilders 🇳🇱',type:'org'},{handle:'@D66',name:'Democraten 66 🌿',type:'org'},
+            {handle:'@VVD',name:'VVD — Volkspartij',type:'org'},{handle:'@GroenLinksPvdA',name:'GroenLinks-PvdA 🌻',type:'org'},
+            {handle:'@NederlNormaal',name:'Nederlander Normaal 🌷',type:'normal'},{handle:'@DutchMemeVault',name:'Nederland Memes 🧀',type:'meme'},
+            {handle:'@RTLNieuws',name:'RTL Nieuws',type:'notícia'},{handle:'@kiesraad',name:'Kiesraad 🗳️',type:'org'},
+        ],
+        memes:['Wilders heeft gelijk over immigratie! Nederland voor Nederlanders!','D66 bouwt aan een duurzaam Nederland! 🌿 Stem Jetten','VVD — economie en vrijheid. Yeşilgöz weet het!','Stop de islamisering van Nederland! #PVV 🇳🇱','Nederland verdient beter dan extreemrechts. Stem links! 🌻'],
+    },
+    'SRB2023': {
+        accounts: [
+            {handle:'@blic_rs',name:'Blic 📰',type:'notícia'},{handle:'@n1info_srbija',name:'N1 Srbija',type:'notícia'},
+            {handle:'@SNSSrbija',name:'SNS — Srpska Napredna Stranka',type:'org'},{handle:'@NarodnaMocSRB',name:'Narodna Srbija',type:'org'},
+            {handle:'@aleksvucic',name:'Aleksandar Vučić',type:'político'},{handle:'@ZdravkoPonos',name:'Zdravko Ponoš',type:'político'},
+            {handle:'@SrpskiGradjanin',name:'Srpski Građanin 🇷🇸',type:'normal'},{handle:'@SrbijaMemesReal',name:'Srbija Memes 😂',type:'meme'},
+            {handle:'@RIK_Srbija',name:'RIK Srbija 🗳️',type:'org'},{handle:'@PolitikaSrbija',name:'Politika SRB Analiza',type:'análise'},
+        ],
+        memes:['Vučić gradi Srbiju! SNS za bolju budućnost 🇷🇸','Dosta vlade SNS-a! Srbija zaslužuje demokratiju! 💙','Ponoš donosi promenu — glasajte za budućnost 🇷🇸','Srbija napred! Vučić je naš predsednik! 💪','Vreme je za pravu demokratiju u Srbiji! #Promena'],
+    },
+    'AUT2024': {
+        accounts: [
+            {handle:'@DerStandard',name:'Der Standard 📰',type:'notícia'},{handle:'@Kronen_Zeitung',name:'Kronen Zeitung',type:'notícia'},
+            {handle:'@FPOe_TV',name:'FPÖ Österreich 🇦🇹',type:'org'},{handle:'@oevp',name:'ÖVP — Volkspartei',type:'org'},
+            {handle:'@SPOe_at',name:'SPÖ Österreich 🌹',type:'org'},{handle:'@NEOS_at',name:'NEOS 🩷',type:'org'},
+            {handle:'@HerbertKickl',name:'Herbert Kickl',type:'político'},{handle:'@OesterreicherN',name:'Österreicher Normal 🇦🇹',type:'normal'},
+            {handle:'@AustriaMemesDE',name:'Österreich Memes 😂',type:'meme'},{handle:'@BMI_at',name:'BMI Wahlbehörde 🗳️',type:'org'},
+        ],
+        memes:['Kickl für Österreich! FPÖ ist Österreich 🇦🇹💙','ÖVP — das Beste für Österreich! Nehammer stark!','Endlich Veränderung! SPÖ für soziale Gerechtigkeit 🌹','Festung Österreich! Grenzen schließen! #FPÖ','Österreich braucht Zusammenhalt, keine Hetze! 🇦🇹'],
+    },
+
+    'TWN2024': {
+        accounts: [
+            {handle:'@CNA_Taiwan',name:'CNA 中央社 📺',type:'notícia'},{handle:'@TaipeiTimes',name:'Taipei Times',type:'notícia'},
+            {handle:'@DPP_Taiwan',name:'民主進步黨 DPP 🌱',type:'org'},{handle:'@KMT_official',name:'中國國民黨 KMT',type:'org'},
+            {handle:'@Taiwan_TPP',name:'台灣民眾黨 TPP 🩵',type:'org'},{handle:'@LaiChingte',name:'賴清德 Lai Ching-te',type:'político'},
+            {handle:'@HouYuih',name:'侯友宜 Hou Yu-ih',type:'político'},{handle:'@KoWenje',name:'柯文哲 Ko Wen-je',type:'político'},
+            {handle:'@TaiwanVoter',name:'台灣公民 🇹🇼',type:'normal'},{handle:'@TWMemes2024',name:'台灣選舉迷因 😂',type:'meme'},
+            {handle:'@CEC_Taiwan',name:'中選會 選舉委員會 🗳️',type:'org'},
+        ],
+        memes:['台灣加油！🇹🇼 民主不能退！#賴清德','KMT 回來就和平了嗎？別做夢 😤 #侯友宜','柯P說得好！兩個爛蘋果選哪個？ #柯文哲','Taiwan is not China. Period. 🇹🇼','今天不投票，明天哭哭去 🗳️ #Taiwan2024'],
+    },
+    'AUS2025': {
+        accounts: [
+            {handle:'@ABCNews_Aus',name:'ABC News Australia 📺',type:'notícia'},{handle:'@smh',name:'Sydney Morning Herald',type:'notícia'},
+            {handle:'@theage',name:'The Age (Melbourne)',type:'notícia'},{handle:'@AustralianLabor',name:'Australian Labor 🌹',type:'org'},
+            {handle:'@LiberalAus',name:'Liberal Party of Australia 🇦🇺',type:'org'},{handle:'@AusGreens',name:'Australian Greens 🌿',type:'org'},
+            {handle:'@AlboMP',name:'Anthony Albanese PM',type:'político'},{handle:'@PeterDutton',name:'Peter Dutton MP',type:'político'},
+            {handle:'@AdamBandt',name:'Adam Bandt MP 🌱',type:'político'},{handle:'@AussieVoter',name:'Ordinary Australian 🦘',type:'normal'},
+            {handle:'@AusMemes2025',name:'Aussie Election Memes 🦘😂',type:'meme'},{handle:'@AEC_official',name:'Australian Electoral Commission 🗳️',type:'org'},
+        ],
+        memes:['Cost of living is cooked mate 🔥 #AusVotes2025','Vote 1 Labor — workers first! 🌹','Dutton is not the answer. Not now, not ever. 👎','The Greens have never run anything lol 😂','Australians deserve better than this two-party mess. #AusVotes'],
+    },
+    'URU2024': {
+        accounts: [
+            {handle:'@elpais_uy',name:'El País Uruguay 📰',type:'notícia'},{handle:'@ladiaria',name:'La Diaria',type:'notícia'},
+            {handle:'@frenteamplio',name:'Frente Amplio 🌹',type:'org'},{handle:'@PartidoNacional',name:'Partido Nacional 🇺🇾',type:'org'},
+            {handle:'@ColoradoUY',name:'Partido Colorado',type:'org'},{handle:'@YamanduOrsi',name:'Yamandú Orsi',type:'político'},
+            {handle:'@AlvaroDelgado',name:'Álvaro Delgado',type:'político'},{handle:'@AndresOjeda',name:'Andrés Ojeda ⚡',type:'político'},
+            {handle:'@CiudadanoUY',name:'Ciudadano Uruguayo 🇺🇾',type:'normal'},{handle:'@MemeUruguay',name:'Memes Electorales UY 😂',type:'meme'},
+            {handle:'@CorteElectoral',name:'Corte Electoral Uruguay 🗳️',type:'org'},
+        ],
+        memes:['Orsi presidente! La izquierda vuelve! 🌹 #Uruguay2024','Delgado es la continuidad que necesitamos 🇺🇾 #PN','Ojeda rompió el molde! El joven que sacudió la política ⚡','Uruguay tan chico tan democrático, orgullo total 💙','Primer balotaje en años — cada voto cuenta! 🗳️'],
+    },
+    'PAR2023': {
+        accounts: [
+            {handle:'@ABCColor',name:'ABC Color 📰',type:'notícia'},{handle:'@ultimahora_py',name:'Última Hora',type:'notícia'},
+            {handle:'@ColoradoPY',name:'Partido Colorado 🇵🇾',type:'org'},{handle:'@PLRA_PY',name:'PLRA — Partido Liberal',type:'org'},
+            {handle:'@CruzadaNacional',name:'Cruzada Nacional 🔥',type:'org'},{handle:'@SantiagoPena',name:'Santiago Peña',type:'político'},
+            {handle:'@EfrainAlegre',name:'Efraín Alegre',type:'político'},{handle:'@PaYoCubas',name:'Payo Cubas 🔥',type:'político'},
+            {handle:'@CiudadanoPY',name:'Ciudadano Paraguayo 🇵🇾',type:'normal'},{handle:'@MemesElectorales',name:'Memes Electorales PY 😂',type:'meme'},
+            {handle:'@TSJE_py',name:'TSJE — Tribunal Electoral 🗳️',type:'org'},
+        ],
+        memes:['¡Colorado eterno! 77 años y seguimos 🇵🇾 #Peña2023','El cambio es ahora! Alegre presidente! #PLRA','PAYO CUBAS PRESIDENTE! Los políticos miedo 🔥 #CruzadaNacional','Paraguay se cansó de la corrupción colorada. Ya basta.','Cada cuatro años lo mismo... ¿hasta cuándo? 😔 #Paraguay'],
+    },
+    'LTU2024': {
+        accounts: [
+            {handle:'@LRT_lt',name:'LRT Televizija 📺',type:'notícia'},{handle:'@delfi_lt',name:'Delfi.lt',type:'notícia'},
+            {handle:'@GitanasNauseda',name:'Gitanas Nausėda',type:'político'},{handle:'@IngrSimonyte',name:'Ingrida Šimonytė',type:'político'},
+            {handle:'@TS_LKD',name:'Tėvynės sąjunga-LKD',type:'org'},{handle:'@LietuvaRinko',name:'Lietuvis Rinkėjas 🇱🇹',type:'normal'},
+            {handle:'@LTMemesPolitika',name:'Lietuva Politikos Memes 😂',type:'meme'},{handle:'@VRK_LT',name:'VRK — Rinkimai 🗳️',type:'org'},
+        ],
+        memes:['Nausėda — nepriklausomas ir patikimas! 🇱🇹 Balsavau!','TS-LKD — Europa ir NATO yra prioritetas! Šimonytė!','Lietuva turi laisvai rinktis, ne diktatams! 💪','Nauja karta, nauja politika — Vėgėlė prezidentas!','Laisvoji Lietuva — už demokratiją ir NATO! 🇱🇹🌍'],
+    },
 };
 
 function generateTweetIntl(newsItem, scenario) {
@@ -5861,7 +7201,7 @@ function nextTurn() {
     if(game.mode === 'sandbox') {
         game.money = 9999; game.points = 9999;
     }
-    // Pontos por turno rebalanceados: 3-5 base, cap: 16 no 1T, 24 no 2T
+    // Pontos por turno rebalanceados: 3-5 base, sem limite máximo
     let coalitionBonus = Math.floor(game.coalition.filter(p=>!p.includes('_seat')).length / 2);
     let baseGain = 3 + Math.floor(Math.random() * 3) + coalitionBonus; // 3-5 + coalizão
     // Difficulty adjustment
@@ -5872,13 +7212,7 @@ function nextTurn() {
     let tvBonus = 0;
     if(game.tvTime && game.tvTime[game.player]) tvBonus = Math.floor(game.tvTime[game.player] / 20);
     let pGain = baseGain + Math.round(spiritPts) + tvBonus;
-    // Max total points cap
-    let maxThisTurn = game.fase === 2 ? 24 : 16;
-    let afterGain = game.points + pGain;
-    if(afterGain > maxThisTurn) {
-        pGain = Math.max(0, maxThisTurn - game.points);
-    }
-    game.points = Math.min(maxThisTurn, game.points + pGain);
+    game.points = game.points + pGain;
     
     // Update date display
     updateDateDisplay();
@@ -6297,7 +7631,7 @@ function nextTurn() {
     generateSocialMediaEvent(); // sempre gera um post por turno
     renderNews();
 
-    let maxTurns = game.fase === 2 ? 3 : 15;
+    let maxTurns = game.fase === 2 ? 10 : 20;
     if(game.turn > maxTurns) {
         processElection();
     } else {
@@ -9257,7 +10591,7 @@ function aiStrategicTurn() {
     let sorted = [...game.candidates].sort((a,b) => b.votes - a.votes);
     let leader = sorted[0];
     let totalVotes = game.candidates.reduce((s,c) => s + c.votes, 0);
-    let turnsLeft = (game.fase === 1 ? 15 : 3) - game.turn;
+    let turnsLeft = (game.fase === 1 ? 20 : 10) - game.turn;
     
     game.candidates.forEach(c => {
         if(c.id === game.player) return;
@@ -9756,7 +11090,7 @@ function generateFinalRanking(winner, context) {
         let v = Object.entries(game.stateVotes[s.id]).sort((a,b)=>b[1]-a[1]);
         return v[0][0] === game.player;
     }).length;
-    let turnBonus = Math.max(0, 16 - game.turn);
+    let turnBonus = Math.max(0, 30 - game.turn);
     let coaBonus = game.coalition.length * 5;
     let stateBonus = statesWon * 2;
     let modeBonus = game.mode === 'caotico' ? 20 : 0;
@@ -9768,7 +11102,7 @@ function generateFinalRanking(winner, context) {
         <div class="rank-item">🗺️ <b>Estados conquistados:</b> ${statesWon}/27</div>
         <div class="rank-item">🏅 <b>Vitória no:</b> ${fase}</div>
         <div class="rank-item">🤝 <b>Partidos na coligação:</b> ${game.coalition.length}</div>
-        <div class="rank-item">⚡ <b>Turnos restantes:</b> ${Math.max(0, 15-game.turn)}</div>
+        <div class="rank-item">⚡ <b>Turnos restantes:</b> ${Math.max(0, 30-game.turn)}</div>
         <div class="rank-item">🎯 <b>Modo:</b> ${game.mode === 'caotico' ? 'Caótico (+20)' : 'Histórico'}</div>
         <div class="rank-item">💯 <b>Pontuação:</b> ${total}</div>
         <div style="margin-top:10px;font-size:18px;font-weight:bold;color:#000080">Classificação: ${rank}</div>
@@ -9778,7 +11112,7 @@ function generateFinalRanking(winner, context) {
 function updateUI() {
     document.getElementById("turn-display").innerText = game.turn;
     let tmx = document.getElementById("turn-max-display");
-    if(tmx) tmx.innerText = game.fase === 2 ? 3 : 15;
+    if(tmx) tmx.innerText = game.fase === 2 ? 10 : 30;
     document.getElementById("money-display").innerText = game.money;
     document.getElementById("points-display").innerText = game.points;
     
@@ -10159,10 +11493,9 @@ function updateDateDisplay() {
     let dd = document.getElementById('date-display');
     if(!dd) return;
     let sc = scenariosData[game.scenario] || internationalData[game.scenario];
-    if(sc && !game.isElectoralCollege && !internationalData[game.scenario]) {
-        dd.textContent = `📅 ${getTurnDate(game.turn, game.fase)}`;
-    } else if(internationalData[game.scenario]) {
-        dd.textContent = `📅 ${(sc && sc.year) || ''}`;
+    let year = (sc && sc.year) || '';
+    if(year) {
+        dd.textContent = `📅 ${year}`;
     } else {
         dd.textContent = '';
     }
@@ -10187,7 +11520,7 @@ function updateRadicalization(delta) {
 }
 
 function autoSimulateAll() {
-    let maxT = game.fase === 2 ? 3 : 15;
+    let maxT = game.fase === 2 ? 10 : 30;
     let remaining = maxT - game.turn;
     if(remaining <= 0) { log('Jogo já encerrado.'); return; }
     let i = 0;
@@ -10202,7 +11535,7 @@ function autoSimulateAll() {
         checkMomentum();
         generateDynamicNews();
         updateUI();
-        let maxTNow = game.fase === 2 ? 3 : 15;
+        let maxTNow = game.fase === 2 ? 10 : 30;
         if(game.turn > maxTNow) { processElection(); return; }
         setTimeout(step, 150);
     }
@@ -11408,7 +12741,7 @@ function showCredits() {
         <div style="background:linear-gradient(135deg,#000080,#4040cc);color:white;padding:20px;border-radius:8px;margin-bottom:16px">
             <div style="font-size:28px;margin-bottom:4px">🌎</div>
             <b style="font-size:16px">SIMULADOR ELEITORAL GLOBAL</b><br>
-            <span style="font-size:12px;opacity:0.8">Versão 14 — 2026</span>
+            <span style="font-size:12px;opacity:0.8">Versão 15 & 16 — 2025</span>
         </div>
         <div style="background:#fff;border:2px solid #000080;padding:16px;border-radius:6px;margin-bottom:10px">
             <div style="font-size:13px;color:#000080;font-weight:bold;margin-bottom:8px">👑 CRIAÇÃO E DESENVOLVIMENTO</div>
@@ -11434,8 +12767,29 @@ function showChangelog() {
     <div style="background:#000080;color:white;padding:6px;margin-bottom:8px;font-weight:bold;font-size:12px">
         🌎 SIMULADOR ELEITORAL GLOBAL — CHANGELOG
     </div>
+    <div style="background:#d0f0ff;border:1px solid #0066cc;padding:6px;margin-bottom:6px;border-left:4px solid #0099ff">
+        <b>🆕 VERSÃO 16</b> — <i>Taiwan 2024, Austrália 2025 (Oceania), Uruguai 2024, Paraguai 2023, Plebiscito 1993 reformulado, Editor de Eleições corrigido</i><br>
+        <b style="color:#0066cc">✅ 🇹🇼 Taiwan 2024:</b> Lai Ching-te (DPP) vs Hou Yu-ih (KMT) vs Ko Wen-je (TPP) — 11 regiões, tensão geopolítica com China, redes sociais bilingues<br>
+        <b style="color:#0066cc">✅ 🇦🇺 Austrália 2025:</b> Albanese (Labor) vs Dutton (LNP) vs Bandt (Greens) — Sistema parlamentar FPTP, 151 cadeiras, nova categoria OCEANIA<br>
+        <b style="color:#0066cc">✅ 🇺🇾 Uruguai 2024:</b> Orsi (FA) vs Delgado (PN) vs Ojeda (Colorado) — 8 regiões, balotaje, democracia modelo da América Latina<br>
+        <b style="color:#0066cc">✅ 🇵🇾 Paraguai 2023:</b> Peña (Colorado) vs Alegre (PLRA) vs Payo Cubas — 11 regiões, 77 anos de domínio colorado<br>
+        <b style="color:#0066cc">✅ 🗳️ Plebiscito 1993 reformulado:</b> Campanha completa de 15 semanas com ações, eventos, sistema de pontos e tela dedicada — igual às presidenciais<br>
+        <b style="color:#0066cc">✅ ✏️ Editor de Eleições corrigido:</b> Agora inicia corretamente o jogo no modo presidencial BR completo<br>
+        <b style="color:#0066cc">✅ 🌏 Categoria OCEANIA criada</b> na tela de países<br>
+        <b style="color:#0066cc">✅ 📱 Redes sociais únicas</b> para Taiwan (chinês/inglês), Austrália, Uruguai e Paraguai<br>
+        <b style="color:#0066cc">✅ 🏆 5 novas conquistas:</b> Taiwan, Austrália, Uruguai, Paraguai + Arquiteto da Constituição (Plebiscito)<br>
+    </div>
     <div style="background:#e8ffe8;border:1px solid #009900;padding:6px;margin-bottom:6px;border-left:4px solid #00cc00">
-        <b>🆕 VERSÃO 14</b> — <i>EUA 2000–2016, Mídias por Era, VPs por País, Aba Crises & Inteligência, Créditos</i><br>
+        <b>📦 VERSÃO 15</b> — <i>Peru, Israel, Bolívia, El Salvador, Suécia, Nigéria, Bangladesh, EUA 1996, Hungria 2026, Romênia, Grécia, Holanda, Sérvia, Áustria, Lituânia, Plebiscito 1993, Editor de Eleições, Governadores Sul-Sudeste</i><br>
+        <b style="color:#006600">✅ 🌍 6 Novos Países Europeus:</b> Romênia 2025, Grécia 2023, Países Baixos 2025, Sérvia 2023, Áustria 2024, Lituânia 2024 (com redes sociais únicas e estados adaptados)<br>
+        <b style="color:#006600">✅ 🌎 México movido para América do Norte</b> (posição geográfica correta)<br>
+        <b style="color:#006600">✅ 🗳️ Plebiscito 1993:</b> Modo especial exclusivo — escolha Presidencialismo, Parlamentarismo ou Monarquia e lute para vencer! Desbloqueado com 10 conquistas.<br>
+        <b style="color:#006600">✅ ✏️ Editor de Eleições BR:</b> Crie seu próprio cenário presidencial com candidatos, partidos e ideologias (até 8 candidatos). Desbloqueado com 10 conquistas.<br>
+        <b style="color:#006600">✅ 🗺️ 4 Novos Governadores:</b> Paraná 2022, Santa Catarina 2022, Rio Grande do Sul 2022, + Rodrigo Garcia (PSDB) adicionado ao SP 2022<br>
+        <b style="color:#006600">✅ 🏛️ RJ 2022 Atualizado:</b> Candidatos corretos — Castro, Freixo, Rodrigo Neves, Paulo Ganime<br>
+        <b style="color:#006600">✅ 🎯 Turnos ajustados:</b> 1º turno agora tem 20 turnos (era 30), 2º turno mantém 10<br>
+        <b style="color:#006600">✅ 🇧🇷 Renan Santos:</b> Ideologia corrigida para Nacional-Liberalismo Bukelista<br>
+    </div>
         <b style="color:#006600">✅ 🇺🇸 EUA 2000–2016:</b> Bush vs Gore, Bush vs Kerry, Obama vs McCain, Obama vs Romney, Trump vs Clinton<br>
         <b style="color:#006600">✅ 📰 Mídia por Era:</b> Jornais para 2000–2008, mix imprensa+Twitter para 2012–2016<br>
         <b style="color:#006600">✅ 🌐 Tweets para 10+ países:</b> Ucrânia, Espanha, Japão, Coreia, África do Sul, Filipinas, Turquia<br>
@@ -11482,7 +12836,7 @@ function showChangelog() {
         <b>📦 v1-7</b> — 1989 a 2026 | Debates | Escândalos | Mapa | Congresso | Modo Caótico | Indiretas | Históricos
     </div>
     </div>`;
-    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v14', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
+    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v15 & 16', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
 }
 
 init();
