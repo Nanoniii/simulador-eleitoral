@@ -2399,6 +2399,28 @@ const achievementDefs = [
     {id:'ancient_history', name:'Arqueólogo Eleitoral',    emoji:'🏺', desc:'Jogue todas as eleições da República Velha.'},
     {id:'custom_win',      name:'Candidato Alternativo',   emoji:'✨', desc:'Vença com um candidato criado por você.'},
     {id:'five_in_row',     name:'Cinco Seguidas',          emoji:'🎯', desc:'Vença 5 eleições consecutivas.'},
+    // === NOVAS CONQUISTAS v13+ (totalizando 100) ===
+    // ELEIÇÕES PARLAMENTARES
+    {id:'parliament_majority',  name:'Maioria Absoluta',       emoji:'🏛️', desc:'Vença com maioria absoluta num sistema parlamentar.'},
+    {id:'coalition_gov',        name:'Governo de Coalizão',    emoji:'🤝', desc:'Governe sem maioria, mas pela maior bancada.'},
+    {id:'snap_election',        name:'Eleição Relâmpago',      emoji:'⚡', desc:'Jogue uma eleição convocada antecipadamente (UK/Espanha).'},
+    // COLÉGIO ELEITORAL
+    {id:'ec_sweep',             name:'Sweep Eleitoral',        emoji:'🗺️', desc:'Vença todos os swing states nos EUA.'},
+    {id:'ec_comeback',          name:'Comeback no Colégio',    emoji:'🔄', desc:'Vença o Colégio Eleitoral estando atrás no voto popular.'},
+    {id:'ec_landslide_ev',      name:'Avalanche Eleitoral',    emoji:'🌊', desc:'Vença com mais de 350 votos eleitorais.'},
+    // ELEIÇÕES INDIRETAS
+    {id:'indirect_majority_1st',name:'Maioria na 1ª Rodada',  emoji:'⚡', desc:'Vença eleição indireta na primeira rodada de votação.'},
+    {id:'indirect_all',         name:'Golpista Pacífico',      emoji:'🕊️', desc:'Jogue todas as 5 eleições indiretas disponíveis.'},
+    {id:'indirect_underdog',    name:'Azarão do Congresso',   emoji:'🐶', desc:'Vença eleição indireta tendo menos de 25% inicial.'},
+    // ESTRATÉGIA
+    {id:'no_deals',             name:'Sem Favores',            emoji:'🧊', desc:'Vença eleição indireta sem usar "Proposta de Governo".'},
+    {id:'pressure_wins',        name:'Pressão Popular',        emoji:'👥', desc:'Vença eleição indireta com nível de pressão popular ≥8.'},
+    {id:'total_dominator',      name:'Dominação Total',        emoji:'💪', desc:'Vença com 80%+ dos votos em qualquer eleição.'},
+    // GEOGRÁFICAS
+    {id:'europe_all',           name:'Europolítico',           emoji:'🇪🇺', desc:'Jogue todas as eleições europeias disponíveis.'},
+    {id:'asia_all',             name:'Estadista Asiático',     emoji:'🌏', desc:'Jogue todas as eleições asiáticas disponíveis.'},
+    {id:'latin_all',            name:'Líder Latino-Americano', emoji:'🌎', desc:'Jogue todas as eleições da América Latina.'},
+    {id:'africa_play',          name:'Ubuntu — Sou por Nós',  emoji:'🌍', desc:'Jogue a eleição sul-africana de 2024.'},
 ];
 
 function checkAchievements(winnerId, winnerVotes, scenario) {
@@ -2541,6 +2563,51 @@ function checkAchievements(winnerId, winnerVotes, scenario) {
     // All Rep Velha
     let rvScenarios = ['RV1910','RV1914','RV1919','RV1922','RV1926','RV1930'];
     if(rvScenarios.every(s=>played.includes(s)) && !achievements['ancient_history']) { achievements['ancient_history']=true; earned.push('ancient_history'); }
+
+    // NEW v13+ ACHIEVEMENTS
+    // Parliamentary system
+    const sc_data = internationalData[scenario];
+    if(sc_data && sc_data.isParliamentary && sc_data.parliamentSeats) {
+        let majority = sc_data.majoritySeats || Math.floor(sc_data.parliamentSeats/2)+1;
+        let totalV = game.candidates.reduce((a,c)=>a+c.votes,0);
+        let qualified = game.candidates.filter(c=>c.votes/totalV>=0.05);
+        let qualTotal = qualified.reduce((a,c)=>a+c.votes,0);
+        let mySeats = Math.round((game.candidates.find(c=>c.id===winnerId)?.votes||0)/qualTotal*sc_data.parliamentSeats);
+        if(mySeats >= majority && !achievements['parliament_majority']) { achievements['parliament_majority']=true; earned.push('parliament_majority'); }
+        if(mySeats < majority && !achievements['coalition_gov']) { achievements['coalition_gov']=true; earned.push('coalition_gov'); }
+        if(['UK2024','ESP2023'].includes(scenario) && !achievements['snap_election']) { achievements['snap_election']=true; earned.push('snap_election'); }
+    }
+    // Electoral College specific
+    if(game.isElectoralCollege) {
+        let evCounts = getEVCounts();
+        let winEV = evCounts[winnerId]||0;
+        if(winEV >= 350 && !achievements['ec_landslide_ev']) { achievements['ec_landslide_ev']=true; earned.push('ec_landslide_ev'); }
+        const ecSc = internationalData[scenario];
+        if(ecSc && ecSc.electoralStates) {
+            let swings = ecSc.electoralStates.filter(s=>s.lean==='S');
+            let allSwingsWon = swings.every(s=>{
+                let votes = game.stateVotes[s.id];
+                if(!votes) return false;
+                let sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
+                return sorted.length>0 && sorted[0][0]===winnerId;
+            });
+            if(allSwingsWon && swings.length>0 && !achievements['ec_sweep']) { achievements['ec_sweep']=true; earned.push('ec_sweep'); }
+        }
+        // Comeback: win EC while behind in popular
+        let myPop = game.candidates.find(c=>c.id===winnerId)?.votes||0;
+        let others = game.candidates.filter(c=>c.id!==winnerId).sort((a,b)=>b.votes-a.votes);
+        if(others.length>0 && myPop < others[0].votes && winEV>=270 && !achievements['ec_comeback']) { achievements['ec_comeback']=true; earned.push('ec_comeback'); }
+    }
+    // Geographic
+    let europeScenarios = ['GER2025','FRA2022','UK2024','POL2025','ITA2022','POR2026','ESP2023','TUR2023','UKR2019'];
+    if(europeScenarios.filter(s=>played.includes(s)).length>=europeScenarios.length && !achievements['europe_all']) { achievements['europe_all']=true; earned.push('europe_all'); }
+    let asiaScenarios = ['IND2024','JAP2026','KOR2025','PHL2022'];
+    if(asiaScenarios.filter(s=>played.includes(s)).length>=asiaScenarios.length && !achievements['asia_all']) { achievements['asia_all']=true; earned.push('asia_all'); }
+    let latinScenarios = ['ARG2023','MEX2024','CHI2025','COL2026','VEN2024'];
+    if(latinScenarios.filter(s=>played.includes(s)).length>=latinScenarios.length && !achievements['latin_all']) { achievements['latin_all']=true; earned.push('latin_all'); }
+    if(played.includes('ZAF2024') && !achievements['africa_play']) { achievements['africa_play']=true; earned.push('africa_play'); }
+    if(winnerVotes>=80 && !achievements['total_dominator']) { achievements['total_dominator']=true; earned.push('total_dominator'); }
+
     try { localStorage.setItem('sim_achievements', JSON.stringify(achievements)); } catch(e) {}
     if(earned.length > 0) {
         setTimeout(()=>{
@@ -3428,29 +3495,60 @@ function updateRegionalMap(regions) {
 
 function renderECMap(sc) {
     const container = document.getElementById("map-container");
-    container.innerHTML = ''; container.style.background = '#1a2040';
+    container.innerHTML = ''; container.style.background = '#0d1525';
+    // EV scoreboard bar at top
+    let evBar = document.createElement('div');
+    evBar.id = 'ec-ev-bar';
+    evBar.style.cssText = 'position:absolute;top:2px;left:0;right:0;text-align:center;z-index:10;font-size:10px;color:white;pointer-events:none;';
+    container.appendChild(evBar);
     sc.electoralStates.forEach(s => {
         const node = document.createElement('div');
         node.id = 'node-'+s.id; node.className = 'state-node';
         node.style.left = s.x+'%'; node.style.top = s.y+'%';
         node.style.width = '18px'; node.style.height = '13px'; node.style.fontSize = '6px';
         node.style.color = 'white';
-        node.textContent = s.id; node.title = `${s.n} (${s.ev} EV)`;
+        // Swing states get a gold border
+        if(s.lean === 'S') node.style.outline = '1px solid gold';
+        node.textContent = s.id; node.title = `${s.n} (${s.ev} EV)${s.lean==='S'?' ⭐ SWING':''}`;
         node.onclick = () => {
             let votes = game.stateVotes[s.id];
             if(!votes) return;
             let sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
-            let html = `<b>${s.n}</b> — ${s.ev} Electoral Votes<br>`;
+            let swingTag = s.lean==='S' ? ' <span style="color:gold">⭐ SWING STATE</span>' : '';
+            let html = `<b>${s.n}</b>${swingTag} — <b>${s.ev} Electoral Votes</b><br>`;
             sorted.forEach(([cid,v])=>{
                 let c = candidatesData[cid];
                 if(c) html += `<span style="color:${c.color}">■</span> ${c.name}: ${v.toFixed(1)}% &nbsp;`;
             });
-            document.getElementById("state-details").innerHTML = html +
-                `<br><button class="btn" style="width:auto;font-size:10px" onclick="campaignEC('${s.id}',${s.ev})">Fazer Campanha (3p, $5M)</button>`;
+            let cost_p = s.lean==='S' ? 2 : 3;
+            let cost_m = s.lean==='S' ? 4 : 5;
+            html += `<br><button class="btn" style="width:auto;font-size:10px;margin-top:4px" onclick="campaignEC('${s.id}',${s.ev})">Campanha aqui (${cost_p}p, $${cost_m}M)</button>`;
+            document.getElementById("state-details").innerHTML = html;
         };
         container.appendChild(node);
     });
+    // Swing state strategy button in state-details panel
+    document.getElementById("state-details").innerHTML = `
+        <b style="color:#FFD700">🇺🇸 COLÉGIO ELEITORAL</b><br>
+        <small>270 votos eleitorais para vencer</small><br>
+        <small style="color:gold">⭐ Estados com borda dourada = Swing States</small><br>
+        <button class="btn" style="width:100%;margin-top:6px;font-size:10px;background:#1a3060" onclick="targetSwingStates()">⭐ Ver Swing States</button>
+        <div id="ec-live-count" style="margin-top:8px;font-size:10px"></div>`;
     updateECMapColors(sc);
+    updateECLiveCount();
+}
+
+function updateECLiveCount() {
+    const div = document.getElementById('ec-live-count');
+    if(!div) return;
+    let evCounts = getEVCounts();
+    let sorted = Object.entries(evCounts).sort((a,b)=>b[1]-a[1]);
+    div.innerHTML = '<b>🗳️ VOTOS ELEITORAIS ATUAIS:</b><br>' + sorted.map(([id,ev])=>{
+        let c = candidatesData[id];
+        if(!c) return '';
+        let isPlayer = id === game.player;
+        return `<div style="display:flex;justify-content:space-between;padding:1px 0"><span style="color:${c.color}">${isPlayer?'▶ ':''}${c.name}</span><b style="color:${ev>=270?'#44ff44':'#ccc'}">${ev} EV ${ev>=270?'✓':''}</b></div>`;
+    }).join('') + `<div style="color:#888;font-size:9px;margin-top:4px">270 necessários</div>`;
 }
 
 function updateECMapColors(sc) {
@@ -3462,18 +3560,64 @@ function updateECMapColors(sc) {
         let sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
         const node = document.getElementById('node-'+s.id);
         if(node && sorted.length && candidatesData[sorted[0][0]]) {
-            node.style.backgroundColor = candidatesData[sorted[0][0]].color;
+            let margin = sorted.length>=2 ? sorted[0][1]-sorted[1][1] : 100;
+            let col = candidatesData[sorted[0][0]].color;
+            // Dimmer color if margin < 5% (very close)
+            node.style.backgroundColor = col;
+            node.style.opacity = margin < 3 ? '0.5' : margin < 8 ? '0.75' : '1';
         }
     });
+    updateECLiveCount();
 }
 
 function campaignEC(sid, evWeight) {
-    if(game.points < 3 || game.money < 5) { log("Not enough points or money."); return; }
-    game.points -= 3; game.money -= 5;
-    game.stateVotes[sid][game.player] = (game.stateVotes[sid][game.player]||50) + evWeight * 1.5;
-    updateNationalVotes(game.player, evWeight * 0.15 );
-    log(`Campaign in ${sid} (${evWeight} EV). Good outreach!`);
+    const sc = internationalData[game.scenario];
+    const stateData = sc && sc.electoralStates ? sc.electoralStates.find(s=>s.id===sid) : null;
+    const isSwing = stateData && stateData.lean === 'S';
+    const cost_p = isSwing ? 2 : 3;
+    const cost_m = isSwing ? 4 : 5;
+    if(game.points < cost_p || game.money < cost_m) { log(`Not enough points (${cost_p}p) or money ($${cost_m}M).`); return; }
+    game.points -= cost_p; game.money -= cost_m;
+    let gain = evWeight * 1.5 + (isSwing ? evWeight * 0.5 : 0);
+    game.stateVotes[sid][game.player] = (game.stateVotes[sid][game.player]||50) + gain;
+    // Normalize that state
+    let stateSum = Object.values(game.stateVotes[sid]).reduce((a,b)=>a+b,0);
+    Object.keys(game.stateVotes[sid]).forEach(cid => game.stateVotes[sid][cid] = game.stateVotes[sid][cid]/stateSum*100);
+    updateNationalVotes(game.player, evWeight * 0.15);
+    log(`${isSwing?'⭐ SWING STATE — ':''} Campaign in ${sid} (${evWeight} EV). +votes!`);
+    updateECMapColors(sc);
+    // Update EV display in state-details
+    let votes = game.stateVotes[sid];
+    let sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
+    let html = `<b>${stateData?.n||sid}</b> — ${evWeight} Electoral Votes ${isSwing?'⭐ SWING':''}:<br>`;
+    sorted.forEach(([cid,v])=>{ let c = candidatesData[cid]; if(c) html+=`<span style="color:${c.color}">■</span> ${c.name}: ${v.toFixed(1)}% `; });
+    html += `<br><b style="color:#00cc00">✓ Campanha feita aqui!</b><br><button class="btn" style="width:auto;font-size:10px;margin-top:4px" onclick="campaignEC('${sid}',${evWeight})">Campanha novamente (${cost_p}p,$${cost_m}M)</button>`;
+    document.getElementById("state-details").innerHTML = html;
     updateUI();
+}
+
+function targetSwingStates() {
+    // Show a list of swing states with current EV projections
+    const sc = internationalData[game.scenario];
+    if(!sc || !sc.electoralStates) return;
+    let swings = sc.electoralStates.filter(s=>s.lean==='S');
+    let evCounts = getEVCounts();
+    let html = `<b>⭐ SWING STATES — Foco Eleitoral</b><br><small>Estados competitivos onde cada campanha importa mais</small><hr>`;
+    html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:300px;overflow-y:auto">`;
+    swings.forEach(s=>{
+        let votes = game.stateVotes[s.id];
+        let sorted = votes ? Object.entries(votes).sort((a,b)=>b[1]-a[1]) : [];
+        let leader = sorted[0];
+        let leaderCand = leader ? candidatesData[leader[0]] : null;
+        let margin = sorted.length>=2 ? (sorted[0][1]-sorted[1][1]).toFixed(1) : '?';
+        html += `<div style="background:#0d1525;border:1px solid #334;padding:6px;border-radius:3px">
+            <b style="color:#FFD700">${s.n}</b> <small style="color:#888">${s.ev} EV</small><br>
+            ${leaderCand?`<span style="color:${leaderCand.color}">■ ${leaderCand.name}</span> +${margin}%`:''}<br>
+            <button class="btn" style="width:100%;font-size:9px;margin-top:4px;background:#1a3a1a" onclick="closeModal();document.getElementById('state-details').innerHTML='<b>${s.n.replace(/'/g,'')}</b>';campaignEC('${s.id}',${s.ev})">Fazer Campanha (2p,$4M)</button>
+        </div>`;
+    });
+    html += '</div>';
+    showModal('⭐ ESTRATÉGIA: SWING STATES', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
 }
 
 function getEVCounts() {
@@ -3854,6 +3998,7 @@ function renderCampaignActions() {
     let isModern = year >= 2010;
     let isUS = game.isElectoralCollege;
     let isIntl = !!internationalData[game.scenario];
+    let html = '';
 
     // Spirits active indicator
     if(activeSpirits.length > 0) {
@@ -3912,7 +4057,97 @@ function renderCampaignActions() {
     <b>PARTIDO</b>
     <button class="btn" onclick="openPartyManagement()">🏛️ Gerenciar Partido (2p)</button>`;
 
+    // Electoral College specific actions
+    if(isUS) {
+        html += `<b>🇺🇸 COLÉGIO ELEITORAL — ESTRATÉGIAS</b>
+        <button class="btn" style="background:#1a2040;color:#FFD700;border-color:#FFD700" onclick="targetSwingStates()">⭐ Ver Swing States (Estratégia)</button>
+        <button class="btn" style="background:#1a2040;color:white" onclick="actionECGroundGame()">🏘️ Ground Game (3p, $6M)</button>
+        <button class="btn" style="background:#1a2040;color:white" onclick="actionECStatePoll()">📊 Sondagem Estadual (2p)</button>
+        <button class="btn" style="background:#1a2040;color:white" onclick="actionECNationalAdd()">📺 Anúncio Nacional (5p, $10M)</button>`;
+    }
+
     div.innerHTML = html;
+}
+
+function actionECGroundGame() {
+    if(game.points < 3 || game.money < 6) { log("Pontos ou dinheiro insuficientes."); return; }
+    game.points -= 3; game.money -= 6;
+    const sc = internationalData[game.scenario];
+    if(!sc || !sc.electoralStates) return;
+    // Find 3 closest swing or lean states and boost player there
+    let closeStates = sc.electoralStates.filter(s => {
+        let votes = game.stateVotes[s.id];
+        if(!votes) return false;
+        let sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
+        return sorted.length >= 2 && (sorted[0][1]-sorted[1][1]) < 10;
+    }).slice(0, 3);
+    let totalEV = 0;
+    closeStates.forEach(s => {
+        game.stateVotes[s.id][game.player] = (game.stateVotes[s.id][game.player]||50) + s.ev * 0.8;
+        let sum = Object.values(game.stateVotes[s.id]).reduce((a,b)=>a+b,0);
+        Object.keys(game.stateVotes[s.id]).forEach(cid=>game.stateVotes[s.id][cid]=game.stateVotes[s.id][cid]/sum*100);
+        totalEV += s.ev;
+    });
+    updateNationalVotes(game.player, totalEV * 0.05);
+    updateECMapColors(sc);
+    let stateNames = closeStates.map(s=>s.id).join(', ');
+    log(`Ground game mobilizou voluntários em ${closeStates.length} estados disputados (${stateNames}). +votos!`);
+    addNews("GROUND GAME", `Campanha mobiliza voluntários em estados-chave: ${stateNames}.`);
+    updateUI();
+}
+
+function actionECStatePoll() {
+    if(game.points < 2) { log("Pontos insuficientes."); return; }
+    game.points -= 2;
+    const sc = internationalData[game.scenario];
+    if(!sc || !sc.electoralStates) return;
+    let evCounts = getEVCounts();
+    let sorted = Object.entries(evCounts).sort((a,b)=>b[1]-a[1]);
+    // Show swing state projections
+    let swings = sc.electoralStates.filter(s=>s.lean==='S');
+    let html = `<b>📊 SONDAGEM ESTADUAL — RESULTADO</b><hr>
+        <b>Projeção do Colégio Eleitoral:</b><br>`;
+    sorted.forEach(([id,ev])=>{
+        let c = candidatesData[id];
+        if(c) html += `<div style="display:flex;justify-content:space-between;padding:3px;background:${id===game.player?'#001a00':''};border-radius:2px">
+            <span style="color:${c.color}">■ ${c.name}</span>
+            <b style="color:${ev>=270?'#44ff44':'#ccc'}">${ev} EV ${ev>=270?'✅':''}</b>
+        </div>`;
+    });
+    html += `<hr><b>Swing States (${swings.length}):</b><br>`;
+    swings.forEach(s=>{
+        let votes = game.stateVotes[s.id];
+        let sortedV = votes ? Object.entries(votes).sort((a,b)=>b[1]-a[1]) : [];
+        let leader = sortedV[0];
+        let margin = sortedV.length>=2 ? (sortedV[0][1]-sortedV[1][1]).toFixed(1) : '?';
+        let lc = leader ? candidatesData[leader[0]] : null;
+        html += `<div style="display:flex;justify-content:space-between;padding:2px 0">
+            <span>${s.n} (${s.ev} EV)</span>
+            <span style="color:${lc?lc.color:'#888'}">${lc?lc.name:'?'} +${margin}%</span>
+        </div>`;
+    });
+    showModal('📊 SONDAGEM DO COLÉGIO ELEITORAL', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
+    log("Sondagem estadual revelou estado atual dos swing states.");
+    updateUI();
+}
+
+function actionECNationalAdd() {
+    if(game.points < 5 || game.money < 10) { log("Pontos ou dinheiro insuficientes."); return; }
+    game.points -= 5; game.money -= 10;
+    const sc = internationalData[game.scenario];
+    if(!sc || !sc.electoralStates) return;
+    // Boost all swing states
+    let swings = sc.electoralStates.filter(s=>s.lean==='S');
+    swings.forEach(s=>{
+        game.stateVotes[s.id][game.player] = (game.stateVotes[s.id][game.player]||50) + 4;
+        let sum = Object.values(game.stateVotes[s.id]).reduce((a,b)=>a+b,0);
+        Object.keys(game.stateVotes[s.id]).forEach(cid=>game.stateVotes[s.id][cid]=game.stateVotes[s.id][cid]/sum*100);
+    });
+    updateNationalVotes(game.player, 1.5);
+    updateECMapColors(sc);
+    log(`Anúncio nacional transmitido em todas as redes. Boost em todos os ${swings.length} swing states!`);
+    addNews("ANÚNCIO NACIONAL", "Campanha lança anúncio massivo em horário nobre em todos os estados disputados.");
+    updateUI();
 }
 
 function addNews(title, text) {
@@ -6206,6 +6441,51 @@ function finishGame(winner, context) {
     // International non-EC (Russia etc.)
     if(internationalData[game.scenario]) {
         const sc = internationalData[game.scenario];
+        // Parliamentary system: calculate seats
+        if(sc.isParliamentary && sc.parliamentSeats) {
+            let seats = {};
+            let totalVotes = game.candidates.reduce((a,c)=>a+c.votes,0);
+            // Threshold of 5% for seat allocation (proportional)
+            let qualified = game.candidates.filter(c => c.votes/totalVotes >= 0.05);
+            let qualifiedTotal = qualified.reduce((a,c)=>a+c.votes,0);
+            qualified.forEach(c => {
+                seats[c.id] = Math.round(c.votes/qualifiedTotal * sc.parliamentSeats);
+            });
+            // Adjust rounding to exactly parliamentSeats
+            let seatSum = Object.values(seats).reduce((a,b)=>a+b,0);
+            let diff = sc.parliamentSeats - seatSum;
+            if(diff !== 0) {
+                let topId = Object.entries(seats).sort((a,b)=>b[1]-a[1])[0]?.[0];
+                if(topId) seats[topId] = (seats[topId]||0) + diff;
+            }
+            let majority = sc.majoritySeats || Math.floor(sc.parliamentSeats/2)+1;
+            let winnerSeats = seats[winner.id] || 0;
+            let hasM = winnerSeats >= majority;
+            document.getElementById("result-title").innerText = isPlayer ? `🏆 ${hasM?'MAIORIA PARLAMENTAR!':'MAIOR BANCADA!'}` : `RESULTADO — ${sc.title}`;
+            document.getElementById("result-desc").innerHTML = `<b>${winner.name} (${cData.party})</b> obtém <b>${winner.votes.toFixed(1)}%</b> dos votos e <b>${winnerSeats} assentos</b> de ${sc.parliamentSeats}.<br>
+                ${hasM?'<span style="color:#44aa44">✅ Maioria absoluta conquistada!</span>':'<span style="color:#cc8800">⚠️ Sem maioria absoluta — necessita de coalizão.</span>'}<br>
+                <small>${context}</small>`;
+            document.getElementById("candidate-bio").innerHTML = `<p><b>${sc.year}.</b> ${cData.bio}</p>${isPlayer?`<p><i>Você ${hasM?'conquistou maioria absoluta':'obteve a maior bancada'} — ${hasM?'governo solo garantido!':'precisará negociar coalizão.'}</i></p>`:''}`;
+            // Parliament bar
+            let parBar = `<b>DISTRIBUIÇÃO DE ASSENTOS — ${sc.parliamentSeats} CADEIRAS (maioria: ${majority})</b>
+                <div class="congress-bar" style="height:36px;margin-top:6px">`;
+            [...game.candidates].sort((a,b)=>(seats[b.id]||0)-(seats[a.id]||0)).forEach(c => {
+                let s = seats[c.id]||0;
+                let pct = s/sc.parliamentSeats*100;
+                if(pct > 0) parBar += `<div class="congress-segment" style="width:${pct}%;background:${c.color}" title="${c.name}: ${s} assentos (${pct.toFixed(1)}%)">${s>20?c.name.substring(0,6)+': '+s:s>8?s:''}</div>`;
+            });
+            parBar += `</div><div style="margin-top:4px;font-size:10px;color:#888">Linha dourada = maioria necessária (${majority})</div>`;
+            document.getElementById("congress-bars").innerHTML = parBar;
+            document.getElementById("congress-gov").innerHTML = game.candidates.map(c=>{
+                let s = seats[c.id]||0;
+                return `<span style="color:${c.color}">■ ${c.name}: <b>${s}</b> cadeiras</span>`;
+            }).join(' &nbsp;|&nbsp; ');
+            document.getElementById("ranking-content").innerHTML = `
+                <div class="rank-item">${isPlayer?'🏆':'📊'} <b>${winner.name}</b> — ${winnerSeats} assentos</div>
+                <div class="rank-item">🗳️ <b>Sua votação:</b> ${(game.candidates.find(c=>c.id===game.player)||{votes:0}).votes.toFixed(1)}% | ${seats[game.player]||0} cadeiras</div>
+                <div class="rank-item">🏛️ Maioria necessária: ${majority} cadeiras</div>`;
+            return;
+        }
         document.getElementById("result-title").innerText = isPlayer ? `🏆 ELEITO!` : `RESULTADO — ${sc.title}`;
         document.getElementById("result-desc").innerHTML = `<b>${winner.name} (${cData.party})</b> vence a eleição com <b>${winner.votes.toFixed(1)}%</b> dos votos.<br><small>${context}</small>`;
         document.getElementById("candidate-bio").innerHTML = `<p><b>${sc.year}.</b> ${cData.bio}</p>`;
@@ -8694,7 +8974,16 @@ function autoSimulateAll() {
 let indirectGame = {
     scenario: null, player: null, turn: 1, maxTurns: 10,
     points: 5, candidates: {}, factions: [], news: [],
-    firedEvents: [], totalVotes: 0
+    firedEvents: [], totalVotes: 0,
+    // New: track negotiation history, deals, compromises
+    deals: {}, // candidateId -> list of deals made
+    lastNegotiated: {}, // faction -> last turn negotiated
+    regionalAlliances: 0,
+    pressureLevel: 0, // external pressure (crowds, media) 0-10
+    militarySupport: 0, // relevant for military regimes
+    publicOpinion: 50, // 0-100 scale
+    round: 1, // voting round (some indirect elections have multiple rounds)
+    maxRounds: 1
 };
 
 function startIndirectGame(key) {
@@ -8705,19 +8994,40 @@ function startIndirectGame(key) {
     indirectGame.points = 5;
     indirectGame.news = [];
     indirectGame.firedEvents = [];
+    indirectGame.deals = {};
+    indirectGame.lastNegotiated = {};
+    indirectGame.regionalAlliances = 0;
+    indirectGame.pressureLevel = sc.year <= 1970 ? 3 : 5; // More open later
+    indirectGame.militarySupport = sc.year <= 1985 ? 7 : 2;
+    indirectGame.publicOpinion = 50;
+    indirectGame.round = 1;
+    indirectGame.maxRounds = sc.maxRounds || 1;
     indirectGame.totalVotes = sc.totalVotes;
     indirectGame.candidates = JSON.parse(JSON.stringify(sc.candidates));
     indirectGame.factions = JSON.parse(JSON.stringify(sc.factions));
 
-    // Show candidate selection modal
-    let html = `<div style="font-size:11px;color:#8b4513;margin-bottom:8px">${sc.context}</div><hr>
-        <b>Escolha seu candidato:</b><br><br>`;
-    html += Object.entries(sc.candidates).map(([id, c]) =>
-        `<button class="btn" style="background:${c.color};color:white;margin-bottom:6px" onclick="confirmIndirectPlayer('${key}','${id}')">
-            <b>${c.name}</b> (${c.party})<br><small>${c.ideologia}</small>
-        </button>`
-    ).join('');
-    html += `<button class="btn" onclick="closeModal();goToScenarios()">← Voltar</button>`;
+    // Show candidate selection modal with enhanced info
+    let html = `<div style="background:#1a1a0a;border:1px solid #8b6914;padding:8px;margin-bottom:10px;font-size:11px;color:#f4d03f">
+        <b>🏛️ ${sc.title} — ${sc.year}</b><br>
+        <span style="color:#ccc">${sc.context}</span>
+    </div>
+    <div style="background:#e8ffe8;padding:6px;margin-bottom:8px;border-left:3px solid #006600;font-size:10px">
+        <b>📋 COMO FUNCIONA:</b> Você articulará votos no Congresso usando Influência (pontos). 
+        Cada rodada, facções podem ser negociadas, pressão externa pode ajudar, e eventos históricos determinarão o resultado final. 
+        Maioria necessária: <b>${Math.floor(sc.totalVotes/2)+1} votos</b> de ${sc.totalVotes}.
+    </div>
+    <b>Escolha seu candidato para articular:</b><br><br>`;
+    html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">` + Object.entries(sc.candidates).map(([id, c]) =>
+        `<div style="background:${c.color}22;border:2px solid ${c.color};padding:8px;cursor:pointer;border-radius:4px" onclick="confirmIndirectPlayer('${key}','${id}')">
+            <b style="color:${c.color}">${c.name}</b> <small style="color:#888">(${c.party})</small><br>
+            <small style="color:#aaa">${c.ideologia}</small><br>
+            <small style="color:#ccc">${c.bio?.substring(0,80)}...</small><br>
+            <div style="margin-top:4px;background:#111;padding:3px;border-radius:2px;font-size:9px">
+                📊 Votos iniciais: <b style="color:#f4d03f">${c.start}</b> / ${sc.totalVotes}
+            </div>
+        </div>`
+    ).join('') + `</div>`;
+    html += `<br><button class="btn" onclick="closeModal();goToScenarios()">← Voltar</button>`;
     showModal(`🏛️ ${sc.title}`, html, '');
 }
 
@@ -8728,10 +9038,10 @@ function confirmIndirectPlayer(key, playerId) {
     document.getElementById("indirect-screen").classList.add("active");
     
     const sc = scenariosData[key];
-    document.getElementById("indirect-title-text").textContent = `🏛️ COLÉGIO ELEITORAL — ${sc.year} | ${sc.title.toUpperCase()}`;
+    document.getElementById("indirect-title-text").textContent = `🏛️ CONGRESSO — ${sc.year} | ${sc.title.toUpperCase()}`;
     document.getElementById("indirect-context").textContent = sc.context;
     
-    indirectAddNews(`SESSÃO INAUGURADA`, `O processo de escolha do presidente começa. ${sc.context.substring(0,80)}...`);
+    indirectAddNews(`SESSÃO DO CONGRESSO INSTALADA`, `${sc.year} — Os parlamentares se reúnem para eleger o próximo presidente. Articulações começam nas sombras do Congresso.`);
     renderIndirectActions();
     renderFactions();
     renderIndirectScoreboard();
@@ -8742,7 +9052,7 @@ function confirmIndirectPlayer(key, playerId) {
 
 function indirectAddNews(t, d) {
     indirectGame.news.unshift(`<div style="border-bottom:1px solid #333;padding:4px 0"><b style="color:#f4d03f">${t}</b><br><span>${d}</span></div>`);
-    if(indirectGame.news.length > 10) indirectGame.news.pop();
+    if(indirectGame.news.length > 12) indirectGame.news.pop();
     const div = document.getElementById("indirect-news");
     if(div) div.innerHTML = indirectGame.news.join('');
 }
@@ -8753,7 +9063,6 @@ function indirectLog(m) {
 }
 
 function indirectShiftVotes(candidateId, amount) {
-    // Shift from largest opponent to this candidate
     if(!indirectGame.candidates[candidateId]) return;
     let others = Object.entries(indirectGame.candidates).filter(([id]) => id !== candidateId);
     others.sort((a,b) => b[1].start - a[1].start);
@@ -8774,16 +9083,12 @@ function indirectShiftFaction(factionName, amount, candidateId) {
     let faction = indirectGame.factions.find(f => f.name === factionName);
     if(!faction) return;
     faction.leans = candidateId;
-    // Recalculate candidate vote totals from factions
-    Object.keys(indirectGame.candidates).forEach(id => {
-        indirectGame.candidates[id].start = 0;
-    });
+    Object.keys(indirectGame.candidates).forEach(id => { indirectGame.candidates[id].start = 0; });
     indirectGame.factions.forEach(f => {
         if(f.leans && indirectGame.candidates[f.leans]) {
             indirectGame.candidates[f.leans].start += f.votes;
         }
     });
-    // distribute undecided proportionally
     renderIndirectScoreboard();
     drawHemicycle();
 }
@@ -8791,93 +9096,165 @@ function indirectShiftFaction(factionName, amount, candidateId) {
 function renderIndirectActions() {
     const sc = scenariosData[indirectGame.scenario];
     const player = indirectGame.player;
+    if(!indirectGame.candidates[player]) return;
     const playerName = indirectGame.candidates[player].name;
     const actionsDiv = document.getElementById("indirect-actions");
-
+    const totalVotes = indirectGame.totalVotes;
+    const myVotes = indirectGame.candidates[player]?.start || 0;
+    const majority = Math.floor(totalVotes/2) + 1;
+    const needMore = majority - myVotes;
+    
+    // Determine which actions make sense in this historical context
+    const year = parseInt(sc.year) || 1970;
+    const isDemocratic = year >= 1985;
+    const isMilitary = year < 1985 && year >= 1964;
+    
     const actions = [
         {
-            label:"💬 Discurso no Plenário (2p)",
-            desc:"Galvanize o Congresso com um discurso histórico.",
-            cost:2,
+            label:"💬 Discurso no Plenário",
+            cost: 2,
+            emoji: '🎤',
+            desc: `Faça um discurso persuasivo no Congresso.`,
             exec: () => {
-                let gain = 3 + Math.floor(Math.random()*5); // Reduzido de 5+8 para 3+5
+                let base = 2 + Math.floor(Math.random()*5);
+                let bonus = indirectGame.pressureLevel >= 5 ? 2 : 0; // More effective with public pressure
+                let gain = base + bonus;
                 indirectShiftVotes(player, gain);
-                indirectAddNews("DISCURSO HISTÓRICO", `${playerName} discursou com vigor. Deputados indecisos se impressionaram.`);
-                indirectLog(`Discurso rendeu +${gain} votos no plenário.`);
+                let quotes = ["'Este é o momento da democracia!'", "'A nação espera nossa decisão!'", "'O povo clama por mudança!'", "'Votemos com a consciência!'"];
+                let quote = quotes[Math.floor(Math.random()*quotes.length)];
+                indirectAddNews("DISCURSO HISTÓRICO", `${playerName} discursa: ${quote}. ${gain} parlamentares indecisos impressionados.`);
+                indirectLog(`Discurso: +${gain} votos. ${bonus>0?'(+bônus pressão popular)':''}`);
             }
         },
         {
-            label:"🤝 Articulação com Bancada (3p)",
-            desc:"Negocie votos com uma facção indecisa ou rival.",
-            cost:3,
+            label:"🤝 Articular com Bancada",
+            cost: 3,
+            emoji: '🏛️',
+            desc: `Negocie diretamente com uma facção parlamentar.`,
             exec: () => {
-                let faction = indirectGame.factions.find(f => !f.leans || f.leans !== player);
-                if(faction) {
-                    let gain = Math.floor(faction.votes * 0.12); // Reduzido de 25% para 12%
-                    // Cooldown: evita negociar com mesma facção repetidamente
-                    if(!indirectGame.lastNegotiated) indirectGame.lastNegotiated = {};
-                    if(indirectGame.lastNegotiated[faction.name] && 
-                       indirectGame.lastNegotiated[faction.name] >= indirectGame.turn - 1) {
-                        gain = Math.floor(gain * 0.4); // 60% menos eficaz se repetido
-                        indirectLog(`Bancada "${faction.name}" já foi abordada recentemente. Efeito reduzido.`);
-                    }
+                // Find best target: undecided or smallest rival faction
+                let targets = indirectGame.factions.filter(f => !f.leans || f.leans !== player);
+                targets.sort((a,b) => a.votes - b.votes); // Start with smaller factions
+                let faction = targets[0];
+                if(!faction) { indirectLog("Sem facções disponíveis para articular!"); return; }
+                
+                // Cooldown check
+                if(indirectGame.lastNegotiated[faction.name] && indirectGame.lastNegotiated[faction.name] >= indirectGame.turn - 1) {
+                    let gain = Math.floor(faction.votes * 0.06);
+                    indirectShiftVotes(player, gain);
+                    indirectAddNews("RENEGOCIAÇÃO", `Bancada "${faction.name}" resistiu inicialmente mas cedeu parcialmente. +${gain} votos.`);
+                    indirectLog(`${faction.name} já negociado — efeito reduzido: +${gain} votos.`);
+                } else {
+                    let gain = Math.floor(faction.votes * 0.18);
                     indirectGame.lastNegotiated[faction.name] = indirectGame.turn;
                     indirectShiftVotes(player, gain);
-                    indirectAddNews("ARTICULAÇÃO POLÍTICA", `Negociação com "${faction.name}" rendeu ${gain} votos.`);
+                    indirectAddNews("ARTICULAÇÃO", `Negociação com "${faction.name}" conclui com ${gain} parlamentares comprometidos.`);
                     indirectLog(`Articulação com "${faction.name}": +${gain} votos.`);
+                }
+            }
+        },
+        {
+            label:"📜 Proposta de Governo",
+            cost: 3,
+            emoji: '📋',
+            desc: `Ofereça ministérios e cargos em troca de apoio.`,
+            exec: () => {
+                // Make a deal with largest undecided/rival faction
+                let undecided = indirectGame.factions.find(f => !f.leans);
+                let target = undecided || indirectGame.factions.filter(f=>f.leans!==player).sort((a,b)=>b.votes-a.votes)[0];
+                if(!target) { indirectLog("Sem destinatário para proposta!"); return; }
+                let gain = Math.floor(target.votes * 0.25);
+                if(!indirectGame.deals[player]) indirectGame.deals[player] = [];
+                indirectGame.deals[player].push(target.name);
+                target.leans = player;
+                indirectShiftFaction(target.name, gain, player);
+                indirectAddNews("ACORDO POLÍTICO", `${playerName} oferece ${target.name} ministérios/cargos. Bancada muda apoio! +${gain} votos comprometidos.`);
+                indirectLog(`Proposta aceita: "${target.name}" muda para ${playerName}. +${gain} votos.`);
+            }
+        },
+        {
+            label:"📰 Manifesto Público",
+            cost: 1,
+            emoji: '📢',
+            desc: `Lance manifesto para pressionar parlamentares via opinião pública.`,
+            exec: () => {
+                indirectGame.publicOpinion = Math.min(100, indirectGame.publicOpinion + 5);
+                indirectGame.pressureLevel = Math.min(10, indirectGame.pressureLevel + 1);
+                let gain = 1 + Math.floor(Math.random()*3);
+                indirectShiftVotes(player, gain);
+                indirectAddNews("MANIFESTO", `${playerName} publica manifesto. Pressão popular aumenta (nível ${indirectGame.pressureLevel}/10).`);
+                indirectLog(`Manifesto: +${gain} votos. Pressão popular: ${indirectGame.pressureLevel}/10.`);
+            }
+        },
+        {
+            label:"🔍 Expor Rival",
+            cost: 2,
+            emoji: '🔎',
+            desc: `Revele contradições ou falhas do adversário principal.`,
+            exec: () => {
+                let rivals = Object.entries(indirectGame.candidates).filter(([id])=>id!==player).sort((a,b)=>b[1].start-a[1].start);
+                if(!rivals.length) { indirectLog("Sem rivais!"); return; }
+                let [rid, rc] = rivals[0];
+                let dmg = 2 + Math.floor(Math.random()*4);
+                let gain = Math.floor(dmg * 0.6);
+                rc.start = Math.max(0, rc.start - dmg);
+                indirectShiftVotes(player, gain);
+                indirectAddNews("DENÚNCIA POLÍTICA", `Campanha de ${playerName} expõe vulnerabilidades de ${rc.name}. ${dmg} votos perdidos pelo rival.`);
+                indirectLog(`${rc.name} perde ${dmg} votos; você ganha ${gain}.`);
+            }
+        },
+        {
+            label: isDemocratic ? "🏘️ Mobilização Popular" : isMilitary ? "⭐ Apoio Militar" : "📣 Pressão Externa",
+            cost: 3,
+            emoji: isDemocratic ? '👥' : '⭐',
+            desc: isDemocratic ? `Mobilize a população para pressionar o Congresso.` : `Garanta apoio dos quartéis para fortalecer sua candidatura.`,
+            exec: () => {
+                if(isDemocratic) {
+                    indirectGame.pressureLevel = Math.min(10, indirectGame.pressureLevel + 2);
+                    indirectGame.publicOpinion = Math.min(100, indirectGame.publicOpinion + 10);
+                    let gain = 3 + Math.floor(indirectGame.pressureLevel * 0.5);
+                    indirectShiftVotes(player, gain);
+                    indirectAddNews("MANIFESTAÇÃO POPULAR", `Milhares nas ruas apoiam ${playerName}. Parlamentares indecisos sentem pressão. +${gain} votos.`);
+                    indirectLog(`Pressão popular: nível ${indirectGame.pressureLevel}/10. +${gain} votos.`);
                 } else {
-                    indirectLog("Todas as facções já estão alinhadas!");
+                    // Military support
+                    indirectGame.militarySupport = Math.min(10, indirectGame.militarySupport + 1);
+                    let gain = 5 + Math.floor(Math.random()*6);
+                    indirectShiftVotes(player, gain);
+                    indirectAddNews("SUPORTE MILITAR", `Generais reafirmam apoio a ${playerName}. Congressistas amedrontados ampliam suporte. +${gain} votos.`);
+                    indirectLog(`Apoio militar: ${indirectGame.militarySupport}/10. +${gain} votos.`);
                 }
             }
         },
         {
-            label:"📰 Manifesto Público (1p)",
-            desc:"Pressione o Congresso pela opinião pública.",
-            cost:1,
+            label:"🏛️ Aliança Regional",
+            cost: 3,
+            emoji: '🗺️',
+            desc: `Conquiste bancadas estaduais com promessas de investimento.`,
             exec: () => {
-                let gain = 1 + Math.floor(Math.random()*3); // Reduzido de 2+4 para 1+3
-                indirectShiftVotes(player, gain);
-                indirectAddNews("MANIFESTO", `${playerName} lança manifesto que repercute na sociedade civil.`);
-                indirectLog(`Manifesto: +${gain} votos de simpatizantes.`);
-            }
-        },
-        {
-            label:"🔍 Investigar Rival (2p)",
-            desc:"Exponha fraquezas do adversário no Congresso.",
-            cost:2,
-            exec: () => {
-                let rivals = Object.entries(indirectGame.candidates).filter(([id]) => id !== player);
-                rivals.sort((a,b) => b[1].start - a[1].start);
-                if(rivals.length > 0) {
-                    let [rid, rc] = rivals[0];
-                    let dmg = 2 + Math.floor(Math.random()*4); // Reduzido de 4+6 para 2+4
-                    indirectShiftVotes(player, dmg);
-                    rc.start = Math.max(0, rc.start - Math.floor(dmg/2));
-                    indirectAddNews("DENÚNCIA", `Campanha de ${playerName} expõe contradições de ${rc.name}.`);
-                    indirectLog(`Investigação: ${rc.name} perde votos, você ganha.`);
-                }
-            }
-        },
-        {
-            label:"🏛️ Aliança Regional (3p)",
-            desc:"Conquiste bancadas estaduais com promessas de cargo.",
-            cost:3,
-            exec: () => {
-                // Cada aliança regional fica mais cara (diminishing returns)
-                if(!indirectGame.regionalAlliances) indirectGame.regionalAlliances = 0;
                 indirectGame.regionalAlliances++;
-                let baseGain = 6 + Math.floor(Math.random()*6); // Reduzido de 8+10 para 6+6
-                let gain = Math.max(2, Math.floor(baseGain / indirectGame.regionalAlliances)); // Diminishing returns
+                let baseGain = 5 + Math.floor(Math.random()*6);
+                let gain = Math.max(2, Math.floor(baseGain / Math.sqrt(indirectGame.regionalAlliances)));
                 indirectShiftVotes(player, gain);
-                indirectAddNews("ALIANÇA REGIONAL", `Bancadas do Norte e Nordeste se comprometem com ${playerName}.`);
-                indirectLog(`Aliança regional #${indirectGame.regionalAlliances}: +${gain} votos (diminishing returns).`);
+                indirectAddNews("ALIANÇA REGIONAL", `Bancadas estaduais recebem promessas de infraestrutura. ${gain} parlamentares aderem a ${playerName}.`);
+                indirectLog(`Aliança #${indirectGame.regionalAlliances}: +${gain} votos (retorno decrescente).`);
             }
         }
     ];
 
-    actionsDiv.innerHTML = actions.map((a, i) =>
-        `<button class="indirect-action" onclick="executeIndirectAction(${i})" ${indirectGame.points < a.cost ? 'disabled style="opacity:0.5"':''}>
-            ${a.label}<br><small style="color:#cc9">${a.desc}</small>
+    // Status display
+    let statusColor = myVotes >= majority ? '#44ff44' : myVotes >= majority*0.8 ? '#ffaa00' : '#ff4444';
+    let statusText = myVotes >= majority ? '✅ MAIORIA GARANTIDA' : `⚠️ Faltam ${Math.max(0,needMore)} votos para maioria`;
+    
+    actionsDiv.innerHTML = `
+        <div style="background:#111;padding:5px;border-radius:3px;margin-bottom:8px;font-size:10px">
+            <div style="color:${statusColor};font-weight:bold">${statusText}</div>
+            <div style="color:#888;font-size:9px">Pressão popular: ${'●'.repeat(indirectGame.pressureLevel)}${'○'.repeat(10-indirectGame.pressureLevel)}</div>
+        </div>
+    ` + actions.map((a, i) =>
+        `<button class="indirect-action" onclick="executeIndirectAction(${i})" ${indirectGame.points < a.cost ? 'disabled style="opacity:0.4"':''}>
+            ${a.emoji} ${a.label} <span style="color:#f4d03f;float:right">${a.cost}p</span><br>
+            <small style="color:#bba">${a.desc}</small>
         </button>`
     ).join('');
     window._indirectActions = actions;
@@ -9063,19 +9440,50 @@ function indirectNextTurn() {
     indirectGame.turn++;
     document.getElementById("ind-turn").textContent = indirectGame.turn;
 
-    // Earn points
-    indirectGame.points += 3;
+    // Earn points (increases over time as session heats up)
+    let ptGain = 3 + (indirectGame.turn > 5 ? 1 : 0);
+    indirectGame.points += ptGain;
     document.getElementById("ind-points").textContent = indirectGame.points;
 
-    // AI moves - more competitive now
+    // AI moves - smarter: target player's closest followers
+    const sc = scenariosData[indirectGame.scenario];
+    const player = indirectGame.player;
+    const playerVotes = indirectGame.candidates[player]?.start || 0;
+    const majority = Math.floor(indirectGame.totalVotes/2)+1;
+    
     Object.entries(indirectGame.candidates).forEach(([id, c]) => {
-        if(id !== indirectGame.player) {
-            let gain = 3 + Math.floor(Math.random()*5); // Increased AI competitiveness
-            indirectShiftVotes(id, gain);
+        if(id !== player) {
+            // AI aggressiveness: higher if player near majority
+            let urgency = playerVotes >= majority*0.9 ? 1.5 : 1;
+            let gain = Math.floor((2 + Math.floor(Math.random()*4)) * urgency);
+            // But AI also steals from each other
+            let aiRivals = Object.entries(indirectGame.candidates).filter(([rid])=>rid!==id && rid!==player);
+            if(aiRivals.length > 0 && Math.random() > 0.5) {
+                let [rivalId, rival] = aiRivals[Math.floor(Math.random()*aiRivals.length)];
+                let steal = Math.min(gain, Math.floor(rival.start*0.05));
+                rival.start = Math.max(0, rival.start - steal);
+                c.start += steal;
+            } else {
+                // AI pulls from player
+                let steal = Math.min(gain, Math.floor(playerVotes*0.03));
+                if(steal > 0) {
+                    indirectGame.candidates[player].start = Math.max(0, indirectGame.candidates[player].start - Math.floor(steal*0.5));
+                    c.start += steal;
+                }
+            }
         }
     });
 
-    // Check historical events (skip if spectator mode)
+    // Random mid-game event descriptions
+    const midEvents = [
+        `Bastidores do Congresso fervilham. Parlamentares trocam de lado em meio à pressão.`,
+        `Rumores de acordos de última hora circulam pelos corredores.`,
+        `Bancadas indecisas recebem abordagens de todos os candidatos.`,
+        `Tensão cresce. A votação se aproxima e a maioria ainda não está definida.`,
+        `Negociações intensas acontecem nos bastidores do Congresso Nacional.`,
+        `Pressão da sociedade civil faz parlamentares reverem posições.`,
+    ];
+
     if(!indirectSpectatorMode) {
         const sc = scenariosData[indirectGame.scenario];
         if(sc.events) {
@@ -9085,13 +9493,14 @@ function indirectNextTurn() {
                     let btns = ev.b.map((btn, bi) =>
                         `<button class="btn" onclick="executeIndirectEvent('${indirectGame.scenario}',${idx},${bi})">${btn.n}</button>`
                     ).join('');
-                    setTimeout(() => showModal(`📰 EVENTO: ${ev.t}`, `<span style="color:red;font-size:10px">★ ACONTECIMENTO REAL</span><br><br>${ev.d}`, btns), 300);
+                    setTimeout(() => showModal(`📰 EVENTO: ${ev.t}`, `<div style="background:#1a1a0a;padding:6px;border-left:3px solid #f4d03f;margin-bottom:8px"><span style="color:#f4d03f;font-size:10px">★ ACONTECIMENTO HISTÓRICO REAL</span></div><br>${ev.d}`, btns), 300);
                 }
             });
         }
     }
 
-    indirectAddNews(`RODADA ${indirectGame.turn}`, `Articulações continuam no Congresso. Facções se movem.`);
+    let eventMsg = midEvents[Math.floor(Math.random()*midEvents.length)];
+    indirectAddNews(`RODADA ${indirectGame.turn} — ARTICULAÇÕES`, eventMsg);
     renderFactions();
     renderIndirectScoreboard();
     renderIndirectActions();
@@ -9122,24 +9531,26 @@ function finishIndirectGame() {
     const majority = Math.floor(total/2) + 1;
     const isPlayer = winnerId === indirectGame.player;
     const sc = scenariosData[indirectGame.scenario];
+    const myData = indirectGame.candidates[indirectGame.player];
 
     document.getElementById("indirect-screen").classList.remove("active");
     document.getElementById("end-screen").classList.add("active");
     
-    document.getElementById("result-title").textContent = isPlayer ? `🏆 VITÓRIA NO COLÉGIO ELEITORAL!` : `🏛️ RESULTADO DO COLÉGIO ELEITORAL`;
+    document.getElementById("result-title").textContent = isPlayer ? `🏆 ELEITO PELO CONGRESSO!` : `🏛️ RESULTADO DA ELEIÇÃO INDIRETA`;
     document.getElementById("result-desc").innerHTML = `
         <b>${winnerData.name} (${winnerData.party})</b> é eleito Presidente da República com <b>${winnerData.start} votos</b> de ${total} (${Math.round(winnerData.start/total*100)}%).<br>
-        <small>Maioria necessária: ${majority} votos | Eleição indireta de ${sc.year}</small>`;
+        <small>Maioria necessária: ${majority} votos | Eleição indireta — ${sc.year}</small>
+        ${isPlayer ? '<br><span style="color:#44ff44">🎊 Parabéns! Você articulou com maestria!</span>' : ''}`;
     document.getElementById("candidate-bio").innerHTML = `
-        <p><b>BRASÍLIA, ${sc.year}</b> — Em sessão solene do Colégio Eleitoral, ${winnerData.name} é eleito presidente.</p>
+        <p><b>BRASÍLIA, ${sc.year}</b> — Em sessão do Congresso Nacional, ${winnerData.name} é eleito presidente.</p>
         <p>${winnerData.bio}</p>
-        ${isPlayer ? '<p><i>Você articulou com maestria o processo indiretamente democrático do Brasil.</i></p>' : '<p><i>Seu candidato não foi eleito desta vez. A história tem seus caminhos...</i></p>'}`;
+        ${isPlayer ? `<p><i>Você fez ${(indirectGame.deals[indirectGame.player]||[]).length} acordos de governo e usou ${7-indirectGame.points} pontos de influência estrategicamente.</i></p>` : ''}`;
     
-    // Hemicycle-style result bar
-    document.getElementById("congress-bars").innerHTML = `<b>RESULTADO DO COLÉGIO ELEITORAL</b>`;
+    // Congress-style result bar
+    document.getElementById("congress-bars").innerHTML = `<b>RESULTADO DA VOTAÇÃO NO CONGRESSO</b>`;
     let bar = document.createElement('div');
     bar.className = 'congress-bar';
-    bar.style.height = '30px';
+    bar.style.height = '36px';
     sorted.forEach(([id, c]) => {
         let pct = c.start / total * 100;
         let seg = document.createElement('div');
@@ -9147,15 +9558,44 @@ function finishIndirectGame() {
         seg.style.width = pct + '%';
         seg.style.background = c.color;
         seg.title = `${c.name}: ${c.start} votos (${Math.round(pct)}%)`;
-        seg.textContent = c.start > 20 ? `${c.name}: ${c.start}` : '';
+        seg.textContent = c.start > 15 ? `${c.name.substring(0,6)}: ${c.start}` : c.start > 5 ? c.start : '';
         bar.appendChild(seg);
     });
     document.getElementById("congress-bars").appendChild(bar);
-    document.getElementById("congress-gov").innerHTML = `<b>${winnerData.name}</b>: ${winnerData.start} votos. ${winnerData.start >= majority ? '✅ Maioria obtida.' : '❌ Sem maioria — eleição contestada!'}`;
+    // Majority marker
+    let majLine = document.createElement('div');
+    majLine.style.cssText = `position:relative;margin-top:2px;font-size:9px;color:#f4d03f`;
+    majLine.textContent = `⬆ Linha de maioria: ${majority} votos (${Math.round(majority/total*100)}%)`;
+    document.getElementById("congress-bars").appendChild(majLine);
+
+    document.getElementById("congress-gov").innerHTML = sorted.map(([id,c])=>
+        `<span style="color:${c.color}">■ ${c.name}: <b>${c.start}</b> votos</span>`
+    ).join(' &nbsp;|&nbsp; ');
     document.getElementById("ranking-content").innerHTML = `
-        <div class="rank-item">${isPlayer?'🏆':'❌'} <b>${isPlayer?'Vitória':'Derrota'} no Colégio Eleitoral</b></div>
-        <div class="rank-item">🗳️ <b>Votos obtidos:</b> ${indirectGame.candidates[indirectGame.player].start} / ${total}</div>
-        <div class="rank-item">🏛️ <b>Período:</b> ${sc.year} — Eleição Indireta</div>`;
+        <div class="rank-item">${isPlayer?'🏆':'❌'} <b>${isPlayer?'ELEITO':'Não eleito'} pelo Congresso</b></div>
+        <div class="rank-item">🗳️ <b>Seus votos:</b> ${myData?.start||0} / ${total}</div>
+        <div class="rank-item">🏛️ <b>Período Histórico:</b> ${sc.year} — Eleição Indireta</div>
+        <div class="rank-item">📊 <b>Facções controladas:</b> ${indirectGame.factions.filter(f=>f.leans===indirectGame.player).length}</div>`;
+
+    // Achievement checks for indirect
+    if(isPlayer) {
+        let earned = [];
+        if(!achievements['indirect_master']) { achievements['indirect_master']=true; earned.push('indirect_master'); }
+        let startVotes = scenariosData[indirectGame.scenario]?.candidates[indirectGame.player]?.start||0;
+        if(startVotes < total*0.25 && !achievements['indirect_underdog']) { achievements['indirect_underdog']=true; earned.push('indirect_underdog'); }
+        if(!(indirectGame.deals[indirectGame.player]?.length > 0) && !achievements['no_deals']) { achievements['no_deals']=true; earned.push('no_deals'); }
+        if(indirectGame.pressureLevel>=8 && !achievements['pressure_wins']) { achievements['pressure_wins']=true; earned.push('pressure_wins'); }
+        let played = JSON.parse(localStorage.getItem('sim_played_scenarios')||'[]');
+        if(!played.includes(indirectGame.scenario)) played.push(indirectGame.scenario);
+        try { localStorage.setItem('sim_played_scenarios', JSON.stringify(played)); } catch(e) {}
+        let indirectScenarios = ['1934_i','1964_i','1974_i','1978_i','1985_i'];
+        if(indirectScenarios.every(s=>played.includes(s)) && !achievements['indirect_all']) { achievements['indirect_all']=true; earned.push('indirect_all'); }
+        try { localStorage.setItem('sim_achievements', JSON.stringify(achievements)); } catch(e) {}
+        if(earned.length>0) {
+            let html = earned.map(id=>{let def=achievementDefs.find(d=>d.id===id);return def?`<div style="padding:4px;background:#fff8d0;border:1px solid gold;margin:3px 0;border-radius:3px">${def.emoji} <b>${def.name}</b> — ${def.desc}</div>`:'';}).join('');
+            setTimeout(()=>showModal('🏆 CONQUISTAS DESBLOQUEADAS!', html, `<button class="btn" onclick="closeModal()">Fechar</button>`), 800);
+        }
+    }
 }
 
 
@@ -9265,21 +9705,26 @@ function showChangelog() {
         🌎 SIMULADOR ELEITORAL GLOBAL — CHANGELOG
     </div>
     <div style="background:#ccffcc;border:1px solid #009900;padding:6px;margin-bottom:6px;border-left:4px solid #009900">
-        <b>🆕 VERSÃO 13</b> — <i>5 Novos Países, Redes Sociais Expandidas, Novos Perfis e Conquistas</i><br>
-        <b style="color:#006600">✅ 🇻🇪 Venezuela 2024:</b> Maduro vs González vs Bertucci — mecânica especial de eleição contestada<br>
-        <b style="color:#006600">✅ 🇲🇽 México 2024:</b> Sheinbaum vs Gálvez vs Máynez — 14 regiões, turno único<br>
-        <b style="color:#006600">✅ 🇨🇱 Chile 2025:</b> Kast vs Jara vs Matthei vs Narváez — 10 regiões, 2 turnos<br>
-        <b style="color:#006600">✅ 🇨🇴 Colômbia 2026:</b> Cepeda vs Espriella vs Fajardo vs Valencia — 11 regiões, 2 turnos<br>
-        <b style="color:#006600">✅ 🇨🇦 Canadá 2025:</b> Carney vs Poilievre vs Blanchet vs Singh — sistema parlamentar FPTP, 343 cadeiras<br>
-        <b style="color:#006600">✅ 📱 20+ Novos Perfis Brasileiros:</b> Pablo Marçal, Whindersson, Felipe Neto, Lorelay Fox, ancaps, extrema-esquerda, movimentos<br>
-        <b style="color:#006600">✅ 📊 Enquetes simuladas no feed:</b> polls virais, threads de 30+ partes, memes contextualizados<br>
-        <b style="color:#006600">✅ 🏆 6 Novas Conquistas:</b> Uma para cada novo país adicionado<br>
-        <b style="color:#006600">✅ 🌍 Países reorganizados por continente:</b> América do Norte, Américas do Sul e Central, Europa, Ásia<br>
-        <b style="color:#006600">✅ 🔒 Países em desenvolvimento atualizados:</b> Espanha, Japão, Ucrânia, Bolívia, Peru, Suécia<br>
-        <b style="color:#006600">✅ Feed de redes sociais para todos os novos países com perfis coerentes</b><br>
+        <b>🆕 VERSÃO 13</b> — <i>14 Novos Países, 100 Conquistas, Colégio Eleitoral Melhorado, Indiretas Reformuladas, Parlamentos Reais</i><br>
+        <b style="color:#006600">✅ 🇺🇦 Ucrânia 2019:</b> Zelensky vs Poroshenko vs Tymoshenko — 2 turnos, 10 regiões, contexto do Donbas<br>
+        <b style="color:#006600">✅ 🇪🇸 Espanha 2023:</b> Feijóo vs Sánchez vs Abascal vs Díaz — parlamentar, 350 cadeiras, 11 regiões<br>
+        <b style="color:#006600">✅ 🇯🇵 Japão 2026:</b> Takaichi vs Noda vs Yoshimura vs Tamaki vs Kamiya vs Anno — parlamentar, 465 cadeiras<br>
+        <b style="color:#006600">✅ 🇰🇷 Coreia do Sul 2025:</b> Lee Jae-myung vs Kim Moon-Soo vs Lee Jun-Seok — pós-impeachment Yoon<br>
+        <b style="color:#006600">✅ 🇿🇦 África do Sul 2024:</b> Ramaphosa vs Steenhuisen vs Zuma vs Malema — PR 400 cadeiras, ANC perde maioria<br>
+        <b style="color:#006600">✅ 🇵🇭 Filipinas 2022:</b> Marcos vs Robredo vs Pacquiao vs Moreno — turno único, 10 regiões<br>
+        <b style="color:#006600">✅ 🇹🇷 Turquia 2023:</b> Erdoğan vs Kılıçdaroğlu vs Oğan — 2 turnos, democracia vs autoritarismo<br>
+        <b style="color:#006600">✅ 🏛️ Alemanha 1932:</b> Hindenburg vs Hitler vs Thälmann — eleição histórica de Weimar, aba Eleições Históricas<br>
+        <b style="color:#006600">✅ 🏛️ Eleições Históricas:</b> Nova aba com GER1932 + RUS1996 + EUA 2020<br>
+        <b style="color:#006600">✅ 🌍 África:</b> Nova aba continental com África do Sul 2024<br>
+        <b style="color:#006600">✅ 🗳️ Colégio Eleitoral Melhorado:</b> Swing States destacados, estratégia de campanha especial, Ground Game, sondagem estadual, live EV count, opacidade por margem no mapa<br>
+        <b style="color:#006600">✅ 🏛️ Eleições Parlamentares Reais:</b> UK/Índia/Espanha/Japão/Canadá/África do Sul agora mostram distribuição real de cadeiras no resultado com barra parlamentar<br>
+        <b style="color:#006600">✅ ⚙️ Indiretas Reformuladas:</b> Novas ações (Proposta de Governo, Mobilização Popular, Apoio Militar), IA mais inteligente, pressão popular, status de maioria em tempo real<br>
+        <b style="color:#006600">✅ 🏆 100 Conquistas:</b> 16 novas conquistas incluindo Maioria Absoluta, Sweep Eleitoral, Europolítico, conquistas por parlamento e colégio eleitoral<br>
+        <b style="color:#006600">✅ 📱 Redes sociais adicionadas</b> para todos os novos países (2019+)<br>
     </div>
     <div style="background:#ffffcc;border:1px solid #cc9900;padding:6px;margin-bottom:6px;border-left:4px solid #cc9900">
         <b>📦 v12</b> — 7 Novos Países, Vice-Presidência, Corrupção, Regiões e 70 Conquistas<br>
+        <small>🇮🇹 Itália | 🇦🇷 Argentina | 🇮🇳 Índia | 🇬🇧 UK | 🇵🇱 Polônia | 🇺🇸 EUA 2020 | 🇷🇺 Rússia 1996</small>
     </div>
     <div style="background:#e8e8ff;border:1px solid #6666cc;padding:6px;margin-bottom:6px;">
         <b>📦 v11</b> — Portugal, Radicalização Orgânica, Novas Mídias, Debates, Balanceamento
