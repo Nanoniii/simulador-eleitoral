@@ -177,7 +177,7 @@ body{ font-family:"MS Sans Serif", Arial; background:#008080; margin:0; display:
         <span>🌎 SIMULADOR ELEITORAL GLOBAL</span>
         <div style="display:flex;gap:8px;align-items:center">
             <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showCredits()">👑 Créditos</span>
-            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v16</span>
+            <span style="font-size:10px;cursor:pointer;opacity:0.8" onclick="showChangelog()">📋 v17</span>
             <span onclick="location.reload()" style="cursor:pointer">[X]</span>
         </div>
     </div>
@@ -3086,6 +3086,445 @@ const internationalData = {
             {id:'NEEMBUKU',  n:'Ñeembucú/Guairá',        x:25,y:82, p:5,  econ:-2, soc:0,  nat:1},
             {id:'CHACO',     n:'Chaco/Alto Paraguay',    x:18,y:18, p:8,  econ:-1, soc:-2, nat:2}
         ]
+    },
+    "MKD2024": {
+        title:"Eleições Presidenciais da Macedônia do Norte 2024", year:"2024", emoji:"🇲🇰",
+        country:"northmacedonia",
+        desc:"Gordana Siljanovska (VMRO-DPMNE) vs Stevo Pendarovski (SDSM) vs Stevčo Jakimovski (GROM). Macedônia do Norte entre integração europeia e identidade nacional.",
+        available:true,
+        newsHeader:"MRT — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"VMRO-DPMNE",side:"D",owner:null},{n:"SDSM",side:"E",owner:null},{n:"GROM",side:"C",owner:null}],
+        candidates:{
+            siljanovska24:{name:"SILJANOVSKA",party:"VMRO-DPMNE",start:40,money:40,side:"D",color:"#cc0000",econ:1,soc:-1,nat:2,bio:"Gordana Siljanovska-Davkova, professora de direito e candidata do VMRO-DPMNE. Discurso nacional-conservador, crítica ao Acordo de Prespa que renomeou o país. Venceu o segundo turno com ampla margem.",ideologia:"Conservadorismo Nacional / Direita",traits:["Base Conservadora Fiel","Anti-Acordo de Prespa"],negativeTraits:["Percebida como Radical","Tensão com Grécia"]},
+            pendarovski24:{name:"PENDAROVSKI",party:"SDSM",start:32,money:35,side:"E",color:"#ff6600",econ:-1,soc:1,nat:-1,bio:"Stevo Pendarovski, presidente incumbente e candidato social-democrata. Defensor do caminho europeu e do Acordo de Prespa. Perdeu a reeleição para Siljanovska.",ideologia:"Social-Democracia / Europeísmo",traits:["Incumbência","Pró-UE"],negativeTraits:["Impopularidade do Acordo de Prespa","Desgaste do Governo"]},
+            jakimovski24: {name:"JAKIMOVSKI",party:"GROM",start:14,money:15,side:"C",color:"#009900",econ:0,soc:0,nat:1,bio:"Stevčo Jakimovski, candidato do GROM (Movimento Cidadão Opção para Macedonia). Outsider político centrista. Apelo de renovação e anti-corrupção.",ideologia:"Centrismo / Renovação",traits:["Apelo Anticorrupção"],negativeTraits:["Partido Pequeno","Sem Estrutura"]}
+        },
+        regions:[
+            {id:'SKOPJE',  n:'Skopje (Capital)',       x:52,y:38, p:28, econ:2,  soc:1,  nat:0},
+            {id:'VARDAR',  n:'Vardar (Centro)',         x:45,y:52, p:18, econ:0,  soc:0,  nat:1},
+            {id:'PELAGON', n:'Pelagônia (Sul-Oeste)',   x:30,y:65, p:16, econ:-1, soc:-1, nat:2},
+            {id:'POLOG',   n:'Polog (Noroeste)',        x:22,y:32, p:14, econ:-1, soc:0,  nat:1},
+            {id:'OHRID',   n:'Ohrid/Strumica (Sul)',    x:40,y:75, p:12, econ:-1, soc:-1, nat:2},
+            {id:'STIP',    n:'Štip/Kočani (Leste)',    x:70,y:48, p:12, econ:0,  soc:-1, nat:2}
+        ]
+    },
+    "MNE2023": {
+        title:"Eleições Parlamentares do Montenegro 2023", year:"2023", emoji:"🇲🇪",
+        country:"montenegro",
+        desc:"Milojko Spajić (PES!) vs Danijel Živković (DPS) vs Milan Knežević (ZBCG). Montenegro na encruzilhada entre o ocidente e a influência sérvia-russa.",
+        available:true,
+        newsHeader:"Vijesti — 2023",
+        endYear:"2023",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:81,
+        majoritySeats:41,
+        partyPoolOverride:[{n:"PES!",side:"C",owner:null},{n:"DPS",side:"E",owner:null},{n:"ZBCG",side:"D",owner:null}],
+        candidates:{
+            spajic23:   {name:"SPAJIĆ",   party:"PES!",  start:25,money:35,side:"C",color:"#0099cc",econ:1,soc:0,nat:-1,bio:"Milojko Spajić, jovem economista e líder do partido Europa Agora! (Pokret Evropa sad!). Discurso pró-UE e anti-corrupção. Formou governo de coalizão após vencer as eleições.",ideologia:"Liberalismo / Pró-UE / Renovação",traits:["Apelo Jovem","Agenda Europeia"],negativeTraits:["Partido Novo","Coalizão Frágil"]},
+            zivkovic23: {name:"ŽIVKOVIĆ", party:"DPS",   start:23,money:38,side:"E",color:"#cc0000",econ:-1,soc:1,nat:-1,bio:"Danijel Živković, presidente interino do DPS (Partido Democrático dos Socialistas), partido que governou o Montenegro por 30 anos sob Đukanović. Tentou manter o poder após a derrota histórica de 2020.",ideologia:"Social-Democracia / Pro-UE Pragmático",traits:["Máquina Partidária DPS","Experiência de Governo"],negativeTraits:["30 Anos de DPS Impopular","Corrupção"]},
+            knezevic23: {name:"KNEŽEVIĆ", party:"ZBCG",  start:20,money:20,side:"D",color:"#003366",econ:-1,soc:-1,nat:2,bio:"Milan Knežević, líder do Frente Democrático (Demokratski front). Político pró-sérvio e pró-russo. Representante do mundo ortodoxo sérvio no Montenegro. Base forte no norte do país.",ideologia:"Conservadorismo Sérvio / Soberanismo Pró-Rússia",traits:["Base no Norte","Identidade Sérvia"],negativeTraits:["Percebido como Anti-UE","Ligações Russas"]}
+        },
+        regions:[
+            {id:'PODG',  n:'Podgorica (Capital)',    x:55,y:52, p:30, econ:2,  soc:1,  nat:-1},
+            {id:'NORTH', n:'Norte (Kolašin/Bijelo Polje)', x:38,y:22, p:20, econ:-2, soc:-1, nat:2},
+            {id:'COAST', n:'Costa Adriática (Budva/Bar)', x:40,y:72, p:22, econ:1,  soc:0,  nat:0},
+            {id:'NIKS',  n:'Nikšić (Centro)',        x:32,y:48, p:16, econ:-1, soc:-1, nat:1},
+            {id:'HERCE', n:'Herceg Novi (Sul-Oeste)',x:20,y:68, p:12, econ:1,  soc:0,  nat:0}
+        ]
+    },
+    "ALB2025": {
+        title:"Eleições Parlamentares da Albânia 2025", year:"2025", emoji:"🇦🇱",
+        country:"albania",
+        desc:"Edi Rama (PS) vs Sali Berisha (PD) vs Adriatik Lapaj (LSHB). Albânia entre o socialismo reformista de Rama e a direita clássica de Berisha.",
+        available:true,
+        newsHeader:"Top Channel Albania — 2025",
+        endYear:"2025",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:140,
+        majoritySeats:71,
+        partyPoolOverride:[{n:"PS",side:"E",owner:null},{n:"PD",side:"D",owner:null},{n:"LSHB",side:"D",owner:null}],
+        candidates:{
+            rama25:   {name:"RAMA",   party:"PS",   start:44,money:50,side:"E",color:"#cc0000",econ:0,soc:1,nat:-1,bio:"Edi Rama, primeiro-ministro e líder do Partido Socialista. No poder desde 2013. Buscou integração europeia da Albânia e modernização do país. Artista e político carismático.",ideologia:"Social-Democracia / Modernismo / Pro-UE",traits:["Longa Experiência de Governo","Integração Europeia"],negativeTraits:["Corrupção Percebida","Erosão Democrática"]},
+            berisha25:{name:"BERISHA", party:"PD",   start:35,money:40,side:"D",color:"#003399",econ:1,soc:-1,nat:1,bio:"Sali Berisha, ex-presidente e ex-PM, fundador do Partido Democrático. Voltou à liderança do PD após dissidência interna. Velho rival de Rama. Declarado non grata pelos EUA por corrupção.",ideologia:"Conservadorismo / Democracia Cristã",traits:["Base Histórica do PD","Experiência"],negativeTraits:["Non grata nos EUA","Percepção de Passado"]},
+            lapaj25:  {name:"LAPAJ",   party:"LSHB", start:12,money:12,side:"D",color:"#006600",econ:1,soc:-1,nat:2,bio:"Adriatik Lapaj, candidato do Movimento Socialista por Integração (LSHB). Terceira força política albanesa. Apelo rural e social-conservador.",ideologia:"Conservadorismo Social / Terceira Via",traits:["Base Rural"],negativeTraits:["Partido Pequeno","Pouco Financiamento"]}
+        },
+        regions:[
+            {id:'TIRANA', n:'Tirana (Capital)',         x:38,y:42, p:30, econ:2,  soc:1,  nat:-1},
+            {id:'DURRES', n:'Durrës (Adriático)',       x:25,y:38, p:18, econ:1,  soc:0,  nat:0},
+            {id:'SHKODER',n:'Shkodër (Norte)',          x:28,y:18, p:12, econ:-1, soc:-1, nat:2},
+            {id:'ELBASAN',n:'Elbasan (Centro)',         x:48,y:52, p:14, econ:-1, soc:0,  nat:1},
+            {id:'VLORE',  n:'Vlorë (Sul Adriático)',    x:28,y:70, p:12, econ:0,  soc:0,  nat:0},
+            {id:'KORCA',  n:'Korçë (Sudeste)',          x:62,y:65, p:14, econ:-2, soc:-1, nat:2}
+        ]
+    },
+    "BGR2026": {
+        title:"Eleições Parlamentares da Bulgária 2026", year:"2026", emoji:"🇧🇬",
+        country:"bulgaria",
+        desc:"Borisov (GERB-SDS) vs Vassilev (PP-DB) vs Kostadinov (Revival) vs Peevski (DPS-NN). Bulgária fragmentada entre conservadores, reformistas, populistas e minoria turca.",
+        available:true,
+        newsHeader:"BNT — 2026",
+        endYear:"2026",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:240,
+        majoritySeats:121,
+        partyPoolOverride:[{n:"GERB-SDS",side:"D",owner:null},{n:"PP-DB",side:"E",owner:null},{n:"Revival",side:"D",owner:null},{n:"DPS-NN",side:"C",owner:null}],
+        candidates:{
+            borisov26:    {name:"BORISOV",    party:"GERB-SDS", start:28,money:55,side:"D",color:"#003399",econ:1,soc:-1,nat:1,bio:"Boyko Borisov, ex-primeiro-ministro e líder do GERB. Dominou a política búlgara por mais de uma década. Alvo de acusações de corrupção mas continua sendo a maior força política individual.",ideologia:"Conservadorismo / Populismo de Centro-Direita",traits:["Máquina Partidária GERB","Apoio Rural"],negativeTraits:["Corrupção Sistêmica","Polarização"]},
+            vassilev26:   {name:"VASSILEV",   party:"PP-DB",    start:22,money:40,side:"E",color:"#0099cc",econ:-1,soc:2,nat:-1,bio:"Assen Vassilev, ex-ministro das Finanças e líder da Continuar a Mudança – Bulgária Democrática. Reformista anti-corrupção. Tentou liderar governo reformista mas enfrenta oposição de Borisov e Peevski.",ideologia:"Liberalismo Progressista / Anti-Corrupção",traits:["Credibilidade Reformista","Pró-UE"],negativeTraits:["Governo Instável","Ataques da Máquina GERB"]},
+            kostadinov26: {name:"KOSTADINOV", party:"Revival",  start:18,money:25,side:"D",color:"#8b0000",econ:-2,soc:-2,nat:2,bio:"Kostadin Kostadinov, líder do partido Vazrazhdane (Renascimento). Populista de ultradireita, pró-Rússia e eurocético. Crescimento explosivo com discurso anti-OTAN e anti-vacina. Base entre jovens descontentes e áreas rurais.",ideologia:"Nacionalismo / Populismo Radical Pró-Rússia",traits:["Crescimento nas Redes Sociais","Anti-Establishment"],negativeTraits:["Pró-Rússia Explícito","Isolamento Europeu"]},
+            peevski26:    {name:"PEEVSKI",    party:"DPS-NN",   start:15,money:45,side:"C",color:"#cc6600",econ:0,soc:0,nat:0,bio:"Delyan Peevski, oligarca e líder do DPS-Nova Bulgária (Movimento pelos Direitos e Liberdades). Representa a minoria turca e muçulmana búlgara. Homem controverso por supostas ligações com os serviços secretos e oligarquia.",ideologia:"Centrismo Liberal / Minoria Turca",traits:["Base Étnica Sólida","Recursos Financeiros"],negativeTraits:["Controverso","Corrupção Percebida"]}
+        },
+        regions:[
+            {id:'SOFIA',  n:'Sofia (Capital)',          x:35,y:40, p:22, econ:2,  soc:1,  nat:-1},
+            {id:'PLOVDIV',n:'Plovdiv (Centro)',          x:55,y:55, p:15, econ:1,  soc:0,  nat:0},
+            {id:'VARNA',  n:'Varna (Costa do Mar Negro)',x:82,y:28, p:12, econ:1,  soc:0,  nat:0},
+            {id:'BURGAS', n:'Burgas (Sul da Costa)',     x:80,y:48, p:10, econ:0,  soc:-1, nat:1},
+            {id:'RUSE',   n:'Ruse/Pleven (Norte)',       x:55,y:22, p:12, econ:-1, soc:-1, nat:1},
+            {id:'HASKOVO',n:'Haskovo/Kardzhali (Sul)',   x:62,y:72, p:12, econ:-2, soc:-1, nat:1},
+            {id:'MONTANA',n:'Montana/Vidin (Noroeste)',  x:28,y:22, p:8,  econ:-2, soc:-1, nat:2},
+            {id:'SMOLYAN', n:'Smolyan/Rhodopi (Sul)',    x:48,y:75, p:9,  econ:-2, soc:-1, nat:1}
+        ]
+    },
+    "HRV2024": {
+        title:"Eleições Parlamentares da Croácia 2024", year:"2024", emoji:"🇭🇷",
+        country:"croatia",
+        desc:"Andrej Plenković (HDZ) vs Peđa Grbin (Rios de Justiça) vs Ivan Penava (DP). Croácia decide entre o conservadorismo europeu do HDZ e a renovação da oposição.",
+        available:true,
+        newsHeader:"HRT — 2024",
+        endYear:"2024",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:151,
+        majoritySeats:76,
+        partyPoolOverride:[{n:"HDZ",side:"D",owner:null},{n:"Rios de Justiça",side:"E",owner:null},{n:"DP",side:"D",owner:null}],
+        candidates:{
+            plenkovic24:{name:"PLENKOVIĆ", party:"HDZ",             start:35,money:50,side:"D",color:"#003399",econ:1,soc:-1,nat:1,bio:"Andrej Plenković, primeiro-ministro e líder do HDZ (Comunidade Democrática Croata). Político experiente e pró-UE. Buscou terceiro mandato consecutivo numa eleição muito competitiva.",ideologia:"Democracia Cristã / Centro-Direita / Pró-UE",traits:["Experiência de Governo","Rede Europeia"],negativeTraits:["Desgaste do Governo","Corrupção nos Círculos HDZ"]},
+            grbin24:    {name:"GRBIN",     party:"Rios de Justiça", start:28,money:35,side:"E",color:"#cc0000",econ:-1,soc:2,nat:-1,bio:"Peđa Grbin, líder do Partido Social-Democrático liderando a coalizão Rijeke Pravde (Rios de Justiça). Principal força de oposição. Propôs renovação social e combate à corrupção do HDZ.",ideologia:"Social-Democracia / Progressismo",traits:["Oposição Unida","Agenda Social"],negativeTraits:["SDP Historicamente Perdedor","Fragmentação da Coalizão"]},
+            penava24:   {name:"PENAVA",    party:"DP",              start:17,money:22,side:"D",color:"#8b0000",econ:0,soc:-2,nat:2,bio:"Ivan Penava, ex-prefeito de Vukovar e líder do Domovinski Pokret (Movimento Pátria). Direita populista e nacionalista. Cresceu com discurso duro sobre memória de guerra e identidade croata.",ideologia:"Nacionalismo / Direita Populista",traits:["Herói de Vukovar","Base Conservadora"],negativeTraits:["Percebido como Extremista","Limitado Regionalmente"]}
+        },
+        regions:[
+            {id:'ZAGREB',  n:'Zagreb (Capital)',         x:42,y:28, p:30, econ:2,  soc:1,  nat:-1},
+            {id:'SPLIT',   n:'Split-Dalmácia',           x:42,y:68, p:18, econ:0,  soc:0,  nat:1},
+            {id:'RIJEKA',  n:'Primorje-Gorski Kotar (Rijeka)',x:20,y:38, p:12, econ:1,soc:1,nat:-1},
+            {id:'SLAVON',  n:'Eslavônia (Osijek)',       x:72,y:22, p:15, econ:-1, soc:-1, nat:2},
+            {id:'ISTRA',   n:'Ístria (Pula)',             x:8, y:42, p:8,  econ:1,  soc:2,  nat:-2},
+            {id:'SIBEN',   n:'Šibenik/Zadar (Dalmácia)', x:30,y:58, p:10, econ:-1, soc:0,  nat:1},
+            {id:'KARLOV',  n:'Karlovac/Sisak (Centro)',  x:35,y:45, p:7,  econ:-1, soc:-1, nat:1}
+        ]
+    },
+    "SVN2022": {
+        title:"Eleições Presidenciais da Eslovênia 2022", year:"2022", emoji:"🇸🇮",
+        country:"slovenia",
+        desc:"Nataša Pirc Musar (Independente) vs Anže Logar (Independente). Eslovênia escolhe sua primeira presidenta num confronto de dois independentes.",
+        available:true,
+        newsHeader:"RTV Slovenija — 2022",
+        endYear:"2022",
+        partyPoolOverride:[{n:"Independente (Centro-Esquerda)",side:"E",owner:null},{n:"Independente (Centro-Direita)",side:"D",owner:null}],
+        candidates:{
+            musar22:{name:"PIRC MUSAR",party:"Independente (Centro-Esquerda)",start:34,money:30,side:"E",color:"#cc0000",econ:0,soc:2,nat:-1,bio:"Nataša Pirc Musar, advogada e ex-comissária para a proteção de dados. Candidata independente apoiada pela esquerda. Venceu o segundo turno tornando-se a primeira presidenta da Eslovênia.",ideologia:"Liberalismo Progressista / Direitos Humanos",traits:["Perfil Independente","Histórico nos Direitos Civis"],negativeTraits:["Pouca Experiência Política","Candidatura Nova"]},
+            logar22: {name:"LOGAR",     party:"Independente (Centro-Direita)", start:33,money:30,side:"D",color:"#003399",econ:1,soc:-1,nat:1,bio:"Anže Logar, ex-ministro dos Negócios Estrangeiros no governo Janša. Candidato independente apoiado pela direita eslovena. Perdeu o segundo turno por margem estreita.",ideologia:"Conservadorismo Moderado / Europeísmo",traits:["Experiência Diplomática","Apoio da Centro-Direita"],negativeTraits:["Associado a Janša","Percebido como Partidário"]}
+        },
+        regions:[
+            {id:'LUBLJ',  n:'Liubliana (Capital)',       x:48,y:42, p:28, econ:2,  soc:2,  nat:-2},
+            {id:'MARIB',  n:'Maribor (Nordeste)',        x:72,y:28, p:18, econ:1,  soc:0,  nat:1},
+            {id:'CELJE',  n:'Celje (Centro)',             x:58,y:48, p:14, econ:0,  soc:0,  nat:1},
+            {id:'KOPER',  n:'Koper/Primorska (Costa)',   x:22,y:58, p:12, econ:1,  soc:1,  nat:-1},
+            {id:'KRANJ',  n:'Kranj (Noroeste)',           x:38,y:28, p:12, econ:1,  soc:0,  nat:0},
+            {id:'SAVINJA',n:'Savinja/Gorenjska (Rural)', x:50,y:32, p:16, econ:-1, soc:-1, nat:2}
+        ]
+    },
+    "SVK2024": {
+        title:"Eleições Presidenciais da Eslováquia 2024", year:"2024", emoji:"🇸🇰",
+        country:"slovakia",
+        desc:"Ivan Korčok (Independente) vs Peter Pellegrini (Voz-SD) vs Štefan Harabin (Independente). Eslováquia polarizada entre pró-OTAN e pró-Rússia.",
+        available:true,
+        newsHeader:"RTVS — 2024",
+        endYear:"2024",
+        partyPoolOverride:[{n:"Independente (Pró-UE)",side:"C",owner:null},{n:"Voz-SD",side:"E",owner:null},{n:"Independente (Pró-Rússia)",side:"D",owner:null}],
+        candidates:{
+            korcok24:    {name:"KORČOK",    party:"Independente (Pró-UE)",   start:34,money:35,side:"C",color:"#0066cc",econ:1,soc:0,nat:-1,bio:"Ivan Korčok, ex-ministro dos Negócios Estrangeiros. Candidato independente pró-OTAN e pró-UE. Perdeu o segundo turno para Pellegrini por margem estreita. Ficou como símbolo do eleitorado pró-ocidental eslovaco.",ideologia:"Liberalismo / Atlantismo / Pro-UE",traits:["Experiência Diplomática","Credibilidade Internacional"],negativeTraits:["Sem Partido Próprio","Ataque Populista de Pellegrini"]},
+            pellegrini24:{name:"PELLEGRINI",party:"Voz-SD",                 start:38,money:45,side:"E",color:"#cc0000",econ:-1,soc:1,nat:1,bio:"Peter Pellegrini, ex-primeiro-ministro e líder do Hlas-SD (Voz-Democracia Social). Aliado de Fico mas com perfil mais moderado. Venceu o segundo turno e foi eleito presidente, dando ao governo Fico controle total.",ideologia:"Social-Democracia / Soberanismo",traits:["Ex-PM","Aliança com Fico"],negativeTraits:["Vinculado ao Fico","Percepção Pró-Rússia"]},
+            harabin24:   {name:"HARABIN",   party:"Independente (Pró-Rússia)",start:12,money:15,side:"D",color:"#8b0000",econ:-2,soc:-1,nat:2,bio:"Štefan Harabin, ex-presidente do Supremo Tribunal. Populista de extrema-direita, abertamente pró-Rússia e anti-OTAN. Apelo entre eleitores eslavófilos tradicionais.",ideologia:"Populismo Anti-OTAN / Soberanismo Pró-Rússia",traits:["Base Pró-Rússia Fiel"],negativeTraits:["Isolado Politicamente","Discurso Extremo"]}
+        },
+        regions:[
+            {id:'BRATISL',n:'Bratislava (Capital)',      x:18,y:52, p:20, econ:2,  soc:2,  nat:-2},
+            {id:'TRNAVA', n:'Trnava/Záhorie (Oeste)',    x:25,y:40, p:14, econ:1,  soc:0,  nat:0},
+            {id:'TRENCIN',n:'Trenčín (Noroeste)',        x:35,y:32, p:12, econ:0,  soc:0,  nat:1},
+            {id:'NITRA',  n:'Nitra (Centro-Sul)',        x:38,y:52, p:14, econ:0,  soc:-1, nat:1},
+            {id:'ZILINA', n:'Žilina (Norte)',             x:48,y:22, p:12, econ:-1, soc:-1, nat:2},
+            {id:'BANSKA', n:'Banská Bystrica (Centro)',  x:55,y:45, p:12, econ:-1, soc:-1, nat:2},
+            {id:'PRESOV', n:'Prešov (Nordeste)',          x:72,y:28, p:10, econ:-2, soc:-2, nat:2},
+            {id:'KOSICE', n:'Košice (Leste)',             x:80,y:45, p:16, econ:0,  soc:-1, nat:1}
+        ]
+    },
+    "LVA2022": {
+        title:"Eleições Parlamentares da Letônia 2022", year:"2022", emoji:"🇱🇻",
+        country:"latvia",
+        desc:"Krišjānis Kariņš (Unidade) vs Aivars Lembergs (ZZS) vs Uldis Pīlēns (AS). Letônia báltica escolhe entre continuidade pró-OTAN e alternativas.",
+        available:true,
+        newsHeader:"LTV — 2022",
+        endYear:"2022",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:100,
+        majoritySeats:51,
+        partyPoolOverride:[{n:"Unidade",side:"D",owner:null},{n:"ZZS",side:"C",owner:null},{n:"AS",side:"C",owner:null}],
+        candidates:{
+            karins22:  {name:"KARIŅŠ",  party:"Unidade", start:30,money:40,side:"D",color:"#003399",econ:1,soc:0,nat:0,bio:"Krišjānis Kariņš, primeiro-ministro e líder do Jaunā Vienotība (Nova Unidade). Económista pró-OTAN e pró-UE. Buscou a continuidade num contexto de guerra na Ucrânia e inflação alta.",ideologia:"Liberalismo Conservador / Atlantismo",traits:["Incumbência Pró-OTAN","Credibilidade Económica"],negativeTraits:["Inflação Alta","Custo de Vida"]},
+            lembergs22:{name:"LEMBERGS",party:"ZZS",     start:18,money:25,side:"C",color:"#006600",econ:-1,soc:-1,nat:1,bio:"Aivars Lembergs, prefeito de longa data de Ventspils e político controverso. Líder da ZZS (União dos Verdes e Agricultores). Apelo rural e agrário. Condenado por corrupção mas manteve influência política.",ideologia:"Agrário / Centrismo Rural",traits:["Base Rural Fiel"],negativeTraits:["Condenação por Corrupção","Percepção Negativa Urbana"]},
+            pilens22:  {name:"PĪLĒNS",  party:"AS",      start:14,money:18,side:"C",color:"#cc6600",econ:0,soc:1,nat:-1,bio:"Uldis Pīlēns, empresário e líder da Aliança Progressista (Apvienotais saraksts). Candidato outsider com agenda anti-corrupção e pró-modernização. Resultado modesto nas eleições.",ideologia:"Centrismo Liberal / Modernização",traits:["Perfil Empresarial","Anti-Corrupção"],negativeTraits:["Partido Novo","Pouca Estrutura"]}
+        },
+        regions:[
+            {id:'RIGA',   n:'Riga (Capital)',             x:42,y:45, p:30, econ:2,  soc:1,  nat:-1},
+            {id:'VIDZEME',n:'Vidzeme (Norte)',            x:58,y:28, p:18, econ:-1, soc:0,  nat:1},
+            {id:'LATGALE',n:'Latgale (Leste)',            x:82,y:42, p:16, econ:-2, soc:-1, nat:0},
+            {id:'KURZEME',n:'Kurzeme (Oeste)',            x:18,y:42, p:16, econ:-1, soc:-1, nat:1},
+            {id:'ZEMGALE',n:'Zemgale (Centro-Sul)',       x:42,y:65, p:12, econ:-1, soc:0,  nat:1},
+            {id:'PIERIGA',n:'Pierīga (Subúrbios de Riga)',x:42,y:42, p:8,  econ:1,  soc:0,  nat:0}
+        ]
+    },
+    "EST2023": {
+        title:"Eleições Parlamentares da Estônia 2023", year:"2023", emoji:"🇪🇪",
+        country:"estonia",
+        desc:"Kaja Kallas (Partido da Reforma) vs Martin Helme (EKRE) vs Jüri Ratas (Partido do Centro). Estônia no contexto da guerra na Ucrânia.",
+        available:true,
+        newsHeader:"ERR — 2023",
+        endYear:"2023",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:101,
+        majoritySeats:51,
+        partyPoolOverride:[{n:"Reforma",side:"D",owner:null},{n:"EKRE",side:"D",owner:null},{n:"Centro",side:"C",owner:null}],
+        candidates:{
+            kallas23: {name:"KALLAS",  party:"Reforma", start:32,money:42,side:"D",color:"#ff6600",econ:1,soc:0,nat:-1,bio:"Kaja Kallas, primeira-ministra e líder do Partido da Reforma. Uma das vozes mais duras da Europa contra a Rússia. Venceu eleições históricas para o Partido da Reforma na Estônia.",ideologia:"Liberalismo Clássico / Atlantismo Firme",traits:["Liderança Anti-Rússia","Credibilidade OTAN"],negativeTraits:["Custo de Vida Alto","Divisão com Minorias Russas"]},
+            helme23:  {name:"HELME",   party:"EKRE",    start:22,money:30,side:"D",color:"#003366",econ:0,soc:-2,nat:2,bio:"Martin Helme, líder do EKRE (Partido Conservador Popular da Estônia). Ultradireitista nacional-conservador. Crítico da imigração e do progressismo. Base entre eleitores rurais e conservadores tradicionais.",ideologia:"Nacional-Conservadorismo / Soberanismo",traits:["Base Conservadora Fiel","Anti-Imigração"],negativeTraits:["Percebido como Extremista","Limitado Geograficamente"]},
+            ratas23:  {name:"RATAS",   party:"Centro",  start:18,money:25,side:"C",color:"#009900",econ:-1,soc:1,nat:0,bio:"Jüri Ratas, ex-primeiro-ministro e líder do Partido do Centro. Partido histórico da minoria russófona da Estônia. Tentou renovar imagem após escândalo de corrupção no governo.",ideologia:"Social-Democracia / Centrismo / Minoria Russa",traits:["Base Russófona Fiel"],negativeTraits:["Escândalo de Corrupção","Partido em Declínio"]}
+        },
+        regions:[
+            {id:'TALLINN',n:'Tallinn (Capital)',          x:40,y:22, p:32, econ:2,  soc:1,  nat:-1},
+            {id:'HARJUMAA',n:'Harjumaa (Subúrbios)',     x:42,y:30, p:18, econ:1,  soc:0,  nat:0},
+            {id:'TARTUMAA',n:'Tartu (Sul)',               x:62,y:52, p:15, econ:1,  soc:1,  nat:-1},
+            {id:'IDAVIRU',n:'Ida-Viru (Nordeste Russo)',  x:78,y:22, p:14, econ:-2, soc:0,  nat:0},
+            {id:'PARNU',  n:'Pärnu (Oeste)',              x:30,y:52, p:10, econ:-1, soc:-1, nat:1},
+            {id:'LAHEMAA',n:'Viljandi/Lääne (Rural)',    x:38,y:48, p:11, econ:-2, soc:-1, nat:2}
+        ]
+    },
+    "FIN2023": {
+        title:"Eleições Parlamentares da Finlândia 2023", year:"2023", emoji:"🇫🇮",
+        country:"finland",
+        desc:"Petteri Orpo (Coligação Nacional) vs Riikka Purra (Finlandeses) vs Sanna Marin (Social-Democrata). Finlândia pós-NATO num momento histórico.",
+        available:true,
+        newsHeader:"YLE — 2023",
+        endYear:"2023",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:200,
+        majoritySeats:101,
+        partyPoolOverride:[{n:"Coligação Nacional",side:"D",owner:null},{n:"Finlandeses",side:"D",owner:null},{n:"Social-Democrata",side:"E",owner:null}],
+        candidates:{
+            orpo23:  {name:"ORPO",  party:"Coligação Nacional", start:28,money:40,side:"D",color:"#003399",econ:1,soc:-1,nat:0,bio:"Petteri Orpo, líder do Partido da Coligação Nacional (Kokoomus). Venceu as eleições de 2023 e formou governo de direita incluindo os Finlandeses. Defensor da austeridade económica e da disciplina fiscal.",ideologia:"Conservadorismo Liberal / Atlantismo",traits:["Vitória Eleitoral","Gestão Económica"],negativeTraits:["Coalizão com Extrema-Direita","Cortes Sociais"]},
+            purra23: {name:"PURRA",  party:"Finlandeses",       start:23,money:30,side:"D",color:"#ffcc00",econ:0,soc:-2,nat:2,bio:"Riikka Purra, líder do Perussuomalaiset (Finlandeses). Nacional-populista e crítica da imigração. Entrou no governo com Orpo, tornando-se ministro das Finanças. Representante da nova direita populista europeia na Finlândia.",ideologia:"Nacional-Conservadorismo / Anti-Imigração",traits:["Base Nacional Sólida","Entrada no Governo"],negativeTraits:["Declarações Polêmicas","Percepção Xenófoba"]},
+            marin23: {name:"MARIN",  party:"Social-Democrata",  start:22,money:35,side:"E",color:"#cc0000",econ:-1,soc:2,nat:-1,bio:"Sanna Marin, ex-primeira-ministra e ícone da esquerda europeia. Perdeu as eleições de 2023 para Orpo. Governou durante a pandemia e levou a Finlândia para a OTAN. Saiu da liderança do SDP após a derrota.",ideologia:"Social-Democracia / Progressismo",traits:["Reconhecimento Internacional","Legado OTAN"],negativeTraits:["Derrota Eleitoral","Polarização Interna"]}
+        },
+        regions:[
+            {id:'UUSIMAA', n:'Uusimaa (Helsínquia)',      x:55,y:82, p:30, econ:2,  soc:2,  nat:-2},
+            {id:'PIRKANM', n:'Pirkanmaa (Tampere)',        x:48,y:68, p:14, econ:1,  soc:0,  nat:0},
+            {id:'VARSINF', n:'Varsinais-Suomi (Turku)',   x:38,y:78, p:12, econ:1,  soc:0,  nat:0},
+            {id:'POHJANM', n:'Pohjanmaa (Vaasa — Oeste)', x:32,y:48, p:10, econ:0,  soc:-1, nat:1},
+            {id:'NORPOH',  n:'Pohjois-Pohjanmaa (Oulu)',  x:45,y:38, p:12, econ:-1, soc:-1, nat:2},
+            {id:'KYMENL',  n:'Kymenlaakso/Etelä-Karjala',x:70,y:72, p:8,  econ:-1, soc:0,  nat:1},
+            {id:'LAPPI',   n:'Lapônia (Norte)',            x:45,y:15, p:4,  econ:-2, soc:-2, nat:2},
+            {id:'ETELA',   n:'Etelä-Savo/Keski-Suomi',   x:58,y:58, p:10, econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "NOR2025": {
+        title:"Eleições Parlamentares da Noruega 2025", year:"2025", emoji:"🇳🇴",
+        country:"norway",
+        desc:"Jonas Gahr Støre (Trabalhista) vs Sylvi Listhaug (Progresso) vs Erna Solberg (Conservador). Noruega decide entre a centro-esquerda e a direita populista.",
+        available:true,
+        newsHeader:"NRK — 2025",
+        endYear:"2025",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:169,
+        majoritySeats:85,
+        partyPoolOverride:[{n:"Trabalhista",side:"E",owner:null},{n:"Progresso",side:"D",owner:null},{n:"Conservador",side:"D",owner:null}],
+        candidates:{
+            store25:    {name:"STØRE",    party:"Trabalhista", start:26,money:40,side:"E",color:"#cc0000",econ:-1,soc:2,nat:-1,bio:"Jonas Gahr Støre, primeiro-ministro e líder do Partido Trabalhista norueguês (Ap). Governou em coalizão com o Centro. Desafios incluem custo de vida e política de imigração.",ideologia:"Social-Democracia / Estado de Bem-Estar",traits:["Incumbência","Legado Nórdico"],negativeTraits:["Impopularidade do Governo","Imigração"]},
+            listhaug25: {name:"LISTHAUG", party:"Progresso",   start:22,money:35,side:"D",color:"#003366",econ:1,soc:-2,nat:2,bio:"Sylvi Listhaug, líder do Fremskrittspartiet (FrP). Populista de direita e crítica feroz da imigração. Ascendeu nas sondagens com discurso duro sobre segurança e valores tradicionais.",ideologia:"Populismo de Direita / Anti-Imigração",traits:["Discurso Incisivo","Crescimento nas Sondagens"],negativeTraits:["Declarações Polêmicas","Isolamento Político"]},
+            solberg25:  {name:"SOLBERG",  party:"Conservador",  start:20,money:38,side:"D",color:"#0066cc",econ:1,soc:-1,nat:0,bio:"Erna Solberg, ex-primeira-ministra e líder do Partido Conservador Norueguês (Høyre). Moderate conservadora pró-Europa. Tentou voltar ao poder após perda de 2021.",ideologia:"Conservadorismo Moderado / Atlantismo",traits:["Ex-PM","Credibilidade Moderada"],negativeTraits:["Desgaste como Oposição","Competição com FrP"]}
+        },
+        regions:[
+            {id:'OSLO',   n:'Oslo (Capital)',              x:58,y:72, p:20, econ:2,  soc:2,  nat:-2},
+            {id:'VIKEN',  n:'Viken (Grande Oslo)',         x:55,y:68, p:18, econ:1,  soc:0,  nat:0},
+            {id:'ROGAL',  n:'Rogaland (Stavanger)',        x:28,y:75, p:12, econ:2,  soc:-1, nat:1},
+            {id:'VEST',   n:'Vestland (Bergen)',           x:22,y:62, p:12, econ:1,  soc:0,  nat:0},
+            {id:'TROND',  n:'Trøndelag (Trondheim)',       x:45,y:42, p:12, econ:0,  soc:0,  nat:1},
+            {id:'INLAND', n:'Innlandet (Interior)',        x:52,y:58, p:8,  econ:-1, soc:-1, nat:2},
+            {id:'NORDLA', n:'Nordland/Troms (Norte)',      x:45,y:22, p:10, econ:-2, soc:-1, nat:1},
+            {id:'FINNM',  n:'Finnmark/Svalbard (Ártico)', x:55,y:8,  p:8,  econ:-2, soc:-1, nat:2}
+        ]
+    },
+    "DNK2022": {
+        title:"Eleições Parlamentares da Dinamarca 2022", year:"2022", emoji:"🇩🇰",
+        country:"denmark",
+        desc:"Mette Frederiksen (Social-Democrata) vs Jakob Jensen (Liberal) vs Lars Løkke Rasmussen (Moderado) vs Pia Olsen Dyhr (Socialista Popular). Dinamarca num equilíbrio entre blocos.",
+        available:true,
+        newsHeader:"DR — 2022",
+        endYear:"2022",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:179,
+        majoritySeats:90,
+        partyPoolOverride:[{n:"Social-Democrata",side:"E",owner:null},{n:"Liberal",side:"D",owner:null},{n:"Moderado",side:"C",owner:null},{n:"Socialista Popular",side:"E",owner:null}],
+        candidates:{
+            frederiksen22:{name:"FREDERIKSEN",party:"Social-Democrata",   start:28,money:45,side:"E",color:"#cc0000",econ:-1,soc:2,nat:1,bio:"Mette Frederiksen, primeira-ministra e líder do Socialdemokraterne. Peculiar mistura de social-democracia com política de imigração dura. Venceu as eleições de 2022 e formou governo de coalizão de largo espectro.",ideologia:"Social-Democracia / Pragmatismo / Linha Dura na Imigração",traits:["Incumbência","Habilidade de Coalizão"],negativeTraits:["Política de Imigração Criticada","Escândalo dos Visons"]},
+            jensen22:     {name:"JENSEN",     party:"Liberal",            start:20,money:35,side:"D",color:"#003399",econ:1,soc:-1,nat:0,bio:"Jakob Jensen, líder do Venstre (Partido Liberal dinamarquês). Histórica força de centro-direita da Dinamarca. Ficou em segundo lugar mas não conseguiu formar governo.",ideologia:"Liberalismo Conservador",traits:["Tradição Liberal","Apoio Empresarial"],negativeTraits:["Venstre Fragmentado","Rivalidade com Moderados"]},
+            rasmussen22:  {name:"RASMUSSEN",  party:"Moderado",           start:15,money:30,side:"C",color:"#009900",econ:1,soc:0,nat:-1,bio:"Lars Løkke Rasmussen, ex-primeiro-ministro que criou o novo Moderaterne (Moderados). Tentou construir bloco de centro acima das divisões tradicionais. Entrou no governo com Frederiksen.",ideologia:"Centrismo / Liberalismo Moderado",traits:["Experiência como PM","Apelo do Centro"],negativeTraits:["Partido Novo","Credibilidade de Traidor"]},
+            dyhr22:       {name:"DYHR",       party:"Socialista Popular", start:12,money:20,side:"E",color:"#cc0000",econ:-2,soc:2,nat:-1,bio:"Pia Olsen Dyhr, líder do SF (Partido Socialista Popular). Esquerda progressista que apoiou o governo Frederiksen. Crescimento consistente como alternativa verde e social.",ideologia:"Socialismo Democrático / Ecologismo",traits:["Crescimento Consistente","Agenda Verde"],negativeTraits:["À Sombra dos Social-Democratas","Limitada pelo Bloco"]}
+        },
+        regions:[
+            {id:'KOPENH',n:'Copenhaga (Capital)',         x:72,y:72, p:28, econ:2,  soc:2,  nat:-2},
+            {id:'SJAELL',n:'Zelândia (Sjælland)',         x:62,y:62, p:18, econ:1,  soc:0,  nat:0},
+            {id:'JYLLAND',n:'Jutlândia (Jylland)',        x:28,y:45, p:28, econ:0,  soc:-1, nat:1},
+            {id:'FUNEN', n:'Funen (Fyn)',                  x:42,y:60, p:10, econ:0,  soc:0,  nat:0},
+            {id:'NORDJYL',n:'Jutlândia do Norte',         x:30,y:22, p:10, econ:-1, soc:-1, nat:2},
+            {id:'BORNHOLM',n:'Bornholm (Ilha Báltica)',   x:82,y:72, p:2,  econ:-1, soc:0,  nat:1},
+            {id:'GROENL',n:'Groenlândia/Faroé',           x:5, y:15, p:4,  econ:-2, soc:-1, nat:2}
+        ]
+    },
+    "IRL2025": {
+        title:"Eleições Parlamentares da Irlanda 2025", year:"2025", emoji:"🇮🇪",
+        country:"ireland",
+        desc:"Catherine Connolly (Independente) vs Heather Humphreys (Fine Gael) vs Jim Gavin (Fianna Fáil). Irlanda entre os partidos tradicionais e candidatos independentes.",
+        available:true,
+        newsHeader:"RTÉ — 2025",
+        endYear:"2025",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:174,
+        majoritySeats:88,
+        partyPoolOverride:[{n:"Independente",side:"C",owner:null},{n:"Fine Gael",side:"D",owner:null},{n:"Fianna Fáil",side:"C",owner:null}],
+        candidates:{
+            connolly25:  {name:"CONNOLLY",  party:"Independente", start:20,money:25,side:"C",color:"#009900",econ:-1,soc:2,nat:0,bio:"Catherine Connolly, líder do grupo de Independentes no Dáil. Galway e Connacht como base. Defende políticas sociais progressistas, habitação e direitos das minorias. Independente de esquerda.",ideologia:"Progressismo Social / Independentismo",traits:["Perfil Independente","Agenda Social"],negativeTraits:["Sem Estrutura Nacional","Limitada a Connacht"]},
+            humphreys25: {name:"HUMPHREYS", party:"Fine Gael",    start:25,money:40,side:"D",color:"#003399",econ:1,soc:-1,nat:-1,bio:"Heather Humphreys, ministra da Proteção Social e candidata do Fine Gael. Partido histórico de centro-direita. Buscou manter o Fine Gael como força dominante após anos de governo de coalizão.",ideologia:"Conservadorismo Moderado / Atlantismo",traits:["Experiência Ministerial","Estrutura do Fine Gael"],negativeTraits:["Desgaste do Governo","Crise de Habitação"]},
+            gavin25:     {name:"GAVIN",     party:"Fianna Fáil",  start:24,money:38,side:"C",color:"#009900",econ:0,soc:0,nat:0,bio:"Jim Gavin, ex-selecionador de futebol gaélico e candidato do Fianna Fáil. Figura nova na política mas com enorme popularidade. Fianna Fáil como partido histórico de centro.",ideologia:"Centrismo / Republicanismo Irlandês",traits:["Alta Popularidade","Nome Reconhecido"],negativeTraits:["Pouca Experiência Política","Expectativas Muito Altas"]}
+        },
+        regions:[
+            {id:'DUBLIN', n:'Dublin (Capital)',            x:78,y:52, p:32, econ:2,  soc:1,  nat:-1},
+            {id:'LEINST', n:'Leinster (Leste)',            x:72,y:58, p:18, econ:1,  soc:0,  nat:0},
+            {id:'MUNST',  n:'Munster (Sul — Cork)',        x:38,y:75, p:22, econ:0,  soc:0,  nat:1},
+            {id:'CONNACH',n:'Connacht (Oeste)',             x:28,y:45, p:12, econ:-2, soc:-1, nat:2},
+            {id:'ULSTER', n:'Ulster (Norte)',               x:42,y:22, p:10, econ:-1, soc:0,  nat:1},
+            {id:'MIDLAND',n:'Midlands (Centro)',            x:55,y:48, p:6,  econ:-1, soc:-1, nat:1}
+        ]
+    },
+    "CZE2025": {
+        title:"Eleições Parlamentares da República Checa 2025", year:"2025", emoji:"🇨🇿",
+        country:"czechrepublic",
+        desc:"Andrej Babiš (ANO) vs Petr Fiala (ODS) vs Vít Rakušan (STAN). Chequia entre o populismo de Babiš e a coalizão SPOLU de centro-direita.",
+        available:true,
+        newsHeader:"ČT — 2025",
+        endYear:"2025",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:200,
+        majoritySeats:101,
+        partyPoolOverride:[{n:"ANO",side:"C",owner:null},{n:"ODS",side:"D",owner:null},{n:"STAN",side:"C",owner:null}],
+        candidates:{
+            babis25:   {name:"BABIŠ",   party:"ANO",  start:32,money:60,side:"C",color:"#cc6600",econ:1,soc:1,nat:1,bio:"Andrej Babiš, bilionário e ex-primeiro-ministro. Líder do ANO (Ação de Cidadãos Insatisfeitos). Populista centrista com discurso anti-establishment apesar de ser o maior oligarca do país. Acusado de fraude nos fundos europeus.",ideologia:"Populismo Centrista / Autoritarismo Brando",traits:["Máquina Financeira Poderosa","Apelo Populista"],negativeTraits:["Processo por Fraude Europeia","Contradição Oligarca-Outsider"]},
+            fiala25:   {name:"FIALA",   party:"ODS",  start:22,money:40,side:"D",color:"#003399",econ:1,soc:-1,nat:0,bio:"Petr Fiala, primeiro-ministro e líder da ODS (Partido Democrático Cívico). Liderou a coalizão SPOLU que derrubou Babiš. Buscou reeleição numa campanha de austeridade e pró-UE.",ideologia:"Conservadorismo Liberal / Europeísmo",traits:["Incumbência","Coalizão SPOLU Ampla"],negativeTraits:["Inflação Alta","Desgaste do Governo"]},
+            rakusan25: {name:"RAKUŠAN", party:"STAN", start:15,money:25,side:"C",color:"#009900",econ:0,soc:1,nat:-1,bio:"Vít Rakušan, líder do STAN (Prefeitos e Independentes). Parceiro da coalizão SPOLU. Agenda descentralizadora e anti-corrupção. Cresceu como voz moderada e independente dentro do governo.",ideologia:"Centrismo / Municipalismo / Anti-Corrupção",traits:["Perfil de Renovação","Parceiro Sólido"],negativeTraits:["Escândalo Interno do STAN","À Sombra de Fiala"]}
+        },
+        regions:[
+            {id:'PRAGA',  n:'Praga (Capital)',             x:30,y:45, p:22, econ:2,  soc:2,  nat:-2},
+            {id:'MORAVA', n:'Morávia do Sul (Brno)',       x:58,y:62, p:16, econ:1,  soc:0,  nat:0},
+            {id:'BOHEMIA',n:'Boêmia Central',              x:28,y:38, p:15, econ:0,  soc:-1, nat:1},
+            {id:'PLZEN',  n:'Pilsen/Boêmia Ocidental',    x:15,y:52, p:11, econ:0,  soc:-1, nat:1},
+            {id:'OLOM',   n:'Olomouc/Morávia (Centro)',   x:65,y:52, p:12, econ:-1, soc:-1, nat:1},
+            {id:'OSTRAVA',n:'Ostrava/Moravia-Silesia',     x:78,y:42, p:14, econ:-1, soc:-1, nat:1},
+            {id:'LIBE',   n:'Liberec/Hradec (Norte)',      x:40,y:22, p:10, econ:-1, soc:0,  nat:1}
+        ]
+    },
+    "LBR2023": {
+        title:"Eleições Presidenciais da Libéria 2023", year:"2023", emoji:"🇱🇷",
+        country:"liberia",
+        desc:"Joseph Boakai (UP) vs George Weah (CDC). Libéria escolhe entre o candidato reformista e a estrela do futebol que governa.",
+        available:true,
+        newsHeader:"FrontPage Africa — 2023",
+        endYear:"2023",
+        partyPoolOverride:[{n:"UP",side:"E",owner:null},{n:"CDC",side:"C",owner:null}],
+        candidates:{
+            boakai23:{name:"BOAKAI", party:"UP",  start:44,money:35,side:"E",color:"#cc0000",econ:-1,soc:2,nat:-1,bio:"Joseph Boakai, ex-vice-presidente e veterano político. Candidato da Unidade do Partido (UP). Venceu o segundo turno contra Weah, prometendo combater a corrupção e melhorar os serviços públicos.",ideologia:"Populismo de Centro-Esquerda / Anti-Corrupção",traits:["Experiência de Governo","Coalizão Ampla"],negativeTraits:["Já Perdeu Eleições Antes","Idade Avançada"]},
+            weah23:  {name:"WEAH",   party:"CDC", start:50,money:45,side:"C",color:"#003366",econ:1,soc:-1,nat:1,bio:"George Weah, presidente incumbente, ex-estrela do futebol mundial e único africano a vencer a Bola de Ouro. Governou a Libéria mas enfrentou críticas por corrupção e má gestão económica.",ideologia:"Populismo / Pragmatismo",traits:["Popularidade Imensa","Incumbência"],negativeTraits:["Corrupção no Governo","Má Gestão"]}
+        },
+        regions:[
+            {id:'MONTSERR',n:'Monrovia/Montserrado (Capital)',x:12,y:55, p:30, econ:2,  soc:1,  nat:-1},
+            {id:'NIMBA',   n:'Nimba (Leste)',                x:72,y:35, p:16, econ:-1, soc:-1, nat:1},
+            {id:'BONG',    n:'Bong (Centro)',                x:48,y:40, p:12, econ:-2, soc:-1, nat:1},
+            {id:'LOFA',    n:'Lofa (Norte)',                 x:35,y:22, p:10, econ:-2, soc:-2, nat:2},
+            {id:'GRAND',   n:'Grand Cape Mount/Bassa (Oeste)',x:20,y:42, p:12, econ:-2, soc:-1, nat:1},
+            {id:'RIVERCESS',n:'River Cess/Sinoe (Sul)',      x:50,y:68, p:10, econ:-2, soc:-2, nat:2},
+            {id:'MARYL',   n:'Maryland/Grand Kru (Sudeste)',x:65,y:75, p:10, econ:-2, soc:-1, nat:1}
+        ]
+    },
+    "PAK2024": {
+        title:"Eleições Gerais do Paquistão 2024", year:"2024", emoji:"🇵🇰",
+        country:"pakistan",
+        desc:"Nawaz Sharif (PML-N) vs Omar Ayub Khan (PTI) vs Bilawal Bhutto Zardari (PPP). Paquistão numa eleição turbulenta com Imran Khan preso.",
+        available:true,
+        newsHeader:"Geo TV — 2024",
+        endYear:"2024",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:336,
+        majoritySeats:169,
+        partyPoolOverride:[{n:"PML-N",side:"C",owner:null},{n:"PTI",side:"C",owner:null},{n:"PPP",side:"E",owner:null}],
+        candidates:{
+            sharif24:  {name:"SHARIF",  party:"PML-N", start:30,money:55,side:"C",color:"#009900",econ:1,soc:-1,nat:1,bio:"Nawaz Sharif, ex-primeiro-ministro (três vezes) e líder da Liga Muçulmana do Paquistão-Nawaz. Regressou do exílio e buscou novo mandato com apoio do establishment militar. Seu governo depende de coalizão frágil.",ideologia:"Conservadorismo Muçulmano / Pragmatismo Económico",traits:["Apoio do Establishment Militar","Máquina PML-N"],negativeTraits:["Corrupção","Três Desqualificações"]},
+            ayub24:    {name:"AYUB",    party:"PTI",   start:32,money:40,side:"C",color:"#cc0000",econ:0,soc:0,nat:1,bio:"Omar Ayub Khan, líder interino do PTI (Movimento para a Justiça do Paquistão) com Imran Khan preso. Candidatos PTI concorreram como independentes após partido ser banido. Surpreenderam com o maior número de cadeiras.",ideologia:"Populismo / Imranismo",traits:["Onda PTI-Imran","Maior Bancada Individual"],negativeTraits:["Imran Khan Preso","PTI Banido"]},
+            bhutto24:  {name:"B. ZARDARI",party:"PPP", start:18,money:38,side:"E",color:"#cc0000",econ:-1,soc:1,nat:-1,bio:"Bilawal Bhutto Zardari, jovem líder do PPP (Partido do Povo do Paquistão). Filho de Benazir Bhutto e Asif Ali Zardari. Buscou posicionar o PPP como terceira força. Apoiou o governo Sharif na coalizão.",ideologia:"Social-Democracia / Laicidade / Dinástico",traits:["Legado Bhutto","Apelo Jovem"],negativeTraits:["PPP em Declínio no Punjab","Baseado em Sindh"]}
+        },
+        regions:[
+            {id:'PUNJAB',  n:'Punjab (Lahore)',             x:48,y:38, p:48, econ:0,  soc:-1, nat:1},
+            {id:'SINDH',   n:'Sindh (Karachi)',             x:35,y:68, p:23, econ:1,  soc:0,  nat:0},
+            {id:'KPK',     n:'Khyber Pakhtunkhwa (Peshawar)',x:28,y:22, p:14, econ:-2, soc:-2, nat:2},
+            {id:'BALUCH',  n:'Baluchistão (Quetta)',        x:18,y:52, p:8,  econ:-2, soc:-2, nat:2},
+            {id:'ICT',     n:'Islamabad (Capital)',         x:48,y:30, p:3,  econ:2,  soc:1,  nat:0},
+            {id:'AJK',     n:'Azade Caxemira / Gilgit',    x:48,y:15, p:4,  econ:-1, soc:-2, nat:2}
+        ]
+    },
+    "MMR2020": {
+        title:"Eleições Gerais de Mianmar 2020", year:"2020", emoji:"🇲🇲",
+        country:"myanmar",
+        desc:"Aung San Suu Kyi (NLD) vs Than Htay (USDP). Mianmar numa eleição histórica antes do golpe militar de 2021.",
+        available:true,
+        newsHeader:"MRTV — 2020",
+        endYear:"2020",
+        noSecondRound:true,
+        isParliamentary:true,
+        parliamentSeats:476,
+        majoritySeats:239,
+        partyPoolOverride:[{n:"NLD",side:"E",owner:null},{n:"USDP",side:"D",owner:null}],
+        candidates:{
+            suu_kyi20:{name:"SUU KYI", party:"NLD",  start:58,money:35,side:"E",color:"#cc0000",econ:-1,soc:1,nat:-1,bio:"Aung San Suu Kyi, líder icónica da Liga Nacional pela Democracia. Prémio Nobel da Paz. Governou como conselheira de estado. Venceu com maioria esmagadora mas o NLD foi derrubado pelo golpe militar de Fevereiro de 2021.",ideologia:"Democracia / Liberalismo Asiático",traits:["Ícone Nacional","Vitória Esmagadora"],negativeTraits:["Crise Rohingya","Golpe Posterior"]},
+            than_htay20:{name:"THAN HTAY",party:"USDP",start:25,money:50,side:"D",color:"#003366",econ:1,soc:-2,nat:2,bio:"Than Htay, líder do Partido da Solidariedade e Desenvolvimento da União, partido dos militares. Eleição amplamente vista como derrota catastrófica para os militares, levando ao golpe de estado de 2021.",ideologia:"Militar / Autoritarismo Budista Nacional",traits:["Apoio Militar","Recursos do Estado"],negativeTraits:["Impopularidade da Junta","Percepção de Fantoche"]}
+        },
+        regions:[
+            {id:'NAYPYIDAW',n:'Naypyidaw (Capital)',       x:48,y:52, p:2,  econ:2,  soc:-2, nat:1},
+            {id:'YANGON',  n:'Yangon (Antiga Capital)',     x:42,y:72, p:22, econ:2,  soc:1,  nat:-1},
+            {id:'MANDALAY',n:'Mandalay (Centro)',           x:50,y:42, p:16, econ:0,  soc:0,  nat:1},
+            {id:'SAGAING', n:'Sagaing (Noroeste)',          x:40,y:28, p:12, econ:-1, soc:-1, nat:2},
+            {id:'BAGO',    n:'Bago (Delta Irrawaddy)',      x:46,y:62, p:10, econ:-1, soc:0,  nat:0},
+            {id:'SHAN',    n:'Shan (Leste — Minorias)',     x:68,y:38, p:12, econ:-2, soc:-1, nat:0},
+            {id:'RAKHINE', n:'Rakhine (Oeste — Rohingya)', x:28,y:55, p:8,  econ:-2, soc:-2, nat:1},
+            {id:'AYEYARW', n:'Ayeyarwady (Delta Sul)',      x:38,y:72, p:10, econ:-2, soc:0,  nat:0},
+            {id:'KACHIN',  n:'Kachin/Kayah (Fronteiras)', x:52,y:15, p:8,  econ:-2, soc:-1, nat:0}
+        ]
     }
 };
 
@@ -4651,6 +5090,90 @@ function renderCountryScenarios(list) {
                 <div class="desc">Nausėda vs Šimonytė vs Vėgėlė</div>
                 <div style="font-size:9px;color:#cc6600;margin-top:2px">🗳️ 2 turnos — Países Bálticos e OTAN</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('MKD2024')" style="background:#fff0f0;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇲🇰 2024</div>
+                <h3>Eleições Presidenciais da Macedônia do Norte 2024</h3>
+                <div class="desc">Siljanovska vs Pendarovski vs Jakimovski</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🗳️ 2 turnos — identidade nacional vs integração europeia</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('MNE2023')" style="background:#f0f5ff;border-color:#0099cc">
+                <div class="year" style="color:#0099cc">🇲🇪 2023</div>
+                <h3>Eleições Parlamentares do Montenegro 2023</h3>
+                <div class="desc">Spajić (PES!) vs Živković (DPS) vs Knežević (ZBCG)</div>
+                <div style="font-size:9px;color:#0099cc;margin-top:2px">🏛️ Sistema parlamentar — 81 assentos no Skupština</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('ALB2025')" style="background:#fff0f0;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇦🇱 2025</div>
+                <h3>Eleições Parlamentares da Albânia 2025</h3>
+                <div class="desc">Rama (PS) vs Berisha (PD) vs Lapaj (LSHB)</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🏛️ Sistema proporcional — 140 assentos no Kuvendi</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('BGR2026')" style="background:#f5f0ff;border-color:#003399">
+                <div class="year" style="color:#003399">🇧🇬 2026</div>
+                <h3>Eleições Parlamentares da Bulgária 2026</h3>
+                <div class="desc">Borisov vs Vassilev vs Kostadinov vs Peevski</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Sistema proporcional — 240 assentos na Assembleia Nacional</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('HRV2024')" style="background:#f0f0ff;border-color:#003399">
+                <div class="year" style="color:#003399">🇭🇷 2024</div>
+                <h3>Eleições Parlamentares da Croácia 2024</h3>
+                <div class="desc">Plenković (HDZ) vs Grbin (Rios de Justiça) vs Penava (DP)</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Sistema misto — 151 assentos no Sabor</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('SVN2022')" style="background:#f0fff0;border-color:#003399">
+                <div class="year" style="color:#003399">🇸🇮 2022</div>
+                <h3>Eleições Presidenciais da Eslovênia 2022</h3>
+                <div class="desc">Pirc Musar vs Logar — primeira presidenta</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🗳️ 2 turnos — eleição histórica de gênero</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('SVK2024')" style="background:#fff5f5;border-color:#0066cc">
+                <div class="year" style="color:#0066cc">🇸🇰 2024</div>
+                <h3>Eleições Presidenciais da Eslováquia 2024</h3>
+                <div class="desc">Korčok vs Pellegrini vs Harabin</div>
+                <div style="font-size:9px;color:#0066cc;margin-top:2px">🗳️ 2 turnos — Eslováquia pró-OTAN vs pró-Rússia</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('LVA2022')" style="background:#fff0f0;border-color:#8b0000">
+                <div class="year" style="color:#8b0000">🇱🇻 2022</div>
+                <h3>Eleições Parlamentares da Letônia 2022</h3>
+                <div class="desc">Kariņš (Unidade) vs Lembergs (ZZS) vs Pīlēns (AS)</div>
+                <div style="font-size:9px;color:#8b0000;margin-top:2px">🏛️ Sistema proporcional — 100 assentos na Saeima</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('EST2023')" style="background:#f0f5ff;border-color:#003399">
+                <div class="year" style="color:#003399">🇪🇪 2023</div>
+                <h3>Eleições Parlamentares da Estônia 2023</h3>
+                <div class="desc">Kallas (Reforma) vs Helme (EKRE) vs Ratas (Centro)</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Sistema proporcional — 101 assentos no Riigikogu</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('FIN2023')" style="background:#f5f5ff;border-color:#003399">
+                <div class="year" style="color:#003399">🇫🇮 2023</div>
+                <h3>Eleições Parlamentares da Finlândia 2023</h3>
+                <div class="desc">Orpo vs Purra vs Marin</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Sistema proporcional — 200 assentos no Eduskunta</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('NOR2025')" style="background:#f5f5ff;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇳🇴 2025</div>
+                <h3>Eleições Parlamentares da Noruega 2025</h3>
+                <div class="desc">Støre (Trabalhista) vs Listhaug (Progresso) vs Solberg (Conservador)</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🏛️ Sistema proporcional — 169 assentos no Storting</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('DNK2022')" style="background:#fff0f5;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇩🇰 2022</div>
+                <h3>Eleições Parlamentares da Dinamarca 2022</h3>
+                <div class="desc">Frederiksen vs Jensen vs Rasmussen vs Dyhr</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🏛️ Sistema proporcional — 179 assentos no Folketing</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('IRL2025')" style="background:#f0fff0;border-color:#009900">
+                <div class="year" style="color:#009900">🇮🇪 2025</div>
+                <h3>Eleições Parlamentares da Irlanda 2025</h3>
+                <div class="desc">Connolly (Ind.) vs Humphreys (Fine Gael) vs Gavin (Fianna Fáil)</div>
+                <div style="font-size:9px;color:#009900;margin-top:2px">🏛️ Sistema STV proporcional — 174 assentos no Dáil</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('CZE2025')" style="background:#f5f5ff;border-color:#003399">
+                <div class="year" style="color:#003399">🇨🇿 2025</div>
+                <h3>Eleições Parlamentares da República Checa 2025</h3>
+                <div class="desc">Babiš (ANO) vs Fiala (ODS) vs Rakušan (STAN)</div>
+                <div style="font-size:9px;color:#003399;margin-top:2px">🏛️ Sistema proporcional — 200 assentos na Câmara dos Deputados</div>
+            </div>
         </div>
     </div>`;
 
@@ -4700,6 +5223,18 @@ function renderCountryScenarios(list) {
                 <div class="desc">Netanyahu vs Lapid vs Deri vs Gantz</div>
                 <div style="font-size:9px;color:#0038b8;margin-top:2px">🏛️ Sistema parlamentar PR — 120 assentos na Knesset</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('PAK2024')" style="background:#f5fff0;border-color:#009900">
+                <div class="year" style="color:#009900">🇵🇰 2024</div>
+                <h3>Eleições Gerais do Paquistão 2024</h3>
+                <div class="desc">Nawaz Sharif (PML-N) vs Omar Ayub (PTI) vs Bilawal (PPP)</div>
+                <div style="font-size:9px;color:#009900;margin-top:2px">🏛️ Sistema parlamentar FPTP — Imran Khan preso</div>
+            </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('MMR2020')" style="background:#fff5e0;border-color:#cc6600">
+                <div class="year" style="color:#cc6600">🇲🇲 2020</div>
+                <h3>Eleições Gerais de Mianmar 2020</h3>
+                <div class="desc">Aung San Suu Kyi (NLD) vs Than Htay (USDP)</div>
+                <div style="font-size:9px;color:#cc6600;margin-top:2px">🏛️ Antes do golpe militar — eleição histórica</div>
+            </div>
         </div>
     </div>`;
 
@@ -4732,15 +5267,21 @@ function renderCountryScenarios(list) {
                 <div class="desc">Tinubu vs Abubakar vs Obi</div>
                 <div style="font-size:9px;color:#008751;margin-top:2px">🗳️ Turno único — maior democracia africana</div>
             </div>
+            <div class="scenario-card" onclick="selectInternationalScenario('LBR2023')" style="background:#fff5f0;border-color:#cc0000">
+                <div class="year" style="color:#cc0000">🇱🇷 2023</div>
+                <h3>Eleições Presidenciais da Libéria 2023</h3>
+                <div class="desc">Boakai (UP) vs Weah (CDC) — estrela do futebol vs reformista</div>
+                <div style="font-size:9px;color:#cc0000;margin-top:2px">🗳️ 2 turnos — Libéria pós-conflito</div>
+            </div>
         </div>
     </div>`;
 
     const locked = [
-        {flag:'🇮🇩',name:'Indonésia 2024'},{flag:'🇵🇰',name:'Paquistão 2024'},
+        {flag:'🇮🇩',name:'Indonésia 2024'},
         {flag:'🇪🇬',name:'Egito 2024'},{flag:'🇮🇷',name:'Irã 2024'},
         {flag:'🇨🇷',name:'Costa Rica 2026'},{flag:'🇬🇳',name:'Guiné 2025'},
         {flag:'🇸🇳',name:'Senegal 2024'},{flag:'🇰🇪',name:'Quênia 2027'},
-        {flag:'🇪🇹',name:'Etiópia 2021'},{flag:'🇸🇰',name:'Eslováquia 2023'},
+        {flag:'🇪🇹',name:'Etiópia 2021'},
         {flag:'🇳🇿',name:'Nova Zelândia 2026'},
     ];
     list.innerHTML += `<div style="margin-bottom:8px">
@@ -7044,6 +7585,171 @@ const intlTweetPools = {
             {handle:'@LTMemesPolitika',name:'Lietuva Politikos Memes 😂',type:'meme'},{handle:'@VRK_LT',name:'VRK — Rinkimai 🗳️',type:'org'},
         ],
         memes:['Nausėda — nepriklausomas ir patikimas! 🇱🇹 Balsavau!','TS-LKD — Europa ir NATO yra prioritetas! Šimonytė!','Lietuva turi laisvai rinktis, ne diktatams! 💪','Nauja karta, nauja politika — Vėgėlė prezidentas!','Laisvoji Lietuva — už demokratiją ir NATO! 🇱🇹🌍'],
+    },
+    'MKD2024': {
+        accounts: [
+            {handle:'@MRT_mk',name:'MRT Македонија 📺',type:'notícia'},{handle:'@slobodenpechat',name:'Слободен печат',type:'notícia'},
+            {handle:'@VMRO_DPMNE',name:'ВМРО-ДПМНЕ',type:'org'},{handle:'@sdsm_mk',name:'СДСМ — Македонија',type:'org'},
+            {handle:'@GordanaSiljanovska',name:'Гордана Силјановска 🇲🇰',type:'político'},{handle:'@PendarovskiStevo',name:'Стево Пендаровски',type:'político'},
+            {handle:'@MakedonecObicen',name:'Обичен Македонец 🇲🇰',type:'normal'},{handle:'@MKDMemes2024',name:'МКД Мемиња 😂',type:'meme'},
+            {handle:'@SEC_Makedonija',name:'ДИК — Избори 🗳️',type:'org'},
+        ],
+        memes:['ВМРО — Македонија е Македонија! Не Северна! 🇲🇰','Пендаровски за европска иднина! #СДСМ','Договорот од Преспа е предавство! Гласај ВМРО! 💪','Македонија се буди — доволно е! #МКД2024','Јакимовски — нова opcija за Македонија! #ГРОМ'],
+    },
+    'MNE2023': {
+        accounts: [
+            {handle:'@vijesti_me',name:'Vijesti CG 📰',type:'notícia'},{handle:'@RTCG_CG',name:'RTCG — Radio Televizija',type:'notícia'},
+            {handle:'@PES_Spajic',name:'Pokret Evropa sad! 🇲🇪',type:'org'},{handle:'@DPS_Crnogorska',name:'DPS Crna Gora',type:'org'},
+            {handle:'@MilojkoSpajic',name:'Milojko Spajić',type:'político'},{handle:'@CrnogGoranin',name:'Crnogoranin 🇲🇪',type:'normal'},
+            {handle:'@CrnGoraMemovi',name:'Crna Gora Memovi 😂',type:'meme'},{handle:'@DIK_CG',name:'DIK — Izbori 🗳️',type:'org'},
+        ],
+        memes:['Evropa sad! Crna Gora u EU! 🇲🇪🇪🇺 #Spajic','DPS 30 godina — dosta je! Promjena je potrebna! 💪','Srbija i Rusija — ne hvala! Crna Gora je naša! 🇲🇪','Spajić mlad i spreman — budućnost Crne Gore! ⭐','Knežević — srpski interes u Crnoj Gori? Ne! 🚫'],
+    },
+    'ALB2025': {
+        accounts: [
+            {handle:'@TopChannelAlb',name:'Top Channel Albania 📺',type:'notícia'},{handle:'@gazetaShqip',name:'Gazeta Shqip',type:'notícia'},
+            {handle:'@PSShqiperi',name:'Partia Socialiste 🌹',type:'org'},{handle:'@PD_Shqiperia',name:'Partia Demokratike',type:'org'},
+            {handle:'@EdiRamaOfficial',name:'Edi Rama',type:'político'},{handle:'@SaliBerisha',name:'Sali Berisha',type:'político'},
+            {handle:'@ShqiptarObicen',name:'Shqiptar i thjeshtë 🇦🇱',type:'normal'},{handle:'@AlbMemes2025',name:'Meme Shqip 😂',type:'meme'},
+            {handle:'@KQZ_Albania',name:'KQZ — Zgjedhjet 🗳️',type:'org'},
+        ],
+        memes:['Rama — integrim europian dhe modernizim! 🇦🇱🇪🇺','Berisha kthehet — ndryshimi fillon tani! #PD','Shqipëria meriton të jetë në BE! Votoni PS! 🌹','Non grata ose jo, Berisha është lider! 💪','Politika shqiptare — po te njëjtat fytyra... 😔'],
+    },
+    'BGR2026': {
+        accounts: [
+            {handle:'@BNT_Bulgaria',name:'БНТ 📺',type:'notícia'},{handle:'@DnevnikBG',name:'Дневник',type:'notícia'},
+            {handle:'@GERB_BG',name:'ГЕРБ — България',type:'org'},{handle:'@pp_db_bg',name:'ПП-ДБ България',type:'org'},
+            {handle:'@VazrazhdaneBG',name:'Възраждане 🇧🇬',type:'org'},{handle:'@BorisovBG',name:'Бойко Борисов',type:'político'},
+            {handle:'@BulgarinNormalen',name:'Нормален Българин 🇧🇬',type:'normal'},{handle:'@BulgariaMemes26',name:'България Мемове 😂',type:'meme'},
+            {handle:'@CIK_Bulgaria',name:'ЦИК — Избори 🗳️',type:'org'},
+        ],
+        memes:['ГЕРБ — стабилност и европейски път! 🇧🇬🇪🇺','Васильев срещу корупцията! ПП-ДБ за промяна! 💙','България не е руска провинция! #Възраждане лъже! 🚫','Костадинов казва истината — НАТО е проблем! 🔥','България заслужава по-добро от всичките тях! 😔'],
+    },
+    'HRV2024': {
+        accounts: [
+            {handle:'@HRT_Croatia',name:'HRT Hrvatska 📺',type:'notícia'},{handle:'@jutarnji_list',name:'Jutarnji list',type:'notícia'},
+            {handle:'@HDZ_hrvatska',name:'HDZ — Hrvatska 🇭🇷',type:'org'},{handle:'@SDP_Hrvatska',name:'SDP / Rijeke Pravde',type:'org'},
+            {handle:'@andrej_plenkovic',name:'Andrej Plenković',type:'político'},{handle:'@IvanPenava',name:'Ivan Penava',type:'político'},
+            {handle:'@HrvatGlas',name:'Glasa Hrvatska 🇭🇷',type:'normal'},{handle:'@HrvatskiMemes',name:'Hrvatski Memes 😂',type:'meme'},
+            {handle:'@DORH_izbori',name:'DIP — Državno izborno povjerenstvo 🗳️',type:'org'},
+        ],
+        memes:['HDZ — Hrvatska u srcu Europe! 🇭🇷🇪🇺','Dosta HDZ-a! Rijeke pravde — sada! 💙','Penava govori istinu — Vukovar ne zaboravlja! 💪','Hrvatska zaslužuje pravu demokraciju, ne korupciju! 🚫','Opet isti — HDZ ili SDP... kada promjena? 😔'],
+    },
+    'SVN2022': {
+        accounts: [
+            {handle:'@RTVSlovenija',name:'RTV Slovenija 📺',type:'notícia'},{handle:'@delo_si',name:'Delo.si',type:'notícia'},
+            {handle:'@NatašaPircMusar',name:'Nataša Pirc Musar',type:'político'},{handle:'@AnzeLogar',name:'Anže Logar',type:'político'},
+            {handle:'@SloveninObicen',name:'Navaden Slovenec 🇸🇮',type:'normal'},{handle:'@DVK_Slovenija',name:'DVK — Volitve 🗳️',type:'org'},
+            {handle:'@SlovenijaMemes',name:'Slovenija Memes 😂',type:'meme'},{handle:'@SLO_Politika',name:'SLO Politika Analiza',type:'análise'},
+        ],
+        memes:['Pirc Musar — prva predsednica Slovenije! 🇸🇮👩','Logar — izkušen diplomat za stabilno Slovenijo! 💙','Slovenija v EU in NATO — ponos! 🇸🇮🇪🇺','Neodvisni kandidati so prihodnost! Konec s strankami! 💪','Slovenija je majhna a ponosna! Gremo volit! 🗳️'],
+    },
+    'SVK2024': {
+        accounts: [
+            {handle:'@RTVS_sk',name:'RTVS Slovakia 📺',type:'notícia'},{handle:'@dennikN_sk',name:'Denník N',type:'notícia'},
+            {handle:'@IvanKorcok',name:'Ivan Korčok',type:'político'},{handle:'@PellegriniPeter',name:'Peter Pellegrini',type:'político'},
+            {handle:'@SlovakObycajny',name:'Obyčajný Slovák 🇸🇰',type:'normal'},{handle:'@SVKMemes2024',name:'SK Memy 2024 😂',type:'meme'},
+            {handle:'@SVKSO_Volby',name:'ŠVK — Voľby 🗳️',type:'org'},{handle:'@Harabin_SK',name:'Štefan Harabin',type:'político'},
+        ],
+        memes:['Korčok — Slovensko patrí do NATO a EÚ! 🇸🇰🇪🇺','Pellegrini — stabilita a sociálna spravodlivosť! 💙','Harabin hovorí pravdu — NATO je nebezpečenstvo! 🔥','Slovensko potrebuje skutočnú zmenu, nie Ficov bábku! 💪','Voliť ideme — Slovensko si zaslúži lepšie! 🗳️'],
+    },
+    'LVA2022': {
+        accounts: [
+            {handle:'@LTV_Latvia',name:'LTV Latvija 📺',type:'notícia'},{handle:'@delfi_lv',name:'Delfi.lv',type:'notícia'},
+            {handle:'@JaunaVienotiba',name:'Jaunā Vienotība 🇱🇻',type:'org'},{handle:'@ZZS_Latvia',name:'ZZS — Latvija',type:'org'},
+            {handle:'@KarinsKrisjanis',name:'Krišjānis Kariņš',type:'político'},{handle:'@LatviesisNormāls',name:'Latvietis 🇱🇻',type:'normal'},
+            {handle:'@LatvijaMemes22',name:'Latvija Memes 😂',type:'meme'},{handle:'@CVK_Latvia',name:'CVK — Vēlēšanas 🗳️',type:'org'},
+        ],
+        memes:['Latvija NATO un ES — lepnums! 🇱🇻🇪🇺','Kariņš — ekonomika un drošība! Balso Vienotību!','ZZS — lauki un dabas aizsardzība Latvijā! 🌱','Latvija tic brīvībai — kopš 1991! 💪','Kopā esam stiprāki — balsojam 🇱🇻'],
+    },
+    'EST2023': {
+        accounts: [
+            {handle:'@ERR_Uudised',name:'ERR Uudised 📺',type:'notícia'},{handle:'@Postimees',name:'Postimees',type:'notícia'},
+            {handle:'@ReformErakond',name:'Reformierakond 🇪🇪',type:'org'},{handle:'@EKRE_Eesti',name:'EKRE — Eesti',type:'org'},
+            {handle:'@KajaKallas',name:'Kaja Kallas',type:'político'},{handle:'@MartinHelme',name:'Martin Helme',type:'político'},
+            {handle:'@EestlaneNormaalne',name:'Eestlane 🇪🇪',type:'normal'},{handle:'@EestiMemes23',name:'Eesti Memed 😂',type:'meme'},
+            {handle:'@VVK_Estonia',name:'VVK — Valimised 🗳️',type:'org'},
+        ],
+        memes:['Kallas — tugev Eesti, tugev NATO! 🇪🇪💙','EKRE — Eesti eestlastele! Piiri kinni! 💪','Reformierakond võitis — Eesti vabadus kestab! 🎉','Ratas ja Keskerakond — vene häälte partei! 🚫','Eesti väike aga uhke — hääleta nüüd! 🗳️'],
+    },
+    'FIN2023': {
+        accounts: [
+            {handle:'@Yle_Uutiset',name:'YLE Uutiset 📺',type:'notícia'},{handle:'@HS_Politiikka',name:'Helsingin Sanomat',type:'notícia'},
+            {handle:'@kokoomus',name:'Kansallinen Kokoomus',type:'org'},{handle:'@persut',name:'Perussuomalaiset 🔵',type:'org'},
+            {handle:'@PetterOrpo',name:'Petteri Orpo',type:'político'},{handle:'@RiikkaPurra',name:'Riikka Purra',type:'político'},
+            {handle:'@SannaMarin',name:'Sanna Marin',type:'político'},{handle:'@SuomalaineNormal',name:'Tavallinen Suomalainen 🇫🇮',type:'normal'},
+            {handle:'@SuomiMemes23',name:'Suomi Memes 😂',type:'meme'},{handle:'@OM_vaalit',name:'Oikeusministeriö — Vaalit 🗳️',type:'org'},
+        ],
+        memes:['Orpo — talouskuri ja vastuullinen politiikka! 🇫🇮','Purra sanoo sen mitä muut eivät uskalla! Perussuomalaiset! 💪','Marin — Suomi NATO:ssa ja hyvinvointivaltiona! 🌹','Suomi on nyt NATO-jäsen — kiitos Marinille! 🇫🇮🛡️','Kokoomus ja persut — häpeä Suomelle! Vasemmisto nousee! ✊'],
+    },
+    'NOR2025': {
+        accounts: [
+            {handle:'@NRK_Nyheter',name:'NRK Nyheter 📺',type:'notícia'},{handle:'@Aftenposten',name:'Aftenposten',type:'notícia'},
+            {handle:'@Arbeiderpartiet',name:'Arbeiderpartiet 🌹',type:'org'},{handle:'@Fremskrittspartiet',name:'Fremskrittspartiet 🇳🇴',type:'org'},
+            {handle:'@JonasGahrStore',name:'Jonas Gahr Støre',type:'político'},{handle:'@SylviListhaug',name:'Sylvi Listhaug',type:'político'},
+            {handle:'@ErnaSolberg',name:'Erna Solberg',type:'político'},{handle:'@NorskBorger',name:'Norsk Borger 🇳🇴',type:'normal'},
+            {handle:'@NorgeValg25',name:'Norge Valgmemes 😂',type:'meme'},{handle:'@Valgdir_Norge',name:'Valgdirektoratet 🗳️',type:'org'},
+        ],
+        memes:['Støre og Ap — for velferd og rettferdighet! 🌹','Listhaug sier det høyt — innvandring er et problem! 💪','Solberg — trygg og ansvarlig høyrepolitikk! 🇳🇴','Olje, velferd og demokrati — Norge er best! 🛢️','Stem frem — din stemme teller i Stortinget! 🗳️'],
+    },
+    'DNK2022': {
+        accounts: [
+            {handle:'@DR_Nyheder',name:'DR Nyheder 📺',type:'notícia'},{handle:'@Politiken',name:'Politiken',type:'notícia'},
+            {handle:'@Socialdemokratiet',name:'Socialdemokratiet 🌹',type:'org'},{handle:'@VenstrePartiet',name:'Venstre 🇩🇰',type:'org'},
+            {handle:'@Moderaterne_dk',name:'Moderaterne 🤝',type:'org'},{handle:'@MetteFredriksen',name:'Mette Frederiksen',type:'político'},
+            {handle:'@LarsLoekke',name:'Lars Løkke Rasmussen',type:'político'},{handle:'@PiaDyhr',name:'Pia Olsen Dyhr',type:'político'},
+            {handle:'@DanskMedborger',name:'Dansk Medborger 🇩🇰',type:'normal'},{handle:'@DKMemes2022',name:'Dansk Memes 😂',type:'meme'},
+            {handle:'@KV_Danmark',name:'KV — Valg 🗳️',type:'org'},
+        ],
+        memes:['Mette — socialdemokratiet beskytter velfærden! 🌹','Løkke og Moderaterne over de gamle blokke! 🤝','Venstre — frihed og ansvar for Danmark! 🇩🇰','Dyhr og SF — grøn og social fremtid! 🌿','Stem rødblok — for en retfærdig Danmark! ✊'],
+    },
+    'IRL2025': {
+        accounts: [
+            {handle:'@RTE_News',name:'RTÉ News 📺',type:'notícia'},{handle:'@IrishTimes',name:'The Irish Times',type:'notícia'},
+            {handle:'@FineGaelIrl',name:'Fine Gael 🇮🇪',type:'org'},{handle:'@FiannaFailIrl',name:'Fianna Fáil',type:'org'},
+            {handle:'@JimGavinFF',name:'Jim Gavin FF',type:'político'},{handle:'@HHumphreysIRL',name:'Heather Humphreys FG',type:'político'},
+            {handle:'@IrishCitizen',name:'Irish Citizen 🇮🇪',type:'normal'},{handle:'@IrishMemes2025',name:'Irish Election Memes 😂',type:'meme'},
+            {handle:'@ElectoralComIrl',name:'Electoral Commission 🗳️',type:'org'},{handle:'@CatConnollyIRL',name:'Catherine Connolly',type:'político'},
+        ],
+        memes:["Housing is a mess — Fine Gael had their chance! 🏠 #IrishElection",'Jim Gavin for Taoiseach? Sure why not sure! 🇮🇪','Fine Gael and Fianna Fáil — two cheeks of the same backside 😂','Ireland deserves real change — vote Independent! 💪','Connolly speaks truth to power — Connacht rising! ✊'],
+    },
+    'CZE2025': {
+        accounts: [
+            {handle:'@CT24_cz',name:'ČT24 📺',type:'notícia'},{handle:'@lidovky_cz',name:'Lidové noviny',type:'notícia'},
+            {handle:'@hnuti_ano',name:'ANO — Babiš 🇨🇿',type:'org'},{handle:'@ODSka',name:'ODS — SPOLU',type:'org'},
+            {handle:'@AndrejBabis',name:'Andrej Babiš',type:'político'},{handle:'@PetrFiala',name:'Petr Fiala',type:'político'},
+            {handle:'@VitRakusan',name:'Vít Rakušan — STAN',type:'político'},{handle:'@CeskyClovek',name:'Obyčejný Čech 🇨🇿',type:'normal'},
+            {handle:'@CZMemes25',name:'Česká volební memes 😂',type:'meme'},{handle:'@MVČR_volby',name:'MV ČR — Volby 🗳️',type:'org'},
+        ],
+        memes:['Babiš — pro normální lidi, ne pro elity! 🇨🇿','Fiala a SPOLU — odpovědná pravice pro Česko! 💙','ANO je mafie — Česko si zaslouží lepší! ✊','Rakušan — STAN pro obnovení důvěry! 🤝','Volby jsou naše zbraň — jdeme volit! 🗳️'],
+    },
+    'LBR2023': {
+        accounts: [
+            {handle:'@FrontPageAfrica',name:'FrontPage Africa 📰',type:'notícia'},{handle:'@LiberianObserver',name:'Liberian Observer',type:'notícia'},
+            {handle:'@JBoakaiUP',name:'Joseph Boakai — UP',type:'político'},{handle:'@GeorgeWeahCDC',name:'George Weah — CDC',type:'político'},
+            {handle:'@LiberianCitizen',name:'Liberian Citizen 🇱🇷',type:'normal'},{handle:'@LBR_Memes23',name:'Liberia Election Memes 😂',type:'meme'},
+            {handle:'@NEC_Liberia',name:'NEC — Liberia Votes 🗳️',type:'org'},{handle:'@CDCPartyLBR',name:'CDC — Liberia',type:'org'},
+        ],
+        memes:['Boakai for President — change Liberia needs! 🇱🇷','Weah gave us hope — vote CDC again! ⚽🇱🇷','Corruption must end in Liberia! Unity Party 2023! ✊','From soccer field to State House — Weah is our hero! 🌟','Liberia deserves better governance — vote Boakai! 💙'],
+    },
+    'PAK2024': {
+        accounts: [
+            {handle:'@GeoTVPak',name:'Geo TV 📺',type:'notícia'},{handle:'@Dawn_News',name:'Dawn News',type:'notícia'},
+            {handle:'@PMLN_Official',name:'PML-N Pakistan',type:'org'},{handle:'@PPP_Pakistan',name:'PPP — Bhutto',type:'org'},
+            {handle:'@NawazSharif_Pk',name:'Nawaz Sharif',type:'político'},{handle:'@BBhuttoZardari',name:'Bilawal Bhutto Zardari',type:'político'},
+            {handle:'@OmarAyubPTI',name:'Omar Ayub — PTI',type:'político'},{handle:'@PakistaniVoter',name:'Pakistani Citizen 🇵🇰',type:'normal'},
+            {handle:'@PAK_Memes24',name:'Pakistan Election Memes 😂',type:'meme'},{handle:'@ECP_Official',name:'ECP — Pakistan Votes 🗳️',type:'org'},
+        ],
+        memes:['Imran Khan is political prisoner! Free Imran! 🦁 #PTI','Nawaz Sharif — Pakistan ka leader! PML-N Zindabad! 🇵🇰','Bilawal — Bhutto ka beta, Pakistan ka umeed! 🌹','Judiciary aur Fauj — mili to hai hamesha! Awam ko pata hai! 😤','Pakistan mera desh — mujhe apna vote dena hai! 🗳️'],
+    },
+    'MMR2020': {
+        accounts: [
+            {handle:'@MRTV_Myanmar',name:'MRTV Myanmar 📺',type:'notícia'},{handle:'@Irrawaddy_News',name:'The Irrawaddy',type:'notícia'},
+            {handle:'@NLD_Myanmar',name:'NLD — Myanmar 🇲🇲',type:'org'},{handle:'@USDP_Myanmar',name:'USDP — Myanmar',type:'org'},
+            {handle:'@AungSanSuuKyi',name:'Aung San Suu Kyi',type:'político'},{handle:'@MyanmarCitizen',name:'Myanmar Citizen 🇲🇲',type:'normal'},
+            {handle:'@MMR_Memes20',name:'Myanmar Memes 2020 😂',type:'meme'},{handle:'@UEC_Myanmar',name:'UEC — Myanmar Votes 🗳️',type:'org'},
+        ],
+        memes:['NLD — democracy for Myanmar! Vote Suu Kyi! 🇲🇲✌️','Military has had enough power — time for civilians! 💙','USDP = army in suits. No more! #Myanmar2020','Daw Suu — our mother, our hope 🌹 #NLD','We vote today for a free tomorrow — Myanmar strong! 🗳️'],
     },
 };
 
@@ -12741,7 +13447,7 @@ function showCredits() {
         <div style="background:linear-gradient(135deg,#000080,#4040cc);color:white;padding:20px;border-radius:8px;margin-bottom:16px">
             <div style="font-size:28px;margin-bottom:4px">🌎</div>
             <b style="font-size:16px">SIMULADOR ELEITORAL GLOBAL</b><br>
-            <span style="font-size:12px;opacity:0.8">Versão 15 & 16 — 2025</span>
+            <span style="font-size:12px;opacity:0.8">Versão 17 — 2026</span>
         </div>
         <div style="background:#fff;border:2px solid #000080;padding:16px;border-radius:6px;margin-bottom:10px">
             <div style="font-size:13px;color:#000080;font-weight:bold;margin-bottom:8px">👑 CRIAÇÃO E DESENVOLVIMENTO</div>
@@ -12768,7 +13474,28 @@ function showChangelog() {
         🌎 SIMULADOR ELEITORAL GLOBAL — CHANGELOG
     </div>
     <div style="background:#d0f0ff;border:1px solid #0066cc;padding:6px;margin-bottom:6px;border-left:4px solid #0099ff">
-        <b>🆕 VERSÃO 16</b> — <i>Taiwan 2024, Austrália 2025 (Oceania), Uruguai 2024, Paraguai 2023, Plebiscito 1993 reformulado, Editor de Eleições corrigido</i><br>
+        <b>🆕 VERSÃO 17</b> — <i>18 Novas Eleições: Macedônia do Norte, Montenegro, Albânia, Bulgária, Croácia, Eslovênia, Eslováquia, Letônia, Estônia, Finlândia, Noruega, Dinamarca, Irlanda, República Checa (Europa), Libéria (África), Paquistão, Mianmar (Ásia)</i><br>
+        <b style="color:#0066cc">✅ 🇲🇰 Macedônia do Norte 2024:</b> Siljanovska (VMRO-DPMNE) vs Pendarovski (SDSM) vs Jakimovski (GROM) — identidade nacional vs Europa<br>
+        <b style="color:#0066cc">✅ 🇲🇪 Montenegro 2023:</b> Spajić (PES!) vs Živković (DPS) vs Knežević (ZBCG) — 81 cadeiras, fim de 30 anos DPS<br>
+        <b style="color:#0066cc">✅ 🇦🇱 Albânia 2025:</b> Rama (PS) vs Berisha (PD) vs Lapaj (LSHB) — 140 cadeiras, integração europeia<br>
+        <b style="color:#0066cc">✅ 🇧🇬 Bulgária 2026:</b> Borisov vs Vassilev vs Kostadinov vs Peevski — 240 cadeiras, 4 candidatos<br>
+        <b style="color:#0066cc">✅ 🇭🇷 Croácia 2024:</b> Plenković (HDZ) vs Grbin (Rios de Justiça) vs Penava (DP) — 151 cadeiras<br>
+        <b style="color:#0066cc">✅ 🇸🇮 Eslovênia 2022:</b> Pirc Musar vs Logar — primeira presidenta da Eslovênia<br>
+        <b style="color:#0066cc">✅ 🇸🇰 Eslováquia 2024:</b> Korčok vs Pellegrini vs Harabin — pró-OTAN vs pró-Rússia<br>
+        <b style="color:#0066cc">✅ 🇱🇻 Letônia 2022:</b> Kariņš (Unidade) vs Lembergs (ZZS) vs Pīlēns (AS) — 100 cadeiras<br>
+        <b style="color:#0066cc">✅ 🇪🇪 Estônia 2023:</b> Kallas (Reforma) vs Helme (EKRE) vs Ratas (Centro) — 101 cadeiras<br>
+        <b style="color:#0066cc">✅ 🇫🇮 Finlândia 2023:</b> Orpo vs Purra vs Marin — 200 cadeiras, Finlândia na OTAN<br>
+        <b style="color:#0066cc">✅ 🇳🇴 Noruega 2025:</b> Støre vs Listhaug vs Solberg — 169 cadeiras no Storting<br>
+        <b style="color:#0066cc">✅ 🇩🇰 Dinamarca 2022:</b> Frederiksen vs Jensen vs Rasmussen vs Dyhr — 179 cadeiras<br>
+        <b style="color:#0066cc">✅ 🇮🇪 Irlanda 2025:</b> Connolly vs Humphreys vs Gavin — 174 cadeiras no Dáil<br>
+        <b style="color:#0066cc">✅ 🇨🇿 República Checa 2025:</b> Babiš (ANO) vs Fiala (ODS) vs Rakušan (STAN) — 200 cadeiras<br>
+        <b style="color:#0066cc">✅ 🇱🇷 Libéria 2023 (África):</b> Boakai (UP) vs George Weah (CDC) — Bola de Ouro vs Reforma<br>
+        <b style="color:#0066cc">✅ 🇵🇰 Paquistão 2024 (Ásia):</b> Nawaz Sharif vs Omar Ayub (PTI) vs Bilawal Bhutto — Imran Khan preso<br>
+        <b style="color:#0066cc">✅ 🇲🇲 Mianmar 2020 (Ásia):</b> Aung San Suu Kyi (NLD) vs Than Htay (USDP) — antes do golpe<br>
+        <b style="color:#0066cc">✅ 📱 Redes sociais únicas</b> para todas as 18 novas eleições (idiomas locais)<br>
+    </div>
+    <div style="background:#d0f0ff;border:1px solid #0066cc;padding:6px;margin-bottom:6px;border-left:4px solid #0099ff">
+        <b>VERSÃO 16</b> — <i>Taiwan 2024, Austrália 2025 (Oceania), Uruguai 2024, Paraguai 2023, Plebiscito 1993 reformulado, Editor de Eleições corrigido</i><br>
         <b style="color:#0066cc">✅ 🇹🇼 Taiwan 2024:</b> Lai Ching-te (DPP) vs Hou Yu-ih (KMT) vs Ko Wen-je (TPP) — 11 regiões, tensão geopolítica com China, redes sociais bilingues<br>
         <b style="color:#0066cc">✅ 🇦🇺 Austrália 2025:</b> Albanese (Labor) vs Dutton (LNP) vs Bandt (Greens) — Sistema parlamentar FPTP, 151 cadeiras, nova categoria OCEANIA<br>
         <b style="color:#0066cc">✅ 🇺🇾 Uruguai 2024:</b> Orsi (FA) vs Delgado (PN) vs Ojeda (Colorado) — 8 regiões, balotaje, democracia modelo da América Latina<br>
@@ -12836,7 +13563,7 @@ function showChangelog() {
         <b>📦 v1-7</b> — 1989 a 2026 | Debates | Escândalos | Mapa | Congresso | Modo Caótico | Indiretas | Históricos
     </div>
     </div>`;
-    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v15 & 16', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
+    showModal('📋 CHANGELOG — SIMULADOR ELEITORAL GLOBAL v15', html, `<button class="btn" onclick="closeModal()">Fechar</button>`);
 }
 
 init();
